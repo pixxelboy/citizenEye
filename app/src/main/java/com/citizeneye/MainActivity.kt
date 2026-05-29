@@ -40,7 +40,6 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -85,6 +84,7 @@ import com.citizeneye.data.Vote
 import com.citizeneye.data.classifyVoteSubjectType
 import com.citizeneye.data.formatPositionInContext
 import com.citizeneye.data.formatVoteResultLabel
+import com.citizeneye.ui.CitizenEyeLoader
 import com.citizeneye.ui.theme.CitizenEyeTheme
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
@@ -416,9 +416,10 @@ private fun LocationPreviewCard(preview: LocationPreview) {
 private fun LoadingScreen(message: String) {
     Box(Modifier.fillMaxSize().padding(24.dp), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            CircularProgressIndicator()
-            Spacer(Modifier.height(18.dp))
-            Text(message.ifBlank { "Recherche de votre circonscription…" }, fontWeight = FontWeight.SemiBold)
+            CitizenEyeLoader(
+                size = 88.dp,
+                label = message.ifBlank { "Recherche de votre circonscription…" }
+            )
             Spacer(Modifier.height(8.dp))
             Text("CitizenEye vérifie les sources publiques disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.height(6.dp))

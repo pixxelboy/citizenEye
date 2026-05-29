@@ -17,7 +17,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -53,6 +52,7 @@ import com.citizeneye.data.buildTakeaway
 import com.citizeneye.data.formatPositionInContext
 import com.citizeneye.data.formatVoteResultLabel
 import com.citizeneye.data.safeDisplayValue
+import com.citizeneye.ui.CitizenEyeLoader
 
 sealed interface VoteDetailUiState {
     data object Loading : VoteDetailUiState
@@ -79,11 +79,12 @@ fun VoteDetailScreen(
 @Composable
 private fun DetailLoadingState() {
     Column(Modifier.fillMaxSize().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-        CircularProgressIndicator()
-        Spacer(Modifier.height(16.dp))
-        Text("Préparation du détail du vote", fontWeight = FontWeight.SemiBold)
+        CitizenEyeLoader(
+            size = 88.dp,
+            label = "Chargement du détail du vote…"
+        )
         Spacer(Modifier.height(8.dp))
-        Text("CitizenEye rassemble les informations officielles disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text("CitizenEye vérifie les sources officielles disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant)
         Spacer(Modifier.height(6.dp))
         Text("Cela peut prendre quelques secondes.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
     }
