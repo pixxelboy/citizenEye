@@ -98,6 +98,7 @@ Clear, civic, calm. The app should feel like a trustworthy public-service compan
 - Geolocation may autocomplete the postal code/city and show the inferred commune/département/circonscription, but must not auto-validate; the user can edit or confirm.
 - When GPS latitude/longitude is available, resolve the point against official/public circonscription boundary geometry before falling back to department-level candidate selection. Still require confirmation because the location may be stale, coarse, or not the user’s home.
 - Use live public data, not seeded demo content: geo.api.gouv.fr for communes and Assemblée nationale Open Data for deputies/votes.
+- Each vote card should include a small neutral concern chip derived from the scrutin title: Amendement (modifies a precise part of the text), Article (vote on a text section), Texte complet (adoption/rejection at a parliamentary stage), Motion (procedure/censure), Budget (budgetary vote, often by part), or Résolution (Assembly political position). Keep these chips visually neutral so they aid comprehension without implying priority or severity.
 - Cache deputies and votes locally on-device; refresh public imports once per day, and clearly tolerate stale cache if public sources are temporarily unavailable.
 - If postal code or city is ambiguous, ask for user selection or more precise address; never invent a single député.
 - Tap targets must be at least 44px.

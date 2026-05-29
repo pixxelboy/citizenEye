@@ -72,6 +72,7 @@ import com.citizeneye.data.DeputeMatch
 import com.citizeneye.data.DeputyStats
 import com.citizeneye.data.LocationPreview
 import com.citizeneye.data.LookupState
+import com.citizeneye.data.VoteConcern
 import com.citizeneye.data.VotePosition
 import com.citizeneye.ui.theme.CitizenEyeTheme
 import coil.compose.AsyncImage
@@ -571,12 +572,34 @@ private fun VoteCard(vote: com.citizeneye.data.Vote) {
                 Text("${vote.date} · ${vote.result}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.SemiBold)
             }
             Spacer(Modifier.height(10.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                VoteConcernChip(vote.concern)
+                Spacer(Modifier.width(8.dp))
+                Text(vote.concern.explanation, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
+            }
+            Spacer(Modifier.height(8.dp))
             Text(vote.title, fontWeight = FontWeight.Bold, fontSize = 18.sp, lineHeight = 23.sp)
             Spacer(Modifier.height(8.dp))
             Text("Votre député : ${vote.deputePosition.label}", color = positionColor(vote.deputePosition), fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(6.dp))
             Text(vote.summary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
         }
+    }
+}
+
+@Composable
+private fun VoteConcernChip(concern: VoteConcern) {
+    Surface(
+        shape = RoundedCornerShape(999.dp),
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+    ) {
+        Text(
+            concern.label,
+            modifier = Modifier.padding(horizontal = 9.dp, vertical = 4.dp),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.SemiBold
+        )
     }
 }
 

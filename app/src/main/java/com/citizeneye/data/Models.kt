@@ -29,7 +29,40 @@ data class Vote(
     val summary: String,
     val deputePosition: VotePosition,
     val sourceUrl: String
-)
+) {
+    val concern: VoteConcern get() = classifyVoteConcern(title, summary)
+}
+
+enum class VoteConcern(val label: String, val explanation: String) {
+    AMENDEMENT("Amendement", "Modifie une partie précise du texte"),
+    ARTICLE("Article", "Vote sur une section du texte"),
+    TEXTE_COMPLET("Texte complet", "Vote d’adoption/rejet à une étape parlementaire"),
+    MOTION("Motion", "Vote de procédure ou de censure"),
+    BUDGET("Budget", "Vote budgétaire, souvent par partie"),
+    RESOLUTION("Résolution", "Position politique de l’Assemblée")
+}
+
+fun classifyVoteConcern(title: String, summary: String = ""): VoteConcern {
+    val text = "$title $summary".lowercase()
+    return when {
+        text.contains("loi de finances") ||
+            text.contains("projet de loi de finances") ||
+            text.contains("budget") ||
+            text.contains("financement de la sécurité sociale") ||
+            text.contains("financement de la securite sociale") -> VoteConcern.BUDGET
+        text.contains("motion") ||
+            text.contains("censure") ||
+            text.contains("rejet préalable") ||
+            text.contains("rejet prealable") ||
+            text.contains("question préalable") ||
+            text.contains("question prealable") ||
+            text.contains("renvoi en commission") -> VoteConcern.MOTION
+        text.contains("résolution") || text.contains("resolution") -> VoteConcern.RESOLUTION
+        text.contains("amendement") -> VoteConcern.AMENDEMENT
+        text.contains("article") -> VoteConcern.ARTICLE
+        else -> VoteConcern.TEXTE_COMPLET
+    }
+}
 
 data class LocationPreview(
     val query: String,

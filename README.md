@@ -38,7 +38,7 @@ CitizenEye est déjà un MVP Android connecté à de vraies données publiques, 
 - Gestion des cas ambigus quand une ville ou un code postal couvre plusieurs circonscriptions.
 - Chargement des députés en exercice depuis l’Open Data de l’Assemblée nationale.
 - Portraits officiels arrondis des députés.
-- Scrutins publics de la législature en cours depuis les données de l’Assemblée nationale.
+- Scrutins publics de la législature en cours depuis les données de l’Assemblée nationale, avec puces neutres pour identifier rapidement Amendement / Article / Texte complet / Motion / Budget / Résolution.
 - Fil de votes progressif, 20 scrutins à la fois.
 - Profil statistique du député :
   - participation aux scrutins publics ;
@@ -175,7 +175,7 @@ CitizenEye is already a real-data Android MVP, not a seeded demo.
 - Ambiguity handling when a city/postal code can span multiple constituencies.
 - Active député loading from Assemblée nationale open data.
 - Official rounded deputy portraits.
-- Current-legislature public votes loaded from Assemblée nationale data.
+- Current-legislature public votes loaded from Assemblée nationale data, with neutral chips to identify Amendement / Article / Texte complet / Motion / Budget / Résolution at a glance.
 - Progressive vote feed, 20 votes at a time.
 - Deputy statistical profile:
   - public-scrutin participation;
