@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.CitizenEye" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">#F7F3EA</item>
+        <item name="android:colorAccent">#1E4ED8</item>
+    </style>
+</resources>
