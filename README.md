@@ -59,7 +59,8 @@ CitizenEye repose sur des données d’intérêt public. Les sources principales
 | Documentation de l’API administrative française | https://geo.api.gouv.fr/decoupage-administratif | Référence pour les recherches commune/département |
 | Portail Open Data de l’Assemblée nationale | https://data.assemblee-nationale.fr | Députés, mandats, organes, scrutins publics |
 | Députés actifs / mandats / organes | https://data.assemblee-nationale.fr/static/openData/repository/17/amo/deputes_actifs_mandats_actifs_organes/AMO10_deputes_actifs_mandats_actifs_organes.json.zip | Identité du député, groupe, département, circonscription |
-| Scrutins et positions individuelles | https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip | Votes publics et position enregistrée de chaque député |
+| Scrutins et positions individuelles | https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip | Votes publics, position enregistrée de chaque député, références de dossier législatif et séance |
+| Dossiers législatifs | https://data.assemblee-nationale.fr/static/openData/repository/17/loi/dossiers_legislatifs/Dossiers_Legislatifs.json.zip | Texte parent, type de procédure, dépôt, étapes, commissions et rapporteurs quand référencés |
 | Contours des circonscriptions législatives | https://static.data.gouv.fr/resources/contours-geographiques-des-circonscriptions-legislatives/20240613-191520/circonscriptions-legislatives-p10.geojson | Résolution GPS latitude/longitude vers circonscription |
 | Plateforme française des données publiques | https://www.data.gouv.fr | Hébergement et provenance des jeux de données publics |
 
@@ -197,7 +198,8 @@ CitizenEye is built on public-interest data. The important sources are:
 | French administrative API documentation | https://geo.api.gouv.fr/decoupage-administratif | Source reference for commune/departement lookups |
 | Assemblée nationale open data portal | https://data.assemblee-nationale.fr | Deputies, mandates, organs, public votes |
 | Active deputies / mandates / organs archive | https://data.assemblee-nationale.fr/static/openData/repository/17/amo/deputes_actifs_mandats_actifs_organes/AMO10_deputes_actifs_mandats_actifs_organes.json.zip | Active deputy identity, group, department, constituency |
-| Scrutins and individual vote positions | https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip | Public votes and each deputy's recorded position |
+| Scrutins and individual vote positions | https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip | Public votes, each deputy’s recorded position, legislative-file references, and sitting references |
+| Legislative files | https://data.assemblee-nationale.fr/static/openData/repository/17/loi/dossiers_legislatifs/Dossiers_Legislatifs.json.zip | Parent text, procedure type, deposit, stages, commissions, and rapporteurs when referenced |
 | Legislative constituency boundaries | https://static.data.gouv.fr/resources/contours-geographiques-des-circonscriptions-legislatives/20240613-191520/circonscriptions-legislatives-p10.geojson | GPS latitude/longitude to constituency resolution |
 | French public-data platform | https://www.data.gouv.fr | Public dataset hosting and provenance |
 

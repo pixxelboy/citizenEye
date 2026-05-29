@@ -5,14 +5,15 @@ interface VoteDetailRepository {
 }
 
 class DefaultVoteDetailRepository(
-    private val externalResourcesRepository: ExternalResourcesRepository = FakeExternalResourcesRepository()
+    private val externalResourcesRepository: ExternalResourcesRepository = FakeExternalResourcesRepository(),
+    private val officialEnrichmentRepository: OfficialVoteEnrichmentRepository = EmptyOfficialVoteEnrichmentRepository
 ) : VoteDetailRepository {
     override suspend fun getVoteDetail(vote: Vote, depute: Depute): VoteDetail {
         val subjectType = classifyVoteSubjectType(vote.title)
-        val parentText = findParentTextForVote(vote)
-        val amendment = findAmendmentDetailsForVote(vote)
-        val article = findArticleDetailsForVote(vote)
-        val motion = findMotionDetailsForVote(vote)
+        val parentText = officialEnrichmentRepository.findParentTextForVote(vote)
+        val amendment = officialEnrichmentRepository.findAmendmentDetailsForVote(vote)
+        val article = officialEnrichmentRepository.findArticleDetailsForVote(vote)
+        val motion = officialEnrichmentRepository.findMotionDetailsForVote(vote)
         val officialSources = buildOfficialSources(vote, parentText, amendment, article, motion)
         val externalResources = externalResourcesRepository.getExternalResources(
             ExternalResourceQuery(
@@ -55,26 +56,6 @@ class DefaultVoteDetailRepository(
             officialSources = officialSources,
             externalResources = externalResources
         )
-    }
-
-    suspend fun findParentTextForVote(vote: Vote): ParentTextDetails? {
-        // TODO(data): enrich from Assemblée nationale legislative files/dossiers dataset for vote ${vote.number}.
-        return null
-    }
-
-    suspend fun findAmendmentDetailsForVote(vote: Vote): AmendmentDetails? {
-        // TODO(data): enrich from Assemblée nationale amendments dataset, matched by amendment number and legislative dossier.
-        return null
-    }
-
-    suspend fun findArticleDetailsForVote(vote: Vote): ArticleDetails? {
-        // TODO(data): enrich from Assemblée nationale text/article data when legislative-file parsing is integrated.
-        return null
-    }
-
-    suspend fun findMotionDetailsForVote(vote: Vote): MotionDetails? {
-        // TODO(data): enrich from Assemblée nationale debates/motions records; add written questions later only if useful for context.
-        return null
     }
 
     private fun buildOfficialSources(

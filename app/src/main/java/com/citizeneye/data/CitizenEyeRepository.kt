@@ -183,7 +183,12 @@ class AssembleeNationaleClient(
                 deputePosition = position,
                 sourceUrl = "https://www.assemblee-nationale.fr/dyn/17/scrutins/${scrutin.optString("numero")}",
                 voteBreakdown = buildVoteBreakdown(scrutin),
-                groupPosition = findGroupPosition(scrutin, actorId, position)
+                groupPosition = findGroupPosition(scrutin, actorId, position),
+                objectTitle = scrutin.optJSONObject("objet")?.optString("libelle"),
+                dossierRef = scrutin.optJSONObject("objet")?.optJSONObject("dossierLegislatif")?.optString("dossierRef"),
+                dossierTitle = scrutin.optJSONObject("objet")?.optJSONObject("dossierLegislatif")?.optString("libelle"),
+                legislativeReference = scrutin.optJSONObject("objet")?.optString("referenceLegislative"),
+                seanceRef = scrutin.optString("seanceRef")
             )
         }
         return votes.sortedByDescending { it.date }

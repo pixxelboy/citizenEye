@@ -30,7 +30,12 @@ data class Vote(
     val deputePosition: VotePosition,
     val sourceUrl: String,
     val voteBreakdown: VoteBreakdown? = null,
-    val groupPosition: GroupVotePosition? = null
+    val groupPosition: GroupVotePosition? = null,
+    val objectTitle: String? = null,
+    val dossierRef: String? = null,
+    val dossierTitle: String? = null,
+    val legislativeReference: String? = null,
+    val seanceRef: String? = null
 ) {
     val concern: VoteConcern get() = classifyVoteConcern(title, summary)
 }

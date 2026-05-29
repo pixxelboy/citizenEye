@@ -67,6 +67,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.citizeneye.data.AssembleeOfficialVoteEnrichmentRepository
 import com.citizeneye.data.CitizenEyeRepository
 import com.citizeneye.data.CitizenInputValidator
 import com.citizeneye.data.Depute
@@ -75,6 +76,7 @@ import com.citizeneye.data.DefaultVoteDetailRepository
 import com.citizeneye.data.DeputyStats
 import com.citizeneye.data.LocationPreview
 import com.citizeneye.data.LookupState
+import com.citizeneye.data.PublicDataCache
 import com.citizeneye.data.VoteConcern
 import com.citizeneye.data.VotePosition
 import com.citizeneye.data.Vote
@@ -91,19 +93,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val repository = CitizenEyeRepository.create(applicationContext)
-        setContent { CitizenEyeTheme { CitizenEyeApp(repository = repository) } }
+        val publicDataCache = PublicDataCache(java.io.File(applicationContext.filesDir, "public-data"))
+        setContent { CitizenEyeTheme { CitizenEyeApp(repository = repository, publicDataCache = publicDataCache) } }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository()) {
+fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), publicDataCache: PublicDataCache? = null) {
     var query by rememberSaveable { mutableStateOf("") }
     var state by remember { mutableStateOf<LookupState>(LookupState.Idle) }
     var showingStats by rememberSaveable { mutableStateOf(false) }
     var selectedVote by remember { mutableStateOf<Vote?>(null) }
     var voteDetailUiState by remember { mutableStateOf<VoteDetailUiState>(VoteDetailUiState.Loading) }
-    val voteDetailRepository = remember { DefaultVoteDetailRepository() }
+    val voteDetailRepository = remember(publicDataCache) {
+        DefaultVoteDetailRepository(
+            officialEnrichmentRepository = AssembleeOfficialVoteEnrichmentRepository(publicDataCache)
+        )
+    }
     var preview by remember { mutableStateOf<LocationPreview?>(null) }
     var previewLoading by rememberSaveable { mutableStateOf(false) }
     var geoLoading by rememberSaveable { mutableStateOf(false) }
