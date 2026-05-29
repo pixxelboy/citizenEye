@@ -3,12 +3,14 @@ package com.citizeneye
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.ActivityNotFoundException
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.location.Geocoder
 import android.location.LocationManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -33,8 +35,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Ballot
-import androidx.compose.material.icons.outlined.HowToVote
 import androidx.compose.material.icons.outlined.LocationOn
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -80,6 +82,9 @@ import com.citizeneye.data.PublicDataCache
 import com.citizeneye.data.VoteConcern
 import com.citizeneye.data.VotePosition
 import com.citizeneye.data.Vote
+import com.citizeneye.data.classifyVoteSubjectType
+import com.citizeneye.data.formatPositionInContext
+import com.citizeneye.data.formatVoteResultLabel
 import com.citizeneye.ui.theme.CitizenEyeTheme
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
@@ -91,7 +96,10 @@ import java.util.Locale
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT)
+        )
         val repository = CitizenEyeRepository.create(applicationContext)
         val publicDataCache = PublicDataCache(java.io.File(applicationContext.filesDir, "public-data"))
         setContent { CitizenEyeTheme { CitizenEyeApp(repository = repository, publicDataCache = publicDataCache) } }
@@ -121,14 +129,14 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
 
     fun runLookup() {
         val currentQuery = query.trim()
-        state = LookupState.Loading("Recherche de votre commune…")
+        state = LookupState.Loading("Recherche de la commune…")
         showingStats = false
         selectedVote = null
         scope.launch { state = repository.lookup(currentQuery) }
     }
 
     fun loadVotes(query: String, commune: com.citizeneye.data.Commune, depute: Depute) {
-        state = LookupState.Loading("Chargement des scrutins publics…")
+        state = LookupState.Loading("Préparation des résultats…")
         showingStats = false
         selectedVote = null
         scope.launch { state = repository.loadDeputyVotes(query, commune, depute) }
@@ -158,6 +166,16 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
 
     fun openExternalUrl(url: String) {
         runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
+    }
+
+    fun openEmailDraft(to: String, subject: String, body: String) {
+        val uri = Uri.parse("mailto:${Uri.encode(to)}?subject=${Uri.encode(subject)}&body=${Uri.encode(body)}")
+        val intent = Intent(Intent.ACTION_SENDTO).apply { data = uri }
+        try {
+            context.startActivity(Intent.createChooser(intent, "Choisir une application mail"))
+        } catch (_: ActivityNotFoundException) {
+            inlineError = "Aucune application mail n’a été trouvée. Vous pouvez copier le message."
+        }
     }
 
     fun confirmLocation() {
@@ -247,7 +265,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = { Text(if (selectedVote != null) "Texte et détail du vote" else "CitizenEye", fontWeight = FontWeight.SemiBold) },
+                title = { Text(if (selectedVote != null) "Comprendre ce vote" else "CitizenEye", fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     if (selectedVote != null) TextButton(onClick = { selectedVote = null }) { Text("Retour") }
                 },
@@ -288,8 +306,10 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                 is LookupState.Loaded -> if (selectedVote != null) {
                     VoteDetailScreen(
                         voteDetailUiState = voteDetailUiState,
+                        deputyEmail = current.match.depute.email,
                         onRetour = { selectedVote = null },
                         onOuvrirUrl = ::openExternalUrl,
+                        onOpenEmailDraft = ::openEmailDraft,
                         onRetry = ::retryVoteDetails
                     )
                 } else if (showingStats) {
@@ -328,16 +348,16 @@ private fun OnboardingScreen(
     ) {
         Column {
             Spacer(Modifier.height(24.dp))
-            Text("Suivez votre député. Sans compte.", fontSize = 34.sp, lineHeight = 38.sp, fontWeight = FontWeight.Bold)
+            Text("Comprendre les votes de votre député.\nSans compte.", fontSize = 34.sp, lineHeight = 38.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
             Text(
-                "Entrez votre code postal ou votre ville. CitizenEye charge les communes françaises, les députés en exercice et les scrutins publics depuis les données officielles.",
+                "Entrez votre ville ou votre code postal pour retrouver votre circonscription, votre député et ses votes publics à l’Assemblée nationale.",
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 16.sp,
                 lineHeight = 23.sp
             )
             Spacer(Modifier.height(28.dp))
-            InfoCard("Données publiques réelles", "Commune : geo.api.gouv.fr. Députés et votes : Ouvrir Data de l’Assemblée nationale. Si plusieurs circonscriptions sont possibles, l’app vous demande de choisir au lieu de deviner.")
+            InfoCard("Données publiques officielles", "Commune : geo.api.gouv.fr.\nDéputés et scrutins : Open Data de l’Assemblée nationale.\nSi plusieurs circonscriptions sont possibles, CitizenEye vous demande de choisir au lieu de deviner.")
         }
         Column {
             OutlinedTextField(
@@ -345,24 +365,25 @@ private fun OnboardingScreen(
                 onValueChange = onQueryChange,
                 modifier = Modifier.fillMaxWidth(),
                 label = { Text("Code postal ou ville") },
-                placeholder = { Text("75001 ou Paris") },
+                placeholder = { Text("92000 ou Nanterre") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 singleLine = true,
-                supportingText = { Text(error ?: if (previewLoading) "Recherche de votre commune…" else "Tapez un code postal, ou utilisez votre position. Vous validez ensuite.") },
+                supportingText = { Text(error ?: if (previewLoading) "Recherche de votre commune…" else "Exemple : 92000 ou Nanterre. Vous pourrez confirmer la circonscription ensuite.") },
                 isError = error != null
             )
             Spacer(Modifier.height(10.dp))
             TextButton(onClick = onGeolocate, enabled = !geoLoading && !loading) {
                 Icon(Icons.Outlined.LocationOn, contentDescription = null)
                 Spacer(Modifier.width(8.dp))
-                Text(if (geoLoading) "Localisation…" else "Utiliser ma position")
+                Text(if (geoLoading) "Localisation…" else "Utiliser ma localisation")
             }
+            Text("Votre position sert uniquement à identifier votre circonscription.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
             preview?.let { LocationPreviewCard(it) }
             Spacer(Modifier.height(12.dp))
             Button(onClick = onSubmit, enabled = query.trim().length >= 2 && !loading && !previewLoading && !geoLoading, modifier = Modifier.fillMaxWidth().height(54.dp)) {
-                Icon(Icons.Outlined.LocationOn, contentDescription = null)
+                Icon(Icons.Outlined.Search, contentDescription = null)
                 Spacer(Modifier.width(8.dp))
-                Text(if (preview != null) "Valider cette localisation" else "Charger mes données")
+                Text(if (preview != null) "Valider cette localisation" else "Trouver mon député")
             }
         }
     }
@@ -397,9 +418,11 @@ private fun LoadingScreen(message: String) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             CircularProgressIndicator()
             Spacer(Modifier.height(18.dp))
-            Text(message, fontWeight = FontWeight.SemiBold)
+            Text(message.ifBlank { "Recherche de votre circonscription…" }, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(8.dp))
-            Text("Lecture des sources publiques en cours.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("CitizenEye vérifie les sources publiques disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(6.dp))
+            Text("Vous pourrez confirmer si plusieurs circonscriptions sont possibles.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
         }
     }
 }
@@ -408,11 +431,11 @@ private fun LoadingScreen(message: String) {
 private fun DeputySelectionScreen(selection: LookupState.NeedSelection, onSelect: (Depute) -> Unit, onReset: () -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {
-            Text("Plusieurs circonscriptions", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+            Text("Plusieurs circonscriptions possibles", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(6.dp))
             Text(selection.commune.name, fontSize = 30.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(8.dp))
-            Text(selection.reason, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            Text("Cette commune peut correspondre à plusieurs circonscriptions. Choisissez votre député si vous le connaissez, ou utilisez votre localisation pour une recherche plus précise.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
             TextButton(onClick = onReset) { Text("Changer de recherche") }
         }
         items(selection.deputies) { depute ->
@@ -426,6 +449,8 @@ private fun DeputySelectionScreen(selection: LookupState.NeedSelection, onSelect
                     Text(depute.constituencyLabel, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
                     Text(depute.group, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     depute.email?.let { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp) }
+                    Spacer(Modifier.height(12.dp))
+                    Button(onClick = { onSelect(depute) }, modifier = Modifier.fillMaxWidth()) { Text("Choisir ce député") }
                 }
             }
         }
@@ -446,10 +471,10 @@ private fun HomeScreen(match: DeputeMatch, onOuvrirStats: () -> Unit, onOuvrirVo
         item { RepresentativeCard(match, onOuvrirStats) }
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Text("Votes de la législature", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                Text("Votes publics de la législature", fontSize = 22.sp, fontWeight = FontWeight.Bold)
                 Icon(Icons.Outlined.Ballot, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
             }
-            Text("${match.recentVotes.size}/${match.totalLegislatureVotes} scrutins publics affichés", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+            Text("${match.recentVotes.size} scrutins affichés sur ${match.totalLegislatureVotes} disponibles", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
         }
         if (match.recentVotes.isEmpty()) {
             item { InfoCard("Aucun vote nominatif récent", "Le député n’apparaît pas dans les scrutins publics téléchargés. Réessayez plus tard ou vérifiez la source Assemblée nationale.") }
@@ -486,7 +511,7 @@ private fun RepresentativeCard(match: DeputeMatch, onOuvrirStats: () -> Unit) {
                 }
             }
             Spacer(Modifier.height(14.dp))
-            Text("Voir le profil statistique", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+            Text("Voir les statistiques", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
         }
     }
 }
@@ -526,7 +551,7 @@ private fun DeputyStatsScreen(match: DeputeMatch, onRetour: () -> Unit) {
                 DeputyPhoto(match.depute, sizeDp = 92)
                 Spacer(Modifier.width(16.dp))
                 Column(Modifier.weight(1f)) {
-                    Text("Profil statistique", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+                    Text("Statistiques", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
                     Spacer(Modifier.height(6.dp))
                     Text(match.depute.name, fontSize = 30.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold)
                     Spacer(Modifier.height(6.dp))
@@ -544,7 +569,7 @@ private fun DeputyStatsScreen(match: DeputeMatch, onRetour: () -> Unit) {
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 StatMetricCard(
-                    label = "Participation",
+                    label = "Participation aux scrutins publics analysés",
                     value = "${stats.participationPercent}%",
                     detail = "${stats.participatedVotes}/${stats.totalVotes} scrutins",
                     modifier = Modifier.weight(1f)
@@ -571,8 +596,8 @@ private fun DeputyStatsScreen(match: DeputeMatch, onRetour: () -> Unit) {
         }
         item {
             InfoCard(
-                title = "Prochaine étape",
-                body = "Le fil de votes se charge progressivement pour garder l’écran fluide. Pour comparer au groupe politique, détecter les votes divergents ou classer les sujets, il faudra normaliser l’ensemble des scrutins côté serveur."
+                title = "Limites des données",
+                body = "Ces statistiques portent uniquement sur les scrutins publics disponibles dans les données chargées. Elles ne mesurent pas le travail en circonscription, les réunions, les amendements ou les interventions en séance."
             )
         }
         item { Spacer(Modifier.height(24.dp)) }
@@ -619,10 +644,13 @@ private fun VoteCard(vote: com.citizeneye.data.Vote, onOuvrirDetails: () -> Unit
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(Modifier.padding(18.dp)) {
+            val subjectType = classifyVoteSubjectType(vote.title)
+            val resultLabel = formatVoteResultLabel(subjectType, vote.result)
+            val positionLabel = formatPositionInContext(vote.deputePosition, subjectType)
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Outlined.HowToVote, contentDescription = null, tint = positionColor(vote.deputePosition))
+                Icon(Icons.Outlined.Ballot, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.width(10.dp))
-                Text("${vote.date} · ${vote.result}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.SemiBold)
+                Text("${vote.date} · $resultLabel", color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.SemiBold)
             }
             Spacer(Modifier.height(10.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -633,9 +661,9 @@ private fun VoteCard(vote: com.citizeneye.data.Vote, onOuvrirDetails: () -> Unit
             Spacer(Modifier.height(8.dp))
             Text(vote.title, fontWeight = FontWeight.Bold, fontSize = 18.sp, lineHeight = 23.sp)
             Spacer(Modifier.height(8.dp))
-            Text("Votre député : ${vote.deputePosition.label}", color = positionColor(vote.deputePosition), fontWeight = FontWeight.SemiBold)
+            Text("Position enregistrée : $positionLabel", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(6.dp))
-            Text(vote.summary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            Text("Résultat : ${vote.summary}", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
             Spacer(Modifier.height(10.dp))
             Text("Comprendre ce vote", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
         }
@@ -694,8 +722,8 @@ private fun Context.hasLocationPermission(): Boolean =
         checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
 
 private fun positionColor(position: VotePosition): Color = when (position) {
-    VotePosition.POUR -> Color(0xFF167A3A)
-    VotePosition.CONTRE -> Color(0xFFB42318)
-    VotePosition.ABSTENTION -> Color(0xFF996A13)
-    VotePosition.NON_VOTANT -> Color(0xFF667085)
+    VotePosition.POUR,
+    VotePosition.CONTRE,
+    VotePosition.ABSTENTION,
+    VotePosition.NON_VOTANT -> Color(0xFF5B667A)
 }

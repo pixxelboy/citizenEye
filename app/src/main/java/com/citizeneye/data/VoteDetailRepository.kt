@@ -66,7 +66,7 @@ class DefaultVoteDetailRepository(
         motion: MotionDetails?
     ): List<OfficialSource> = buildList {
         vote.sourceUrl.takeIf { it.isNotBlank() }?.let {
-            add(OfficialSource("Scrutin public officiel", "Assemblée nationale, scrutin public n° ${vote.number}", it, OfficialSourceType.PUBLIC_VOTE))
+            add(OfficialSource("Scrutin public n°${vote.number}", "Résultat et positions nominatives du scrutin.", it, OfficialSourceType.PUBLIC_VOTE))
         }
         parentText?.dossierUrl?.let { add(OfficialSource("Dossier législatif", parentText.title, it, OfficialSourceType.LEGISLATIVE_FILE)) }
         amendment?.sourceUrl?.let { add(OfficialSource("Amendement", amendment.number?.let { number -> "Amendement n° $number" }, it, OfficialSourceType.AMENDMENT)) }
