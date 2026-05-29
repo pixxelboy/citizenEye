@@ -39,6 +39,7 @@ CitizenEye est déjà un MVP Android connecté à de vraies données publiques, 
 - Chargement des députés en exercice depuis l’Open Data de l’Assemblée nationale.
 - Portraits officiels arrondis des députés.
 - Scrutins publics de la législature en cours depuis les données de l’Assemblée nationale, avec puces neutres pour identifier rapidement Amendement / Article / Texte complet / Motion / Budget / Résolution.
+- Écran “Text and Vote Details” depuis chaque vote : explication contextualisée de la position du député, résultat détaillé, comparaison au groupe quand disponible, sources officielles séparées des ressources externes.
 - Fil de votes progressif, 20 scrutins à la fois.
 - Profil statistique du député :
   - participation aux scrutins publics ;
@@ -176,6 +177,7 @@ CitizenEye is already a real-data Android MVP, not a seeded demo.
 - Active député loading from Assemblée nationale open data.
 - Official rounded deputy portraits.
 - Current-legislature public votes loaded from Assemblée nationale data, with neutral chips to identify Amendement / Article / Texte complet / Motion / Budget / Résolution at a glance.
+- “Text and Vote Details” screen from every vote: contextual MP-position explanation, detailed result, group comparison when available, and official sources separated from external learning resources.
 - Progressive vote feed, 20 votes at a time.
 - Deputy statistical profile:
   - public-scrutin participation;

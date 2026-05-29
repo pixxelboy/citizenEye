@@ -2,7 +2,9 @@ package com.citizeneye
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.location.Geocoder
 import android.location.LocationManager
 import android.os.Bundle
@@ -69,11 +71,13 @@ import com.citizeneye.data.CitizenEyeRepository
 import com.citizeneye.data.CitizenInputValidator
 import com.citizeneye.data.Depute
 import com.citizeneye.data.DeputeMatch
+import com.citizeneye.data.DefaultVoteDetailRepository
 import com.citizeneye.data.DeputyStats
 import com.citizeneye.data.LocationPreview
 import com.citizeneye.data.LookupState
 import com.citizeneye.data.VoteConcern
 import com.citizeneye.data.VotePosition
+import com.citizeneye.data.Vote
 import com.citizeneye.ui.theme.CitizenEyeTheme
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
@@ -97,6 +101,9 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository()) {
     var query by rememberSaveable { mutableStateOf("") }
     var state by remember { mutableStateOf<LookupState>(LookupState.Idle) }
     var showingStats by rememberSaveable { mutableStateOf(false) }
+    var selectedVote by remember { mutableStateOf<Vote?>(null) }
+    var voteDetailUiState by remember { mutableStateOf<VoteDetailUiState>(VoteDetailUiState.Loading) }
+    val voteDetailRepository = remember { DefaultVoteDetailRepository() }
     var preview by remember { mutableStateOf<LocationPreview?>(null) }
     var previewLoading by rememberSaveable { mutableStateOf(false) }
     var geoLoading by rememberSaveable { mutableStateOf(false) }
@@ -109,17 +116,41 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository()) {
         val currentQuery = query.trim()
         state = LookupState.Loading("Recherche de votre commune…")
         showingStats = false
+        selectedVote = null
         scope.launch { state = repository.lookup(currentQuery) }
     }
 
     fun loadVotes(query: String, commune: com.citizeneye.data.Commune, depute: Depute) {
         state = LookupState.Loading("Chargement des scrutins publics…")
         showingStats = false
+        selectedVote = null
         scope.launch { state = repository.loadDeputyVotes(query, commune, depute) }
     }
 
     fun loadVotes(selection: LookupState.NeedSelection, depute: Depute) {
         loadVotes(selection.query, selection.commune, depute)
+    }
+
+    fun openVoteDetails(vote: Vote, depute: Depute) {
+        selectedVote = vote
+        voteDetailUiState = VoteDetailUiState.Loading
+        scope.launch {
+            voteDetailUiState = runCatching { voteDetailRepository.getVoteDetail(vote, depute) }
+                .fold(
+                    onSuccess = { VoteDetailUiState.Success(it) },
+                    onFailure = { VoteDetailUiState.Error("Unable to load vote details. Try again.") }
+                )
+        }
+    }
+
+    fun retryVoteDetails() {
+        val vote = selectedVote ?: return
+        val current = state as? LookupState.Loaded ?: return
+        openVoteDetails(vote, current.match.depute)
+    }
+
+    fun openExternalUrl(url: String) {
+        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
     }
 
     fun confirmLocation() {
@@ -209,7 +240,10 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository()) {
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = { Text("CitizenEye", fontWeight = FontWeight.SemiBold) },
+                title = { Text(if (selectedVote != null) "Text and Vote Details" else "CitizenEye", fontWeight = FontWeight.SemiBold) },
+                navigationIcon = {
+                    if (selectedVote != null) TextButton(onClick = { selectedVote = null }) { Text("Back") }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
             )
         }
@@ -244,12 +278,20 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository()) {
                     onSelect = { loadVotes(current, it) },
                     onReset = { state = LookupState.Idle }
                 )
-                is LookupState.Loaded -> if (showingStats) {
+                is LookupState.Loaded -> if (selectedVote != null) {
+                    VoteDetailScreen(
+                        voteDetailUiState = voteDetailUiState,
+                        onBack = { selectedVote = null },
+                        onOpenUrl = ::openExternalUrl,
+                        onRetry = ::retryVoteDetails
+                    )
+                } else if (showingStats) {
                     DeputyStatsScreen(match = current.match, onBack = { showingStats = false })
                 } else {
                     HomeScreen(
                         match = current.match,
                         onOpenStats = { showingStats = true },
+                        onOpenVoteDetails = { openVoteDetails(it, current.match.depute) },
                         onLoadMoreVotes = {
                             state = LookupState.Loaded(current.match.withMoreVisibleVotes())
                         },
@@ -385,7 +427,7 @@ private fun DeputySelectionScreen(selection: LookupState.NeedSelection, onSelect
 }
 
 @Composable
-private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onLoadMoreVotes: () -> Unit, onReset: () -> Unit) {
+private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onOpenVoteDetails: (Vote) -> Unit, onLoadMoreVotes: () -> Unit, onReset: () -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
             Text("${match.commune.name} · données officielles", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
@@ -405,7 +447,7 @@ private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onLoadMoreVo
         if (match.recentVotes.isEmpty()) {
             item { InfoCard("Aucun vote nominatif récent", "Le député n’apparaît pas dans les scrutins publics téléchargés. Réessayez plus tard ou vérifiez la source Assemblée nationale.") }
         } else {
-            items(match.recentVotes) { vote -> VoteCard(vote) }
+            items(match.recentVotes) { vote -> VoteCard(vote, onOpenDetails = { onOpenVoteDetails(vote) }) }
             if (match.hasMoreVotes) {
                 item {
                     Button(onClick = onLoadMoreVotes, modifier = Modifier.fillMaxWidth().height(52.dp)) {
@@ -563,8 +605,12 @@ private fun PositionStatRow(label: String, position: VotePosition, stats: Deputy
 }
 
 @Composable
-private fun VoteCard(vote: com.citizeneye.data.Vote) {
-    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+private fun VoteCard(vote: com.citizeneye.data.Vote, onOpenDetails: () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth().clickable { onOpenDetails() },
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
         Column(Modifier.padding(18.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Outlined.HowToVote, contentDescription = null, tint = positionColor(vote.deputePosition))
@@ -583,6 +629,8 @@ private fun VoteCard(vote: com.citizeneye.data.Vote) {
             Text("Votre député : ${vote.deputePosition.label}", color = positionColor(vote.deputePosition), fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(6.dp))
             Text(vote.summary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            Spacer(Modifier.height(10.dp))
+            Text("Understand this vote", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
         }
     }
 }

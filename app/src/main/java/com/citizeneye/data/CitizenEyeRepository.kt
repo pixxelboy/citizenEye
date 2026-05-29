@@ -181,7 +181,9 @@ class AssembleeNationaleClient(
                 result = scrutin.optJSONObject("sort")?.optString("libelle") ?: scrutin.optJSONObject("syntheseVote")?.optString("annonce") ?: "Résultat non renseigné",
                 summary = buildSummary(scrutin),
                 deputePosition = position,
-                sourceUrl = "https://www.assemblee-nationale.fr/dyn/17/scrutins/${scrutin.optString("numero")}"
+                sourceUrl = "https://www.assemblee-nationale.fr/dyn/17/scrutins/${scrutin.optString("numero")}",
+                voteBreakdown = buildVoteBreakdown(scrutin),
+                groupPosition = findGroupPosition(scrutin, actorId, position)
             )
         }
         return votes.sortedByDescending { it.date }
@@ -200,6 +202,58 @@ class AssembleeNationaleClient(
             if (nominatif.containsActor("nonVotants", actorId) || nominatif.containsActor("nonVotantsVolontaires", actorId)) return VotePosition.NON_VOTANT
         }
         return null
+    }
+
+    private fun findGroupPosition(scrutin: JSONObject, actorId: String, deputyPosition: VotePosition): GroupVotePosition? {
+        val groupes = scrutin.optJSONObject("ventilationVotes")
+            ?.optJSONObject("organe")
+            ?.optJSONObject("groupes")
+            ?.optJSONArrayOrObject("groupe") ?: return null
+        for (group in groupes) {
+            val vote = group.optJSONObject("vote") ?: continue
+            val nominatif = vote.optJSONObject("decompteNominatif") ?: continue
+            val containsDeputy = nominatif.containsActor("pours", actorId) ||
+                nominatif.containsActor("contres", actorId) ||
+                nominatif.containsActor("abstentions", actorId) ||
+                nominatif.containsActor("nonVotants", actorId) ||
+                nominatif.containsActor("nonVotantsVolontaires", actorId)
+            if (!containsDeputy) continue
+            val decompte = vote.optJSONObject("decompteVoix")
+            val forCount = decompte?.optNullableInt("pour")
+            val againstCount = decompte?.optNullableInt("contre")
+            val abstentionCount = decompte?.optNullableInt("abstentions")
+            val nonVotingCount = decompte?.optNullableInt("nonVotants")
+            val majority = listOf(
+                VotePosition.POUR to forCount,
+                VotePosition.CONTRE to againstCount,
+                VotePosition.ABSTENTION to abstentionCount,
+                VotePosition.NON_VOTANT to nonVotingCount
+            ).filter { it.second != null }.maxByOrNull { it.second ?: -1 }?.first
+            return GroupVotePosition(
+                groupName = group.optString("libelle", group.optString("organeRef", "Groupe parlementaire")),
+                groupMajorityPosition = majority,
+                deputyVotedLikeGroup = majority?.let { it == deputyPosition },
+                forCount = forCount,
+                againstCount = againstCount,
+                abstentionCount = abstentionCount,
+                nonVotingCount = nonVotingCount
+            )
+        }
+        return null
+    }
+
+    private fun buildVoteBreakdown(scrutin: JSONObject): VoteBreakdown? {
+        val synthese = scrutin.optJSONObject("syntheseVote") ?: return null
+        val decompte = synthese.optJSONObject("decompte")
+        return VoteBreakdown(
+            totalVoters = synthese.optNullableInt("nombreVotants"),
+            forCount = decompte?.optNullableInt("pour"),
+            againstCount = decompte?.optNullableInt("contre"),
+            abstentionCount = decompte?.optNullableInt("abstentions"),
+            nonVotingCount = synthese.optNullableInt("nombreNonVotants"),
+            absoluteMajority = synthese.optNullableInt("majoriteAbsolue"),
+            resultLabel = scrutin.optJSONObject("sort")?.optString("libelle") ?: synthese.optString("annonce").ifBlank { null }
+        )
     }
 
     private fun buildSummary(scrutin: JSONObject): String {
@@ -258,6 +312,15 @@ private fun JSONObject.optText(key: String): String {
 }
 
 private fun JSONObject.isActive(): Boolean = isNull("dateFin") || optString("dateFin").isBlank()
+
+private fun JSONObject.optNullableInt(key: String): Int? {
+    val raw = opt(key)
+    return when (raw) {
+        null, JSONObject.NULL -> null
+        is Number -> raw.toInt()
+        else -> raw.toString().trim().toIntOrNull()
+    }
+}
 
 private fun JSONObject.mandates(): List<JSONObject> = optJSONObject("mandats")
     ?.optJSONArrayOrObject("mandat")

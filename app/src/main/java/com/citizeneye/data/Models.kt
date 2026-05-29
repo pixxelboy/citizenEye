@@ -28,7 +28,9 @@ data class Vote(
     val result: String,
     val summary: String,
     val deputePosition: VotePosition,
-    val sourceUrl: String
+    val sourceUrl: String,
+    val voteBreakdown: VoteBreakdown? = null,
+    val groupPosition: GroupVotePosition? = null
 ) {
     val concern: VoteConcern get() = classifyVoteConcern(title, summary)
 }
