@@ -18,7 +18,7 @@ class OfficialVoteEnrichmentRepositoryTest {
               "procedureParlementaire":{"libelle":"Projet de loi ordinaire"},
               "actesLegislatifs":{"acteLegislatif":[
                 {"codeActe":"AN1-DEPOT","libelleActe":{"libelleCourt":"Dépôt"},"texteAssocie":"PRJLANR5L17B2630"},
-                {"codeActe":"AN1-COM-FOND-NOMIN","organeRef":"PO59046","libelleActe":{"libelleCourt":"Nomination de rapporteur"},"rapporteurs":{"rapporteur":[{"acteurRef":"PA795908"}]}},
+                {"codeActe":"AN1-COM-FOND-NOMIN","organeRef":"PO59046","libelleActe":{"libelleCourt":"Nonmination de rapporteur"},"rapporteurs":{"rapporteur":[{"acteurRef":"PA795908"}]}},
                 {"codeActe":"AN1-SEANCE","libelleActe":{"libelleCourt":"Séance publique"}}
               ]}
             }
@@ -36,7 +36,7 @@ class OfficialVoteEnrichmentRepositoryTest {
         assertNotNull(parent.dossierUrl)
     }
 
-    @Test fun enrichesAmendmentDetailsFromOfficialVoteObject() = runBlocking {
+    @Test fun enrichesAmendmentDetailsFromOfficialVoteObjet() = runBlocking {
         val repository = AssembleeOfficialVoteEnrichmentRepository(publicDataCache = null)
         val vote = fakeVote(
             title = "L'amendement n° 299 de M. Lachaud à l'article 23 du projet de loi actualisant la programmation militaire (première lecture).",
@@ -54,14 +54,14 @@ class OfficialVoteEnrichmentRepositoryTest {
         assertEquals(vote.sourceUrl, amendment?.sourceUrl)
     }
 
-    @Test fun enrichesArticleAndMotionDetailsFromOfficialVoteObject() = runBlocking {
+    @Test fun enrichesArticleAndMotionDetailsFromOfficialVoteObjet() = runBlocking {
         val repository = AssembleeOfficialVoteEnrichmentRepository(publicDataCache = null)
         val article = repository.findArticleDetailsForVote(fakeVote(title = "L'article 22 du projet de loi de programmation pour Mayotte.", objectTitle = "l'article 22 du projet de loi"))
         val motion = repository.findMotionDetailsForVote(fakeVote(title = "La motion de censure déposée en application de l'article 49.", objectTitle = "la motion de censure"))
 
         assertEquals("22", article?.number)
         assertEquals("la motion de censure", motion?.explanation)
-        assertEquals("No-confidence motion", motion?.type)
+        assertEquals("Motion de censure", motion?.type)
     }
 
     private fun fakeVote(

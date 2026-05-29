@@ -66,10 +66,10 @@ class DefaultVoteDetailRepository(
         motion: MotionDetails?
     ): List<OfficialSource> = buildList {
         vote.sourceUrl.takeIf { it.isNotBlank() }?.let {
-            add(OfficialSource("Official public vote", "Assemblée nationale public vote no. ${vote.number}", it, OfficialSourceType.PUBLIC_VOTE))
+            add(OfficialSource("Scrutin public officiel", "Assemblée nationale, scrutin public n° ${vote.number}", it, OfficialSourceType.PUBLIC_VOTE))
         }
-        parentText?.dossierUrl?.let { add(OfficialSource("Legislative file", parentText.title, it, OfficialSourceType.LEGISLATIVE_FILE)) }
-        amendment?.sourceUrl?.let { add(OfficialSource("Amendment", amendment.number?.let { number -> "Amendment no. $number" }, it, OfficialSourceType.AMENDMENT)) }
+        parentText?.dossierUrl?.let { add(OfficialSource("Dossier législatif", parentText.title, it, OfficialSourceType.LEGISLATIVE_FILE)) }
+        amendment?.sourceUrl?.let { add(OfficialSource("Amendement", amendment.number?.let { number -> "Amendement n° $number" }, it, OfficialSourceType.AMENDMENT)) }
         article?.sourceUrl?.let { add(OfficialSource("Article", article.number?.let { number -> "Article $number" }, it, OfficialSourceType.TEXT)) }
         motion?.sourceUrl?.let { add(OfficialSource("Motion", motion.type, it, OfficialSourceType.OTHER)) }
     }
@@ -99,5 +99,5 @@ interface ExternalResourcesRepository {
 
 class FakeExternalResourcesRepository : ExternalResourcesRepository {
     override suspend fun getExternalResources(query: ExternalResourceQuery): ExternalResourcesState =
-        ExternalResourcesState.Empty("No external source is configured yet.")
+        ExternalResourcesState.Empty("Aucune source externe n’est configurée pour le moment.")
 }

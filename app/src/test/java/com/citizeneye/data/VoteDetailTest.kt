@@ -6,7 +6,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class VoteDetailTest {
-    @Test fun classifiesVoteSubjectTypesFromRealisticTitles() {
+    @Test fun classifiesVoteSubjectTypesFromRealisticTitres() {
         assertEquals(VoteSubjectType.AMENDMENT, classifyVoteSubjectType("scrutin public sur l'amendement n° 45"))
         assertEquals(VoteSubjectType.ARTICLE, classifyVoteSubjectType("scrutin public sur l'article 7 du projet de loi"))
         assertEquals(VoteSubjectType.NO_CONFIDENCE_MOTION, classifyVoteSubjectType("scrutin public sur la motion de censure"))
@@ -17,19 +17,19 @@ class VoteDetailTest {
         assertEquals(VoteSubjectType.OTHER, classifyVoteSubjectType("scrutin public sur un objet parlementaire non identifié"))
     }
 
-    @Test fun everySubjectTypeHasExplanation() {
+    @Test fun everySubjectTypeHasExplication() {
         VoteSubjectType.entries.forEach { type ->
-            assertTrue("$type should have an explanation", buildSubjectExplanation(type).isNotBlank())
+            assertTrue("$type doit avoir une explication", buildSubjectExplanation(type).isNotBlank())
         }
     }
 
     @Test fun explainsVoteEffectInContext() {
-        assertTrue(buildVoteEffectExplanation(VoteSubjectType.AMENDMENT, VotePosition.POUR, "adopté").contains("adoption of the amendment"))
-        assertTrue(buildVoteEffectExplanation(VoteSubjectType.AMENDMENT, VotePosition.CONTRE, "adopté").contains("against the adoption of the amendment"))
-        assertTrue(buildVoteEffectExplanation(VoteSubjectType.FULL_TEXT, VotePosition.POUR, "adopté").contains("adopting the text"))
-        assertTrue(buildVoteEffectExplanation(VoteSubjectType.NO_CONFIDENCE_MOTION, VotePosition.POUR, "rejeté").contains("no-confidence motion"))
-        assertTrue(buildVoteEffectExplanation(VoteSubjectType.ARTICLE, VotePosition.ABSTENTION, "adopté").contains("neither for nor against"))
-        assertTrue(buildVoteEffectExplanation(VoteSubjectType.OTHER, VotePosition.NON_VOTANT, "adopté").contains("no nominal for/against vote"))
+        assertTrue(buildVoteEffectExplanation(VoteSubjectType.AMENDMENT, VotePosition.POUR, "adopté").contains("adoption de l’amendement"))
+        assertTrue(buildVoteEffectExplanation(VoteSubjectType.AMENDMENT, VotePosition.CONTRE, "adopté").contains("contre l’adoption de l’amendement"))
+        assertTrue(buildVoteEffectExplanation(VoteSubjectType.FULL_TEXT, VotePosition.POUR, "adopté").contains("adoption du texte"))
+        assertTrue(buildVoteEffectExplanation(VoteSubjectType.NO_CONFIDENCE_MOTION, VotePosition.POUR, "rejeté").contains("motion de censure"))
+        assertTrue(buildVoteEffectExplanation(VoteSubjectType.ARTICLE, VotePosition.ABSTENTION, "adopté").contains("ni pour ni contre"))
+        assertTrue(buildVoteEffectExplanation(VoteSubjectType.OTHER, VotePosition.NON_VOTANT, "adopté").contains("aucun vote nominatif"))
     }
 
     @Test fun defaultVoteDetailRepositoryBuildsDetailFromDisplayedVote() = runBlocking {
@@ -67,7 +67,7 @@ class VoteDetailTest {
         )
 
         assertTrue(result is ExternalResourcesState.Empty)
-        assertEquals("No external source is configured yet.", (result as ExternalResourcesState.Empty).message)
+        assertEquals("Aucune source externe n’est configurée pour le moment.", (result as ExternalResourcesState.Empty).message)
     }
 
     private fun fakeVote() = Vote(

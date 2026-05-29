@@ -145,7 +145,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
             voteDetailUiState = runCatching { voteDetailRepository.getVoteDetail(vote, depute) }
                 .fold(
                     onSuccess = { VoteDetailUiState.Success(it) },
-                    onFailure = { VoteDetailUiState.Error("Unable to load vote details. Try again.") }
+                    onFailure = { VoteDetailUiState.Error("Impossible de charger le détail du vote. Réessayer.") }
                 )
         }
     }
@@ -247,9 +247,9 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = { Text(if (selectedVote != null) "Text and Vote Details" else "CitizenEye", fontWeight = FontWeight.SemiBold) },
+                title = { Text(if (selectedVote != null) "Texte et détail du vote" else "CitizenEye", fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
-                    if (selectedVote != null) TextButton(onClick = { selectedVote = null }) { Text("Back") }
+                    if (selectedVote != null) TextButton(onClick = { selectedVote = null }) { Text("Retour") }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
             )
@@ -288,17 +288,17 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                 is LookupState.Loaded -> if (selectedVote != null) {
                     VoteDetailScreen(
                         voteDetailUiState = voteDetailUiState,
-                        onBack = { selectedVote = null },
-                        onOpenUrl = ::openExternalUrl,
+                        onRetour = { selectedVote = null },
+                        onOuvrirUrl = ::openExternalUrl,
                         onRetry = ::retryVoteDetails
                     )
                 } else if (showingStats) {
-                    DeputyStatsScreen(match = current.match, onBack = { showingStats = false })
+                    DeputyStatsScreen(match = current.match, onRetour = { showingStats = false })
                 } else {
                     HomeScreen(
                         match = current.match,
-                        onOpenStats = { showingStats = true },
-                        onOpenVoteDetails = { openVoteDetails(it, current.match.depute) },
+                        onOuvrirStats = { showingStats = true },
+                        onOuvrirVoteDetails = { openVoteDetails(it, current.match.depute) },
                         onLoadMoreVotes = {
                             state = LookupState.Loaded(current.match.withMoreVisibleVotes())
                         },
@@ -337,7 +337,7 @@ private fun OnboardingScreen(
                 lineHeight = 23.sp
             )
             Spacer(Modifier.height(28.dp))
-            InfoCard("Données publiques réelles", "Commune : geo.api.gouv.fr. Députés et votes : Open Data de l’Assemblée nationale. Si plusieurs circonscriptions sont possibles, l’app vous demande de choisir au lieu de deviner.")
+            InfoCard("Données publiques réelles", "Commune : geo.api.gouv.fr. Députés et votes : Ouvrir Data de l’Assemblée nationale. Si plusieurs circonscriptions sont possibles, l’app vous demande de choisir au lieu de deviner.")
         }
         Column {
             OutlinedTextField(
@@ -434,7 +434,7 @@ private fun DeputySelectionScreen(selection: LookupState.NeedSelection, onSelect
 }
 
 @Composable
-private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onOpenVoteDetails: (Vote) -> Unit, onLoadMoreVotes: () -> Unit, onReset: () -> Unit) {
+private fun HomeScreen(match: DeputeMatch, onOuvrirStats: () -> Unit, onOuvrirVoteDetails: (Vote) -> Unit, onLoadMoreVotes: () -> Unit, onReset: () -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
             Text("${match.commune.name} · données officielles", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
@@ -443,7 +443,7 @@ private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onOpenVoteDe
             Spacer(Modifier.height(8.dp))
             TextButton(onClick = onReset) { Text("Changer de ville") }
         }
-        item { RepresentativeCard(match, onOpenStats) }
+        item { RepresentativeCard(match, onOuvrirStats) }
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Text("Votes de la législature", fontSize = 22.sp, fontWeight = FontWeight.Bold)
@@ -454,7 +454,7 @@ private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onOpenVoteDe
         if (match.recentVotes.isEmpty()) {
             item { InfoCard("Aucun vote nominatif récent", "Le député n’apparaît pas dans les scrutins publics téléchargés. Réessayez plus tard ou vérifiez la source Assemblée nationale.") }
         } else {
-            items(match.recentVotes) { vote -> VoteCard(vote, onOpenDetails = { onOpenVoteDetails(vote) }) }
+            items(match.recentVotes) { vote -> VoteCard(vote, onOuvrirDetails = { onOuvrirVoteDetails(vote) }) }
             if (match.hasMoreVotes) {
                 item {
                     Button(onClick = onLoadMoreVotes, modifier = Modifier.fillMaxWidth().height(52.dp)) {
@@ -468,9 +468,9 @@ private fun HomeScreen(match: DeputeMatch, onOpenStats: () -> Unit, onOpenVoteDe
 }
 
 @Composable
-private fun RepresentativeCard(match: DeputeMatch, onOpenStats: () -> Unit) {
+private fun RepresentativeCard(match: DeputeMatch, onOuvrirStats: () -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth().clickable { onOpenStats() },
+        modifier = Modifier.fillMaxWidth().clickable { onOuvrirStats() },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         shape = RoundedCornerShape(24.dp)
     ) {
@@ -518,7 +518,7 @@ private fun String.initials(): String = trim()
     .joinToString("") { it.first().uppercase() }
 
 @Composable
-private fun DeputyStatsScreen(match: DeputeMatch, onBack: () -> Unit) {
+private fun DeputyStatsScreen(match: DeputeMatch, onRetour: () -> Unit) {
     val stats = match.legislatureStats
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
@@ -533,7 +533,7 @@ private fun DeputyStatsScreen(match: DeputeMatch, onBack: () -> Unit) {
                     Text(match.depute.constituencyLabel, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
-            TextButton(onClick = onBack) { Text("Retour aux votes") }
+            TextButton(onClick = onRetour) { Text("Retour aux votes") }
         }
         item {
             InfoCard(
@@ -612,9 +612,9 @@ private fun PositionStatRow(label: String, position: VotePosition, stats: Deputy
 }
 
 @Composable
-private fun VoteCard(vote: com.citizeneye.data.Vote, onOpenDetails: () -> Unit) {
+private fun VoteCard(vote: com.citizeneye.data.Vote, onOuvrirDetails: () -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth().clickable { onOpenDetails() },
+        modifier = Modifier.fillMaxWidth().clickable { onOuvrirDetails() },
         shape = RoundedCornerShape(22.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
@@ -637,7 +637,7 @@ private fun VoteCard(vote: com.citizeneye.data.Vote, onOpenDetails: () -> Unit) 
             Spacer(Modifier.height(6.dp))
             Text(vote.summary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
             Spacer(Modifier.height(10.dp))
-            Text("Understand this vote", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+            Text("Comprendre ce vote", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
         }
     }
 }

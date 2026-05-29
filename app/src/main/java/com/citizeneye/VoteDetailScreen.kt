@@ -47,76 +47,76 @@ sealed interface VoteDetailUiState {
 @Composable
 fun VoteDetailScreen(
     voteDetailUiState: VoteDetailUiState,
-    onBack: () -> Unit,
-    onOpenUrl: (String) -> Unit,
+    onRetour: () -> Unit,
+    onOuvrirUrl: (String) -> Unit,
     onRetry: () -> Unit
 ) {
     when (voteDetailUiState) {
-        VoteDetailUiState.Loading -> DetailLoadingState(onBack)
-        is VoteDetailUiState.Error -> DetailErrorState(voteDetailUiState.message, onBack, onRetry)
-        is VoteDetailUiState.Success -> VoteDetailContent(voteDetailUiState.detail, onBack, onOpenUrl)
+        VoteDetailUiState.Loading -> DetailLoadingState(onRetour)
+        is VoteDetailUiState.Error -> DetailErrorState(voteDetailUiState.message, onRetour, onRetry)
+        is VoteDetailUiState.Success -> VoteDetailContent(voteDetailUiState.detail, onRetour, onOuvrirUrl)
     }
 }
 
 @Composable
-private fun DetailLoadingState(onBack: () -> Unit) {
+private fun DetailLoadingState(onRetour: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         CircularProgressIndicator()
         Spacer(Modifier.height(16.dp))
-        Text("Loading vote details", fontWeight = FontWeight.SemiBold)
+        Text("Chargement du détail du vote", fontWeight = FontWeight.SemiBold)
         Spacer(Modifier.height(8.dp))
-        Text("CitizenEye is preparing official context for this public vote.", color = MaterialTheme.colorScheme.onSurfaceVariant)
-        TextButton(onClick = onBack) { Text("Back to votes") }
+        Text("CitizenEye prépare le contexte officiel de ce scrutin public.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        TextButton(onClick = onRetour) { Text("Retour aux votes") }
     }
 }
 
 @Composable
-private fun DetailErrorState(message: String, onBack: () -> Unit, onRetry: () -> Unit) {
+private fun DetailErrorState(message: String, onRetour: () -> Unit, onRetry: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.Center) {
-        DetailSectionCard(title = "Unable to load vote details") {
-            Text(message.ifBlank { "Unable to load vote details. Try again." }, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        DetailSectionCard(title = "Impossible de charger le détail du vote") {
+            Text(message.ifBlank { "Impossible de charger le détail du vote. Réessayer." }, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.height(12.dp))
-            Button(onClick = onRetry, modifier = Modifier.fillMaxWidth()) { Text("Try again") }
-            TextButton(onClick = onBack) { Text("Back to votes") }
+            Button(onClick = onRetry, modifier = Modifier.fillMaxWidth()) { Text("Réessayer") }
+            TextButton(onClick = onRetour) { Text("Retour aux votes") }
         }
     }
 }
 
 @Composable
-private fun VoteDetailContent(detail: VoteDetail, onBack: () -> Unit, onOpenUrl: (String) -> Unit) {
+private fun VoteDetailContent(detail: VoteDetail, onRetour: () -> Unit, onOuvrirUrl: (String) -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
-            TextButton(onClick = onBack) { Text("Back to votes") }
+            TextButton(onClick = onRetour) { Text("Retour aux votes") }
             HeroCard(detail)
         }
         item {
-            DetailSectionCard(title = "Official title") {
+            DetailSectionCard(title = "Titre officiel") {
                 Text(detail.officialTitle, lineHeight = 21.sp)
             }
         }
         item {
-            DetailSectionCard(title = "Understand this vote") {
+            DetailSectionCard(title = "Comprendre ce vote") {
                 Text(detail.subjectExplanation, lineHeight = 21.sp)
                 Spacer(Modifier.height(10.dp))
-                Text("This means: ${detail.voteEffectExplanation}", fontWeight = FontWeight.SemiBold, lineHeight = 21.sp)
+                Text("Concrètement : ${detail.voteEffectExplanation}", fontWeight = FontWeight.SemiBold, lineHeight = 21.sp)
                 if (detail.subjectType == VoteSubjectType.NO_CONFIDENCE_MOTION || detail.subjectType == VoteSubjectType.PROCEDURAL_MOTION) {
                     Spacer(Modifier.height(10.dp))
-                    NoticeText("Pay attention to what FOR/AGAINST means here: procedural and censure votes can affect whether a text continues, is blocked, or challenges the Government.")
+                    NoticeText("Attention au sens de POUR/CONTRE ici : les votes de procédure et de censure peuvent déterminer si un texte poursuit son examen, est bloqué, ou met en cause le Gouvernement.")
                 }
                 if (detail.subjectType == VoteSubjectType.AMENDMENT) {
                     Spacer(Modifier.height(10.dp))
-                    NoticeText("This vote was not about the whole law. It was about a proposed change to part of the text.")
+                    NoticeText("Ce vote ne portait pas sur toute la loi. Il portait sur une modification proposée à une partie du texte.")
                 }
             }
         }
-        item { RelatedTextCard(detail.parentText, detail.sourceUrl, onOpenUrl) }
-        if (detail.amendment != null || detail.subjectType == VoteSubjectType.AMENDMENT) item { AmendmentCard(detail, onOpenUrl) }
-        if (detail.article != null || detail.subjectType == VoteSubjectType.ARTICLE) item { ArticleCard(detail, onOpenUrl) }
-        if (detail.motion != null || detail.subjectType == VoteSubjectType.NO_CONFIDENCE_MOTION || detail.subjectType == VoteSubjectType.PROCEDURAL_MOTION) item { MotionCard(detail, onOpenUrl) }
-        item { VoteResultCard(detail.voteBreakdown, detail.result) }
-        item { GroupPositionCard(detail.groupPosition, detail.deputyPosition) }
-        item { OfficialSourcesCard(detail.officialSources, onOpenUrl) }
-        item { LearnMoreSection(detail.externalResources, onOpenUrl) }
+        item { RelatedTextCard(detail.parentText, detail.sourceUrl, onOuvrirUrl) }
+        if (detail.amendment != null || detail.subjectType == VoteSubjectType.AMENDMENT) item { AmendementCard(detail, onOuvrirUrl) }
+        if (detail.article != null || detail.subjectType == VoteSubjectType.ARTICLE) item { ArticleCard(detail, onOuvrirUrl) }
+        if (detail.motion != null || detail.subjectType == VoteSubjectType.NO_CONFIDENCE_MOTION || detail.subjectType == VoteSubjectType.PROCEDURAL_MOTION) item { MotionCard(detail, onOuvrirUrl) }
+        item { VoteRésultatCard(detail.voteBreakdown, detail.result) }
+        item { GroupePositionCard(detail.groupPosition, detail.deputyPosition) }
+        item { OfficialSourcesCard(detail.officialSources, onOuvrirUrl) }
+        item { LearnMoreSection(detail.externalResources, onOuvrirUrl) }
         item { Spacer(Modifier.height(24.dp)) }
     }
 }
@@ -129,12 +129,12 @@ private fun HeroCard(detail: VoteDetail) {
             Spacer(Modifier.height(12.dp))
             Text(detail.plainLanguageTitle ?: detail.officialTitle, fontSize = 24.sp, lineHeight = 29.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(10.dp))
-            Text("Public vote no. ${detail.voteNumber}", color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f), fontWeight = FontWeight.SemiBold)
+            Text("Scrutin public n° ${detail.voteNumber}", color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f), fontWeight = FontWeight.SemiBold)
             Text("${detail.result} · ${detail.date}", color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f))
             Spacer(Modifier.height(14.dp))
-            Text("Your MP voted: ${detail.deputyPosition.label}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text("Votre député a voté : ${detail.deputyPosition.label}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(6.dp))
-            Text("This means: ${detail.voteEffectExplanation}", lineHeight = 21.sp)
+            Text("Concrètement : ${detail.voteEffectExplanation}", lineHeight = 21.sp)
         }
     }
 }
@@ -162,149 +162,149 @@ fun VoteSubjectBadge(subjectType: VoteSubjectType) {
 }
 
 @Composable
-private fun RelatedTextCard(parentText: ParentTextDetails?, sourceUrl: String?, onOpenUrl: (String) -> Unit) {
-    DetailSectionCard(title = "Related text") {
+private fun RelatedTextCard(parentText: ParentTextDetails?, sourceUrl: String?, onOuvrirUrl: (String) -> Unit) {
+    DetailSectionCard(title = "Texte concerné") {
         if (parentText == null) {
-            EmptyText("The related text is not available in CitizenEye yet for this public vote. Open the official vote source for the complete context.")
-            sourceUrl?.let { OpenButton(it, onOpenUrl) }
+            EmptyText("Le texte concerné n’est pas encore disponible dans CitizenEye pour ce scrutin public. Ouvrez la source officielle pour le contexte complet.")
+            sourceUrl?.let { OuvrirButton(it, onOuvrirUrl) }
         } else {
-            parentText.title?.let { LabeledText("Title", it) }
+            parentText.title?.let { LabeledText("Titre", it) }
             parentText.type?.let { LabeledText("Type", it) }
-            parentText.procedureStage?.let { LabeledText("Stage", it) }
+            parentText.procedureStage?.let { LabeledText("Étape", it) }
             parentText.commissionName?.let { LabeledText("Commission", it) }
             if (parentText.rapporteurs.isNotEmpty()) LabeledText("Rapporteurs", parentText.rapporteurs.joinToString())
-            parentText.dossierUrl?.let { OpenButton(it, onOpenUrl) }
+            parentText.dossierUrl?.let { OuvrirButton(it, onOuvrirUrl) }
         }
     }
 }
 
 @Composable
-private fun AmendmentCard(detail: VoteDetail, onOpenUrl: (String) -> Unit) {
-    DetailSectionCard(title = "Amendment") {
+private fun AmendementCard(detail: VoteDetail, onOuvrirUrl: (String) -> Unit) {
+    DetailSectionCard(title = "Amendement") {
         val amendment = detail.amendment
         if (amendment == null) {
-            EmptyText("This public vote appears to concern an amendment, but the full amendment details are not available in the app yet.")
+            EmptyText("Ce scrutin public semble concerner un amendement, mais le détail complet de l’amendement n’est pas encore disponible dans l’app.")
         } else {
-            amendment.number?.let { LabeledText("Number", it) }
-            amendment.status?.let { LabeledText("Status", it) }
-            if (amendment.authors.isNotEmpty()) LabeledText("Authors", amendment.authors.joinToString())
-            amendment.group?.let { LabeledText("Group", it) }
-            amendment.objectText?.let { LabeledText("Object", it) }
-            amendment.proposedChangeText?.let { LabeledText("Proposed change", it) }
-            amendment.explanatoryStatement?.let { LabeledText("Explanatory statement", it) }
-            amendment.sourceUrl?.let { OpenButton(it, onOpenUrl) }
+            amendment.number?.let { LabeledText("Numéro", it) }
+            amendment.status?.let { LabeledText("Statut", it) }
+            if (amendment.authors.isNotEmpty()) LabeledText("Auteurs", amendment.authors.joinToString())
+            amendment.group?.let { LabeledText("Groupe", it) }
+            amendment.objectText?.let { LabeledText("Objet", it) }
+            amendment.proposedChangeText?.let { LabeledText("Modification proposée", it) }
+            amendment.explanatoryStatement?.let { LabeledText("Exposé sommaire", it) }
+            amendment.sourceUrl?.let { OuvrirButton(it, onOuvrirUrl) }
         }
     }
 }
 
 @Composable
-private fun ArticleCard(detail: VoteDetail, onOpenUrl: (String) -> Unit) {
+private fun ArticleCard(detail: VoteDetail, onOuvrirUrl: (String) -> Unit) {
     DetailSectionCard(title = "Article") {
         val article = detail.article
         if (article == null) {
-            EmptyText("This public vote appears to concern an article, but the full article details are not available in the app yet.")
+            EmptyText("Ce scrutin public semble concerner un article, mais le détail complet de l’article n’est pas encore disponible dans l’app.")
         } else {
-            article.number?.let { LabeledText("Number", it) }
-            article.title?.let { LabeledText("Title", it) }
-            article.summary?.let { LabeledText("Summary", it) }
-            article.sourceUrl?.let { OpenButton(it, onOpenUrl) }
+            article.number?.let { LabeledText("Numéro", it) }
+            article.title?.let { LabeledText("Titre", it) }
+            article.summary?.let { LabeledText("Résumé", it) }
+            article.sourceUrl?.let { OuvrirButton(it, onOuvrirUrl) }
         }
     }
 }
 
 @Composable
-private fun MotionCard(detail: VoteDetail, onOpenUrl: (String) -> Unit) {
+private fun MotionCard(detail: VoteDetail, onOuvrirUrl: (String) -> Unit) {
     DetailSectionCard(title = "Motion") {
         val motion = detail.motion
         if (motion == null) {
-            EmptyText("This public vote appears to concern a motion, but the full motion details are not available in the app yet.")
+            EmptyText("Ce scrutin public semble concerner une motion, mais le détail complet de la motion n’est pas encore disponible dans l’app.")
         } else {
             motion.type?.let { LabeledText("Type", it) }
-            if (motion.authors.isNotEmpty()) LabeledText("Authors", motion.authors.joinToString())
-            motion.explanation?.let { LabeledText("Explanation", it) }
-            motion.politicalEffectExplanation?.let { LabeledText("Political effect", it) }
-            motion.sourceUrl?.let { OpenButton(it, onOpenUrl) }
+            if (motion.authors.isNotEmpty()) LabeledText("Auteurs", motion.authors.joinToString())
+            motion.explanation?.let { LabeledText("Explication", it) }
+            motion.politicalEffectExplanation?.let { LabeledText("Effet politique", it) }
+            motion.sourceUrl?.let { OuvrirButton(it, onOuvrirUrl) }
         }
     }
 }
 
 @Composable
-private fun VoteResultCard(breakdown: VoteBreakdown?, result: String) {
-    DetailSectionCard(title = "Vote result") {
-        LabeledText("Result", breakdown?.resultLabel ?: result)
+private fun VoteRésultatCard(breakdown: VoteBreakdown?, result: String) {
+    DetailSectionCard(title = "Résultat du vote") {
+        LabeledText("Résultat", breakdown?.resultLabel ?: result)
         if (breakdown == null) {
-            EmptyText("Detailed vote counts are not available in CitizenEye yet for this public vote.")
+            EmptyText("Le décompte détaillé du vote n’est pas encore disponible dans CitizenEye pour ce scrutin public.")
         } else {
-            CountRow("Total voters", breakdown.totalVoters)
-            CountRow("For", breakdown.forCount)
-            CountRow("Against", breakdown.againstCount)
+            CountRow("Nombre de votants", breakdown.totalVoters)
+            CountRow("Pour", breakdown.forCount)
+            CountRow("Contre", breakdown.againstCount)
             CountRow("Abstentions", breakdown.abstentionCount)
-            CountRow("Non-voting", breakdown.nonVotingCount)
-            CountRow("Absolute majority", breakdown.absoluteMajority)
+            CountRow("Non-votants", breakdown.nonVotingCount)
+            CountRow("Majorité absolue", breakdown.absoluteMajority)
         }
     }
 }
 
 @Composable
-private fun GroupPositionCard(group: GroupVotePosition?, deputyPosition: VotePosition) {
-    DetailSectionCard(title = "Your MP and their group") {
-        LabeledText("MP position", deputyPosition.label)
+private fun GroupePositionCard(group: GroupVotePosition?, deputyPosition: VotePosition) {
+    DetailSectionCard(title = "Votre député et son groupe") {
+        LabeledText("Position du député", deputyPosition.label)
         if (group == null) {
-            EmptyText("CitizenEye does not yet have enough information to compare this vote with the group majority position.")
+            EmptyText("CitizenEye n’a pas encore assez d’informations pour comparer ce vote à la position majoritaire du groupe.")
         } else {
-            LabeledText("Parliamentary group", group.groupName)
-            LabeledText("Group majority position", group.groupMajorityPosition?.label ?: "Not available")
-            LabeledText("Voted like the majority of their group", group.deputyVotedLikeGroup?.let { if (it) "Yes" else "No" } ?: "Not available")
-            CountRow("Group for", group.forCount)
-            CountRow("Group against", group.againstCount)
-            CountRow("Group abstentions", group.abstentionCount)
-            CountRow("Group non-voting", group.nonVotingCount)
+            LabeledText("Groupe parlementaire", group.groupName)
+            LabeledText("Position majoritaire du groupe", group.groupMajorityPosition?.label ?: "Non disponible")
+            LabeledText("Vote aligné avec la majorité de son groupe", group.deputyVotedLikeGroup?.let { if (it) "Oui" else "Non" } ?: "Non disponible")
+            CountRow("Groupe pour", group.forCount)
+            CountRow("Groupe contre", group.againstCount)
+            CountRow("Groupe abstentions", group.abstentionCount)
+            CountRow("Non-votants du groupe", group.nonVotingCount)
         }
     }
 }
 
 @Composable
-private fun OfficialSourcesCard(sources: List<OfficialSource>, onOpenUrl: (String) -> Unit) {
-    DetailSectionCard(title = "Official sources") {
+private fun OfficialSourcesCard(sources: List<OfficialSource>, onOuvrirUrl: (String) -> Unit) {
+    DetailSectionCard(title = "Sources officielles") {
         if (sources.isEmpty()) {
-            EmptyText("No open official source is available for this vote.")
+            EmptyText("Aucune source officielle ouverte n’est disponible pour ce vote.")
         } else {
             sources.forEach { source ->
-                ResourceRow(source.label, source.description, null, "Official source", source.url, onOpenUrl)
+                ResourceRow(source.label, source.description, null, "Source officielle", source.url, onOuvrirUrl)
             }
         }
     }
 }
 
 @Composable
-private fun LearnMoreSection(resources: ExternalResourcesState, onOpenUrl: (String) -> Unit) {
+private fun LearnMoreSection(resources: ExternalResourcesState, onOuvrirUrl: (String) -> Unit) {
     DetailSectionCard(
-        title = "Learn even more",
-        subtitle = "These external resources are not official CitizenEye sources. They are provided to help explore public debate around the text."
+        title = "Approfondir",
+        subtitle = "Ces ressources externes ne sont pas des sources officielles CitizenEye. Elles servent à explorer le débat public autour du texte."
     ) {
         when (resources) {
-            ExternalResourcesState.NotLoaded -> EmptyText("External resources are not loaded yet.")
-            ExternalResourcesState.Loading -> Text("Loading external resources…", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            ExternalResourcesState.NotLoaded -> EmptyText("Les ressources externes ne sont pas encore chargées.")
+            ExternalResourcesState.Loading -> Text("Chargement des ressources externes…", color = MaterialTheme.colorScheme.onSurfaceVariant)
             is ExternalResourcesState.Error -> EmptyText(resources.message)
             is ExternalResourcesState.Empty -> {
-                ExternalSubsection("Recent articles") { EmptyText(if (resources.message == "No external source is configured yet.") resources.message else "No recent article found for this text.") }
-                ExternalSubsection("Videos") { EmptyText(if (resources.message == "No external source is configured yet.") resources.message else "No relevant video found for this text.") }
-                ExternalSubsection("Useful links") { EmptyText(resources.message) }
+                ExternalSubsection("Articles récents") { EmptyText(if (resources.message == "Aucune source externe n’est configurée pour le moment.") resources.message else "Aucun article récent trouvé pour ce texte.") }
+                ExternalSubsection("Vidéos") { EmptyText(if (resources.message == "Aucune source externe n’est configurée pour le moment.") resources.message else "Aucune vidéo pertinente trouvée pour ce texte.") }
+                ExternalSubsection("Liens utiles") { EmptyText(resources.message) }
             }
             is ExternalResourcesState.Available -> {
-                ExternalSubsection("Recent articles") {
-                    if (resources.newsArticles.isEmpty()) EmptyText("No recent article found for this text.") else resources.newsArticles.take(5).forEach {
-                        ResourceRow(it.title, it.description, it.publishedAt, "Article · ${it.sourceName ?: "Unknown source"}", it.url, onOpenUrl)
+                ExternalSubsection("Articles récents") {
+                    if (resources.newsArticles.isEmpty()) EmptyText("Aucun article récent trouvé pour ce texte.") else resources.newsArticles.take(5).forEach {
+                        ResourceRow(it.title, it.description, it.publishedAt, "Article · ${it.sourceName ?: "Source inconnue"}", it.url, onOuvrirUrl)
                     }
                 }
-                ExternalSubsection("Videos") {
-                    if (resources.videos.isEmpty()) EmptyText("No relevant video found for this text.") else resources.videos.take(3).forEach {
-                        ResourceRow(it.title, it.description, it.publishedAt, "Video · ${it.channelName ?: "Unknown channel"}", it.url, onOpenUrl)
+                ExternalSubsection("Vidéos") {
+                    if (resources.videos.isEmpty()) EmptyText("Aucune vidéo pertinente trouvée pour ce texte.") else resources.videos.take(3).forEach {
+                        ResourceRow(it.title, it.description, it.publishedAt, "Vidéo · ${it.channelName ?: "Chaîne inconnue"}", it.url, onOuvrirUrl)
                     }
                 }
-                ExternalSubsection("Useful links") {
-                    if (resources.webLinks.isEmpty()) EmptyText("No useful external link found for this text.") else resources.webLinks.take(3).forEach {
-                        ResourceRow(it.title, it.description, it.publishedAt, "Web link · ${it.sourceName ?: "External source"}", it.url, onOpenUrl)
+                ExternalSubsection("Liens utiles") {
+                    if (resources.webLinks.isEmpty()) EmptyText("Aucun lien externe utile trouvé pour ce texte.") else resources.webLinks.take(3).forEach {
+                        ResourceRow(it.title, it.description, it.publishedAt, "Lien web · ${it.sourceName ?: "Source externe"}", it.url, onOuvrirUrl)
                     }
                 }
             }
@@ -321,7 +321,7 @@ private fun ExternalSubsection(title: String, content: @Composable () -> Unit) {
 }
 
 @Composable
-private fun ResourceRow(title: String, description: String?, date: String?, typeLabel: String, url: String, onOpenUrl: (String) -> Unit) {
+private fun ResourceRow(title: String, description: String?, date: String?, typeLabel: String, url: String, onOuvrirUrl: (String) -> Unit) {
     Column(Modifier.fillMaxWidth().padding(vertical = 7.dp).background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(14.dp)).padding(12.dp)) {
         Text(typeLabel, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         Text(title, fontWeight = FontWeight.SemiBold, lineHeight = 20.sp)
@@ -329,7 +329,7 @@ private fun ResourceRow(title: String, description: String?, date: String?, type
         description?.takeIf { it.isNotBlank() }?.let {
             Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, overflow = TextOverflow.Ellipsis, lineHeight = 18.sp)
         }
-        TextButton(onClick = { onOpenUrl(url) }) { Text("Open") }
+        TextButton(onClick = { onOuvrirUrl(url) }) { Text("Ouvrir") }
     }
 }
 
@@ -345,7 +345,7 @@ private fun LabeledText(label: String, value: String) {
 private fun CountRow(label: String, value: Int?) {
     Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), horizontalArrangement = Arrangement.SpaceBetween) {
         Text(label)
-        Text(value?.toString() ?: "Not available", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(value?.toString() ?: "Non disponible", color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 
@@ -360,6 +360,6 @@ private fun NoticeText(message: String) {
 }
 
 @Composable
-private fun OpenButton(url: String, onOpenUrl: (String) -> Unit) {
-    TextButton(onClick = { onOpenUrl(url) }) { Text("Open") }
+private fun OuvrirButton(url: String, onOuvrirUrl: (String) -> Unit) {
+    TextButton(onClick = { onOuvrirUrl(url) }) { Text("Ouvrir") }
 }

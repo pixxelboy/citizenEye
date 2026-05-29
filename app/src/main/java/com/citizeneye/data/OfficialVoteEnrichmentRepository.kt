@@ -89,8 +89,8 @@ class AssembleeOfficialVoteEnrichmentRepository(
         if (subject != VoteSubjectType.NO_CONFIDENCE_MOTION && subject != VoteSubjectType.PROCEDURAL_MOTION) return null
         return MotionDetails(
             type = when (subject) {
-                VoteSubjectType.NO_CONFIDENCE_MOTION -> "No-confidence motion"
-                else -> "Procedural motion"
+                VoteSubjectType.NO_CONFIDENCE_MOTION -> "Motion de censure"
+                else -> "Motion de procédure"
             },
             authors = emptyList(),
             explanation = vote.objectTitle ?: vote.title,
@@ -159,14 +159,14 @@ private fun flattenActs(act: JSONObject): List<JSONObject> {
 }
 
 internal fun inferParentTextType(title: String): String = when {
-    title.contains("projet de loi de finances", ignoreCase = true) -> "Finance bill"
-    title.contains("financement de la sécurité sociale", ignoreCase = true) || title.contains("financement de la securite sociale", ignoreCase = true) -> "Social security financing bill"
-    title.contains("projet de loi constitutionnelle", ignoreCase = true) -> "Constitutional revision"
-    title.contains("projet de loi", ignoreCase = true) -> "Government bill"
-    title.contains("proposition de loi", ignoreCase = true) -> "Private member’s bill"
-    title.contains("résolution", ignoreCase = true) || title.contains("resolution", ignoreCase = true) -> "Resolution proposal"
-    title.contains("accord", ignoreCase = true) || title.contains("convention", ignoreCase = true) || title.contains("ratification", ignoreCase = true) -> "International agreement"
-    else -> "Legislative file"
+    title.contains("projet de loi de finances", ignoreCase = true) -> "Projet de loi de finances"
+    title.contains("financement de la sécurité sociale", ignoreCase = true) || title.contains("financement de la securite sociale", ignoreCase = true) -> "Projet de loi de financement de la sécurité sociale"
+    title.contains("projet de loi constitutionnelle", ignoreCase = true) -> "Révision constitutionnelle"
+    title.contains("projet de loi", ignoreCase = true) -> "Projet de loi"
+    title.contains("proposition de loi", ignoreCase = true) -> "Proposition de loi"
+    title.contains("résolution", ignoreCase = true) || title.contains("resolution", ignoreCase = true) -> "Proposition de résolution"
+    title.contains("accord", ignoreCase = true) || title.contains("convention", ignoreCase = true) || title.contains("ratification", ignoreCase = true) -> "Accord international"
+    else -> "Dossier législatif"
 }
 
 private fun inferProcedureStage(title: String): String? = Regex("\\(([^)]*lecture[^)]*)\\)", RegexOption.IGNORE_CASE).find(title)?.groupValues?.getOrNull(1)
