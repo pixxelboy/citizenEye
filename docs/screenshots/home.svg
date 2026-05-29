@@ -1,0 +1,32 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="390" height="844" rx="42" fill="#101828"/>
+  <rect x="16" y="16" width="358" height="812" rx="34" fill="#F8FAFC"/>
+  <text x="38" y="76" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#0F172A">CitizenEye</text>
+  <text x="38" y="128" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#2563EB">NANTERRE · DONNÉES OFFICIELLES</text>
+  <text x="38" y="168" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#0F172A">4e circonscription</text>
+  <text x="38" y="200" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#0F172A">des Hauts-de-Seine</text>
+
+  <rect x="34" y="232" width="322" height="176" rx="28" fill="#FFFFFF"/>
+  <circle cx="82" cy="296" r="36" fill="#DBEAFE"/>
+  <text x="65" y="307" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#2563EB">PA</text>
+  <text x="132" y="282" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#0F172A">Votre députée</text>
+  <text x="132" y="310" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Groupe parlementaire</text>
+  <text x="132" y="338" font-family="Inter, Arial, sans-serif" font-size="15" fill="#2563EB">Voir le profil statistique</text>
+  <rect x="56" y="362" width="278" height="1" fill="#E2E8F0"/>
+  <text x="56" y="388" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748B">Portrait officiel, votes publics, cache local.</text>
+
+  <text x="38" y="458" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#0F172A">Votes de la législature</text>
+  <text x="38" y="484" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748B">20/123 scrutins publics affichés</text>
+
+  <rect x="34" y="508" width="322" height="112" rx="22" fill="#FFFFFF"/>
+  <text x="56" y="540" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#0F172A">Scrutin public n°1843</text>
+  <text x="56" y="568" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Texte adopté · résultat officiel</text>
+  <rect x="56" y="586" width="76" height="24" rx="12" fill="#DCFCE7"/>
+  <text x="74" y="603" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800" fill="#166534">POUR</text>
+
+  <rect x="34" y="636" width="322" height="112" rx="22" fill="#FFFFFF"/>
+  <text x="56" y="668" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#0F172A">Scrutin public n°1842</text>
+  <text x="56" y="696" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Vote solennel · résultat officiel</text>
+  <rect x="56" y="714" width="92" height="24" rx="12" fill="#FEE2E2"/>
+  <text x="75" y="731" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800" fill="#991B1B">CONTRE</text>
+</svg>

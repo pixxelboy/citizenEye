@@ -1,0 +1,27 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="390" height="844" rx="42" fill="#101828"/>
+  <rect x="16" y="16" width="358" height="812" rx="34" fill="#F8FAFC"/>
+  <text x="38" y="76" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#0F172A">CitizenEye</text>
+  <text x="38" y="136" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#2563EB">DÉMARRAGE</text>
+  <text x="38" y="176" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0F172A">Trouvez votre</text>
+  <text x="38" y="216" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0F172A">député</text>
+  <text x="38" y="252" font-family="Inter, Arial, sans-serif" font-size="16" fill="#475569">Entrez un code postal ou utilisez votre</text>
+  <text x="38" y="276" font-family="Inter, Arial, sans-serif" font-size="16" fill="#475569">position. Rien n’est validé sans vous.</text>
+
+  <rect x="34" y="318" width="322" height="72" rx="18" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="54" y="344" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748B">Code postal ou ville</text>
+  <text x="54" y="374" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F172A">92000</text>
+
+  <rect x="34" y="410" width="322" height="52" rx="18" fill="#2563EB"/>
+  <text x="95" y="443" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Utiliser ma position</text>
+
+  <rect x="34" y="492" width="322" height="154" rx="24" fill="#FFFFFF"/>
+  <text x="56" y="526" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#2563EB">CIRCONSCRIPTION DÉTECTÉE PAR GPS</text>
+  <text x="56" y="566" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800" fill="#0F172A">Nanterre · 92</text>
+  <text x="56" y="596" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Députée exemple · 4e circonscription</text>
+  <text x="56" y="624" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748B">Confirmez : la position peut ne pas être</text>
+  <text x="56" y="642" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748B">votre domicile.</text>
+
+  <rect x="34" y="672" width="322" height="58" rx="20" fill="#0F172A"/>
+  <text x="91" y="708" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">Valider cette localisation</text>
+</svg>
