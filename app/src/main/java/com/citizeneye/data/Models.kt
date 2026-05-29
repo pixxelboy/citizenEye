@@ -10,14 +10,32 @@ data class Commune(
 data class Depute(
     val id: String,
     val name: String,
+    /**
+     * Compact political group label kept for compatibility with existing code.
+     * Prefer displayPoliticalGroupShort in UI code.
+     */
     val group: String,
     val departmentName: String,
     val departmentCode: String,
     val constituencyNumber: String,
     val email: String?,
+    val regionName: String? = null,
+    val profession: String? = null,
+    val politicalGroupFullName: String = group.takeIf { it.isNotBlank() } ?: "Groupe non renseigné",
+    val politicalGroupAbbreviation: String = group.takeIf { it.isNotBlank() } ?: "N/R",
     val photoUrl: String? = deputyPhotoUrl(id)
 ) {
     val constituencyLabel: String get() = "$departmentName — ${constituencyNumber}e circonscription"
+    val displayPoliticalGroupShort: String get() = politicalGroupAbbreviation.takeIf { it.isNotBlank() } ?: group.takeIf { it.isNotBlank() } ?: "N/R"
+    val displayPoliticalGroupFull: String get() = politicalGroupFullName.takeIf { it.isNotBlank() } ?: "Groupe non renseigné"
+    val displayProfession: String get() = profession?.takeIf { it.isNotBlank() } ?: "Non renseignée"
+    val displayRegion: String get() = regionName?.takeIf { it.isNotBlank() } ?: "Non renseignée"
+    val displayDepartment: String get() = when {
+        departmentName.isNotBlank() && departmentCode.isNotBlank() -> "$departmentName ($departmentCode)"
+        departmentName.isNotBlank() -> departmentName
+        departmentCode.isNotBlank() -> departmentCode
+        else -> "Non renseigné"
+    }
 }
 
 data class Vote(

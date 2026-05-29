@@ -123,15 +123,14 @@ class AssembleeNationaleClient(
 
     fun fetchActiveDeputies(): List<Depute> {
         activeDeputiesCache?.takeIf { nowMillis() - activeDeputiesCacheMillis < PublicDataCache.ONE_DAY_MILLIS }?.let { return it }
-        val organNames = mutableMapOf<String, String>()
+        val politicalGroups = mutableMapOf<String, PoliticalGroupMetadata>()
         val deputies = mutableListOf<Depute>()
 
         readZipEntries(ACTIVE_DEPUTIES_URL, ACTIVE_DEPUTIES_CACHE_KEY) { name, bytes ->
             if (name.startsWith("json/organe/") && name.endsWith(".json")) {
                 val organe = JSONObject(String(bytes, Charsets.UTF_8)).optJSONObject("organe") ?: return@readZipEntries
-                val uid = organe.optText("uid")
-                val label = organe.optString("libelle", organe.optString("libelleAbrev"))
-                if (uid.isNotBlank() && label.isNotBlank()) organNames[uid] = label
+                val metadata = PoliticalGroupMetadata.fromOrgane(organe) ?: return@readZipEntries
+                politicalGroups[metadata.uid] = metadata
             }
         }
 
@@ -149,15 +148,21 @@ class AssembleeNationaleClient(
                 ?.firstNotNullOfOrNull { address ->
                     address.optString("valElec").takeIf { it.contains("@") }
                 }
+            val politicalGroup = groupRef?.let { politicalGroups[it] } ?: PoliticalGroupMetadata.missing()
+            val departmentCode = place.optString("numDepartement")
 
             deputies += Depute(
                 id = actor.optText("uid"),
                 name = "${ident.optString("prenom")} ${ident.optString("nom")}".trim(),
-                group = groupRef?.let { organNames[it] } ?: "Groupe non renseigné",
+                group = politicalGroup.abbreviation,
                 departmentName = place.optString("departement"),
-                departmentCode = place.optString("numDepartement"),
+                departmentCode = departmentCode,
                 constituencyNumber = place.optString("numCirco"),
                 email = email,
+                regionName = parseDeputyRegion(place),
+                profession = parseDeputyProfession(actor.optJSONObject("profession")),
+                politicalGroupFullName = politicalGroup.fullName,
+                politicalGroupAbbreviation = politicalGroup.abbreviation,
                 photoUrl = deputyPhotoUrl(actor.optText("uid"))
             )
         }
@@ -290,6 +295,173 @@ class AssembleeNationaleClient(
     }
 }
 
+internal data class PoliticalGroupMetadata(
+    val uid: String,
+    val fullName: String,
+    val abbreviation: String
+) {
+    companion object {
+        fun missing(): PoliticalGroupMetadata = PoliticalGroupMetadata(
+            uid = "",
+            fullName = "Groupe non renseigné",
+            abbreviation = "N/R"
+        )
+
+        fun fromOrgane(organe: JSONObject): PoliticalGroupMetadata? {
+            val codeType = organe.optString("codeType")
+            val typeOrgane = organe.optString("typeOrgane")
+            if (codeType != "GP" && typeOrgane != "GP") return null
+            val uid = organe.optText("uid").takeIf { it.isNotBlank() } ?: return null
+            val rawFullName = organe.optCleanString("libelle")
+            val rawAbbreviation = organe.optCleanString("libelleAbrev") ?: organe.optCleanString("libelleAbrege")
+            val fullName = rawFullName ?: rawAbbreviation ?: "Groupe non renseigné"
+            val abbreviation = rawAbbreviation ?: rawFullName ?: "N/R"
+            return PoliticalGroupMetadata(uid = uid, fullName = fullName, abbreviation = abbreviation)
+        }
+    }
+}
+
+internal fun parseDeputyProfession(profession: JSONObject?): String? {
+    if (profession == null) return null
+    profession.optCleanString("libelleCourant")?.let { return cleanProfessionLabel(it) }
+    val insee = profession.optJSONObject("socProcINSEE")
+    return insee?.optCleanString("catSocPro")
+        ?: insee?.optCleanString("famSocPro")
+}
+
+private fun cleanProfessionLabel(value: String): String = value
+    .replace(Regex("^\\(\\d+\\)\\s*-\\s*"), "")
+    .trim()
+
+internal fun parseDeputyRegion(place: JSONObject?): String? {
+    if (place == null) return null
+    place.optCleanString("region")?.let { return it }
+    return regionNameForDepartmentCode(place.optString("numDepartement"))
+}
+
+internal fun regionNameForDepartmentCode(rawDepartmentCode: String?): String? {
+    val code = rawDepartmentCode?.trim()?.uppercase()?.removePrefix("0")?.ifBlank { null } ?: return null
+    return DEPARTMENT_CODE_TO_REGION[code]
+        ?: DEPARTMENT_CODE_TO_REGION[code.padStart(2, '0')]
+        ?: when {
+            code == "99" || code == "099" -> "Français établis hors de France"
+            code.startsWith("99") -> "Français établis hors de France"
+            else -> null
+        }
+}
+
+private val DEPARTMENT_CODE_TO_REGION: Map<String, String> = mapOf(
+    "01" to "Auvergne-Rhône-Alpes", "1" to "Auvergne-Rhône-Alpes",
+    "02" to "Hauts-de-France", "2" to "Hauts-de-France",
+    "03" to "Auvergne-Rhône-Alpes", "3" to "Auvergne-Rhône-Alpes",
+    "04" to "Provence-Alpes-Côte d’Azur", "4" to "Provence-Alpes-Côte d’Azur",
+    "05" to "Provence-Alpes-Côte d’Azur", "5" to "Provence-Alpes-Côte d’Azur",
+    "06" to "Provence-Alpes-Côte d’Azur", "6" to "Provence-Alpes-Côte d’Azur",
+    "07" to "Auvergne-Rhône-Alpes", "7" to "Auvergne-Rhône-Alpes",
+    "08" to "Grand Est", "8" to "Grand Est",
+    "09" to "Occitanie", "9" to "Occitanie",
+    "10" to "Grand Est",
+    "11" to "Occitanie",
+    "12" to "Occitanie",
+    "13" to "Provence-Alpes-Côte d’Azur",
+    "14" to "Normandie",
+    "15" to "Auvergne-Rhône-Alpes",
+    "16" to "Nouvelle-Aquitaine",
+    "17" to "Nouvelle-Aquitaine",
+    "18" to "Centre-Val de Loire",
+    "19" to "Nouvelle-Aquitaine",
+    "2A" to "Corse",
+    "2B" to "Corse",
+    "21" to "Bourgogne-Franche-Comté",
+    "22" to "Bretagne",
+    "23" to "Nouvelle-Aquitaine",
+    "24" to "Nouvelle-Aquitaine",
+    "25" to "Bourgogne-Franche-Comté",
+    "26" to "Auvergne-Rhône-Alpes",
+    "27" to "Normandie",
+    "28" to "Centre-Val de Loire",
+    "29" to "Bretagne",
+    "30" to "Occitanie",
+    "31" to "Occitanie",
+    "32" to "Occitanie",
+    "33" to "Nouvelle-Aquitaine",
+    "34" to "Occitanie",
+    "35" to "Bretagne",
+    "36" to "Centre-Val de Loire",
+    "37" to "Centre-Val de Loire",
+    "38" to "Auvergne-Rhône-Alpes",
+    "39" to "Bourgogne-Franche-Comté",
+    "40" to "Nouvelle-Aquitaine",
+    "41" to "Centre-Val de Loire",
+    "42" to "Auvergne-Rhône-Alpes",
+    "43" to "Auvergne-Rhône-Alpes",
+    "44" to "Pays de la Loire",
+    "45" to "Centre-Val de Loire",
+    "46" to "Occitanie",
+    "47" to "Nouvelle-Aquitaine",
+    "48" to "Occitanie",
+    "49" to "Pays de la Loire",
+    "50" to "Normandie",
+    "51" to "Grand Est",
+    "52" to "Grand Est",
+    "53" to "Pays de la Loire",
+    "54" to "Grand Est",
+    "55" to "Grand Est",
+    "56" to "Bretagne",
+    "57" to "Grand Est",
+    "58" to "Bourgogne-Franche-Comté",
+    "59" to "Hauts-de-France",
+    "60" to "Hauts-de-France",
+    "61" to "Normandie",
+    "62" to "Hauts-de-France",
+    "63" to "Auvergne-Rhône-Alpes",
+    "64" to "Nouvelle-Aquitaine",
+    "65" to "Occitanie",
+    "66" to "Occitanie",
+    "67" to "Grand Est",
+    "68" to "Grand Est",
+    "69" to "Auvergne-Rhône-Alpes",
+    "70" to "Bourgogne-Franche-Comté",
+    "71" to "Bourgogne-Franche-Comté",
+    "72" to "Pays de la Loire",
+    "73" to "Auvergne-Rhône-Alpes",
+    "74" to "Auvergne-Rhône-Alpes",
+    "75" to "Île-de-France",
+    "76" to "Normandie",
+    "77" to "Île-de-France",
+    "78" to "Île-de-France",
+    "79" to "Nouvelle-Aquitaine",
+    "80" to "Hauts-de-France",
+    "81" to "Occitanie",
+    "82" to "Occitanie",
+    "83" to "Provence-Alpes-Côte d’Azur",
+    "84" to "Provence-Alpes-Côte d’Azur",
+    "85" to "Pays de la Loire",
+    "86" to "Nouvelle-Aquitaine",
+    "87" to "Nouvelle-Aquitaine",
+    "88" to "Grand Est",
+    "89" to "Bourgogne-Franche-Comté",
+    "90" to "Bourgogne-Franche-Comté",
+    "91" to "Île-de-France",
+    "92" to "Île-de-France",
+    "93" to "Île-de-France",
+    "94" to "Île-de-France",
+    "95" to "Île-de-France",
+    "971" to "Guadeloupe",
+    "972" to "Martinique",
+    "973" to "Guyane",
+    "974" to "La Réunion",
+    "975" to "Saint-Pierre-et-Miquelon",
+    "976" to "Mayotte",
+    "977" to "Saint-Barthélemy et Saint-Martin",
+    "978" to "Saint-Barthélemy et Saint-Martin",
+    "986" to "Wallis-et-Futuna",
+    "987" to "Polynésie française",
+    "988" to "Nouvelle-Calédonie",
+    "99" to "Français établis hors de France",
+    "099" to "Français établis hors de France"
+)
+
 private fun httpGet(url: String): String {
     return httpGetBytes(url).toString(Charsets.UTF_8)
 }
@@ -315,6 +487,8 @@ private fun JSONObject.optText(key: String): String {
         else -> value.toString()
     }
 }
+
+private fun JSONObject.optCleanString(key: String): String? = optText(key).trim().takeIf { it.isNotBlank() }
 
 private fun JSONObject.isActive(): Boolean = isNull("dateFin") || optString("dateFin").isBlank()
 

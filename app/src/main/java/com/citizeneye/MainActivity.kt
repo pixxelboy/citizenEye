@@ -448,7 +448,7 @@ private fun DeputySelectionScreen(selection: LookupState.NeedSelection, onSelect
                 Column(Modifier.padding(18.dp)) {
                     Text(depute.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
                     Text(depute.constituencyLabel, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
-                    Text(depute.group, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(depute.displayPoliticalGroupShort, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     depute.email?.let { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp) }
                     Spacer(Modifier.height(12.dp))
                     Button(onClick = { onSelect(depute) }, modifier = Modifier.fillMaxWidth()) { Text("Choisir ce député") }
@@ -506,7 +506,7 @@ private fun RepresentativeCard(match: DeputeMatch, onOuvrirStats: () -> Unit) {
                 Spacer(Modifier.width(16.dp))
                 Column(Modifier.weight(1f)) {
                     Text(match.depute.name, fontSize = 24.sp, lineHeight = 28.sp, fontWeight = FontWeight.Bold)
-                    Text(match.depute.group, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f))
+                    Text(match.depute.displayPoliticalGroupShort, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f))
                     Spacer(Modifier.height(8.dp))
                     Text(match.depute.constituencyLabel, lineHeight = 20.sp)
                 }
@@ -567,6 +567,7 @@ private fun DeputyStatsScreen(match: DeputeMatch, onRetour: () -> Unit) {
                 body = "Ces calculs couvrent les ${stats.totalVotes} scrutins publics de la XVIIe législature où ce député apparaît dans les données chargées. Ils mesurent la participation aux scrutins publics, pas la présence physique en séance."
             )
         }
+        item { DeputyInformationCard(match.depute) }
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 StatMetricCard(
@@ -602,6 +603,28 @@ private fun DeputyStatsScreen(match: DeputeMatch, onRetour: () -> Unit) {
             )
         }
         item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
+private fun DeputyInformationCard(depute: Depute) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp)) {
+            Text("Informations du député", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(12.dp))
+            DeputyInfoRow("Région", depute.displayRegion)
+            DeputyInfoRow("Département", depute.displayDepartment)
+            DeputyInfoRow("Profession", depute.displayProfession)
+            DeputyInfoRow("Groupe politique", depute.displayPoliticalGroupFull)
+        }
+    }
+}
+
+@Composable
+private fun DeputyInfoRow(label: String, value: String) {
+    Column(Modifier.fillMaxWidth().padding(vertical = 5.dp)) {
+        Text(label, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+        Text(value, lineHeight = 20.sp)
     }
 }
 

@@ -42,7 +42,7 @@ class DefaultVoteDetailRepository(
             article = article,
             motion = motion,
             voteBreakdown = vote.voteBreakdown,
-            groupPosition = vote.groupPosition ?: depute.group.takeIf { it.isNotBlank() }?.let { groupName ->
+            groupPosition = vote.groupPosition ?: depute.displayPoliticalGroupShort.takeIf { it.isNotBlank() }?.let { groupName ->
                 GroupVotePosition(
                     groupName = groupName,
                     groupMajorityPosition = null,
