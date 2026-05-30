@@ -15,6 +15,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -72,6 +73,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -88,6 +90,7 @@ import com.citizeneye.data.DeputyStats
 import com.citizeneye.data.LocationPreview
 import com.citizeneye.data.LookupState
 import com.citizeneye.data.PublicDataCache
+import com.citizeneye.data.PoliticalFamilies
 import com.citizeneye.data.StaticCitizenEyeDatasetClient
 import com.citizeneye.data.UpcomingVote
 import com.citizeneye.data.UpcomingVoteStatus
@@ -139,6 +142,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var query by rememberSaveable { mutableStateOf("") }
     var state by remember { mutableStateOf<LookupState>(LookupState.Idle) }
     var showingStats by rememberSaveable { mutableStateOf(false) }
+    var showingGroupDetails by rememberSaveable { mutableStateOf(false) }
     var selectedVote by remember { mutableStateOf<Vote?>(null) }
     var selectedUpcomingVote by remember { mutableStateOf<UpcomingVote?>(null) }
     var activeTab by rememberSaveable { mutableStateOf(MainTab.HOME) }
@@ -163,6 +167,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         showingStats = false
         selectedVote = null
         selectedUpcomingVote = null
+        showingGroupDetails = false
         activeTab = MainTab.HOME
         scope.launch { state = repository.lookup(currentQuery) }
     }
@@ -172,6 +177,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         showingStats = false
         selectedVote = null
         selectedUpcomingVote = null
+        showingGroupDetails = false
         activeTab = MainTab.HOME
         scope.launch { state = repository.loadDeputyVotes(query, commune, depute) }
     }
@@ -314,6 +320,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     val title = when {
                         selectedVote != null -> "Comprendre ce vote"
                         selectedUpcomingVote != null -> "Texte à venir"
+                        showingGroupDetails -> "Groupe politique"
                         showingStats -> "Profil député"
                         activeTab == MainTab.UPCOMING -> "À suivre"
                         activeTab == MainTab.HISTORY -> "Votes"
@@ -326,6 +333,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     when {
                         selectedVote != null -> TextButton(onClick = { selectedVote = null }) { Text("Retour") }
                         selectedUpcomingVote != null -> TextButton(onClick = { selectedUpcomingVote = null }) { Text("Retour") }
+                        showingGroupDetails -> TextButton(onClick = { showingGroupDetails = false }) { Text("Retour") }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
@@ -337,6 +345,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     activeTab = tab
                     selectedVote = null
                     selectedUpcomingVote = null
+                    showingGroupDetails = false
                     showingStats = false
                 })
             }
@@ -399,6 +408,11 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                         onOpenEmailDraft = ::openEmailDraft,
                         onRetry = ::retryVoteDetails
                     )
+                } else if (showingGroupDetails) {
+                    PoliticalGroupDetailScreen(
+                        match = current.match,
+                        onOpenSource = ::openExternalUrl
+                    )
                 } else {
                     when (activeTab) {
                         MainTab.HOME -> HomeScreen(
@@ -418,7 +432,11 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                             onOuvrirVoteDetails = { openVoteDetails(it, current.match.depute) },
                             onLoadMoreVotes = { state = LookupState.Loaded(current.match.withMoreVisibleVotes()) }
                         )
-                        MainTab.DEPUTY -> DeputyProfileScreen(match = current.match, onReset = { state = LookupState.Idle; query = ""; showingStats = false; activeTab = MainTab.HOME })
+                        MainTab.DEPUTY -> DeputyProfileScreen(
+                            match = current.match,
+                            onOpenGroup = { showingGroupDetails = true },
+                            onReset = { state = LookupState.Idle; query = ""; showingStats = false; showingGroupDetails = false; activeTab = MainTab.HOME }
+                        )
                     }
                 }
             }
@@ -581,7 +599,7 @@ private fun HomeScreen(match: DeputeMatch, onOpenUpcoming: () -> Unit, onOpenHis
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 StatMetricCard("Participation", "${stats.participationPercent}%", "scrutins", Modifier.weight(1f))
-                StatMetricCard("Dissidents", "${match.dissentPercent()}%", "vs groupe", Modifier.weight(1f))
+                StatMetricCard("Alignement", "${stats.groupAlignmentPercent}%", "avec groupe", Modifier.weight(1f))
             }
         }
         item { TextButton(onClick = onReset) { Text("Changer de localisation") } }
@@ -619,43 +637,325 @@ private fun VoteHistoryScreen(match: DeputeMatch, onOuvrirVoteDetails: (Vote) ->
 }
 
 @Composable
-private fun DeputyProfileScreen(match: DeputeMatch, onReset: () -> Unit) {
+private fun DeputyProfileScreen(match: DeputeMatch, onOpenGroup: () -> Unit, onReset: () -> Unit) {
     val stats = match.legislatureStats
+    val family = PoliticalFamilies.forDeputy(match.depute)
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item {
-            Card(shape = RoundedCornerShape(24.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-                Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
-                    DeputyPhoto(match.depute, sizeDp = 82)
-                    Spacer(Modifier.width(16.dp))
-                    Column(Modifier.weight(1f)) {
-                        Text(match.depute.name, fontSize = 26.sp, lineHeight = 30.sp, fontWeight = FontWeight.Bold)
-                        Text(match.depute.displayPoliticalGroupShort, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
-                        Text(match.depute.constituencyLabel, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 19.sp)
-                    }
-                }
-            }
-        }
-        item {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                StatMetricCard("Participation", "${stats.participationPercent}%", "scrutins", Modifier.weight(1f))
-                StatMetricCard("Votes suivis", stats.totalVotes.toString(), "publics", Modifier.weight(1f))
-            }
-        }
-        item { StatMetricCard("Votes dissidents", "${match.dissentPercent()}%", "position différente du groupe") }
-        item {
-            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-                Column(Modifier.padding(18.dp)) {
-                    Text("Contact", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                    Spacer(Modifier.height(10.dp))
-                    DeputyInfoRow("Email", match.depute.email ?: "Non renseigné")
-                    DeputyInfoRow("Assemblée nationale", match.depute.id)
-                    DeputyInfoRow("Site", "assemblee-nationale.fr")
-                }
-            }
-        }
+        item { DeputyDashboardHeader(match) }
+        item { PoliticalIdentityCard(match, family.politicalFamily, onOpenGroup) }
+        item { ParliamentaryActivityCard(match) }
+        item { VotingBehaviourCard(stats) }
+        item { VoteDistributionCard(stats) }
+        item { GroupAlignmentCard(stats) }
+        item { ActivityTimelineCard(match) }
+        item { RecentImportantVotesCard(match) }
+        item { BiographyBackgroundCard(match) }
+        item { SourcesMethodologyCard(match) }
         item { TextButton(onClick = onReset) { Text("Changer de localisation") } }
         item { Spacer(Modifier.height(12.dp)) }
     }
+}
+
+@Composable
+private fun DeputyDashboardHeader(match: DeputeMatch) {
+    val depute = match.depute
+    Card(shape = RoundedCornerShape(26.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                DeputyPhoto(depute, sizeDp = 88)
+                Spacer(Modifier.width(16.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(depute.name, fontSize = 27.sp, lineHeight = 31.sp, fontWeight = FontWeight.Bold)
+                    Text("Député de la ${depute.constituencyNumber}e circonscription du ${depute.departmentName}", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp)
+                }
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                GroupBadge(depute.displayPoliticalGroupShort, depute.displayPoliticalGroupFull, Modifier.weight(1f))
+                Column(Modifier.weight(1f)) {
+                    Text(depute.departmentName, fontWeight = FontWeight.SemiBold)
+                    Text(depute.displayRegion, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+                }
+            }
+            SourceLine("Assemblée nationale · données députés actifs")
+        }
+    }
+}
+
+@Composable
+private fun GroupBadge(shortName: String, fullName: String, modifier: Modifier = Modifier) {
+    Surface(modifier = modifier, shape = RoundedCornerShape(18.dp), color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+        Column(Modifier.padding(12.dp)) {
+            Text(shortName, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+            Text(fullName, fontSize = 12.sp, lineHeight = 16.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+        }
+    }
+}
+
+@Composable
+private fun PoliticalIdentityCard(match: DeputeMatch, politicalFamily: String, onOpenGroup: () -> Unit) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text("Identité politique", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            DeputyInfoRow("Groupe politique", "${match.depute.displayPoliticalGroupFull} (${match.depute.displayPoliticalGroupShort})")
+            DeputyInfoRow("Famille politique", politicalFamily)
+            DeputyInfoRow("Commission", "Information non disponible depuis les sources officielles chargées.")
+            DeputyInfoRow("Rôle parlementaire", "Membre")
+            TextButton(onClick = onOpenGroup) { Text("Voir le groupe politique") }
+            SourceLine("Assemblée nationale · configuration CitizenEye des familles politiques")
+        }
+    }
+}
+
+@Composable
+private fun ParliamentaryActivityCard(match: DeputeMatch) {
+    val stats = match.legislatureStats
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("Activité parlementaire", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                MiniKpi("Votes participés", stats.participatedVotes.toString(), Modifier.weight(1f))
+                MiniKpi("Questions", "N/D", Modifier.weight(1f))
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                MiniKpi("Interventions", "N/D", Modifier.weight(1f))
+                MiniKpi("Amendements", "N/D", Modifier.weight(1f))
+            }
+            MiniKpi("Rapports", "N/D")
+            Text("N/D : information non disponible dans les sources officielles actuellement chargées par l’application.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
+            SourceLine("Scrutins publics · Assemblée nationale")
+        }
+    }
+}
+
+@Composable
+private fun MiniKpi(label: String, value: String, modifier: Modifier = Modifier) {
+    Surface(modifier = modifier, shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surfaceVariant) {
+        Column(Modifier.padding(12.dp)) {
+            Text(value, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+            Text(label, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 15.sp)
+        }
+    }
+}
+
+@Composable
+private fun VotingBehaviourCard(stats: DeputyStats) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("Comportement de vote", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Text("Participation aux scrutins publics analysés", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text("${stats.participationPercent}%", fontSize = 36.sp, fontWeight = FontWeight.Bold)
+            ComparisonBar("Député", stats.participationPercent)
+            ComparisonBar("Moyenne du groupe", stats.groupAverageParticipationPercent)
+            ComparisonBar("Moyenne Assemblée", stats.assemblyAverageParticipationPercent)
+            Text("La participation affichée concerne les scrutins publics chargés, pas la présence physique en séance.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, lineHeight = 16.sp)
+            SourceLine("Scrutins publics · Assemblée nationale")
+        }
+    }
+}
+
+@Composable
+private fun ComparisonBar(label: String, percent: Int?) {
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(5.dp)) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Text(label, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+            Text(percent?.let { "$it%" } ?: "N/D", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+        }
+        Box(Modifier.fillMaxWidth().height(8.dp).background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(99.dp))) {
+            if (percent != null) {
+                Box(Modifier.fillMaxWidth(percent.coerceIn(0, 100) / 100f).height(8.dp).background(MaterialTheme.colorScheme.primary, RoundedCornerShape(99.dp)))
+            }
+        }
+    }
+}
+
+@Composable
+private fun VoteDistributionCard(stats: DeputyStats) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
+            VoteDistributionDonut(stats)
+            Spacer(Modifier.width(18.dp))
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Text("Répartition des votes", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                PositionLegend("Pour", VotePosition.POUR, stats)
+                PositionLegend("Contre", VotePosition.CONTRE, stats)
+                PositionLegend("Abstention", VotePosition.ABSTENTION, stats)
+                PositionLegend("Absent / non-votant", VotePosition.NON_VOTANT, stats)
+                SourceLine("Scrutins publics · Assemblée nationale")
+            }
+        }
+    }
+}
+
+@Composable
+private fun VoteDistributionDonut(stats: DeputyStats) {
+    val segments = listOf(
+        VotePosition.POUR to Color(0xFF53667E),
+        VotePosition.CONTRE to Color(0xFF7B6474),
+        VotePosition.ABSTENTION to Color(0xFF7A7461),
+        VotePosition.NON_VOTANT to Color(0xFF9AA1AA)
+    )
+    Box(Modifier.size(118.dp), contentAlignment = Alignment.Center) {
+        Canvas(Modifier.fillMaxSize()) {
+            val stroke = Stroke(width = 18.dp.toPx())
+            var start = -90f
+            segments.forEach { (position, color) ->
+                val sweep = if (stats.totalVotes == 0) 0f else 360f * stats.countFor(position).toFloat() / stats.totalVotes.toFloat()
+                if (sweep > 0f) drawArc(color = color, startAngle = start, sweepAngle = sweep, useCenter = false, style = stroke)
+                start += sweep
+            }
+        }
+        Text("${stats.totalVotes}\nvotes", fontSize = 13.sp, lineHeight = 15.sp, fontWeight = FontWeight.Bold)
+    }
+}
+
+@Composable
+private fun PositionLegend(label: String, position: VotePosition, stats: DeputyStats) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        Text(label, fontSize = 13.sp)
+        Text("${stats.countFor(position)} · ${stats.percentFor(position)}%", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+    }
+}
+
+@Composable
+private fun GroupAlignmentCard(stats: DeputyStats) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("Alignement avec le groupe politique", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Text("${stats.groupAlignmentPercent}%", fontSize = 36.sp, fontWeight = FontWeight.Bold)
+            ComparisonBar("Votes comparables", stats.groupAlignmentPercent)
+            Text("Pourcentage de votes où le député a voté comme la majorité de son groupe politique.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 19.sp)
+            Text("Base : ${stats.groupAlignmentComparableVotes} scrutins avec position de groupe disponible.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
+            SourceLine("Ventilation par groupes · Assemblée nationale")
+        }
+    }
+}
+
+@Composable
+private fun ActivityTimelineCard(match: DeputeMatch) {
+    val byMonth = match.allLegislatureVotes.groupBy { it.date.take(7) }.toSortedMap(compareByDescending { it }).entries.take(6)
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text("Activité dans le temps", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                SimpleChip("Votes")
+                SimpleChip("Questions N/D")
+                SimpleChip("Interventions N/D")
+            }
+            if (byMonth.isEmpty()) {
+                Text("Aucun scrutin public chargé.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            } else {
+                val max = byMonth.maxOf { it.value.size }.coerceAtLeast(1)
+                byMonth.forEach { (month, votes) ->
+                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                        Text(month.monthLabel(), modifier = Modifier.width(62.dp), fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Box(Modifier.weight(1f).height(9.dp).background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(99.dp))) {
+                            Box(Modifier.fillMaxWidth(votes.size.toFloat() / max.toFloat()).height(9.dp).background(MaterialTheme.colorScheme.primary, RoundedCornerShape(99.dp)))
+                        }
+                        Spacer(Modifier.width(8.dp))
+                        Text(votes.size.toString(), fontSize = 12.sp)
+                    }
+                }
+            }
+            SourceLine("Dates des scrutins publics · Assemblée nationale")
+        }
+    }
+}
+
+@Composable
+private fun RecentImportantVotesCard(match: DeputeMatch) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("Votes récents importants", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Text("Derniers scrutins publics disponibles dans les données chargées.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+            match.recentVotes.take(6).forEach { vote -> RecentImportantVoteRow(vote) }
+            SourceLine("Scrutins publics · Assemblée nationale")
+        }
+    }
+}
+
+@Composable
+private fun RecentImportantVoteRow(vote: Vote) {
+    Column(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text(vote.date.compactDate(), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+        Text(vote.title, fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis, lineHeight = 19.sp)
+        Text("Député : ${vote.deputePosition.label} · Groupe : ${vote.groupPosition?.groupMajorityPosition?.label ?: "N/D"} · Résultat : ${vote.result}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp, lineHeight = 17.sp)
+    }
+}
+
+@Composable
+private fun BiographyBackgroundCard(match: DeputeMatch) {
+    val depute = match.depute
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text("Biographie & parcours", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                DeputyPhoto(depute, sizeDp = 62)
+                Spacer(Modifier.width(12.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(depute.name, fontWeight = FontWeight.Bold)
+                    Text(depute.displayProfession, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+            DeputyInfoRow("Année de naissance", "Information non disponible depuis les sources officielles chargées.")
+            DeputyInfoRow("Profession", depute.displayProfession)
+            DeputyInfoRow("Département", depute.displayDepartment)
+            DeputyInfoRow("Région", depute.displayRegion)
+            DeputyInfoRow("Affiliation politique", "${depute.displayPoliticalGroupFull} (${depute.displayPoliticalGroupShort})")
+            DeputyInfoRow("Mandat actuel", "Député · ${depute.constituencyNumber}e circonscription du ${depute.departmentName}")
+            DeputyInfoRow("Mandats précédents", "Information non disponible depuis les sources officielles chargées.")
+            DeputyInfoRow("Commissions", "Information non disponible depuis les sources officielles chargées.")
+            DeputyInfoRow("Responsabilités particulières", "Information non disponible depuis les sources officielles chargées.")
+            SourceLine("Assemblée nationale · données députés actifs")
+        }
+    }
+}
+
+@Composable
+private fun SourcesMethodologyCard(match: DeputeMatch) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("Sources & méthodologie", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Text("Assemblée nationale · députés actifs, mandats et organes", lineHeight = 19.sp)
+            Text("Assemblée nationale · scrutins publics et ventilations de vote", lineHeight = 19.sp)
+            Text("geo.api.gouv.fr · communes et départements", lineHeight = 19.sp)
+            Text("CitizenEye calcule uniquement des indicateurs descriptifs à partir des votes publics chargés. Aucun score politique, aucune opinion et aucune inférence idéologique ne sont générés.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp)
+            Text("Base analysée : ${match.totalLegislatureVotes} scrutins publics pour ce député.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
+        }
+    }
+}
+
+@Composable
+private fun PoliticalGroupDetailScreen(match: DeputeMatch, onOpenSource: (String) -> Unit) {
+    val depute = match.depute
+    val family = PoliticalFamilies.forDeputy(depute)
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        item {
+            Card(shape = RoundedCornerShape(24.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(family.groupCode, color = MaterialTheme.colorScheme.primary, fontSize = 26.sp, fontWeight = FontWeight.Bold)
+                    Text(depute.displayPoliticalGroupFull, fontSize = 24.sp, lineHeight = 28.sp, fontWeight = FontWeight.Bold)
+                    DeputyInfoRow("Famille politique", family.politicalFamily)
+                    DeputyInfoRow("Nombre de députés", "Information non disponible depuis les sources officielles chargées.")
+                    DeputyInfoRow("Président du groupe", "Information non disponible depuis les sources officielles chargées.")
+                    DeputyInfoRow("Description officielle", "Consultez la page officielle de l’Assemblée nationale pour la description institutionnelle du groupe.")
+                    Text("Ce groupe représente actuellement un nombre de députés non disponible dans les sources chargées localement, sur 577 sièges.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp)
+                    Button(onClick = { onOpenSource(family.officialAssemblyUrl) }, modifier = Modifier.fillMaxWidth()) { Text("Page officielle Assemblée") }
+                    SourceLine("Assemblée nationale · groupes politiques")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SourceLine(label: String) {
+    Text("Source : $label", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp, lineHeight = 14.sp)
+}
+
+private fun String.monthLabel(): String {
+    val parts = split('-')
+    if (parts.size < 2) return this
+    return "${monthShort(parts[1])} ${parts[0]}"
 }
 
 @Composable
@@ -1061,3 +1361,5 @@ private fun positionColor(position: VotePosition): Color = when (position) {
     VotePosition.ABSTENTION,
     VotePosition.NON_VOTANT -> Color(0xFF5B667A)
 }
+
+
