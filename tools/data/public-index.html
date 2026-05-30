@@ -160,6 +160,8 @@
     .btn.secondary:hover { border-color: #b8c7da; box-shadow: var(--shadow-soft); }
     .btn.support { color: #2c2410; background: #ffdd66; border-color: #f0c94b; }
     .btn.support:hover { background: #ffd344; }
+    .btn.download { color: #fff; background: #0f513f; box-shadow: var(--shadow-soft); }
+    .btn.download:hover { background: #0a3f31; }
     .btn.small { min-height: 40px; padding: 10px 14px; font-size: 14px; }
     .focusable:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid rgba(21,59,111,.25); outline-offset: 3px; }
 
@@ -364,6 +366,20 @@
       padding: clamp(30px, 4vw, 52px);
       background: linear-gradient(135deg, #ffffff, #fff9e5 68%, #f8fafc);
     }
+    .download-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+      padding: clamp(30px, 4vw, 52px);
+      border: 1px solid #cbd9e9;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #ffffff, #eef6f2 70%, #f8fafc);
+      box-shadow: var(--shadow-soft);
+    }
+    .download-card p { max-width: 760px; color: var(--muted); font-size: 18px; }
+    .download-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .download-meta span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.78); font-size: 13px; font-weight: 700; }
     .support-card p { max-width: 720px; color: var(--muted); font-size: 18px; }
     .support-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -383,7 +399,7 @@
 
     @media (max-width: 1020px) {
       .nav-links a:not(.btn) { display: none; }
-      .hero-grid, .preview-block, .preview-block.reverse, .trust-grid, .neutral-card, .open-grid, .support-card { grid-template-columns: 1fr; }
+      .hero-grid, .preview-block, .preview-block.reverse, .trust-grid, .neutral-card, .open-grid, .support-card, .download-card { grid-template-columns: 1fr; }
       .preview-block.reverse .preview-copy { order: -1; }
       .metrics { grid-template-columns: repeat(2, 1fr); }
       .timeline { grid-template-columns: 1fr 1fr; }
@@ -410,7 +426,7 @@
       .preview-block { padding: 54px 0; gap: 34px; }
       .source-row { grid-template-columns: 44px minmax(0, 1fr); }
       .source-row a { grid-column: 2; }
-      .neutral-card, .open-card, .tech-card, .support-card { border-radius: 22px; }
+      .neutral-card, .open-card, .tech-card, .support-card, .download-card { border-radius: 22px; }
     }
   </style>
 </head>
@@ -423,6 +439,7 @@
         <a href="#how">How it works</a>
         <a href="#transparency">Data</a>
         <a href="#neutrality">Neutrality</a>
+        <a href="#download">Download</a>
         <a class="btn secondary small" href="https://github.com/pixxelboy/citizenEye">GitHub</a>
       </div>
     </div>
@@ -436,6 +453,7 @@
           <h1>Know how your representative votes.</h1>
           <p class="lead">CitizenEye makes parliamentary activity easier to understand through public data, transparent sources and a mobile-first experience.</p>
           <div class="hero-actions">
+            <a class="btn download" href="https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk">Download Android preview</a>
             <a class="btn primary" href="#preview">Explore the project</a>
             <a class="btn secondary" href="https://github.com/pixxelboy/citizenEye">View source code</a>
           </div>
@@ -582,7 +600,7 @@
             <li><i class="check">✓</i><span>Reproducible data generation from public sources.</span></li>
             <li><i class="check">✓</i><span>Public build process through GitHub Actions.</span></li>
           </ul>
-          <div class="hero-actions"><a class="btn primary" href="https://github.com/pixxelboy/citizenEye">View GitHub repository</a><a class="btn secondary" href="https://github.com/pixxelboy/citizenEye/issues">Contribute or report an issue</a></div>
+          <div class="hero-actions"><a class="btn primary" href="https://github.com/pixxelboy/citizenEye">View GitHub repository</a><a class="btn secondary" href="https://github.com/pixxelboy/citizenEye/issues">Contribute or report an issue</a><a class="btn download" href="https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk">Download preview APK</a></div>
         </div>
         <aside class="tech-card" aria-labelledby="tech-title">
           <h3 id="tech-title">Technical transparency</h3>
@@ -594,6 +612,20 @@
             <div class="tech-line"><span>Integrity</span><strong>SHA-256</strong></div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="section compact" id="download" aria-labelledby="download-title">
+      <div class="container">
+        <div class="download-card">
+          <div>
+            <div class="eyebrow">Android preview</div>
+            <h2 id="download-title">Download CitizenEye before Play Store release</h2>
+            <p>The preview APK is published through GitHub Releases so early testers can install the Android app before the Play Store listing is ready.</p>
+            <div class="download-meta"><span>APK preview build</span><span>GitHub Release</span><span>SHA-256 checksum provided</span><span>Requires sideload install permission</span></div>
+          </div>
+          <div class="support-actions"><a class="btn download" href="https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk">Download APK</a><a class="btn secondary" href="https://github.com/pixxelboy/citizenEye/releases/latest">Release notes</a></div>
+        </div>
       </div>
     </section>
 
@@ -617,7 +649,7 @@
         <div class="footer-brand">CitizenEye</div>
         <p class="footer-copy">A mobile-first civic project for understanding representative votes through public parliamentary data.</p>
       </div>
-      <div class="footer-col"><h3>Project</h3><a href="#preview">About</a><a href="https://github.com/pixxelboy/citizenEye">GitHub</a></div>
+      <div class="footer-col"><h3>Project</h3><a href="#preview">About</a><a href="#download">Download Android preview</a><a href="https://github.com/pixxelboy/citizenEye">GitHub</a></div>
       <div class="footer-col"><h3>Data</h3><a href="manifest.json">Manifest</a><a href="#transparency">Sources</a><a href="#neutrality">Transparency</a></div>
       <div class="footer-col"><h3>Community</h3><a href="https://buymeacoffee.com/pixxelboy">Support</a><a href="https://github.com/pixxelboy/citizenEye/issues">Issues</a></div>
       <div class="footer-col"><h3>Legal</h3><a href="#neutrality">Disclaimer</a><a href="https://github.com/pixxelboy/citizenEye">Privacy</a></div>

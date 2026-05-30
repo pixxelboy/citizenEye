@@ -1,0 +1,76 @@
+name: Android preview release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version label for the preview APK"
+        required: false
+        default: "manual-preview"
+
+permissions:
+  contents: write
+
+jobs:
+  build-preview-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build Android preview APK
+        run: ./gradlew testDebugUnitTest assembleDebug
+
+      - name: Prepare release assets
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/debug/app-debug.apk dist/citizeneye-preview.apk
+          shasum -a 256 dist/citizeneye-preview.apk > dist/citizeneye-preview.apk.sha256
+          cat > dist/RELEASE_NOTES.md <<'MD'
+          # CitizenEye Android preview
+
+          This APK is an early Android preview distributed before Play Store availability.
+
+          What to expect:
+          - discover your député from a location flow;
+          - browse public parliamentary votes;
+          - use the GitHub Pages static public-data cache with official-source fallback;
+          - verify source code and data generation in the public repository.
+
+          Install note:
+          Android may ask you to allow installation from your browser or file manager because this build is distributed outside the Play Store.
+
+          Integrity:
+          The SHA-256 checksum is attached as `citizeneye-preview.apk.sha256`.
+          MD
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: citizeneye-preview-apk
+          path: |
+            dist/citizeneye-preview.apk
+            dist/citizeneye-preview.apk.sha256
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: CitizenEye Android Preview ${{ github.ref_name }}
+          body_path: dist/RELEASE_NOTES.md
+          prerelease: true
+          files: |
+            dist/citizeneye-preview.apk
+            dist/citizeneye-preview.apk.sha256

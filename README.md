@@ -50,6 +50,16 @@ CitizenEye est déjà un MVP Android connecté à de vraies données publiques, 
 - Repli sur cache statique existant, puis sur les archives officielles de l’Assemblée nationale si GitHub Pages est temporairement indisponible.
 - Tests unitaires pour la recherche, le cache, les portraits, la pagination des votes, les statistiques et la géométrie des circonscriptions.
 
+## Télécharger l’APK Android
+
+Avant la disponibilité Play Store, une version de prévisualisation Android est publiée via GitHub Releases :
+
+- APK : https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk
+- Notes de version : https://github.com/pixxelboy/citizenEye/releases/latest
+- Empreinte SHA-256 : https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk.sha256
+
+Android peut demander d’autoriser l’installation depuis le navigateur ou le gestionnaire de fichiers, car cette version est distribuée hors Play Store.
+
 ## Soutenir le projet
 
 CitizenEye est développé comme un outil civique indépendant. Si le projet vous semble utile, vous pouvez soutenir son développement ici : https://buymeacoffee.com/pixxelboy
@@ -199,6 +209,16 @@ CitizenEye is already a real-data Android MVP, not a seeded demo.
 - Android manifest-based downloads: the app fetches versioned `.json.gz` files only when `manifest.json` changes.
 - Fallback to stale static cache, then to official Assemblée nationale archives if GitHub Pages is temporarily unavailable.
 - Unit tests for lookup, cache, deputy photos, vote pagination, stats, and constituency geometry.
+
+## Download the Android APK
+
+Before Play Store availability, an Android preview build is published through GitHub Releases:
+
+- APK: https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk
+- Release notes: https://github.com/pixxelboy/citizenEye/releases/latest
+- SHA-256 checksum: https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk.sha256
+
+Android may ask you to allow installation from your browser or file manager because this build is distributed outside the Play Store.
 
 ## Support the project
 
