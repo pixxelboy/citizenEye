@@ -70,7 +70,7 @@ jobs:
         with:
           name: CitizenEye Android Preview ${{ github.ref_name }}
           body_path: dist/RELEASE_NOTES.md
-          prerelease: true
+          prerelease: false
           files: |
             dist/citizeneye-preview.apk
             dist/citizeneye-preview.apk.sha256
