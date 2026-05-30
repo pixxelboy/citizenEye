@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CitizenEye compile les données publiques de l’Assemblée nationale en fichiers statiques vérifiables pour l’application Android.">
+  <title>CitizenEye — Données parlementaires publiques</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f9fc;
+      --heading: #061b31;
+      --body: #64748d;
+      --label: #273951;
+      --purple: #533afd;
+      --purple-hover: #4434d4;
+      --brand-dark: #1c1e54;
+      --border: #e5edf5;
+      --border-purple: #b9b9f9;
+      --green: #15be53;
+      --green-text: #108c3d;
+      --ruby: #ea2261;
+      --magenta: #f96bee;
+      --shadow: rgba(50, 50, 93, 0.25) 0 30px 45px -30px, rgba(0, 0, 0, 0.1) 0 18px 36px -18px;
+      --soft-shadow: rgba(23, 23, 23, 0.08) 0 15px 35px 0;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-feature-settings: "ss01";
+      background:
+        radial-gradient(circle at 12% 8%, rgba(83, 58, 253, 0.14), transparent 30rem),
+        radial-gradient(circle at 84% 4%, rgba(249, 107, 238, 0.12), transparent 28rem),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 64%, #ffffff 100%);
+      color: var(--body);
+      line-height: 1.45;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(229, 237, 245, 0.9);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--heading); font-weight: 500; }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--purple), var(--ruby) 60%, var(--magenta));
+      box-shadow: var(--shadow);
+      font-weight: 600;
+    }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 14px; color: var(--label); }
+    .nav-links a:hover { color: var(--purple); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 400;
+      border: 1px solid transparent;
+      transition: 160ms ease;
+    }
+    .button.primary { color: white; background: var(--purple); box-shadow: var(--soft-shadow); }
+    .button.primary:hover { background: var(--purple-hover); transform: translateY(-1px); }
+    .button.ghost { color: var(--purple); border-color: var(--border-purple); background: rgba(255,255,255,.65); }
+    .button.ghost:hover { background: rgba(83, 58, 253, 0.06); transform: translateY(-1px); }
+
+    .hero {
+      position: relative;
+      padding: 92px 0 78px;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, .78fr);
+      gap: 56px;
+      align-items: center;
+    }
+    .eyebrow {
+      width: max-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px;
+      color: var(--green-text);
+      background: rgba(21,190,83,.16);
+      border: 1px solid rgba(21,190,83,.35);
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--green); box-shadow: 0 0 0 4px rgba(21,190,83,.12); }
+    h1 {
+      margin: 22px 0 18px;
+      max-width: 780px;
+      color: var(--heading);
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -1.9px;
+      font-weight: 300;
+    }
+    .lead {
+      max-width: 640px;
+      margin: 0 0 28px;
+      color: var(--body);
+      font-size: 20px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+    .terminal-card {
+      position: relative;
+      border-radius: 8px;
+      background: #0d253d;
+      color: #d9e8ff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.7);
+      font-size: 12px;
+    }
+    .traffic { display: flex; gap: 6px; }
+    .traffic i { width: 9px; height: 9px; border-radius: 50%; display: block; background: #f96bee; }
+    .traffic i:nth-child(2) { background: #ffd166; }
+    .traffic i:nth-child(3) { background: #15be53; }
+    pre {
+      margin: 0;
+      padding: 22px;
+      white-space: pre-wrap;
+      font-family: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    .code-key { color: #9ddcff; }
+    .code-good { color: #7ef7ac; }
+    .code-accent { color: #f96bee; }
+
+    .section { padding: 72px 0; }
+    .section-title { max-width: 700px; margin-bottom: 28px; }
+    .section-title h2 {
+      margin: 0 0 10px;
+      color: var(--heading);
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.96px;
+      font-weight: 300;
+    }
+    .section-title p { margin: 0; font-size: 18px; font-weight: 300; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+    .stat-card, .feature-card {
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: rgba(23,23,23,.06) 0 3px 6px;
+    }
+    .stat-card { padding: 22px; }
+    .stat-value {
+      color: var(--heading);
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 300;
+      letter-spacing: -0.64px;
+      font-feature-settings: "tnum";
+    }
+    .stat-label { margin-top: 8px; color: var(--label); font-size: 14px; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .feature-card { padding: 24px; }
+    .feature-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: white;
+      background: linear-gradient(135deg, var(--purple), var(--magenta));
+      box-shadow: rgba(50,50,93,.2) 0 12px 24px -12px;
+    }
+    .feature-card h3 {
+      margin: 0 0 8px;
+      color: var(--heading);
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 300;
+      letter-spacing: -0.22px;
+    }
+    .feature-card p { margin: 0; }
+
+    .dark {
+      background: var(--brand-dark);
+      color: rgba(255,255,255,.72);
+      margin-top: 32px;
+      padding: 78px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10% auto auto;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(249,107,238,.24), transparent 62%);
+    }
+    .dark h2, .dark h3 { color: white; }
+    .pipeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .step {
+      min-height: 168px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.07);
+      border-radius: 8px;
+    }
+    .step-num { color: #b9b9f9; font-family: 'Source Code Pro', monospace; font-size: 12px; }
+    .step h3 { margin: 14px 0 8px; font-size: 21px; font-weight: 300; }
+    .step p { margin: 0; }
+
+    .data-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .file-row {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr) 120px auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: rgba(23,23,23,.05) 0 3px 10px;
+    }
+    .file-name { color: var(--heading); font-weight: 500; }
+    .file-url {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 12px;
+      color: var(--label);
+    }
+    .file-size { font-feature-settings: "tnum"; color: var(--body); font-size: 14px; }
+    .file-row a { color: var(--purple); font-size: 14px; }
+
+    footer {
+      padding: 38px 0 48px;
+      color: var(--body);
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .mono { font-family: 'Source Code Pro', monospace; font-size: 12px; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .features, .pipeline, .stats { grid-template-columns: 1fr; }
+      .hero { padding-top: 58px; }
+      .nav-links a:not(.button) { display: none; }
+      .file-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="./" aria-label="CitizenEye accueil">
+        <span class="mark">CE</span>
+        <span>CitizenEye</span>
+      </a>
+      <div class="nav-links">
+        <a href="#pipeline">Pipeline</a>
+        <a href="#data">Données</a>
+        <a href="manifest.json">Manifest</a>
+        <a class="button primary" href="https://github.com/pixxelboy/citizenEye">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Données publiques prêtes pour mobile</div>
+          <h1>Suivre l’Assemblée nationale sans serveur à maintenir.</h1>
+          <p class="lead">CitizenEye transforme les archives officielles de l’Assemblée nationale en fichiers JSON statiques, compacts et vérifiables. L’application Android télécharge uniquement ce qui change.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="manifest.json">Voir le manifest</a>
+            <a class="button ghost" href="#data">Explorer les fichiers</a>
+          </div>
+        </div>
+
+        <aside class="terminal-card" aria-label="Exemple de manifest CitizenEye">
+          <div class="terminal-top">
+            <div class="traffic"><i></i><i></i><i></i></div>
+            <span>manifest.json</span>
+          </div>
+          <pre>{
+  <span class="code-key">"dataset"</span>: <span class="code-accent">"citizeneye-assemblee-v17"</span>,
+  <span class="code-key">"schemaVersion"</span>: <span class="code-good">1</span>,
+  <span class="code-key">"files"</span>: [
+    <span class="code-accent">"deputies-&lt;sha&gt;.json.gz"</span>,
+    <span class="code-accent">"votes-&lt;sha&gt;.json.gz"</span>,
+    <span class="code-accent">"dossiers-&lt;sha&gt;.json.gz"</span>
+  ],
+  <span class="code-key">"integrity"</span>: <span class="code-good">"sha256 verified"</span>
+}</pre>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Un backend statique pour la transparence civique.</h2>
+          <p>Pas de base de données, pas de fonction cloud, pas d’API privée : uniquement des données publiques officielles compilées et servies par GitHub Pages.</p>
+        </div>
+        <div class="stats" id="stats">
+          <div class="stat-card"><div class="stat-value" id="deputyCount">577</div><div class="stat-label">députés actifs</div></div>
+          <div class="stat-card"><div class="stat-value" id="fileCount">3</div><div class="stat-label">fichiers JSON gzip</div></div>
+          <div class="stat-card"><div class="stat-value" id="datasetSize">—</div><div class="stat-label">taille compressée</div></div>
+          <div class="stat-card"><div class="stat-value">SHA</div><div class="stat-label">intégrité vérifiée</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell features">
+        <article class="feature-card">
+          <div class="feature-icon">↓</div>
+          <h3>Moins lourd pour le téléphone</h3>
+          <p>L’app ne parse plus les grandes archives publiques dans le parcours normal. Elle lit un index par député et charge les votes utiles.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">✓</div>
+          <h3>Vérifiable</h3>
+          <p>Chaque fichier est adressé par hash et validé en SHA-256 avant d’être utilisé par l’application Android.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">↺</div>
+          <h3>Résilient</h3>
+          <p>Si GitHub Pages est indisponible, l’app garde son cache local puis peut revenir aux sources officielles de l’Assemblée nationale.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="dark" id="pipeline">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Pipeline public, simple, auditable.</h2>
+          <p>GitHub Actions reconstruit régulièrement le jeu de données depuis les sources officielles, puis publie les fichiers statiques sur cette page.</p>
+        </div>
+        <div class="pipeline">
+          <article class="step"><div class="step-num">01</div><h3>Collecter</h3><p>Archives députés, scrutins et dossiers législatifs depuis data.assemblee-nationale.fr.</p></article>
+          <article class="step"><div class="step-num">02</div><h3>Nettoyer</h3><p>Normalisation des champs utiles : groupes, positions, résultats, texte parent et métadonnées.</p></article>
+          <article class="step"><div class="step-num">03</div><h3>Compresser</h3><p>JSON stable, gzip déterministe, noms de fichiers basés sur SHA-256.</p></article>
+          <article class="step"><div class="step-num">04</div><h3>Servir</h3><p>GitHub Pages expose le manifest et les fichiers versionnés pour le client Android.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="data">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Données publiées.</h2>
+          <p>Ces liens restent lisibles par l’application. Le site marketing n’interfère pas avec <span class="mono">manifest.json</span> ni avec les fichiers <span class="mono">.json.gz</span>.</p>
+        </div>
+        <div class="data-list" id="fileList">
+          <div class="file-row"><span class="file-name">manifest</span><span class="file-url">manifest.json</span><span class="file-size">live</span><a href="manifest.json">ouvrir</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div>CitizenEye — données parlementaires publiques, sans backend applicatif.</div>
+      <div class="mono" id="version">manifest: chargement…</div>
+    </div>
+  </footer>
+
+  <script>
+    const formatBytes = (bytes) => {
+      if (!Number.isFinite(bytes)) return '—';
+      const units = ['o', 'Ko', 'Mo', 'Go'];
+      let value = bytes;
+      let unit = 0;
+      while (value >= 1024 && unit < units.length - 1) { value /= 1024; unit++; }
+      return `${value.toFixed(value >= 10 || unit === 0 ? 0 : 1)} ${units[unit]}`;
+    };
+
+    fetch('manifest.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error(response.statusText)))
+      .then((manifest) => {
+        const files = Array.isArray(manifest.files) ? manifest.files : [];
+        const totalBytes = files.reduce((sum, file) => sum + (file.bytes || 0), 0);
+        document.getElementById('fileCount').textContent = files.length || '—';
+        document.getElementById('datasetSize').textContent = formatBytes(totalBytes);
+        document.getElementById('version').textContent = `manifest: ${String(manifest.version || '').slice(0, 12)} · ${manifest.generatedAt || 'date inconnue'}`;
+        const list = document.getElementById('fileList');
+        list.innerHTML = '<div class="file-row"><span class="file-name">manifest</span><span class="file-url">manifest.json</span><span class="file-size">live</span><a href="manifest.json">ouvrir</a></div>';
+        for (const file of files) {
+          const row = document.createElement('div');
+          row.className = 'file-row';
+          row.innerHTML = `<span class="file-name"></span><span class="file-url"></span><span class="file-size"></span><a>ouvrir</a>`;
+          row.children[0].textContent = file.name || 'dataset';
+          row.children[1].textContent = file.url || '';
+          row.children[2].textContent = formatBytes(file.bytes || 0);
+          row.children[3].setAttribute('href', file.url || '#');
+          list.appendChild(row);
+        }
+      })
+      .catch(() => {
+        document.getElementById('version').textContent = 'manifest: indisponible';
+      });
+  </script>
+</body>
+</html>

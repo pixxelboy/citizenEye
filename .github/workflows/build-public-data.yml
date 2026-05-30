@@ -41,20 +41,8 @@ jobs:
       - name: Build CitizenEye public dataset
         run: python tools/data/build_citizeneye_dataset.py --out public
 
-      - name: Add minimal index
-        run: |
-          cat > public/index.html <<'HTML'
-          <!doctype html>
-          <html lang="fr">
-            <meta charset="utf-8">
-            <title>CitizenEye public data</title>
-            <body>
-              <h1>CitizenEye public data</h1>
-              <p>Static public-data files generated from official Assemblée nationale open data.</p>
-              <p><a href="manifest.json">manifest.json</a></p>
-            </body>
-          </html>
-          HTML
+      - name: Add marketing index
+        run: cp tools/data/public-index.html public/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
