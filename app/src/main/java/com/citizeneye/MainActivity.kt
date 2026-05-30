@@ -45,11 +45,13 @@ import androidx.compose.material.icons.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -102,6 +104,10 @@ import com.citizeneye.data.formatPositionInContext
 import com.citizeneye.data.formatVoteResultLabel
 import com.citizeneye.ui.CitizenEyeLoader
 import com.citizeneye.ui.theme.CitizenEyeTheme
+import com.citizeneye.update.AppUpdateManager
+import com.citizeneye.update.UpdateCheckResult
+import com.citizeneye.update.UpdateInstallResult
+import com.citizeneye.update.UpdateManifest
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -158,8 +164,12 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var geoLoading by rememberSaveable { mutableStateOf(false) }
     var geolocationPreviewQuery by rememberSaveable { mutableStateOf<String?>(null) }
     var inlineError by rememberSaveable { mutableStateOf<String?>(null) }
+    var updatePrompt by remember { mutableStateOf<UpdateManifest?>(null) }
+    var updateDownloading by rememberSaveable { mutableStateOf(false) }
+    var updateMessage by rememberSaveable { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val updateManager = remember(context) { AppUpdateManager(context.applicationContext) }
 
     fun runLookup() {
         val currentQuery = query.trim()
@@ -299,6 +309,13 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         previewLoading = true
         preview = runCatching { repository.previewLocation(cleanQuery) }.getOrNull()
         previewLoading = false
+    }
+
+    LaunchedEffect(Unit) {
+        when (val result = updateManager.checkForUpdate()) {
+            is UpdateCheckResult.UpdateAvailable -> updatePrompt = result.manifest
+            else -> Unit
+        }
     }
 
     LaunchedEffect(activeTab) {
@@ -442,6 +459,66 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
             }
         }
     }
+
+    updatePrompt?.let { manifest ->
+        UpdateAvailableDialog(
+            manifest = manifest,
+            downloading = updateDownloading,
+            message = updateMessage,
+            onLater = {
+                updatePrompt = null
+                updateMessage = null
+            },
+            onUpdate = {
+                scope.launch {
+                    updateDownloading = true
+                    updateMessage = "Téléchargement de l’APK…"
+                    when (updateManager.downloadAndStartInstall(manifest)) {
+                        UpdateInstallResult.InstallerStarted -> {
+                            updateMessage = "Confirmez l’installation dans Android."
+                            updatePrompt = null
+                        }
+                        UpdateInstallResult.UnknownSourcesPermissionRequired -> {
+                            updateMessage = "Autorisez CitizenEye à installer des APK, puis relancez la mise à jour."
+                        }
+                        is UpdateInstallResult.Failed -> {
+                            updateMessage = "Mise à jour impossible. Réessayez plus tard."
+                        }
+                    }
+                    updateDownloading = false
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun UpdateAvailableDialog(
+    manifest: UpdateManifest,
+    downloading: Boolean,
+    message: String?,
+    onLater: () -> Unit,
+    onUpdate: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = { if (!downloading) onLater() },
+        title = { Text("Nouvelle version disponible") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("Version ${manifest.versionName}", fontWeight = FontWeight.SemiBold)
+                manifest.releaseNotes.take(4).forEach { note -> Text("• $note") }
+                Text("Android vous demandera de confirmer l’installation de l’APK.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                message?.let { Text(it, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold) }
+                if (downloading) LinearProgressIndicator(Modifier.fillMaxWidth())
+            }
+        },
+        confirmButton = {
+            Button(onClick = onUpdate, enabled = !downloading) { Text("Mettre à jour") }
+        },
+        dismissButton = {
+            TextButton(onClick = onLater, enabled = !downloading) { Text(if (manifest.mandatory) "Continuer" else "Plus tard") }
+        }
+    )
 }
 
 @Composable

@@ -1,0 +1,198 @@
+name: Android APK update release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        description: "One release note per line for update.json"
+        required: false
+        default: "Mise à jour CitizenEye"
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  APK_BASENAME: citizeneye
+
+concurrency:
+  group: citizeneye-apk-update-release
+  cancel-in-progress: false
+
+jobs:
+  build-release-apk:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Read Android version
+        id: version
+        run: |
+          VERSION_CODE=$(grep '^citizeneye.versionCode=' gradle.properties | cut -d= -f2)
+          VERSION_NAME=$(grep '^citizeneye.versionName=' gradle.properties | cut -d= -f2)
+          test -n "$VERSION_CODE"
+          test -n "$VERSION_NAME"
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG="${GITHUB_REF_NAME}"
+          else
+            TAG="v${VERSION_NAME}"
+          fi
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure versionCode increases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION_CODE: ${{ steps.version.outputs.version_code }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.error
+          repo = os.environ['GITHUB_REPOSITORY']
+          token = os.environ.get('GH_TOKEN', '')
+          req = urllib.request.Request(
+              f'https://api.github.com/repos/{repo}/releases/latest',
+              headers={'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json'}
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=20) as response:
+                  release = json.load(response)
+          except Exception as error:
+              print(f'No previous release found; skipping monotonic versionCode check: {error}')
+              raise SystemExit(0)
+          asset = next((a for a in release.get('assets', []) if a.get('name') == 'update.json'), None)
+          if not asset:
+              print('Latest release has no update.json; skipping monotonic versionCode check')
+              raise SystemExit(0)
+          with urllib.request.urlopen(urllib.request.Request(asset['browser_download_url'], headers={'Authorization': f'Bearer {token}'}), timeout=20) as response:
+              latest = json.load(response)
+          previous = int(latest.get('versionCode', 0))
+          current = int(os.environ['VERSION_CODE'])
+          if current <= previous:
+              raise SystemExit(f'citizeneye.versionCode must increase: current={current}, latest={previous}')
+          print(f'versionCode ok: {current} > {previous}')
+          PY
+
+      - name: Configure release signing
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.CITIZENEYE_RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_STORE_PASSWORD: ${{ secrets.CITIZENEYE_RELEASE_STORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.CITIZENEYE_RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.CITIZENEYE_RELEASE_KEY_PASSWORD }}
+        run: |
+          test -n "$RELEASE_KEYSTORE_BASE64" || (echo "Missing CITIZENEYE_RELEASE_KEYSTORE_BASE64" && exit 1)
+          test -n "$RELEASE_STORE_PASSWORD" || (echo "Missing CITIZENEYE_RELEASE_STORE_PASSWORD" && exit 1)
+          test -n "$RELEASE_KEY_ALIAS" || (echo "Missing CITIZENEYE_RELEASE_KEY_ALIAS" && exit 1)
+          test -n "$RELEASE_KEY_PASSWORD" || (echo "Missing CITIZENEYE_RELEASE_KEY_PASSWORD" && exit 1)
+          mkdir -p "$RUNNER_TEMP/signing"
+          echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/signing/citizeneye-release.jks"
+          echo "CITIZENEYE_RELEASE_STORE_FILE=$RUNNER_TEMP/signing/citizeneye-release.jks" >> "$GITHUB_ENV"
+          echo "CITIZENEYE_RELEASE_STORE_PASSWORD=$RELEASE_STORE_PASSWORD" >> "$GITHUB_ENV"
+          echo "CITIZENEYE_RELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> "$GITHUB_ENV"
+          echo "CITIZENEYE_RELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> "$GITHUB_ENV"
+
+      - name: Build signed release APK
+        run: ./gradlew testDebugUnitTest assembleRelease
+
+      - name: Prepare release assets
+        env:
+          VERSION_CODE: ${{ steps.version.outputs.version_code }}
+          VERSION_NAME: ${{ steps.version.outputs.version_name }}
+          TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_NOTES_INPUT: ${{ github.event.inputs.release_notes }}
+        run: |
+          mkdir -p dist
+          APK="dist/${APK_BASENAME}-${VERSION_NAME}.apk"
+          cp app/build/outputs/apk/release/app-release.apk "$APK"
+          SHA256=$(shasum -a 256 "$APK" | cut -d' ' -f1)
+          echo "$SHA256  $(basename "$APK")" > "$APK.sha256"
+          export APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/$(basename "$APK")"
+          export SHA256
+          python3 - <<'PY'
+          import json, os, datetime
+          notes_input = os.environ.get('RELEASE_NOTES_INPUT') or 'Mise à jour CitizenEye'
+          notes = [line.strip('-• ') for line in notes_input.splitlines() if line.strip()]
+          manifest = {
+              'versionCode': int(os.environ['VERSION_CODE']),
+              'versionName': os.environ['VERSION_NAME'],
+              'apkUrl': os.environ['APK_URL'],
+              'releaseNotes': notes,
+              'mandatory': False,
+              'publishedAt': datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+              'sha256': os.environ['SHA256'],
+          }
+          with open('dist/update.json', 'w', encoding='utf-8') as f:
+              json.dump(manifest, f, ensure_ascii=False, indent=2)
+              f.write('\n')
+          with open('dist/RELEASE_NOTES.md', 'w', encoding='utf-8') as f:
+              f.write(f"# CitizenEye Android {manifest['versionName']}\n\n")
+              for note in notes:
+                  f.write(f"- {note}\n")
+              f.write("\nInstallation : Android demandera une confirmation avant d’installer l’APK.\n")
+          PY
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION_NAME: ${{ steps.version.outputs.version_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/${APK_BASENAME}-${VERSION_NAME}.apk dist/${APK_BASENAME}-${VERSION_NAME}.apk.sha256 dist/update.json --clobber
+          else
+            gh release create "$TAG" \
+              --target "$GITHUB_SHA" \
+              --title "CitizenEye Android ${VERSION_NAME}" \
+              --notes-file dist/RELEASE_NOTES.md \
+              dist/${APK_BASENAME}-${VERSION_NAME}.apk \
+              dist/${APK_BASENAME}-${VERSION_NAME}.apk.sha256 \
+              dist/update.json
+          fi
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python requirements
+        if: ${{ hashFiles('tools/data/requirements.txt') != '' }}
+        run: |
+          if [ -s tools/data/requirements.txt ]; then
+            python -m pip install -r tools/data/requirements.txt
+          fi
+
+      - name: Build CitizenEye public site
+        run: |
+          python tools/data/build_citizeneye_dataset.py --out public
+          cp tools/data/public-index.html public/index.html
+          mkdir -p public/assets/screenshots public/assets/brand
+          cp docs/screenshots/*.svg public/assets/screenshots/
+          cp app/src/main/res/raw/eye.json public/assets/brand/eye.json
+          cp docs/brand/citizeneye-eye.svg public/assets/brand/citizeneye-eye.svg
+          cp dist/update.json public/update.json
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -8,18 +8,34 @@ android {
     namespace = "com.citizeneye"
     compileSdk = 35
 
+    val citizenEyeVersionCode = providers.gradleProperty("citizeneye.versionCode").get().toInt()
+    val citizenEyeVersionName = providers.gradleProperty("citizeneye.versionName").get()
+
     defaultConfig {
         applicationId = "com.citizeneye"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = citizenEyeVersionCode
+        versionName = citizenEyeVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        create("release") {
+            val releaseStoreFile = System.getenv("CITIZENEYE_RELEASE_STORE_FILE")
+            if (!releaseStoreFile.isNullOrBlank()) {
+                storeFile = file(releaseStoreFile)
+                storePassword = System.getenv("CITIZENEYE_RELEASE_STORE_PASSWORD")
+                keyAlias = System.getenv("CITIZENEYE_RELEASE_KEY_ALIAS")
+                keyPassword = System.getenv("CITIZENEYE_RELEASE_KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         create("preview") {
@@ -50,6 +66,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     implementation("io.coil-kt:coil-compose:2.7.0")
     implementation("com.airbnb.android:lottie-compose:6.6.6")

@@ -57,6 +57,41 @@ jobs:
           cp app/src/main/res/raw/eye.json public/assets/brand/eye.json
           cp docs/brand/citizeneye-eye.svg public/assets/brand/citizeneye-eye.svg
 
+      - name: Preserve latest APK update manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          repo = os.environ['GITHUB_REPOSITORY']
+          req = urllib.request.Request(
+              f'https://api.github.com/repos/{repo}/releases/latest',
+              headers={'Authorization': f"Bearer {os.environ.get('GH_TOKEN', '')}", 'Accept': 'application/vnd.github+json'}
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=20) as response:
+                  release = json.load(response)
+          except Exception as error:
+              print(f'No latest release update manifest preserved: {error}')
+              raise SystemExit(0)
+          asset = next((a for a in release.get('assets', []) if a.get('name') == 'update.json'), None)
+          if not asset:
+              print('Latest release has no update.json asset')
+              raise SystemExit(0)
+          req = urllib.request.Request(
+              asset['browser_download_url'],
+              headers={'Authorization': f"Bearer {os.environ.get('GH_TOKEN', '')}"}
+          )
+          with urllib.request.urlopen(req, timeout=20) as response:
+              data = response.read()
+          parsed = json.loads(data.decode('utf-8'))
+          if not str(parsed.get('apkUrl', '')).startswith('https://'):
+              raise SystemExit('Refusing update.json with non-HTTPS apkUrl')
+          with open('public/update.json', 'wb') as f:
+              f.write(data)
+          print('Preserved latest release update.json')
+          PY
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
