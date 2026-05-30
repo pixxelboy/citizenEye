@@ -444,16 +444,16 @@ private fun OnboardingScreen(
     ) {
         Column {
             Spacer(Modifier.height(24.dp))
-            Text("Comprendre les votes de votre député.\nSans compte.", fontSize = 34.sp, lineHeight = 38.sp, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.height(12.dp))
+            Text("Suivre votre député", fontSize = 34.sp, lineHeight = 38.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(8.dp))
             Text(
-                "Entrez votre ville ou votre code postal pour retrouver votre circonscription, votre député et ses votes publics à l’Assemblée nationale.",
+                "Code postal ou ville. Résultat immédiat.",
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 16.sp,
+                fontSize = 17.sp,
                 lineHeight = 23.sp
             )
-            Spacer(Modifier.height(28.dp))
-            InfoCard("Données publiques officielles", "Commune : geo.api.gouv.fr.\nDéputés et scrutins : Open Data de l’Assemblée nationale.\nSi plusieurs circonscriptions sont possibles, CitizenEye vous demande de choisir au lieu de deviner.")
+            Spacer(Modifier.height(12.dp))
+            Text("Sources : Assemblée nationale · geo.api.gouv.fr", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
         }
         Column {
             OutlinedTextField(
@@ -464,7 +464,7 @@ private fun OnboardingScreen(
                 placeholder = { Text("92000 ou Nanterre") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 singleLine = true,
-                supportingText = { Text(error ?: if (previewLoading) "Recherche de votre commune…" else "Exemple : 92000 ou Nanterre. Vous pourrez confirmer la circonscription ensuite.") },
+                supportingText = { Text(error ?: if (previewLoading) "Recherche…" else "Exemple : 92000 ou Nanterre") },
                 isError = error != null
             )
             Spacer(Modifier.height(10.dp))
@@ -473,7 +473,7 @@ private fun OnboardingScreen(
                 Spacer(Modifier.width(8.dp))
                 Text(if (geoLoading) "Localisation…" else "Utiliser ma localisation")
             }
-            Text("Votre position sert uniquement à identifier votre circonscription.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
+            Text("Position utilisée seulement pour la circonscription.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
             preview?.let { LocationPreviewCard(it) }
             Spacer(Modifier.height(12.dp))
             Button(onClick = onSubmit, enabled = query.trim().length >= 2 && !loading && !previewLoading && !geoLoading, modifier = Modifier.fillMaxWidth().height(54.dp)) {
@@ -981,9 +981,9 @@ private fun DeputeMatch.dissentPercent(): Int {
 }
 
 private fun upcomingBullets(vote: UpcomingVote): List<String> = listOf(
-    vote.shortSummary,
-    "Étape actuelle : ${vote.currentStage}",
-    "Prochaine date : ${vote.expectedDateLabel}"
+    "Texte parlementaire en cours",
+    "Étape : ${vote.currentStage}",
+    "Vote : ${vote.expectedDateLabel}"
 ).map { it.cleanBullet() }.filter { it.isNotBlank() }.take(3)
 
 private fun String.cleanBullet(maxChars: Int = 110): String =
