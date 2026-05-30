@@ -93,6 +93,10 @@ class CitizenEyeRepository(
             LookupState.Error("Député sélectionné, mais les votes n’ont pas pu être chargés : ${error.message ?: error::class.java.simpleName}")
         }
     }
+
+    suspend fun fetchUpcomingVotes(): List<UpcomingVote> = withContext(Dispatchers.IO) {
+        assembleeClient.fetchUpcomingVotes()
+    }
 }
 
 class GeoGouvClient {
@@ -212,6 +216,21 @@ class AssembleeNationaleClient(
         return votes.sortedByDescending { it.date }
     }
 
+    fun fetchUpcomingVotes(limit: Int = 30): List<UpcomingVote> {
+        staticDatasetClient?.let { client ->
+            runCatching { client.fetchUpcomingVotes(limit) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { return it }
+        }
+        val upcoming = mutableListOf<UpcomingVote>()
+        readZipEntries(DOSSIERS_URL, DOSSIERS_CACHE_KEY) { name, bytes ->
+            if (!name.startsWith("json/dossierParlementaire/") || !name.endsWith(".json")) return@readZipEntries
+            val dossier = JSONObject(String(bytes, Charsets.UTF_8)).optJSONObject("dossierParlementaire") ?: return@readZipEntries
+            dossier.toUpcomingVoteFromOfficialZip()?.let { upcoming += it }
+        }
+        return upcoming
+            .sortedWith(compareBy<UpcomingVote> { it.status.ordinal }.thenBy { it.title })
+            .take(limit)
+    }
+
     private fun findPosition(scrutin: JSONObject, actorId: String): VotePosition? {
         val groupes = scrutin.optJSONObject("ventilationVotes")
             ?.optJSONObject("organe")
@@ -292,8 +311,10 @@ class AssembleeNationaleClient(
     companion object {
         private const val ACTIVE_DEPUTIES_URL = "https://data.assemblee-nationale.fr/static/openData/repository/17/amo/deputes_actifs_mandats_actifs_organes/AMO10_deputes_actifs_mandats_actifs_organes.json.zip"
         private const val SCRUTINS_URL = "https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip"
+        private const val DOSSIERS_URL = "https://data.assemblee-nationale.fr/static/openData/repository/17/loi/dossiers_legislatifs/Dossiers_Legislatifs.json.zip"
         private const val ACTIVE_DEPUTIES_CACHE_KEY = "assemblee-active-deputies-v17.zip"
         private const val SCRUTINS_CACHE_KEY = "assemblee-scrutins-v17.zip"
+        private const val DOSSIERS_CACHE_KEY = "assemblee-dossiers-v17.zip"
     }
 
     private fun readZipEntries(url: String, cacheKey: String, onEntry: (String, ByteArray) -> Unit) {
@@ -305,6 +326,61 @@ class AssembleeNationaleClient(
                 zip.closeEntry()
             }
         }
+    }
+}
+
+private fun JSONObject.toUpcomingVoteFromOfficialZip(): UpcomingVote? {
+    val id = optText("uid").takeIf { it.isNotBlank() } ?: return null
+    val title = optJSONObject("titreDossier")?.optCleanString("titre") ?: return null
+    val acts = optJSONObject("actesLegislatifs")
+        ?.optJSONArrayOrObject("acteLegislatif")
+        .orEmpty()
+        .flatMap { it.flattenLegislativeActs() }
+    val latest = acts.asReversed().firstOrNull { it.optJSONObject("libelleActe")?.optCleanString("libelleCourt") != null }
+    val adoption = acts.asReversed().firstOrNull { act ->
+        val code = act.optString("codeActe")
+        code.contains("ADOPTION", ignoreCase = true) || code.contains("REJET", ignoreCase = true)
+    }
+    if (adoption != null) return null
+    val stage = latest?.optJSONObject("libelleActe")?.optCleanString("libelleCourt")
+        ?: optJSONObject("procedureParlementaire")?.optCleanString("libelle")
+        ?: "Étape parlementaire en cours"
+    val status = when {
+        acts.any { (it.optString("codeActe")).contains("COM", ignoreCase = true) } -> UpcomingVoteStatus.COMMITTEE_REVIEW
+        stage.contains("séance", ignoreCase = true) || stage.contains("discussion", ignoreCase = true) || stage.contains("débat", ignoreCase = true) -> UpcomingVoteStatus.UNDER_DISCUSSION
+        else -> UpcomingVoteStatus.AGENDA_ITEM
+    }
+    val sourceUrl = "https://www.assemblee-nationale.fr/dyn/recherche?search=${URLEncoder.encode(title, "UTF-8")}"
+    val timeline = acts.mapNotNull { act ->
+        val label = act.optJSONObject("libelleActe")?.optCleanString("libelleCourt") ?: return@mapNotNull null
+        UpcomingVoteTimelineEvent(label = label, date = act.optCleanString("dateActe"))
+    }.takeLast(5)
+    return UpcomingVote(
+        id = id,
+        title = title,
+        shortSummary = buildCitizenUpcomingSummary(title),
+        citizenSummary = buildCitizenUpcomingSummary(title),
+        currentStage = stage,
+        status = status,
+        expectedDateLabel = "Date non annoncée",
+        sourceUrl = sourceUrl,
+        officialDocuments = listOf(sourceUrl),
+        timeline = timeline.ifEmpty { listOf(UpcomingVoteTimelineEvent(stage)) }
+    )
+}
+
+private fun JSONObject.flattenLegislativeActs(): List<JSONObject> {
+    val children = optJSONObject("actesLegislatifs")?.optJSONArrayOrObject("acteLegislatif").orEmpty()
+        .flatMap { it.flattenLegislativeActs() }
+    return listOf(this) + children
+}
+
+private fun buildCitizenUpcomingSummary(title: String): String {
+    val cleaned = title.replace(Regex("\\s+"), " ").trim()
+    return if (cleaned.length <= 140) {
+        "Texte en cours de parcours parlementaire : $cleaned. Les étapes affichées proviennent des sources officielles."
+    } else {
+        "Texte en cours de parcours parlementaire : ${cleaned.take(137).trimEnd()}… Les étapes affichées proviennent des sources officielles."
     }
 }
 

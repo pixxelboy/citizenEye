@@ -32,6 +32,18 @@ open class StaticCitizenEyeDatasetClient(
         return dossier.toParentTextDetails()
     }
 
+    open fun fetchUpcomingVotes(limit: Int = 30): List<UpcomingVote> {
+        val files = ensureDataset()
+        val root = JSONObject(gunzip(files.getValue("dossiers")).toString(Charsets.UTF_8))
+        val dossiers = root.optJSONObject("dossiersByRef") ?: return emptyList()
+        return dossiers.keys().asSequence()
+            .mapNotNull { ref -> dossiers.optJSONObject(ref)?.toUpcomingVote(ref) }
+            .filter { vote -> vote.title.isNotBlank() }
+            .sortedWith(compareBy<UpcomingVote> { it.status.ordinal }.thenBy { it.title })
+            .take(limit)
+            .toList()
+    }
+
     private fun ensureDataset(): Map<String, ByteArray> {
         cacheRoot.mkdirs()
         val localManifest = File(cacheRoot, MANIFEST_FILE)
@@ -158,6 +170,44 @@ private fun JSONObject.toParentTextDetails(): ParentTextDetails = ParentTextDeta
     depositNumber = optNullableString("depositNumber"),
     adoptionStatus = optNullableString("adoptionStatus")
 )
+
+private fun JSONObject.toUpcomingVote(ref: String): UpcomingVote? {
+    val title = optNullableString("title") ?: return null
+    val adoptionStatus = optNullableString("adoptionStatus")
+    if (adoptionStatus?.contains("adopt", ignoreCase = true) == true || adoptionStatus?.contains("rejet", ignoreCase = true) == true) {
+        return null
+    }
+    val stage = optNullableString("procedureStage") ?: optNullableString("type") ?: "Étape parlementaire en cours"
+    val status = when {
+        stage.contains("commission", ignoreCase = true) || optNullableString("commissionName") != null -> UpcomingVoteStatus.COMMITTEE_REVIEW
+        stage.contains("séance", ignoreCase = true) || stage.contains("discussion", ignoreCase = true) || stage.contains("debat", ignoreCase = true) || stage.contains("débat", ignoreCase = true) -> UpcomingVoteStatus.UNDER_DISCUSSION
+        else -> UpcomingVoteStatus.AGENDA_ITEM
+    }
+    val sourceUrl = optNullableString("dossierUrl") ?: "https://www.assemblee-nationale.fr/dyn/recherche?search=$ref"
+    return UpcomingVote(
+        id = ref,
+        title = title,
+        shortSummary = citizenSummaryFor(title),
+        citizenSummary = citizenSummaryFor(title),
+        currentStage = stage,
+        status = status,
+        expectedDateLabel = "Date non annoncée",
+        sourceUrl = sourceUrl,
+        officialDocuments = listOf(sourceUrl),
+        timeline = listOfNotNull(
+            optNullableString("depositNumber")?.let { UpcomingVoteTimelineEvent("Texte déposé n°$it") },
+            UpcomingVoteTimelineEvent(stage)
+        )
+    )
+}
+
+private fun citizenSummaryFor(title: String): String {
+    val cleaned = title.replace(Regex("\\s+"), " ").trim()
+    return when {
+        cleaned.length <= 150 -> "Texte parlementaire en cours : $cleaned. CitizenEye affiche uniquement les informations officielles disponibles."
+        else -> "Texte parlementaire en cours : ${cleaned.take(147).trimEnd()}… CitizenEye affiche uniquement les informations officielles disponibles."
+    }
+}
 
 private fun JSONArray?.orEmptyObjects(): List<JSONObject> {
     if (this == null) return emptyList()

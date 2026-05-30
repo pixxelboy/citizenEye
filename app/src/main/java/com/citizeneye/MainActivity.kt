@@ -35,14 +35,24 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Ballot
+import androidx.compose.material.icons.outlined.CalendarMonth
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.History
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LocationOn
+import androidx.compose.material.icons.outlined.OpenInNew
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -79,6 +89,8 @@ import com.citizeneye.data.LocationPreview
 import com.citizeneye.data.LookupState
 import com.citizeneye.data.PublicDataCache
 import com.citizeneye.data.StaticCitizenEyeDatasetClient
+import com.citizeneye.data.UpcomingVote
+import com.citizeneye.data.UpcomingVoteStatus
 import com.citizeneye.data.VoteConcern
 import com.citizeneye.data.VotePosition
 import com.citizeneye.data.Vote
@@ -93,6 +105,20 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Locale
+
+private enum class MainTab(val label: String) {
+    HOME("Accueil"),
+    UPCOMING("À venir"),
+    HISTORY("Historique"),
+    DEPUTY("Député"),
+    SETTINGS("Réglages")
+}
+
+private sealed interface UpcomingVotesUiState {
+    data object Loading : UpcomingVotesUiState
+    data class Success(val votes: List<UpcomingVote>) : UpcomingVotesUiState
+    data class Error(val message: String) : UpcomingVotesUiState
+}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -115,6 +141,9 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var state by remember { mutableStateOf<LookupState>(LookupState.Idle) }
     var showingStats by rememberSaveable { mutableStateOf(false) }
     var selectedVote by remember { mutableStateOf<Vote?>(null) }
+    var selectedUpcomingVote by remember { mutableStateOf<UpcomingVote?>(null) }
+    var activeTab by rememberSaveable { mutableStateOf(MainTab.HOME) }
+    var upcomingVotesUiState by remember { mutableStateOf<UpcomingVotesUiState>(UpcomingVotesUiState.Loading) }
     var voteDetailUiState by remember { mutableStateOf<VoteDetailUiState>(VoteDetailUiState.Loading) }
     val voteDetailRepository = remember(publicDataCache, staticDatasetClient) {
         DefaultVoteDetailRepository(
@@ -134,6 +163,8 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         state = LookupState.Loading("Recherche de la commune…")
         showingStats = false
         selectedVote = null
+        selectedUpcomingVote = null
+        activeTab = MainTab.HOME
         scope.launch { state = repository.lookup(currentQuery) }
     }
 
@@ -141,6 +172,8 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         state = LookupState.Loading("Préparation des résultats…")
         showingStats = false
         selectedVote = null
+        selectedUpcomingVote = null
+        activeTab = MainTab.HOME
         scope.launch { state = repository.loadDeputyVotes(query, commune, depute) }
     }
 
@@ -263,16 +296,51 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         previewLoading = false
     }
 
+    LaunchedEffect(activeTab) {
+        if (activeTab == MainTab.UPCOMING && upcomingVotesUiState !is UpcomingVotesUiState.Success) {
+            upcomingVotesUiState = UpcomingVotesUiState.Loading
+            upcomingVotesUiState = runCatching { repository.fetchUpcomingVotes() }
+                .fold(
+                    onSuccess = { UpcomingVotesUiState.Success(it) },
+                    onFailure = { UpcomingVotesUiState.Error("Impossible de charger les textes à venir depuis les sources officielles.") }
+                )
+        }
+    }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
-                title = { Text(if (selectedVote != null) "Comprendre ce vote" else "CitizenEye", fontWeight = FontWeight.SemiBold) },
+                title = {
+                    val title = when {
+                        selectedVote != null -> "Comprendre ce vote"
+                        selectedUpcomingVote != null -> "Texte à venir"
+                        showingStats -> "Profil député"
+                        activeTab == MainTab.UPCOMING -> "Votes à venir"
+                        activeTab == MainTab.HISTORY -> "Historique des votes"
+                        activeTab == MainTab.DEPUTY -> "Votre député"
+                        activeTab == MainTab.SETTINGS -> "Réglages"
+                        else -> "CitizenEye"
+                    }
+                    Text(title, fontWeight = FontWeight.SemiBold)
+                },
                 navigationIcon = {
-                    if (selectedVote != null) TextButton(onClick = { selectedVote = null }) { Text("Retour") }
+                    when {
+                        selectedVote != null -> TextButton(onClick = { selectedVote = null }) { Text("Retour") }
+                        selectedUpcomingVote != null -> TextButton(onClick = { selectedUpcomingVote = null }) { Text("Retour") }
+                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
             )
+        },
+        bottomBar = {
+            if (state is LookupState.Loaded && selectedVote == null && selectedUpcomingVote == null && !showingStats) {
+                CitizenEyeBottomNavigation(activeTab = activeTab, onTabSelected = { tab ->
+                    activeTab = tab
+                    selectedVote = null
+                    selectedUpcomingVote = null
+                })
+            }
         }
     ) { padding ->
         Surface(Modifier.padding(padding).fillMaxSize(), color = MaterialTheme.colorScheme.background) {
@@ -305,7 +373,25 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     onSelect = { loadVotes(current, it) },
                     onReset = { state = LookupState.Idle }
                 )
-                is LookupState.Loaded -> if (selectedVote != null) {
+                is LookupState.Loaded -> if (selectedUpcomingVote != null) {
+                    UpcomingVoteDetailScreen(
+                        vote = selectedUpcomingVote!!,
+                        depute = current.match.depute,
+                        onOpenSource = ::openExternalUrl,
+                        onOpenEmailDraft = { upcoming, depute ->
+                            val email = depute.email
+                            if (email == null) {
+                                inlineError = "Aucune adresse email officielle n’est disponible pour ce député."
+                            } else {
+                                openEmailDraft(
+                                    to = email,
+                                    subject = "À propos du texte parlementaire à venir : ${upcoming.title}",
+                                    body = "Bonjour,\n\nJe vous contacte au sujet du texte parlementaire suivant : ${upcoming.title}.\n\nSource officielle : ${upcoming.sourceUrl}\n\nJe souhaite vous faire part de mon attention sur ce sujet avant les prochaines étapes parlementaires.\n\nCordialement,"
+                                )
+                            }
+                        }
+                    )
+                } else if (selectedVote != null) {
                     VoteDetailScreen(
                         voteDetailUiState = voteDetailUiState,
                         deputyEmail = current.match.depute.email,
@@ -317,15 +403,27 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                 } else if (showingStats) {
                     DeputyStatsScreen(match = current.match, onRetour = { showingStats = false })
                 } else {
-                    HomeScreen(
-                        match = current.match,
-                        onOuvrirStats = { showingStats = true },
-                        onOuvrirVoteDetails = { openVoteDetails(it, current.match.depute) },
-                        onLoadMoreVotes = {
-                            state = LookupState.Loaded(current.match.withMoreVisibleVotes())
-                        },
-                        onReset = { state = LookupState.Idle; query = ""; showingStats = false }
-                    )
+                    when (activeTab) {
+                        MainTab.HOME -> HomeScreen(
+                            match = current.match,
+                            onOpenUpcoming = { activeTab = MainTab.UPCOMING },
+                            onOpenHistory = { activeTab = MainTab.HISTORY },
+                            onOpenDeputy = { activeTab = MainTab.DEPUTY },
+                            onReset = { state = LookupState.Idle; query = ""; showingStats = false; activeTab = MainTab.HOME }
+                        )
+                        MainTab.UPCOMING -> UpcomingVotesScreen(
+                            uiState = upcomingVotesUiState,
+                            onOpenDetail = { selectedUpcomingVote = it },
+                            onRetry = { upcomingVotesUiState = UpcomingVotesUiState.Loading; scope.launch { upcomingVotesUiState = runCatching { repository.fetchUpcomingVotes() }.fold(onSuccess = { UpcomingVotesUiState.Success(it) }, onFailure = { UpcomingVotesUiState.Error("Impossible de charger les textes à venir depuis les sources officielles.") }) } }
+                        )
+                        MainTab.HISTORY -> VoteHistoryScreen(
+                            match = current.match,
+                            onOuvrirVoteDetails = { openVoteDetails(it, current.match.depute) },
+                            onLoadMoreVotes = { state = LookupState.Loaded(current.match.withMoreVisibleVotes()) }
+                        )
+                        MainTab.DEPUTY -> DeputyProfileScreen(match = current.match, onOuvrirStats = { showingStats = true })
+                        MainTab.SETTINGS -> SettingsScreen(onReset = { state = LookupState.Idle; query = ""; showingStats = false; activeTab = MainTab.HOME })
+                    }
                 }
             }
         }
@@ -462,36 +560,229 @@ private fun DeputySelectionScreen(selection: LookupState.NeedSelection, onSelect
 }
 
 @Composable
-private fun HomeScreen(match: DeputeMatch, onOuvrirStats: () -> Unit, onOuvrirVoteDetails: (Vote) -> Unit, onLoadMoreVotes: () -> Unit, onReset: () -> Unit) {
+private fun HomeScreen(match: DeputeMatch, onOpenUpcoming: () -> Unit, onOpenHistory: () -> Unit, onOpenDeputy: () -> Unit, onReset: () -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
             Text("${match.commune.name} · données officielles", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(6.dp))
             Text(match.depute.constituencyLabel, fontSize = 26.sp, lineHeight = 31.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(8.dp))
+            Text("Distinguez clairement les textes à venir et les votes déjà passés.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
             TextButton(onClick = onReset) { Text("Changer de ville") }
         }
-        item { RepresentativeCard(match, onOuvrirStats) }
+        item { RepresentativeCard(match, onOpenDeputy) }
+        item {
+            NavigationFeatureCard(
+                title = "Votes à venir",
+                body = "Textes officiellement en discussion ou inscrits dans les dossiers parlementaires. Aucun vote ou résultat n’est prédit.",
+                icon = { Icon(Icons.Outlined.CalendarMonth, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+                onClick = onOpenUpcoming
+            )
+        }
+        item {
+            NavigationFeatureCard(
+                title = "Historique des votes",
+                body = "Scrutins publics déjà tenus : résultat, date, position du député, position du groupe et participation.",
+                icon = { Icon(Icons.Outlined.History, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+                onClick = onOpenHistory
+            )
+        }
+        item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
+private fun NavigationFeatureCard(title: String, body: String, icon: @Composable () -> Unit, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth().clickable { onClick() },
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
+        Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
+            icon()
+            Spacer(Modifier.width(14.dp))
+            Column(Modifier.weight(1f)) {
+                Text(title, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Spacer(Modifier.height(4.dp))
+                Text(body, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp)
+            }
+        }
+    }
+}
+
+@Composable
+private fun VoteHistoryScreen(match: DeputeMatch, onOuvrirVoteDetails: (Vote) -> Unit, onLoadMoreVotes: () -> Unit) {
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Text("Votes publics de la législature", fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                Icon(Icons.Outlined.Ballot, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                Text("Historique des votes", fontSize = 28.sp, lineHeight = 32.sp, fontWeight = FontWeight.Bold)
+                Icon(Icons.Outlined.History, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
             }
+            Text("Votes qui ont déjà eu lieu. Les cartes affichent le résultat, la date, la position du député et les informations de participation disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            Spacer(Modifier.height(6.dp))
             Text("${match.recentVotes.size} scrutins affichés sur ${match.totalLegislatureVotes} disponibles", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
         }
         if (match.recentVotes.isEmpty()) {
-            item { InfoCard("Aucun vote nominatif récent", "Le député n’apparaît pas dans les scrutins publics téléchargés. Réessayez plus tard ou vérifiez la source Assemblée nationale.") }
+            item { InfoCard("Aucun historique de vote disponible", "Aucun vote public n’est disponible pour ce député dans les données chargées.") }
         } else {
             items(match.recentVotes) { vote -> VoteCard(vote, onOuvrirDetails = { onOuvrirVoteDetails(vote) }) }
             if (match.hasMoreVotes) {
-                item {
-                    Button(onClick = onLoadMoreVotes, modifier = Modifier.fillMaxWidth().height(52.dp)) {
-                        Text("Charger 20 votes de plus")
-                    }
+                item { Button(onClick = onLoadMoreVotes, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Charger 20 votes de plus") } }
+            }
+        }
+        item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
+private fun DeputyProfileScreen(match: DeputeMatch, onOuvrirStats: () -> Unit) {
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        item { RepresentativeCard(match, onOuvrirStats) }
+        item { DeputyInformationCard(match.depute) }
+        item { InfoCard("À propos des statistiques", "Les statistiques portent uniquement sur les scrutins publics disponibles. Elles ne constituent pas un score politique.") }
+        item { Button(onClick = onOuvrirStats, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Voir les statistiques détaillées") } }
+        item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
+private fun SettingsScreen(onReset: () -> Unit) {
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        item { Text("Réglages", fontSize = 30.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold) }
+        item { InfoCard("Neutralité politique", "CitizenEye ne prédit pas les positions, ne classe pas les députés et ne génère pas de score. Les informations affichées proviennent des sources parlementaires officielles.") }
+        item { Button(onClick = onReset, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Changer de localisation") } }
+    }
+}
+
+@Composable
+private fun UpcomingVotesScreen(uiState: UpcomingVotesUiState, onOpenDetail: (UpcomingVote) -> Unit, onRetry: () -> Unit) {
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        item {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                Text("Votes à venir", fontSize = 30.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold)
+                Icon(Icons.Outlined.CalendarMonth, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+            }
+            Text("Textes législatifs actuellement programmés, inscrits à l’ordre du jour ou en discussion. CitizenEye n’affiche aucune prédiction politique.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+        }
+        when (uiState) {
+            UpcomingVotesUiState.Loading -> item { InfoCard("Chargement des sources officielles", "CitizenEye vérifie les dossiers parlementaires publics disponibles.") }
+            is UpcomingVotesUiState.Error -> item { InfoCard("Impossible de charger les votes à venir", uiState.message); Button(onClick = onRetry, modifier = Modifier.fillMaxWidth()) { Text("Réessayer") } }
+            is UpcomingVotesUiState.Success -> {
+                if (uiState.votes.isEmpty()) {
+                    item { InfoCard("Aucun vote parlementaire à venir disponible", "Aucun vote parlementaire à venir n’est actuellement disponible dans les sources chargées.") }
+                } else {
+                    items(uiState.votes) { vote -> UpcomingVoteCard(vote, onClick = { onOpenDetail(vote) }) }
                 }
             }
         }
         item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
+private fun UpcomingVoteCard(vote: UpcomingVote, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth().clickable { onClick() },
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
+        Column(Modifier.padding(18.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                UpcomingStatusChip(vote.status)
+                Spacer(Modifier.width(8.dp))
+                Text(vote.expectedDateLabel, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+            }
+            Spacer(Modifier.height(10.dp))
+            Text(vote.title, fontWeight = FontWeight.Bold, fontSize = 18.sp, lineHeight = 23.sp)
+            Spacer(Modifier.height(8.dp))
+            Text(vote.shortSummary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            Spacer(Modifier.height(10.dp))
+            Text("Étape actuelle : ${vote.currentStage}", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+            Spacer(Modifier.height(8.dp))
+            Text("Voir le détail et contacter mon député", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+        }
+    }
+}
+
+@Composable
+private fun UpcomingVoteDetailScreen(vote: UpcomingVote, depute: Depute, onOpenSource: (String) -> Unit, onOpenEmailDraft: (UpcomingVote, Depute) -> Unit) {
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        item {
+            UpcomingStatusChip(vote.status)
+            Spacer(Modifier.height(10.dp))
+            Text(vote.title, fontSize = 28.sp, lineHeight = 32.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(8.dp))
+            Text(vote.citizenSummary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 22.sp)
+        }
+        item { InfoCard("Étape actuelle", "${vote.currentStage}\nDate attendue : ${vote.expectedDateLabel}") }
+        item {
+            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+                Column(Modifier.padding(18.dp)) {
+                    Text("Parcours parlementaire", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.height(10.dp))
+                    vote.timeline.forEach { event ->
+                        Text("• ${event.date?.let { "$it · " } ?: ""}${event.label}", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+                    }
+                }
+            }
+        }
+        item {
+            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
+                Column(Modifier.padding(18.dp)) {
+                    Text("Contacter mon député", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.height(6.dp))
+                    Text("Écrire à ${depute.name} avant les prochaines étapes parlementaires. Le message reste éditable dans votre application mail.", color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f), lineHeight = 21.sp)
+                    Spacer(Modifier.height(12.dp))
+                    Button(onClick = { onOpenEmailDraft(vote, depute) }, enabled = depute.email != null, modifier = Modifier.fillMaxWidth()) {
+                        Icon(Icons.Outlined.Email, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Préparer un email")
+                    }
+                    Spacer(Modifier.height(6.dp))
+                    TextButton(onClick = { }) {
+                        Icon(Icons.Outlined.Phone, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Téléphone non disponible dans les données chargées")
+                    }
+                }
+            }
+        }
+        item {
+            Button(onClick = { onOpenSource(vote.sourceUrl) }, modifier = Modifier.fillMaxWidth()) {
+                Icon(Icons.Outlined.OpenInNew, contentDescription = null)
+                Spacer(Modifier.width(8.dp))
+                Text("Ouvrir la source officielle")
+            }
+        }
+        item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
+private fun UpcomingStatusChip(status: UpcomingVoteStatus) {
+    Surface(shape = RoundedCornerShape(999.dp), color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+        Text(status.label, modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+    }
+}
+
+@Composable
+private fun CitizenEyeBottomNavigation(activeTab: MainTab, onTabSelected: (MainTab) -> Unit) {
+    NavigationBar {
+        MainTab.values().forEach { tab ->
+            val icon = when (tab) {
+                MainTab.HOME -> Icons.Outlined.Home
+                MainTab.UPCOMING -> Icons.Outlined.CalendarMonth
+                MainTab.HISTORY -> Icons.Outlined.History
+                MainTab.DEPUTY -> Icons.Outlined.Person
+                MainTab.SETTINGS -> Icons.Outlined.Settings
+            }
+            NavigationBarItem(
+                selected = activeTab == tab,
+                onClick = { onTabSelected(tab) },
+                icon = { Icon(icon, contentDescription = null) },
+                label = { Text(tab.label) }
+            )
+        }
     }
 }
 

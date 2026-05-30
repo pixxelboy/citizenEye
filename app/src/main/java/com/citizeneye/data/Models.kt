@@ -38,7 +38,7 @@ data class Depute(
     }
 }
 
-data class Vote(
+data class HistoricalVote(
     val id: String,
     val number: String,
     val date: String,
@@ -57,6 +57,68 @@ data class Vote(
 ) {
     val concern: VoteConcern get() = classifyVoteConcern(title, summary)
 }
+
+data class Vote(
+    val id: String,
+    val number: String,
+    val date: String,
+    val title: String,
+    val result: String,
+    val summary: String,
+    val deputePosition: VotePosition,
+    val sourceUrl: String,
+    val voteBreakdown: VoteBreakdown? = null,
+    val groupPosition: GroupVotePosition? = null,
+    val objectTitle: String? = null,
+    val dossierRef: String? = null,
+    val dossierTitle: String? = null,
+    val legislativeReference: String? = null,
+    val seanceRef: String? = null
+) {
+    val concern: VoteConcern get() = classifyVoteConcern(title, summary)
+    fun asHistoricalVote(): HistoricalVote = HistoricalVote(
+        id = id,
+        number = number,
+        date = date,
+        title = title,
+        result = result,
+        summary = summary,
+        deputePosition = deputePosition,
+        sourceUrl = sourceUrl,
+        voteBreakdown = voteBreakdown,
+        groupPosition = groupPosition,
+        objectTitle = objectTitle,
+        dossierRef = dossierRef,
+        dossierTitle = dossierTitle,
+        legislativeReference = legislativeReference,
+        seanceRef = seanceRef
+    )
+}
+
+enum class UpcomingVoteStatus(val label: String) {
+    SCHEDULED_VOTE("Vote programmé"),
+    UNDER_DISCUSSION("En discussion"),
+    COMMITTEE_REVIEW("Examen en commission"),
+    AGENDA_ITEM("Point à l’ordre du jour")
+}
+
+data class UpcomingVoteTimelineEvent(
+    val label: String,
+    val date: String? = null
+)
+
+data class UpcomingVote(
+    val id: String,
+    val title: String,
+    val shortSummary: String,
+    val citizenSummary: String,
+    val currentStage: String,
+    val status: UpcomingVoteStatus,
+    val expectedDateLabel: String,
+    val sourceUrl: String,
+    val officialDocuments: List<String> = emptyList(),
+    val timeline: List<UpcomingVoteTimelineEvent> = emptyList()
+)
 
 enum class VoteConcern(val label: String, val explanation: String) {
     AMENDEMENT("Amendement", "Modifie une partie précise du texte"),
@@ -118,6 +180,7 @@ data class DeputeMatch(
     val visibleVoteCount: Int = DEFAULT_VISIBLE_VOTE_COUNT
 ) {
     val recentVotes: List<Vote> get() = allLegislatureVotes.take(visibleVoteCount)
+    val recentHistoricalVotes: List<HistoricalVote> get() = recentVotes.map { it.asHistoricalVote() }
     val totalLegislatureVotes: Int get() = allLegislatureVotes.size
     val hasMoreVotes: Boolean get() = visibleVoteCount < allLegislatureVotes.size
     val legislatureStats: DeputyStats get() = DeputyStats.from(allLegislatureVotes)
