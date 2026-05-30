@@ -28,12 +28,25 @@ class StaticCitizenEyeDatasetClientTest {
             "https://pages.test/votes-${sha(votes)}.json.gz" to votes,
             "https://pages.test/dossiers-${sha(dossiers)}.json.gz" to dossiers
         )
-        val client = StaticCitizenEyeDatasetClient(root, "https://pages.test/") { files[it] ?: error("unexpected $it") }
+        val requests = mutableListOf<String>()
+        val client = StaticCitizenEyeDatasetClient(root, "https://pages.test/") { url ->
+            requests += url
+            files[url] ?: error("unexpected $url")
+        }
 
         val loadedDeputies = client.fetchActiveDeputies()
         val loadedVotes = client.fetchLegislatureVotesFor("PA1")
         val parent = client.findParentText("DL1")
 
+        assertEquals(
+            listOf(
+                "https://pages.test/manifest.json",
+                "https://pages.test/deputies-${sha(deputies)}.json.gz",
+                "https://pages.test/votes-${sha(votes)}.json.gz",
+                "https://pages.test/dossiers-${sha(dossiers)}.json.gz"
+            ),
+            requests
+        )
         assertEquals("Députée Test", loadedDeputies.single().name)
         assertEquals("SOC", loadedDeputies.single().displayPoliticalGroupShort)
         assertEquals("Socialistes et apparentés", loadedDeputies.single().displayPoliticalGroupFull)
@@ -79,6 +92,38 @@ class StaticCitizenEyeDatasetClientTest {
         fail = true
 
         assertEquals("Cache", client.fetchActiveDeputies().single().name)
+    }
+
+    @Test fun refreshesStaticManifestAfterOneDay() {
+        val root = Files.createTempDirectory("citizeneye-static-refresh").toFile()
+        var now = 1_000_000L
+        val deputiesV1 = gz("{\"schemaVersion\":1,\"deputies\":[{\"id\":\"PA1\",\"name\":\"Cache\",\"group\":\"N/R\",\"departmentName\":\"Paris\",\"departmentCode\":\"75\",\"constituencyNumber\":\"1\"}]}")
+        val deputiesV2 = gz("{\"schemaVersion\":1,\"deputies\":[{\"id\":\"PA1\",\"name\":\"Refresh\",\"group\":\"N/R\",\"departmentName\":\"Paris\",\"departmentCode\":\"75\",\"constituencyNumber\":\"1\"}]}")
+        val votes = gz("{\"schemaVersion\":1,\"votesByDeputy\":{}}")
+        val dossiers = gz("{\"schemaVersion\":1,\"dossiersByRef\":{}}")
+        var files = mapOf(
+            "https://pages.test/manifest.json" to manifest(deputiesV1, votes, dossiers, version = "v1").toByteArray(),
+            "https://pages.test/deputies-${sha(deputiesV1)}.json.gz" to deputiesV1,
+            "https://pages.test/votes-${sha(votes)}.json.gz" to votes,
+            "https://pages.test/dossiers-${sha(dossiers)}.json.gz" to dossiers
+        )
+        val client = StaticCitizenEyeDatasetClient(
+            root,
+            "https://pages.test/",
+            downloader = { url -> files[url] ?: error("unexpected $url") },
+            nowMillis = { now }
+        )
+
+        assertEquals("Cache", client.fetchActiveDeputies().single().name)
+        now += PublicDataCache.ONE_DAY_MILLIS + 1
+        files = mapOf(
+            "https://pages.test/manifest.json" to manifest(deputiesV2, votes, dossiers, version = "v2").toByteArray(),
+            "https://pages.test/deputies-${sha(deputiesV2)}.json.gz" to deputiesV2,
+            "https://pages.test/votes-${sha(votes)}.json.gz" to votes,
+            "https://pages.test/dossiers-${sha(dossiers)}.json.gz" to dossiers
+        )
+
+        assertEquals("Refresh", client.fetchActiveDeputies().single().name)
     }
 
     @Test fun normalizesStaticDeputyPhotoUrlToOfficialRoundedPortrait() {

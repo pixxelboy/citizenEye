@@ -31,9 +31,35 @@ class DeputyStatsTest {
         assertEquals(0, stats.participatedVotes)
         assertEquals(0, stats.participationPercent)
         assertEquals(0, stats.percentFor(VotePosition.POUR))
+        assertEquals(0, stats.groupAlignmentPercent)
     }
 
-    private fun vote(id: String, position: VotePosition) = Vote(
+    @Test fun computesGroupAlignmentAndComparisonAveragesFromOfficialBreakdowns() {
+        val stats = DeputyStats.from(
+            listOf(
+                vote(
+                    "1",
+                    VotePosition.POUR,
+                    groupPosition = GroupVotePosition("SOC", VotePosition.POUR, true, forCount = 8, againstCount = 2, abstentionCount = 0, nonVotingCount = 0),
+                    voteBreakdown = VoteBreakdown(totalVoters = 500, forCount = 300, againstCount = 180, abstentionCount = 20, nonVotingCount = 77, absoluteMajority = null, resultLabel = "adopté")
+                ),
+                vote(
+                    "2",
+                    VotePosition.CONTRE,
+                    groupPosition = GroupVotePosition("SOC", VotePosition.POUR, false, forCount = 6, againstCount = 2, abstentionCount = 0, nonVotingCount = 2),
+                    voteBreakdown = VoteBreakdown(totalVoters = 400, forCount = 180, againstCount = 200, abstentionCount = 20, nonVotingCount = 177, absoluteMajority = null, resultLabel = "rejeté")
+                )
+            )
+        )
+
+        assertEquals(2, stats.groupAlignmentComparableVotes)
+        assertEquals(1, stats.groupAlignedVotes)
+        assertEquals(50, stats.groupAlignmentPercent)
+        assertEquals(90, stats.groupAverageParticipationPercent)
+        assertEquals(78, stats.assemblyAverageParticipationPercent)
+    }
+
+    private fun vote(id: String, position: VotePosition, groupPosition: GroupVotePosition? = null, voteBreakdown: VoteBreakdown? = null) = Vote(
         id = id,
         number = id,
         date = "2026-05-${id.padStart(2, '0')}",
@@ -41,6 +67,8 @@ class DeputyStatsTest {
         result = "Adopté",
         summary = "Résumé",
         deputePosition = position,
-        sourceUrl = "https://www.assemblee-nationale.fr/dyn/17/scrutins/$id"
+        sourceUrl = "https://www.assemblee-nationale.fr/dyn/17/scrutins/$id",
+        voteBreakdown = voteBreakdown,
+        groupPosition = groupPosition
     )
 }

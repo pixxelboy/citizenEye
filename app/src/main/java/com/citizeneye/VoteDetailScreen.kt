@@ -136,15 +136,15 @@ private fun OutcomeSummaryCard(detail: VoteDetail) {
 
 @Composable
 private fun PoliticalAlignmentCard(group: GroupVotePosition?, deputyPosition: VotePosition) {
-    DetailSectionCard(title = "Alignement politique") {
+    DetailSectionCard(title = "Alignement avec le groupe") {
         val groupLabel = group?.groupMajorityPosition?.label ?: "Non disponible"
         LabeledText("Groupe", groupLabel)
         LabeledText("Députée", deputyPosition.label)
         val aligned = group?.deputyVotedLikeGroup
         Text(
             when (aligned) {
-                true -> "Vote aligné"
-                false -> "Vote dissident"
+                true -> "Même position que la majorité du groupe"
+                false -> "Position différente de la majorité du groupe"
                 null -> "Alignement non disponible"
             },
             color = MaterialTheme.colorScheme.primary,

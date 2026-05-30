@@ -126,6 +126,8 @@ class AssembleeNationaleClient(
 ) {
     private var activeDeputiesCache: List<Depute>? = null
     private var activeDeputiesCacheMillis: Long = 0L
+    private val votesByActorCache = mutableMapOf<String, TimedCache<List<Vote>>>()
+    private val upcomingVotesCache = mutableMapOf<Int, TimedCache<List<UpcomingVote>>>()
 
     fun fetchActiveDeputies(): List<Depute> {
         activeDeputiesCache?.takeIf { nowMillis() - activeDeputiesCacheMillis < PublicDataCache.ONE_DAY_MILLIS }?.let { return it }
@@ -187,8 +189,13 @@ class AssembleeNationaleClient(
     }
 
     fun fetchLegislatureVotesFor(actorId: String): List<Vote> {
+        val now = nowMillis()
+        votesByActorCache[actorId]?.takeIf { now - it.storedAtMillis in 0 until PublicDataCache.ONE_DAY_MILLIS }?.let { return it.value }
         staticDatasetClient?.let { client ->
-            runCatching { client.fetchLegislatureVotesFor(actorId) }.getOrNull()?.let { return it }
+            runCatching { client.fetchLegislatureVotesFor(actorId) }.getOrNull()?.let { votes ->
+                votesByActorCache[actorId] = TimedCache(votes, now)
+                return votes
+            }
         }
         val votes = mutableListOf<Vote>()
         readZipEntries(SCRUTINS_URL, SCRUTINS_CACHE_KEY) { name, bytes ->
@@ -213,12 +220,19 @@ class AssembleeNationaleClient(
                 seanceRef = scrutin.optString("seanceRef")
             )
         }
-        return votes.sortedByDescending { it.date }
+        val sortedVotes = votes.sortedByDescending { it.date }
+        votesByActorCache[actorId] = TimedCache(sortedVotes, now)
+        return sortedVotes
     }
 
     fun fetchUpcomingVotes(limit: Int = 30): List<UpcomingVote> {
+        val now = nowMillis()
+        upcomingVotesCache[limit]?.takeIf { now - it.storedAtMillis in 0 until PublicDataCache.ONE_DAY_MILLIS }?.let { return it.value }
         staticDatasetClient?.let { client ->
-            runCatching { client.fetchUpcomingVotes(limit) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { return it }
+            runCatching { client.fetchUpcomingVotes(limit) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { upcoming ->
+                upcomingVotesCache[limit] = TimedCache(upcoming, now)
+                return upcoming
+            }
         }
         val upcoming = mutableListOf<UpcomingVote>()
         readZipEntries(DOSSIERS_URL, DOSSIERS_CACHE_KEY) { name, bytes ->
@@ -226,10 +240,14 @@ class AssembleeNationaleClient(
             val dossier = JSONObject(String(bytes, Charsets.UTF_8)).optJSONObject("dossierParlementaire") ?: return@readZipEntries
             dossier.toUpcomingVoteFromOfficialZip()?.let { upcoming += it }
         }
-        return upcoming
+        val sortedUpcoming = upcoming
             .sortedWith(compareBy<UpcomingVote> { it.status.ordinal }.thenBy { it.title })
             .take(limit)
+        upcomingVotesCache[limit] = TimedCache(sortedUpcoming, now)
+        return sortedUpcoming
     }
+
+    private data class TimedCache<T>(val value: T, val storedAtMillis: Long)
 
     private fun findPosition(scrutin: JSONObject, actorId: String): VotePosition? {
         val groupes = scrutin.optJSONObject("ventilationVotes")

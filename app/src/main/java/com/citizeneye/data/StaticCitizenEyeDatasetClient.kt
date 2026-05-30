@@ -9,8 +9,12 @@ import java.util.zip.GZIPInputStream
 open class StaticCitizenEyeDatasetClient(
     private val cacheRoot: File,
     private val baseUrl: String = DEFAULT_BASE_URL,
+    private val nowMillis: () -> Long = { System.currentTimeMillis() },
     private val downloader: (String) -> ByteArray = ::httpGetBytes
 ) {
+    private var datasetCache: Map<String, ByteArray>? = null
+    private var datasetCacheMillis: Long = 0L
+
     open fun fetchActiveDeputies(): List<Depute> {
         val files = ensureDataset()
         val json = JSONObject(gunzip(files.getValue("deputies")).toString(Charsets.UTF_8))
@@ -46,26 +50,48 @@ open class StaticCitizenEyeDatasetClient(
 
     private fun ensureDataset(): Map<String, ByteArray> {
         cacheRoot.mkdirs()
+        val now = nowMillis()
+        datasetCache?.takeIf { now - datasetCacheMillis in 0 until PublicDataCache.ONE_DAY_MILLIS }?.let { return it }
+
         val localManifest = File(cacheRoot, MANIFEST_FILE)
+        loadFreshLocalDataset(localManifest, now)?.let { return it }
+
         return runCatching {
             val remoteManifestBytes = downloader(resolveUrl(MANIFEST_FILE))
             val remoteManifest = JSONObject(remoteManifestBytes.toString(Charsets.UTF_8))
             if (localManifest.exists()) {
                 val cachedManifest = JSONObject(localManifest.readText())
                 if (cachedManifest.optString("version") == remoteManifest.optString("version") && allManifestFilesExist(cachedManifest)) {
-                    return loadFilesFromManifest(cachedManifest)
+                    return cacheDataset(loadFilesFromManifest(cachedManifest), now)
                 }
             }
             downloadFiles(remoteManifest).also {
                 atomicWrite(localManifest, remoteManifestBytes)
+                localManifest.setLastModified(now)
+                cacheDataset(it, now)
             }
         }.getOrElse { error ->
             if (localManifest.exists() && allManifestFilesExist(JSONObject(localManifest.readText()))) {
-                loadFilesFromManifest(JSONObject(localManifest.readText()))
+                cacheDataset(loadFilesFromManifest(JSONObject(localManifest.readText())), now)
             } else {
                 throw error
             }
         }
+    }
+
+    private fun loadFreshLocalDataset(localManifest: File, now: Long): Map<String, ByteArray>? {
+        if (!localManifest.exists()) return null
+        val manifestAgeMillis = now - localManifest.lastModified()
+        if (manifestAgeMillis !in 0 until PublicDataCache.ONE_DAY_MILLIS) return null
+        val manifest = JSONObject(localManifest.readText())
+        if (!allManifestFilesExist(manifest)) return null
+        return cacheDataset(loadFilesFromManifest(manifest), now)
+    }
+
+    private fun cacheDataset(files: Map<String, ByteArray>, now: Long): Map<String, ByteArray> {
+        datasetCache = files
+        datasetCacheMillis = now
+        return files
     }
 
     private fun downloadFiles(manifest: JSONObject): Map<String, ByteArray> {
