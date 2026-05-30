@@ -9,6 +9,7 @@ import android.net.Uri
 import android.location.Geocoder
 import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -35,14 +36,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Ballot
-import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.Email
-import androidx.compose.material.icons.outlined.History
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.OpenInNew
-import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.AlertDialog
@@ -82,6 +78,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.citizeneye.data.AssembleeOfficialVoteEnrichmentRepository
 import com.citizeneye.data.CitizenEyeRepository
 import com.citizeneye.data.CitizenInputValidator
@@ -116,11 +116,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Locale
 
-private enum class MainTab(val label: String) {
-    HOME("Accueil"),
-    UPCOMING("À suivre"),
-    HISTORY("Votes"),
-    DEPUTY("Député")
+private enum class MainTab(val label: String, val iconRawRes: Int) {
+    HOME("Accueil", R.raw.nav_home),
+    UPCOMING("À suivre", R.raw.nav_schedule),
+    HISTORY("Votes", R.raw.nav_order_history),
+    DEPUTY("Député", R.raw.nav_user_profile)
 }
 
 private sealed interface UpcomingVotesUiState {
@@ -1168,22 +1168,63 @@ private fun UpcomingStatusChip(status: UpcomingVoteStatus) {
 
 @Composable
 private fun CitizenEyeBottomNavigation(activeTab: MainTab, onTabSelected: (MainTab) -> Unit) {
+    var animationTriggerByTab by remember { mutableStateOf(MainTab.values().associateWith { 0 }) }
+
     NavigationBar {
         MainTab.values().forEach { tab ->
-            val icon = when (tab) {
-                MainTab.HOME -> Icons.Outlined.Home
-                MainTab.UPCOMING -> Icons.Outlined.CalendarMonth
-                MainTab.HISTORY -> Icons.Outlined.History
-                MainTab.DEPUTY -> Icons.Outlined.Person
-            }
             NavigationBarItem(
                 selected = activeTab == tab,
-                onClick = { onTabSelected(tab) },
-                icon = { Icon(icon, contentDescription = null) },
+                onClick = {
+                    animationTriggerByTab = animationTriggerByTab + (tab to ((animationTriggerByTab[tab] ?: 0) + 1))
+                    onTabSelected(tab)
+                },
+                icon = {
+                    AnimatedNavigationIcon(
+                        iconRawRes = tab.iconRawRes,
+                        animationTrigger = animationTriggerByTab[tab] ?: 0
+                    )
+                },
                 label = { Text(tab.label) }
             )
         }
     }
+}
+
+@Composable
+private fun AnimatedNavigationIcon(iconRawRes: Int, animationTrigger: Int) {
+    val context = LocalContext.current
+    val animationsEnabled = remember {
+        Settings.Global.getFloat(
+            context.contentResolver,
+            Settings.Global.ANIMATOR_DURATION_SCALE,
+            1f
+        ) > 0f
+    }
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(iconRawRes))
+    var playOnTap by remember { mutableStateOf(false) }
+
+    LaunchedEffect(animationTrigger, animationsEnabled) {
+        playOnTap = animationTrigger > 0 && animationsEnabled
+    }
+
+    val progress by animateLottieCompositionAsState(
+        composition = composition,
+        isPlaying = playOnTap,
+        iterations = 1,
+        restartOnPlay = true
+    )
+
+    LaunchedEffect(progress, playOnTap) {
+        if (playOnTap && progress >= 1f) {
+            playOnTap = false
+        }
+    }
+
+    LottieAnimation(
+        composition = composition,
+        progress = { if (playOnTap) progress else 0f },
+        modifier = Modifier.size(26.dp)
+    )
 }
 
 @Composable
