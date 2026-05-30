@@ -84,9 +84,7 @@ private fun DetailLoadingState() {
             label = "Chargement du détail du vote…"
         )
         Spacer(Modifier.height(8.dp))
-        Text("CitizenEye vérifie les sources officielles disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Spacer(Modifier.height(6.dp))
-        Text("Cela peut prendre quelques secondes.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+        Text("Sources officielles…", color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 
@@ -105,20 +103,14 @@ private fun DetailErrorState(message: String, onRetour: () -> Unit, onRetry: () 
 @Composable
 private fun VoteDetailContent(detail: VoteDetail, deputyEmail: String?, onOuvrirUrl: (String) -> Unit, onOpenEmailDraft: (String, String, String) -> Unit) {
     var showEmailDialog by remember { mutableStateOf(false) }
-    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        item { HeroCard(detail) }
-        item { OfficialTitleCard(detail.officialTitle) }
-        item { UnderstandVoteCard(detail) }
-        item { RelatedTextCard(detail.parentText, detail.sourceUrl, onOuvrirUrl) }
-        if (detail.amendment != null || detail.subjectType == VoteSubjectType.AMENDMENT) item { AmendementCard(detail, onOuvrirUrl) }
-        if (detail.article != null || detail.subjectType == VoteSubjectType.ARTICLE) item { ArticleCard(detail, onOuvrirUrl) }
-        if (detail.motion != null || detail.subjectType == VoteSubjectType.NO_CONFIDENCE_MOTION || detail.subjectType == VoteSubjectType.PROCEDURAL_MOTION) item { MotionCard(detail, onOuvrirUrl) }
-        item { VoteResultCard(detail) }
-        item { GroupPositionCard(detail.groupPosition, detail.deputyPosition) }
-        item { ContactDeputyCard { showEmailDialog = true } }
-        item { OfficialSourcesCard(detail.officialSources, onOuvrirUrl) }
-        item { LearnMoreSection(detail.externalResources, onOuvrirUrl) }
-        item { Spacer(Modifier.height(24.dp)) }
+    LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        item { OutcomeSummaryCard(detail) }
+        item { PoliticalAlignmentCard(detail.groupPosition, detail.deputyPosition) }
+        item { CompactResultsCard(detail.voteBreakdown) }
+        item { BulletCard("Pourquoi ce vote comptait", voteMatterBullets(detail)) }
+        item { Button(onClick = { showEmailDialog = true }, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Écrire à ma députée") } }
+        item { CollapsedSourcesCard(detail.officialSources, detail.sourceUrl, onOuvrirUrl) }
+        item { Spacer(Modifier.height(12.dp)) }
     }
     if (showEmailDialog) {
         PrepareEmailDialog(
@@ -131,38 +123,77 @@ private fun VoteDetailContent(detail: VoteDetail, deputyEmail: String?, onOuvrir
 }
 
 @Composable
-private fun HeroCard(detail: VoteDetail) {
+private fun OutcomeSummaryCard(detail: VoteDetail) {
     Card(shape = RoundedCornerShape(24.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
-        Column(Modifier.padding(20.dp)) {
-            VoteSubjectBadge(detail.subjectType)
-            Spacer(Modifier.height(12.dp))
-            Text("Scrutin public n°${detail.voteNumber}", fontSize = 24.sp, lineHeight = 29.sp, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.height(8.dp))
-            Text(formatVoteResultLabel(detail.subjectType, detail.result), fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
+        Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("Députée : ${formatPositionInContext(detail.deputyPosition, detail.subjectType).uppercase()}", fontSize = 28.sp, lineHeight = 32.sp, fontWeight = FontWeight.Bold)
+            Text("Vote ${formatVoteResultLabel(detail.subjectType, detail.result).uppercase()}", fontSize = 22.sp, fontWeight = FontWeight.Bold)
             Text(detail.date, color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f))
-            Spacer(Modifier.height(12.dp))
-            Text("Position enregistrée : ${formatPositionInContext(detail.deputyPosition, detail.subjectType)}", fontWeight = FontWeight.Bold)
-            Spacer(Modifier.height(6.dp))
-            Text(buildPositionResultSentence(detail.deputyPosition, detail.subjectType, detail.result), lineHeight = 21.sp)
+            Text(detail.officialTitle, maxLines = 2, overflow = TextOverflow.Ellipsis, lineHeight = 20.sp)
         }
     }
 }
 
 @Composable
-private fun OfficialTitleCard(officialTitle: String) {
-    DetailSectionCard(title = "Titre officiel du scrutin", subtitle = "Repris tel quel depuis l’Assemblée nationale.") {
-        Text(officialTitle, lineHeight = 21.sp)
+private fun PoliticalAlignmentCard(group: GroupVotePosition?, deputyPosition: VotePosition) {
+    DetailSectionCard(title = "Alignement politique") {
+        val groupLabel = group?.groupMajorityPosition?.label ?: "Non disponible"
+        LabeledText("Groupe", groupLabel)
+        LabeledText("Députée", deputyPosition.label)
+        val aligned = group?.deputyVotedLikeGroup
+        Text(
+            when (aligned) {
+                true -> "Vote aligné"
+                false -> "Vote dissident"
+                null -> "Alignement non disponible"
+            },
+            color = MaterialTheme.colorScheme.primary,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
 @Composable
-private fun UnderstandVoteCard(detail: VoteDetail) {
-    DetailSectionCard(title = "Comprendre ce vote") {
-        Text(detail.subjectExplanation, lineHeight = 21.sp)
-        Spacer(Modifier.height(10.dp))
-        Text("Dans ce scrutin, ${detail.voteEffectExplanation.replaceFirstChar { it.lowercase() }}", fontWeight = FontWeight.SemiBold, lineHeight = 21.sp)
-        Spacer(Modifier.height(10.dp))
-        NoticeText("À retenir\n${buildTakeaway(detail.subjectType)}")
+private fun CompactResultsCard(breakdown: VoteBreakdown?) {
+    DetailSectionCard(title = "Résultats") {
+        if (breakdown == null) {
+            EmptyText("Décompte indisponible")
+        } else {
+            CountRow("Pour", breakdown.forCount)
+            CountRow("Contre", breakdown.againstCount)
+            CountRow("Abst.", breakdown.abstentionCount)
+        }
+    }
+}
+
+@Composable
+private fun CollapsedSourcesCard(sources: List<OfficialSource>, sourceUrl: String?, onOuvrirUrl: (String) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    DetailSectionCard(title = "Sources") {
+        TextButton(onClick = { expanded = !expanded }) { Text(if (expanded) "Masquer" else "Afficher les sources") }
+        if (expanded) {
+            if (sources.isEmpty() && sourceUrl == null) EmptyText("Aucune source ouvrable")
+            sources.forEach { source -> ResourceRow(source.label, safeDisplayValue(source.description) ?: "Assemblée nationale", null, officialSourceCta(source), source.url, onOuvrirUrl) }
+            if (sources.isEmpty()) sourceUrl?.let { ActionButton("Ouvrir le scrutin", it, onOuvrirUrl) }
+        }
+    }
+}
+
+private fun voteMatterBullets(detail: VoteDetail): List<String> = listOfNotNull(
+    detail.parentText?.title ?: detail.officialTitle,
+    detail.voteEffectExplanation,
+    detail.groupPosition?.groupMajorityPosition?.let { "Groupe : ${it.label}" }
+).map { it.compactBullet() }.filter { it.isNotBlank() }.take(3)
+
+private fun String.compactBullet(maxChars: Int = 120): String =
+    replace("\n", " ").replace(Regex("\\s+"), " ").trim().let { value ->
+        if (value.length <= maxChars) value else value.take(maxChars).trimEnd() + "…"
+    }
+
+@Composable
+private fun BulletCard(title: String, bullets: List<String>) {
+    DetailSectionCard(title = title) {
+        bullets.take(3).forEach { Text("• $it", lineHeight = 20.sp) }
     }
 }
 
@@ -353,7 +384,7 @@ private fun PrepareEmailDialog(detail: VoteDetail, deputyEmail: String?, onDismi
                 Text(deputyEmail?.let { "À : $it" } ?: "Adresse email officielle non disponible pour ce député.", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 OutlinedTextField(subject, { subject = it }, label = { Text("Objet") }, modifier = Modifier.fillMaxWidth())
                 OutlinedTextField(body, { body = it }, label = { Text("Message") }, modifier = Modifier.fillMaxWidth(), minLines = 6)
-                Text("CitizenEye ne l’enverra pas à votre place. Votre application mail s’ouvrira avec un brouillon que vous pourrez relire, modifier ou supprimer.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp, lineHeight = 18.sp)
+                Text("Brouillon éditable.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
             }
         },
         confirmButton = { Button(enabled = deputyEmail != null, onClick = { deputyEmail?.let { onOpenEmailDraft(it, subject, body) } }) { Text("Ouvrir dans mon application mail") } },
