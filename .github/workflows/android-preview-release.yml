@@ -31,12 +31,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build Android preview APK
-        run: ./gradlew testDebugUnitTest assembleDebug
+        run: ./gradlew testDebugUnitTest assemblePreview
 
       - name: Prepare release assets
         run: |
           mkdir -p dist
-          cp app/build/outputs/apk/debug/app-debug.apk dist/citizeneye-preview.apk
+          cp app/build/outputs/apk/preview/app-preview.apk dist/citizeneye-preview.apk
           shasum -a 256 dist/citizeneye-preview.apk > dist/citizeneye-preview.apk.sha256
           cat > dist/RELEASE_NOTES.md <<'MD'
           # CitizenEye Android preview
@@ -51,6 +51,9 @@ jobs:
 
           Install note:
           Android may ask you to allow installation from your browser or file manager because this build is distributed outside the Play Store.
+
+          Preview build note:
+          This build uses the package name `com.citizeneye.preview`, separate from the future Play Store package. You may need to uninstall older preview builds before installing a newer APK.
 
           Integrity:
           The SHA-256 checksum is attached as `citizeneye-preview.apk.sha256`.

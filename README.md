@@ -58,7 +58,7 @@ Avant la disponibilité Play Store, une version de prévisualisation Android est
 - Notes de version : https://github.com/pixxelboy/citizenEye/releases/latest
 - Empreinte SHA-256 : https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk.sha256
 
-Android peut demander d’autoriser l’installation depuis le navigateur ou le gestionnaire de fichiers, car cette version est distribuée hors Play Store.
+Android peut demander d’autoriser l’installation depuis le navigateur ou le gestionnaire de fichiers, car cette version est distribuée hors Play Store. L’APK de prévisualisation utilise le package séparé `com.citizeneye.preview`, pour rester distinct de la future application Play Store.
 
 ## Soutenir le projet
 
@@ -218,7 +218,7 @@ Before Play Store availability, an Android preview build is published through Gi
 - Release notes: https://github.com/pixxelboy/citizenEye/releases/latest
 - SHA-256 checksum: https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk.sha256
 
-Android may ask you to allow installation from your browser or file manager because this build is distributed outside the Play Store.
+Android may ask you to allow installation from your browser or file manager because this build is distributed outside the Play Store. The preview APK uses the separate package name `com.citizeneye.preview`, so it can remain distinct from the future Play Store app.
 
 ## Support the project
 
