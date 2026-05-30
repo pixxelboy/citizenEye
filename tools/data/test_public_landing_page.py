@@ -43,6 +43,7 @@ class PublicLandingPageTest(unittest.TestCase):
             "Décisions à venir",
             "Votre député",
             "Pourquoi CitizenEye",
+            "Release Notes",
             "Lancer",
         ]
         positions = [nav.index(label) for label in expected_order]
@@ -74,6 +75,7 @@ class PublicLandingPageTest(unittest.TestCase):
         self.assertIn("href=\"#decisions-a-venir\"", html)
         self.assertIn("href=\"#votre-depute\"", html)
         self.assertIn("href=\"#pourquoi\"", html)
+        self.assertIn("href=\"release-notes/\"", html)
         self.assertIn("href=\"https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk\"", html)
 
         for forbidden_href in ["/dashboard", "/search", "/votes", "/deputies", "/deputes", "/app/"]:

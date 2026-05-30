@@ -56,6 +56,7 @@ jobs:
           cp docs/screenshots/*.svg public/assets/screenshots/
           cp app/src/main/res/raw/eye.json public/assets/brand/eye.json
           cp docs/brand/citizeneye-eye.svg public/assets/brand/citizeneye-eye.svg
+          python tools/data/build_release_notes_page.py --out public/release-notes/index.html
 
       - name: Preserve latest APK update manifest
         env:
