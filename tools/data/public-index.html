@@ -1,57 +1,120 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CitizenEye compile les données publiques de l’Assemblée nationale en fichiers statiques vérifiables pour l’application Android.">
-  <title>CitizenEye — Données parlementaires publiques</title>
+  <meta name="description" content="CitizenEye helps people in France understand how their representatives vote, using public parliamentary data, transparent sources and a mobile-first Android experience.">
+  <title>CitizenEye — Know how your representative votes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-soft: #f6f9fc;
-      --heading: #061b31;
-      --body: #64748d;
-      --label: #273951;
-      --purple: #533afd;
-      --purple-hover: #4434d4;
-      --brand-dark: #1c1e54;
-      --border: #e5edf5;
-      --border-purple: #b9b9f9;
-      --green: #15be53;
-      --green-text: #108c3d;
-      --ruby: #ea2261;
-      --magenta: #f96bee;
-      --shadow: rgba(50, 50, 93, 0.25) 0 30px 45px -30px, rgba(0, 0, 0, 0.1) 0 18px 36px -18px;
-      --soft-shadow: rgba(23, 23, 23, 0.08) 0 15px 35px 0;
+      --ink: #101828;
+      --ink-strong: #07152f;
+      --muted: #526173;
+      --soft: #758195;
+      --line: #d9e2ee;
+      --line-soft: #e8edf4;
+      --paper: #fbfaf7;
+      --surface: #ffffff;
+      --surface-soft: #f5f7fb;
+      --blue: #153b6f;
+      --blue-strong: #0d2a52;
+      --blue-soft: #e7eef8;
+      --red: #c93f4a;
+      --cream: #fff8e8;
+      --green: #256f53;
+      --shadow: 0 18px 50px rgba(16, 24, 40, .10);
+      --shadow-soft: 0 8px 24px rgba(16, 24, 40, .07);
+      --radius: 20px;
+      --container: 1240px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-feature-settings: "ss01";
-      background:
-        radial-gradient(circle at 12% 8%, rgba(83, 58, 253, 0.14), transparent 30rem),
-        radial-gradient(circle at 84% 4%, rgba(249, 107, 238, 0.12), transparent 28rem),
-        linear-gradient(180deg, #ffffff 0%, #f8fbff 64%, #ffffff 100%);
-      color: var(--body);
-      line-height: 1.45;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
     }
-
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(21,59,111,.055), transparent 18%, transparent 82%, rgba(201,63,74,.045)),
+        radial-gradient(circle at 50% 0%, rgba(21,59,111,.08), transparent 34rem);
+      z-index: -1;
+    }
     a { color: inherit; text-decoration: none; }
-    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 104px 0; }
+    .section.compact { padding: 78px 0; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: max-content;
+      max-width: 100%;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 24px;
+      max-width: 860px;
+      color: var(--ink-strong);
+      font-size: clamp(46px, 8vw, 88px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 700;
+    }
+    h2 {
+      margin-bottom: 16px;
+      color: var(--ink-strong);
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      font-weight: 700;
+    }
+    h3 {
+      margin-bottom: 10px;
+      color: var(--ink-strong);
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(18px, 2.2vw, 23px);
+      line-height: 1.55;
+      letter-spacing: -.018em;
+    }
+    .section-head { max-width: 780px; margin-bottom: 48px; }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-head p { color: var(--muted); font-size: 18px; }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
+      border-bottom: 1px solid rgba(217,226,238,.78);
+      background: rgba(251,250,247,.88);
       backdrop-filter: blur(18px);
-      background: rgba(255, 255, 255, 0.82);
-      border-bottom: 1px solid rgba(229, 237, 245, 0.9);
     }
     .nav-inner {
       min-height: 72px;
@@ -60,422 +123,512 @@
       justify-content: space-between;
       gap: 24px;
     }
-    .brand { display: flex; align-items: center; gap: 12px; color: var(--heading); font-weight: 500; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink-strong); font-weight: 700; letter-spacing: -.02em; }
     .mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
-      color: white;
-      background: linear-gradient(135deg, var(--purple), var(--ruby) 60%, var(--magenta));
-      box-shadow: var(--shadow);
-      font-weight: 600;
+      background: var(--blue);
+      color: #fff;
+      box-shadow: inset 3px 0 0 rgba(255,255,255,.26), inset -3px 0 0 rgba(201,63,74,.46);
+      font-size: 14px;
+      font-weight: 800;
     }
-    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 14px; color: var(--label); }
-    .nav-links a:hover { color: var(--purple); }
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue); }
 
-    .button {
+    .btn {
+      min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 6px;
-      font-weight: 400;
+      gap: 9px;
+      padding: 12px 18px;
+      border-radius: 999px;
       border: 1px solid transparent;
-      transition: 160ms ease;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -.012em;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
     }
-    .button.primary { color: white; background: var(--purple); box-shadow: var(--soft-shadow); }
-    .button.primary:hover { background: var(--purple-hover); transform: translateY(-1px); }
-    .button.coffee { color: var(--heading); background: #ffdd00; border-color: rgba(155, 104, 41, .18); box-shadow: var(--soft-shadow); }
-    .button.coffee:hover { background: #f2c900; transform: translateY(-1px); }
-    .button.ghost { color: var(--purple); border-color: var(--border-purple); background: rgba(255,255,255,.65); }
-    .button.ghost:hover { background: rgba(83, 58, 253, 0.06); transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { color: #fff; background: var(--blue); box-shadow: var(--shadow-soft); }
+    .btn.primary:hover { background: var(--blue-strong); }
+    .btn.secondary { color: var(--blue); background: rgba(255,255,255,.86); border-color: var(--line); }
+    .btn.secondary:hover { border-color: #b8c7da; box-shadow: var(--shadow-soft); }
+    .btn.support { color: #2c2410; background: #ffdd66; border-color: #f0c94b; }
+    .btn.support:hover { background: #ffd344; }
+    .btn.small { min-height: 40px; padding: 10px 14px; font-size: 14px; }
+    .focusable:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid rgba(21,59,111,.25); outline-offset: 3px; }
 
-    .hero {
-      position: relative;
-      padding: 92px 0 78px;
-      overflow: hidden;
-    }
+    .hero { padding: 92px 0 74px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(320px, .78fr);
-      gap: 56px;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .86fr);
+      gap: 72px;
       align-items: center;
     }
-    .eyebrow {
-      width: max-content;
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 24px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 4px 8px;
-      color: var(--green-text);
-      background: rgba(21,190,83,.16);
-      border: 1px solid rgba(21,190,83,.35);
-      border-radius: 5px;
+      gap: 7px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      color: var(--muted);
       font-size: 13px;
-      font-weight: 400;
+      font-weight: 650;
     }
-    .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--green); box-shadow: 0 0 0 4px rgba(21,190,83,.12); }
-    h1 {
-      margin: 22px 0 18px;
-      max-width: 780px;
-      color: var(--heading);
-      font-size: clamp(44px, 7vw, 76px);
-      line-height: .98;
-      letter-spacing: -1.9px;
-      font-weight: 300;
-    }
-    .lead {
-      max-width: 640px;
-      margin: 0 0 28px;
-      color: var(--body);
-      font-size: 20px;
-      font-weight: 300;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .badge svg { color: var(--blue); }
 
-    .terminal-card {
+    .hero-panel {
       position: relative;
-      border-radius: 8px;
-      background: #0d253d;
-      color: #d9e8ff;
+      padding: 26px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #ffffff, #f5f7fb);
+      border: 1px solid var(--line-soft);
       box-shadow: var(--shadow);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.12);
     }
-    .terminal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px;
-      background: rgba(255,255,255,.06);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      color: rgba(255,255,255,.7);
-      font-size: 12px;
-    }
-    .traffic { display: flex; gap: 6px; }
-    .traffic i { width: 9px; height: 9px; border-radius: 50%; display: block; background: #f96bee; }
-    .traffic i:nth-child(2) { background: #ffd166; }
-    .traffic i:nth-child(3) { background: #15be53; }
-    pre {
-      margin: 0;
-      padding: 22px;
-      white-space: pre-wrap;
-      font-family: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12px;
-      line-height: 1.8;
-    }
-    .code-key { color: #9ddcff; }
-    .code-good { color: #7ef7ac; }
-    .code-accent { color: #f96bee; }
-
-    .section { padding: 72px 0; }
-    .section-title { max-width: 700px; margin-bottom: 28px; }
-    .section-title h2 {
-      margin: 0 0 10px;
-      color: var(--heading);
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.08;
-      letter-spacing: -0.96px;
-      font-weight: 300;
-    }
-    .section-title p { margin: 0; font-size: 18px; font-weight: 300; }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 34px;
-    }
-    .stat-card, .feature-card {
-      background: rgba(255,255,255,.82);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: rgba(23,23,23,.06) 0 3px 6px;
-    }
-    .stat-card { padding: 22px; }
-    .stat-value {
-      color: var(--heading);
-      font-size: 34px;
-      line-height: 1;
-      font-weight: 300;
-      letter-spacing: -0.64px;
-      font-feature-settings: "tnum";
-    }
-    .stat-label { margin-top: 8px; color: var(--label); font-size: 14px; }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .feature-card { padding: 24px; }
-    .feature-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 7px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-      color: white;
-      background: linear-gradient(135deg, var(--purple), var(--magenta));
-      box-shadow: rgba(50,50,93,.2) 0 12px 24px -12px;
-    }
-    .feature-card h3 {
-      margin: 0 0 8px;
-      color: var(--heading);
-      font-size: 22px;
-      line-height: 1.1;
-      font-weight: 300;
-      letter-spacing: -0.22px;
-    }
-    .feature-card p { margin: 0; }
-
-    .dark {
-      background: var(--brand-dark);
-      color: rgba(255,255,255,.72);
-      margin-top: 32px;
-      padding: 78px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .dark::before {
+    .hero-panel::before {
       content: "";
       position: absolute;
-      inset: -20% -10% auto auto;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(249,107,238,.24), transparent 62%);
+      inset: 20px auto auto -10px;
+      width: 5px;
+      height: 72px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--blue), #fff, var(--red));
     }
-    .dark h2, .dark h3 { color: white; }
-    .pipeline {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 34px;
+    .phone-cluster { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: center; }
+    .device {
+      border-radius: 30px;
+      padding: 10px;
+      background: #111827;
+      box-shadow: 0 26px 60px rgba(7,21,47,.22);
     }
-    .step {
-      min-height: 168px;
-      padding: 20px;
+    .device.offset { transform: translateY(34px); }
+    .device img {
+      width: 100%;
+      border-radius: 23px;
+      background: #fff;
       border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.07);
-      border-radius: 8px;
     }
-    .step-num { color: #b9b9f9; font-family: 'Source Code Pro', monospace; font-size: 12px; }
-    .step h3 { margin: 14px 0 8px; font-size: 21px; font-weight: 300; }
-    .step p { margin: 0; }
+    .mini-note {
+      margin-top: 46px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .mini-note strong { color: var(--ink-strong); }
+    .pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 6px rgba(37,111,83,.12); }
+
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .metric {
+      min-height: 142px;
+      padding: 24px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 1px 0 rgba(16,24,40,.02);
+    }
+    .metric-value { margin-bottom: 10px; color: var(--blue); font-size: 34px; line-height: 1; letter-spacing: -.045em; font-weight: 800; }
+    .metric-label { color: var(--ink-strong); font-size: 15px; font-weight: 700; }
+    .metric-copy { margin-top: 6px; color: var(--soft); font-size: 14px; }
+
+    .preview-block {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(320px, 1fr);
+      gap: 72px;
+      align-items: center;
+      padding: 70px 0;
+      border-top: 1px solid var(--line-soft);
+    }
+    .preview-block:first-of-type { border-top: 0; padding-top: 10px; }
+    .preview-block.reverse { grid-template-columns: minmax(320px, 1fr) minmax(0, .88fr); }
+    .preview-copy { max-width: 520px; }
+    .step-label { color: var(--blue); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    .preview-copy h3 { margin-top: 12px; font-size: clamp(28px, 3.2vw, 42px); letter-spacing: -.045em; }
+    .preview-copy p { color: var(--muted); font-size: 18px; }
+    .preview-points { display: grid; gap: 10px; margin-top: 24px; color: var(--muted); font-size: 15px; }
+    .preview-points span { display: flex; align-items: flex-start; gap: 10px; }
+    .check { flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); font-size: 12px; font-weight: 900; }
+    .screenshot-frame {
+      width: min(420px, 100%);
+      margin: 0 auto;
+      padding: 12px;
+      border-radius: 38px;
+      background: #0b1220;
+      box-shadow: 0 32px 80px rgba(7,21,47,.20);
+    }
+    .screenshot-frame.wide { width: min(520px, 100%); }
+    .screenshot-frame img { border-radius: 28px; border: 1px solid rgba(255,255,255,.12); background: #fff; }
+    .screen-note { margin: 16px auto 0; width: min(420px, 100%); color: var(--soft); font-size: 13px; text-align: center; }
+
+    .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: item; }
+    .timeline-card {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+    .timeline-card::before {
+      counter-increment: item;
+      content: counter(item);
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .icon { width: 32px; height: 32px; color: var(--blue); margin-bottom: 16px; }
+    .timeline-card h3 { font-size: 18px; }
+    .timeline-card p { color: var(--muted); font-size: 14px; margin-bottom: 0; }
+
+    .trust-section { background: #fff; border-block: 1px solid var(--line-soft); }
+    .trust-grid { display: grid; grid-template-columns: minmax(0, .88fr) minmax(340px, 1fr); gap: 54px; align-items: start; }
+    .source-list { display: grid; gap: 12px; }
+    .source-row {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      background: var(--paper);
+    }
+    .source-icon { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); font-weight: 900; }
+    .source-row strong { display: block; color: var(--ink-strong); }
+    .source-row span { color: var(--muted); font-size: 14px; }
+    .source-row a { color: var(--blue); font-size: 14px; font-weight: 800; }
+
+    .neutral-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, .42fr);
+      gap: 48px;
+      align-items: center;
+      padding: clamp(32px, 5vw, 64px);
+      border-radius: 30px;
+      border: 1px solid #eadfc8;
+      background:
+        linear-gradient(90deg, rgba(21,59,111,.055), transparent 44%),
+        var(--cream);
+      box-shadow: var(--shadow-soft);
+    }
+    .neutral-card h2 { max-width: 620px; }
+    .neutral-list { display: grid; gap: 12px; }
+    .neutral-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink-strong);
+      font-size: 17px;
+      font-weight: 750;
+    }
+    .neutral-x { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--red); border: 1px solid #efd7cc; }
+
+    .open-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .7fr); gap: 32px; align-items: stretch; }
+    .open-card, .tech-card, .support-card {
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+    .open-card { padding: 34px; }
+    .open-card ul { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+    .open-card li { display: flex; gap: 12px; color: var(--muted); }
+    .tech-card { padding: 28px; background: var(--ink-strong); color: rgba(255,255,255,.72); }
+    .tech-card h3 { color: #fff; }
+    .tech-lines { display: grid; gap: 12px; margin-top: 20px; }
+    .tech-line { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.11); font-size: 14px; }
+    .tech-line strong { color: #fff; text-align: right; }
 
     .support-card {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
+      gap: 32px;
       align-items: center;
-      padding: 30px;
-      margin-top: 10px;
-      background: linear-gradient(135deg, #fff8bf, #ffffff 56%, #f7f3ff);
-      border: 1px solid rgba(185,185,249,.72);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
+      padding: clamp(30px, 4vw, 52px);
+      background: linear-gradient(135deg, #ffffff, #fff9e5 68%, #f8fafc);
     }
-    .support-card h2 {
-      margin: 0 0 8px;
-      color: var(--heading);
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.08;
-      letter-spacing: -0.86px;
-      font-weight: 300;
-    }
-    .support-card p { margin: 0; max-width: 690px; font-size: 18px; font-weight: 300; }
-    .coffee-note { color: #9b6829; font-size: 13px; margin-top: 12px; }
+    .support-card p { max-width: 720px; color: var(--muted); font-size: 18px; }
+    .support-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
-    .data-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 26px;
-    }
-    .file-row {
-      display: grid;
-      grid-template-columns: 130px minmax(0, 1fr) 120px auto;
-      gap: 16px;
-      align-items: center;
-      padding: 14px 16px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: rgba(23,23,23,.05) 0 3px 10px;
-    }
-    .file-name { color: var(--heading); font-weight: 500; }
-    .file-url {
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-family: 'Source Code Pro', monospace;
-      font-size: 12px;
-      color: var(--label);
-    }
-    .file-size { font-feature-settings: "tnum"; color: var(--body); font-size: 14px; }
-    .file-row a { color: var(--purple); font-size: 14px; }
+    footer { padding: 64px 0; background: #07152f; color: rgba(255,255,255,.7); }
+    .footer-grid { display: grid; grid-template-columns: minmax(260px, 1fr) repeat(4, minmax(130px, .4fr)); gap: 34px; }
+    .footer-brand { color: #fff; font-weight: 800; font-size: 18px; }
+    .footer-copy { margin-top: 12px; max-width: 360px; font-size: 14px; }
+    .footer-col h3 { color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+    .footer-col a { display: block; margin-top: 10px; font-size: 14px; }
+    .footer-col a:hover { color: #fff; }
+    .disclaimer { margin-top: 44px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.58); font-size: 13px; }
 
-    footer {
-      padding: 38px 0 48px;
-      color: var(--body);
-      border-top: 1px solid var(--border);
-      background: #fff;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .device.offset { transform: none; }
     }
-    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .mono { font-family: 'Source Code Pro', monospace; font-size: 12px; }
 
-    @media (max-width: 900px) {
-      .hero-grid, .features, .pipeline, .stats { grid-template-columns: 1fr; }
-      .support-card { grid-template-columns: 1fr; }
-      .hero { padding-top: 58px; }
-      .nav-links a:not(.button) { display: none; }
-      .file-row { grid-template-columns: 1fr; gap: 8px; }
+    @media (max-width: 1020px) {
+      .nav-links a:not(.btn) { display: none; }
+      .hero-grid, .preview-block, .preview-block.reverse, .trust-grid, .neutral-card, .open-grid, .support-card { grid-template-columns: 1fr; }
+      .preview-block.reverse .preview-copy { order: -1; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .support-actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--container)); }
+      .section { padding: 76px 0; }
+      .hero { padding: 62px 0 58px; }
+      .hero-grid { gap: 42px; }
+      .nav-inner { min-height: 66px; }
+      .nav-links { gap: 10px; }
+      .nav-links .btn.secondary { display: none; }
+      .btn { width: 100%; }
+      .nav-links .btn { width: auto; min-height: 42px; padding: 9px 12px; }
+      .badges { gap: 8px; }
+      .badge { font-size: 12px; }
+      .phone-cluster { grid-template-columns: 1fr; }
+      .device.offset { transform: none; }
+      .mini-note { margin-top: 18px; }
+      .metrics, .timeline, .footer-grid { grid-template-columns: 1fr; }
+      .preview-block { padding: 54px 0; gap: 34px; }
+      .source-row { grid-template-columns: 44px minmax(0, 1fr); }
+      .source-row a { grid-column: 2; }
+      .neutral-card, .open-card, .tech-card, .support-card { border-radius: 22px; }
     }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="shell nav-inner">
-      <a class="brand" href="./" aria-label="CitizenEye accueil">
-        <span class="mark">CE</span>
-        <span>CitizenEye</span>
-      </a>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="./" aria-label="CitizenEye home"><span class="mark">CE</span><span>CitizenEye</span></a>
       <div class="nav-links">
-        <a href="#pipeline">Pipeline</a>
-        <a href="#data">Données</a>
-        <a href="manifest.json">Manifest</a>
-        <a class="button coffee" href="https://buymeacoffee.com/pixxelboy">☕ Soutenir</a>
-        <a class="button primary" href="https://github.com/pixxelboy/citizenEye">GitHub</a>
+        <a href="#preview">Product</a>
+        <a href="#how">How it works</a>
+        <a href="#transparency">Data</a>
+        <a href="#neutrality">Neutrality</a>
+        <a class="btn secondary small" href="https://github.com/pixxelboy/citizenEye">GitHub</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <section class="hero">
-      <div class="shell hero-grid">
+    <header class="hero">
+      <div class="container hero-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span> Données publiques prêtes pour mobile</div>
-          <h1>Suivre l’Assemblée nationale sans serveur à maintenir.</h1>
-          <p class="lead">CitizenEye transforme les archives officielles de l’Assemblée nationale en fichiers JSON statiques, compacts et vérifiables. L’application Android télécharge uniquement ce qui change.</p>
+          <div class="eyebrow">Independent civic technology</div>
+          <h1>Know how your representative votes.</h1>
+          <p class="lead">CitizenEye makes parliamentary activity easier to understand through public data, transparent sources and a mobile-first experience.</p>
           <div class="hero-actions">
-            <a class="button primary" href="manifest.json">Voir le manifest</a>
-            <a class="button ghost" href="#data">Explorer les fichiers</a>
-            <a class="button coffee" href="https://buymeacoffee.com/pixxelboy">☕ Offrir un café</a>
+            <a class="btn primary" href="#preview">Explore the project</a>
+            <a class="btn secondary" href="https://github.com/pixxelboy/citizenEye">View source code</a>
+          </div>
+          <div class="badges" aria-label="Project badges">
+            <span class="badge">GitHub</span>
+            <span class="badge">Open Source</span>
+            <span class="badge">Public Data</span>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="CitizenEye Android application preview">
+          <div class="phone-cluster">
+            <div class="device"><img src="assets/screenshots/onboarding.svg" alt="CitizenEye onboarding screen to find a representative by location"></div>
+            <div class="device offset"><img src="assets/screenshots/home.svg" alt="CitizenEye home screen showing a deputy and public votes"></div>
+          </div>
+          <div class="mini-note"><span class="pulse"></span><span><strong>Mobile-first Android app.</strong> Designed for quick checks, not political noise.</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section compact" aria-labelledby="metrics-title">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="metrics-title">A readable layer over public parliamentary activity.</h2>
+          <p>CitizenEye starts with practical civic value: who represents you, what they vote, and where the information comes from.</p>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-value">577</div><div class="metric-label">Representatives covered</div><div class="metric-copy">Current active députés in the public dataset.</div></div>
+          <div class="metric"><div class="metric-value">Public</div><div class="metric-label">Parliamentary data</div><div class="metric-copy">Built from official Assemblée nationale sources.</div></div>
+          <div class="metric"><div class="metric-value">Mobile</div><div class="metric-label">First experience</div><div class="metric-copy">Designed for citizens checking information on a phone.</div></div>
+          <div class="metric"><div class="metric-value">Open</div><div class="metric-label">Source project</div><div class="metric-copy">Code, data generation and build process are visible.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="preview" aria-labelledby="preview-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Product preview</div>
+          <h2 id="preview-title">From location to public votes, in a few clear steps.</h2>
+          <p>The Android app turns institutional data into a calm, readable civic workflow.</p>
+        </div>
+
+        <div class="preview-block">
+          <div class="preview-copy">
+            <div class="step-label">Find my representative</div>
+            <h3>Enter your city or use your location.</h3>
+            <p>CitizenEye helps identify the constituency attached to a place in France, with explicit confirmation when a postal code or city is ambiguous.</p>
+            <div class="preview-points"><span><i class="check">✓</i>Postal-code and city lookup.</span><span><i class="check">✓</i>Location-based constituency detection.</span><span><i class="check">✓</i>Ambiguity stays visible instead of hidden.</span></div>
+          </div>
+          <div>
+            <div class="screenshot-frame"><img src="assets/screenshots/onboarding.svg" alt="CitizenEye screen to find a representative from a location"></div>
+            <p class="screen-note">Onboarding is built around confirmation, not guesswork.</p>
           </div>
         </div>
 
-        <aside class="terminal-card" aria-label="Exemple de manifest CitizenEye">
-          <div class="terminal-top">
-            <div class="traffic"><i></i><i></i><i></i></div>
-            <span>manifest.json</span>
+        <div class="preview-block reverse">
+          <div>
+            <div class="screenshot-frame wide"><img src="assets/screenshots/home.svg" alt="CitizenEye screen showing representative and recent public votes"></div>
+            <p class="screen-note">Recent votes are shown as public records, with neutral language.</p>
           </div>
-          <pre>{
-  <span class="code-key">"dataset"</span>: <span class="code-accent">"citizeneye-assemblee-v17"</span>,
-  <span class="code-key">"schemaVersion"</span>: <span class="code-good">1</span>,
-  <span class="code-key">"files"</span>: [
-    <span class="code-accent">"deputies-&lt;sha&gt;.json.gz"</span>,
-    <span class="code-accent">"votes-&lt;sha&gt;.json.gz"</span>,
-    <span class="code-accent">"dossiers-&lt;sha&gt;.json.gz"</span>
-  ],
-  <span class="code-key">"integrity"</span>: <span class="code-good">"sha256 verified"</span>
-}</pre>
+          <div class="preview-copy">
+            <div class="step-label">Explore voting history</div>
+            <h3>See how your representative voted.</h3>
+            <p>Browse recent public votes, understand the recorded position and move from the summary to the underlying parliamentary source when needed.</p>
+            <div class="preview-points"><span><i class="check">✓</i>Recorded vote position.</span><span><i class="check">✓</i>Readable vote labels and outcomes.</span><span><i class="check">✓</i>Links back to official material.</span></div>
+          </div>
+        </div>
+
+        <div class="preview-block">
+          <div class="preview-copy">
+            <div class="step-label">Understand parliamentary activity</div>
+            <h3>Context without commentary.</h3>
+            <p>CitizenEye presents public information with enough context to be useful, while avoiding rankings, scores or partisan framing.</p>
+            <div class="preview-points"><span><i class="check">✓</i>Participation and vote distribution.</span><span><i class="check">✓</i>Clear caveats for public-scrutin statistics.</span><span><i class="check">✓</i>Source-backed details over opinion.</span></div>
+          </div>
+          <div>
+            <div class="screenshot-frame"><img src="assets/screenshots/profile.svg" alt="CitizenEye representative profile statistics screen"></div>
+            <p class="screen-note">Statistics are informational, not performance scores.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow">How it works</div>
+          <h2 id="how-title">A simple civic path.</h2>
+          <p>Designed to make the official record easier to reach, without hiding uncertainty or provenance.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-card"><h3>You enter your location.</h3><p>Start from a city, postal code or location permission.</p></article>
+          <article class="timeline-card"><h3>CitizenEye identifies your constituency.</h3><p>Geographic and administrative data are used to resolve the likely constituency.</p></article>
+          <article class="timeline-card"><h3>Your representative is displayed.</h3><p>The app shows the député associated with the confirmed place.</p></article>
+          <article class="timeline-card"><h3>You explore public votes.</h3><p>Recent votes and recorded positions become readable on mobile.</p></article>
+          <article class="timeline-card"><h3>Sources stay visible.</h3><p>Every piece of information can link back to official material.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="transparency" aria-labelledby="transparency-title">
+      <div class="container trust-grid">
+        <div>
+          <div class="eyebrow">Public data & transparency</div>
+          <h2 id="transparency-title">Built on public parliamentary data</h2>
+          <p class="lead">CitizenEye relies on publicly available parliamentary information. All displayed information can be traced back to official sources.</p>
+          <p>Transparency here is practical: source links, reproducible data generation and clear distinction between public records and interpretation.</p>
+        </div>
+        <div class="source-list">
+          <div class="source-row"><div class="source-icon">AN</div><div><strong>Assemblée nationale open data</strong><span>Deputies, mandates, organs and public votes.</span></div><a href="https://data.assemblee-nationale.fr">Open</a></div>
+          <div class="source-row"><div class="source-icon">OD</div><div><strong>French open-data ecosystem</strong><span>Public data references and provenance.</span></div><a href="https://www.data.gouv.fr">Open</a></div>
+          <div class="source-row"><div class="source-icon">Geo</div><div><strong>Administrative geography</strong><span>City, postal-code and constituency resolution.</span></div><a href="https://geo.api.gouv.fr">Open</a></div>
+          <div class="source-row"><div class="source-icon">JSON</div><div><strong>CitizenEye public manifest</strong><span>Versioned data files used by the Android app.</span></div><a href="manifest.json">Open</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="neutrality" aria-labelledby="neutrality-title">
+      <div class="container">
+        <div class="neutral-card">
+          <div>
+            <div class="eyebrow">Political neutrality</div>
+            <h2 id="neutrality-title">Facts before opinions</h2>
+            <p class="lead">CitizenEye does not score politicians. CitizenEye does not rank representatives. CitizenEye does not generate outrage.</p>
+            <p>The goal is to make public information easier to access and verify.</p>
+          </div>
+          <div class="neutral-list" aria-label="CitizenEye neutrality principles">
+            <div class="neutral-item"><span class="neutral-x">×</span>No politician scores</div>
+            <div class="neutral-item"><span class="neutral-x">×</span>No representative rankings</div>
+            <div class="neutral-item"><span class="neutral-x">×</span>No outrage mechanics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact" id="open-source" aria-labelledby="open-title">
+      <div class="container open-grid">
+        <div class="open-card">
+          <div class="eyebrow">Open source</div>
+          <h2 id="open-title">Open source and verifiable</h2>
+          <p class="lead">The source code is public. The repository contains the Android app, the data-generation script and the GitHub Pages deployment workflow.</p>
+          <ul>
+            <li><i class="check">✓</i><span>Public repository for review and contribution.</span></li>
+            <li><i class="check">✓</i><span>Reproducible data generation from public sources.</span></li>
+            <li><i class="check">✓</i><span>Public build process through GitHub Actions.</span></li>
+          </ul>
+          <div class="hero-actions"><a class="btn primary" href="https://github.com/pixxelboy/citizenEye">View GitHub repository</a><a class="btn secondary" href="https://github.com/pixxelboy/citizenEye/issues">Contribute or report an issue</a></div>
+        </div>
+        <aside class="tech-card" aria-labelledby="tech-title">
+          <h3 id="tech-title">Technical transparency</h3>
+          <p>These details support verification without making the site developer-first.</p>
+          <div class="tech-lines">
+            <div class="tech-line"><span>Dataset size</span><strong id="datasetSize">Loading</strong></div>
+            <div class="tech-line"><span>Update frequency</span><strong>Every 6 hours</strong></div>
+            <div class="tech-line"><span>Manifest version</span><strong id="manifestVersion">Loading</strong></div>
+            <div class="tech-line"><span>Integrity</span><strong>SHA-256</strong></div>
+          </div>
         </aside>
       </div>
     </section>
 
-    <section class="section">
-      <div class="shell">
-        <div class="section-title">
-          <h2>Un backend statique pour la transparence civique.</h2>
-          <p>Pas de base de données, pas de fonction cloud, pas d’API privée : uniquement des données publiques officielles compilées et servies par GitHub Pages.</p>
-        </div>
-        <div class="stats" id="stats">
-          <div class="stat-card"><div class="stat-value" id="deputyCount">577</div><div class="stat-label">députés actifs</div></div>
-          <div class="stat-card"><div class="stat-value" id="fileCount">3</div><div class="stat-label">fichiers JSON gzip</div></div>
-          <div class="stat-card"><div class="stat-value" id="datasetSize">—</div><div class="stat-label">taille compressée</div></div>
-          <div class="stat-card"><div class="stat-value">SHA</div><div class="stat-label">intégrité vérifiée</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell features">
-        <article class="feature-card">
-          <div class="feature-icon">↓</div>
-          <h3>Moins lourd pour le téléphone</h3>
-          <p>L’app ne parse plus les grandes archives publiques dans le parcours normal. Elle lit un index par député et charge les votes utiles.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">✓</div>
-          <h3>Vérifiable</h3>
-          <p>Chaque fichier est adressé par hash et validé en SHA-256 avant d’être utilisé par l’application Android.</p>
-        </article>
-        <article class="feature-card">
-          <div class="feature-icon">↺</div>
-          <h3>Résilient</h3>
-          <p>Si GitHub Pages est indisponible, l’app garde son cache local puis peut revenir aux sources officielles de l’Assemblée nationale.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="dark" id="pipeline">
-      <div class="shell">
-        <div class="section-title">
-          <h2>Pipeline public, simple, auditable.</h2>
-          <p>GitHub Actions reconstruit régulièrement le jeu de données depuis les sources officielles, puis publie les fichiers statiques sur cette page.</p>
-        </div>
-        <div class="pipeline">
-          <article class="step"><div class="step-num">01</div><h3>Collecter</h3><p>Archives députés, scrutins et dossiers législatifs depuis data.assemblee-nationale.fr.</p></article>
-          <article class="step"><div class="step-num">02</div><h3>Nettoyer</h3><p>Normalisation des champs utiles : groupes, positions, résultats, texte parent et métadonnées.</p></article>
-          <article class="step"><div class="step-num">03</div><h3>Compresser</h3><p>JSON stable, gzip déterministe, noms de fichiers basés sur SHA-256.</p></article>
-          <article class="step"><div class="step-num">04</div><h3>Servir</h3><p>GitHub Pages expose le manifest et les fichiers versionnés pour le client Android.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="support">
-      <div class="shell">
+    <section class="section compact" id="support" aria-labelledby="support-title">
+      <div class="container">
         <div class="support-card">
           <div>
-            <h2>Soutenir CitizenEye.</h2>
-            <p>CitizenEye est construit comme un outil civique indépendant : données ouvertes, sources vérifiables, pas de score partisan. Si ce travail vous est utile, vous pouvez aider à financer son développement.</p>
-            <div class="coffee-note">Le soutien passe par Buy Me a Coffee et n’affecte ni les données publiées, ni leur accès libre.</div>
+            <div class="eyebrow">Support</div>
+            <h2 id="support-title">Support independent civic technology</h2>
+            <p>CitizenEye is built independently. Support helps maintain infrastructure, improve the Android application and make parliamentary information more accessible.</p>
           </div>
-          <a class="button coffee" href="https://buymeacoffee.com/pixxelboy">☕ buymeacoffee.com/pixxelboy</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="data">
-      <div class="shell">
-        <div class="section-title">
-          <h2>Données publiées.</h2>
-          <p>Ces liens restent lisibles par l’application. Le site marketing n’interfère pas avec <span class="mono">manifest.json</span> ni avec les fichiers <span class="mono">.json.gz</span>.</p>
-        </div>
-        <div class="data-list" id="fileList">
-          <div class="file-row"><span class="file-name">manifest</span><span class="file-url">manifest.json</span><span class="file-size">live</span><a href="manifest.json">ouvrir</a></div>
+          <div class="support-actions"><a class="btn support" href="https://buymeacoffee.com/pixxelboy">Support CitizenEye</a><a class="btn secondary" href="https://github.com/pixxelboy/citizenEye">View GitHub</a></div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="shell footer-inner">
-      <div>CitizenEye — données parlementaires publiques, sans backend applicatif. <a href="https://buymeacoffee.com/pixxelboy">Soutenir</a></div>
-      <div class="mono" id="version">manifest: chargement…</div>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">CitizenEye</div>
+        <p class="footer-copy">A mobile-first civic project for understanding representative votes through public parliamentary data.</p>
+      </div>
+      <div class="footer-col"><h3>Project</h3><a href="#preview">About</a><a href="https://github.com/pixxelboy/citizenEye">GitHub</a></div>
+      <div class="footer-col"><h3>Data</h3><a href="manifest.json">Manifest</a><a href="#transparency">Sources</a><a href="#neutrality">Transparency</a></div>
+      <div class="footer-col"><h3>Community</h3><a href="https://buymeacoffee.com/pixxelboy">Support</a><a href="https://github.com/pixxelboy/citizenEye/issues">Issues</a></div>
+      <div class="footer-col"><h3>Legal</h3><a href="#neutrality">Disclaimer</a><a href="https://github.com/pixxelboy/citizenEye">Privacy</a></div>
     </div>
+    <div class="container disclaimer">CitizenEye is independent and is not affiliated with the Assemblée nationale, any public institution, political party, campaign or parliamentary group. Public records can be incomplete, delayed or ambiguous; official sources remain authoritative.</div>
   </footer>
 
   <script>
     const formatBytes = (bytes) => {
-      if (!Number.isFinite(bytes)) return '—';
-      const units = ['o', 'Ko', 'Mo', 'Go'];
+      if (!Number.isFinite(bytes)) return 'Unavailable';
+      const units = ['B', 'KB', 'MB', 'GB'];
       let value = bytes;
       let unit = 0;
       while (value >= 1024 && unit < units.length - 1) { value /= 1024; unit++; }
@@ -487,24 +640,12 @@
       .then((manifest) => {
         const files = Array.isArray(manifest.files) ? manifest.files : [];
         const totalBytes = files.reduce((sum, file) => sum + (file.bytes || 0), 0);
-        document.getElementById('fileCount').textContent = files.length || '—';
         document.getElementById('datasetSize').textContent = formatBytes(totalBytes);
-        document.getElementById('version').textContent = `manifest: ${String(manifest.version || '').slice(0, 12)} · ${manifest.generatedAt || 'date inconnue'}`;
-        const list = document.getElementById('fileList');
-        list.innerHTML = '<div class="file-row"><span class="file-name">manifest</span><span class="file-url">manifest.json</span><span class="file-size">live</span><a href="manifest.json">ouvrir</a></div>';
-        for (const file of files) {
-          const row = document.createElement('div');
-          row.className = 'file-row';
-          row.innerHTML = `<span class="file-name"></span><span class="file-url"></span><span class="file-size"></span><a>ouvrir</a>`;
-          row.children[0].textContent = file.name || 'dataset';
-          row.children[1].textContent = file.url || '';
-          row.children[2].textContent = formatBytes(file.bytes || 0);
-          row.children[3].setAttribute('href', file.url || '#');
-          list.appendChild(row);
-        }
+        document.getElementById('manifestVersion').textContent = String(manifest.version || 'unknown').slice(0, 10);
       })
       .catch(() => {
-        document.getElementById('version').textContent = 'manifest: indisponible';
+        document.getElementById('datasetSize').textContent = 'Unavailable';
+        document.getElementById('manifestVersion').textContent = 'Unavailable';
       });
   </script>
 </body>

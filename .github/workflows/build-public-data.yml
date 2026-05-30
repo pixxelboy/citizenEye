@@ -46,8 +46,11 @@ jobs:
       - name: Build CitizenEye public dataset
         run: python tools/data/build_citizeneye_dataset.py --out public
 
-      - name: Add marketing index
-        run: cp tools/data/public-index.html public/index.html
+      - name: Add marketing index and assets
+        run: |
+          cp tools/data/public-index.html public/index.html
+          mkdir -p public/assets/screenshots
+          cp docs/screenshots/*.svg public/assets/screenshots/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
