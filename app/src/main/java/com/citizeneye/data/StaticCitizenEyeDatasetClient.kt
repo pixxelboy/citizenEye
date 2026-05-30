@@ -118,7 +118,7 @@ private fun JSONObject.toDepute(): Depute = Depute(
     profession = optNullableString("profession"),
     politicalGroupFullName = optString("politicalGroupFullName", "Groupe non renseigné"),
     politicalGroupAbbreviation = optString("politicalGroupAbbreviation", optString("group", "N/R")),
-    photoUrl = optNullableString("photoUrl") ?: deputyPhotoUrl(optString("id"))
+    photoUrl = deputyPhotoUrl(optString("id")) ?: optNullableString("photoUrl")
 )
 
 private fun JSONObject.toVote(): Vote = Vote(

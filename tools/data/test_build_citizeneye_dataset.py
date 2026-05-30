@@ -48,6 +48,11 @@ class BuildCitizenEyeDatasetTest(unittest.TestCase):
                 with gzip.open(path, "rt", encoding="utf-8") as handle:
                     payload = json.load(handle)
                 self.assertEqual(1, payload["schemaVersion"])
+                if entry["name"] == "deputies":
+                    self.assertEqual(
+                        "https://www.assemblee-nationale.fr/dyn/static/tribun/17/photos/carre/1.jpg",
+                        payload["deputies"][0]["photoUrl"],
+                    )
 
     def _write_zip(self, path: Path, entries: dict):
         with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
