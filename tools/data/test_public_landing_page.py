@@ -23,7 +23,7 @@ class PublicLandingPageTest(unittest.TestCase):
 
         self.assertIn('<html lang="fr">', html)
         self.assertIn("Comprendre les décisions politiques avant qu’elles ne soient prises.", text)
-        self.assertIn("CitizenEye vous aide à suivre les décisions parlementaires à venir à l’Assemblée nationale", text)
+        self.assertIn("CitizenEye vous aide à suivre les décisions parlementaires à venir, retrouver votre député", text)
         self.assertIn("La plupart des citoyens découvrent les décisions importantes une fois qu’elles sont déjà prises.", text)
         self.assertIn("CitizenEye rend l’activité parlementaire compréhensible.", text)
         self.assertIn("Savoir ce qui arrive ensuite.", text)
@@ -43,7 +43,7 @@ class PublicLandingPageTest(unittest.TestCase):
             "Décisions à venir",
             "Votre député",
             "Pourquoi CitizenEye",
-            "Lancer l’application",
+            "Lancer",
         ]
         positions = [nav.index(label) for label in expected_order]
         self.assertEqual(positions, sorted(positions))
@@ -78,6 +78,43 @@ class PublicLandingPageTest(unittest.TestCase):
 
         for forbidden_href in ["/dashboard", "/search", "/votes", "/deputies", "/deputes", "/app/"]:
             self.assertNotIn(forbidden_href, html)
+    def test_hero_branding_is_static_after_session_once_animation_and_chips_removed(self):
+        html = _html()
+        nav_match = re.search(r"<nav[\s\S]*?</nav>", html, flags=re.IGNORECASE)
+        hero_match = re.search(r"<header class=\"hero\"[\s\S]*?</header>", html, flags=re.IGNORECASE)
+        self.assertIsNotNone(nav_match)
+        self.assertIsNotNone(hero_match)
+        nav = nav_match.group(0) if nav_match else ""
+        hero = hero_match.group(0) if hero_match else ""
+
+        self.assertIn('href="./"', nav)
+        self.assertIn('assets/brand/citizeneye-eye.svg', nav)
+        self.assertNotIn('lottie-player', nav)
+        self.assertIn("sessionStorage.getItem(playedKey)", html)
+        self.assertIn("sessionStorage.setItem(playedKey, 'true')", html)
+        self.assertNotIn("loop autoplay", hero)
+        self.assertNotIn("Voir les décisions à venir</span>", hero)
+        self.assertNotIn("Comprendre</strong> ce que font vos élus", hero)
+        self.assertNotIn("Surveiller</strong> les textes importants", hero)
+        self.assertNotIn("Agir</strong> au bon moment", hero)
+        self.assertIn("Données officielles · Assemblée nationale", hero)
+        self.assertIn("577 députés suivis", hero)
+        self.assertIn("Projet indépendant", hero)
+
+    def test_support_cta_is_visible_but_not_in_primary_hero(self):
+        html = _html()
+        hero_match = re.search(r"<header class=\"hero\"[\s\S]*?</header>", html, flags=re.IGNORECASE)
+        self.assertIsNotNone(hero_match)
+        hero = hero_match.group(0) if hero_match else ""
+        support = re.search(r"<section class=\"section compact\" id=\"support\"[\s\S]*?</section>", html, flags=re.IGNORECASE)
+
+        self.assertIsNotNone(support)
+        support_html = support.group(0) if support else ""
+        self.assertNotIn("buymeacoffee.com", hero)
+        self.assertIn("Support CitizenEye", support_html)
+        self.assertIn("buymeacoffee.com/pixxelboy", support_html)
+        self.assertIn("GitHub / Open Source", support_html)
+        self.assertIn("indépendant et open source", _text_without_tags(support_html))
 
 
 if __name__ == "__main__":

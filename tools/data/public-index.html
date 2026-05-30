@@ -62,7 +62,7 @@
       max-width: 890px;
       margin-bottom: 24px;
       color: var(--ink-strong);
-      font-size: clamp(46px, 7.4vw, 86px);
+      font-size: clamp(42px, 6.3vw, 76px);
       line-height: .99;
       letter-spacing: -.068em;
       font-weight: 800;
@@ -116,27 +116,29 @@
       backdrop-filter: blur(18px);
     }
     .nav-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink-strong); font-weight: 800; letter-spacing: -.025em; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink-strong); font-weight: 800; letter-spacing: -.025em; }
     .mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
       overflow: hidden;
       background: #07152f;
-      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(21,59,111,.12);
     }
-    .mark lottie-player, .hero-logo lottie-player { width: 100%; height: 100%; }
+    .mark img, .hero-logo img, .hero-logo lottie-player { width: 100%; height: 100%; display: block; }
     .hero-logo {
-      width: 76px;
-      height: 76px;
-      margin-bottom: 18px;
-      border-radius: 24px;
+      width: 62px;
+      height: 62px;
+      margin-bottom: 16px;
+      border-radius: 20px;
       overflow: hidden;
       background: #07152f;
+      border: 1px solid rgba(21,59,111,.12);
       box-shadow: var(--shadow-soft);
     }
+    .hero-logo [hidden] { display: none !important; }
     .nav-links { display: flex; align-items: center; gap: 20px; color: var(--muted); font-size: 14px; font-weight: 700; }
     .nav-links a:hover { color: var(--blue); }
 
@@ -165,12 +167,13 @@
     .btn.small { min-height: 40px; padding: 10px 15px; font-size: 14px; }
     a:focus-visible, button:focus-visible { outline: 3px solid rgba(21,59,111,.25); outline-offset: 3px; }
 
-    .hero { padding: 92px 0 78px; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(390px, .86fr); gap: 70px; align-items: center; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 26px; }
-    .badges { display: flex; flex-wrap: wrap; gap: 10px; }
-    .badge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); font-size: 13px; font-weight: 700; }
-    .badge strong { color: var(--ink-strong); }
+    .hero { padding: 64px 0 58px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(390px, .86fr); gap: 64px; align-items: center; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 20px; }
+    .trust-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 780px; }
+    .trust-item { padding: 12px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.78); }
+    .trust-item strong { display: block; color: var(--ink-strong); font-size: 13px; line-height: 1.25; }
+    .trust-item span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.35; }
 
     .hero-panel {
       position: relative;
@@ -228,6 +231,20 @@
     .mission-item { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-strong); font-size: 17px; font-weight: 750; }
     .check { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); font-size: 13px; font-weight: 900; }
 
+    .support-card {
+      padding: clamp(30px, 4vw, 48px);
+      border-radius: 30px;
+      border: 1px solid #eadfc8;
+      background: linear-gradient(135deg, #ffffff, #fff8e8 78%);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+    }
+    .support-card p { margin-bottom: 0; color: var(--muted); font-size: 17px; }
+    .support-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+
     .final-cta { padding: clamp(34px, 5vw, 62px); border-radius: 32px; background: #07152f; color: rgba(255,255,255,.76); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center; box-shadow: var(--shadow); }
     .final-cta h2 { color: #fff; margin-bottom: 10px; }
     .final-cta p { max-width: 740px; margin-bottom: 0; font-size: 18px; }
@@ -245,7 +262,8 @@
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
     @media (max-width: 1040px) {
       .nav-links a:not(.btn) { display: none; }
-      .hero-grid, .split, .mission-card, .final-cta { grid-template-columns: 1fr; }
+      .hero-grid, .split, .mission-card, .support-card, .final-cta { grid-template-columns: 1fr; }
+      .support-actions { justify-content: flex-start; }
       .problem-grid, .pillar-grid, .example-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -253,7 +271,10 @@
       .container { width: min(100% - 28px, var(--container)); }
       .section { padding: 74px 0; }
       .section.compact { padding: 58px 0; }
-      .hero { padding: 58px 0; }
+      .hero { padding: 42px 0 48px; }
+      h1 { font-size: clamp(34px, 10vw, 42px); line-height: 1.04; letter-spacing: -.056em; overflow-wrap: break-word; }
+      .lead { font-size: 17px; }
+      .trust-strip { grid-template-columns: 1fr; }
       .nav-inner { min-height: 66px; }
       .nav-links { gap: 10px; }
       .btn { width: 100%; }
@@ -262,20 +283,20 @@
       .deputy-mini { grid-template-columns: 48px 1fr; }
       .deputy-mini .mini-action { grid-column: 1 / -1; text-align: center; }
       .flow-line, .footer-grid { grid-template-columns: 1fr; }
-      .card, .hero-panel, .mission-card, .final-cta { border-radius: 22px; }
+      .card, .hero-panel, .mission-card, .support-card, .final-cta { border-radius: 22px; }
     }
   </style>
 </head>
 <body>
   <nav class="nav" aria-label="Navigation principale">
     <div class="container nav-inner">
-      <a class="brand" href="./" aria-label="Accueil CitizenEye"><span class="mark" aria-hidden="true"><lottie-player src="assets/brand/eye.json" background="transparent" speed="1" loop autoplay></lottie-player></span><span>CitizenEye</span></a>
+      <a class="brand" href="./" aria-label="Accueil CitizenEye"><span class="mark" aria-hidden="true"><img src="assets/brand/citizeneye-eye.svg" alt=""></span><span>CitizenEye</span></a>
       <div class="nav-links">
         <a href="#comment-ca-marche">Comment ça marche</a>
         <a href="#decisions-a-venir">Décisions à venir</a>
         <a href="#votre-depute">Votre député</a>
         <a href="#pourquoi">Pourquoi CitizenEye</a>
-        <a class="btn launch small" href="https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk">Lancer l’application</a>
+        <a class="btn launch small" href="https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk">Lancer</a>
       </div>
     </div>
   </nav>
@@ -284,18 +305,21 @@
     <header class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="hero-logo" aria-hidden="true"><lottie-player src="assets/brand/eye.json" background="transparent" speed="1" loop autoplay></lottie-player></div>
-          <div class="eyebrow">Comprendre · surveiller · agir</div>
+          <div class="hero-logo" aria-hidden="true">
+            <lottie-player class="animated-logo" src="assets/brand/eye.json" background="transparent" speed="1" autoplay></lottie-player>
+            <img class="static-logo" src="assets/brand/citizeneye-eye.svg" alt="" hidden>
+          </div>
+          <div class="eyebrow">Données officielles · Assemblée nationale</div>
           <h1>Comprendre les décisions politiques avant qu’elles ne soient prises.</h1>
-          <p class="lead">CitizenEye vous aide à suivre les décisions parlementaires à venir à l’Assemblée nationale, surveiller l’activité de votre député et contacter vos élus lorsque votre voix compte le plus.</p>
+          <p class="lead">CitizenEye vous aide à suivre les décisions parlementaires à venir, retrouver votre député et agir avec des sources officielles, sans prédiction politique ni score partisan.</p>
           <div class="hero-actions">
             <a class="btn launch" href="https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk">Lancer CitizenEye</a>
             <a class="btn secondary" href="#decisions-a-venir">Voir les décisions à venir</a>
           </div>
-          <div class="badges" aria-label="Promesse du produit">
-            <span class="badge"><strong>Comprendre</strong> ce que font vos élus</span>
-            <span class="badge"><strong>Surveiller</strong> les textes importants</span>
-            <span class="badge"><strong>Agir</strong> au bon moment</span>
+          <div class="trust-strip" aria-label="Informations de confiance">
+            <div class="trust-item"><strong>577 députés suivis</strong><span>Circonscriptions et profils publics.</span></div>
+            <div class="trust-item"><strong>Scrutins publics analysés</strong><span>Votes historiques reliés aux sources officielles.</span></div>
+            <div class="trust-item"><strong>Projet indépendant</strong><span>Open source, neutre, non affilié.</span></div>
           </div>
         </div>
         <aside class="hero-panel" aria-label="Parcours CitizenEye : alerte, compréhension, contact">
@@ -420,6 +444,22 @@
       </div>
     </section>
 
+    <section class="section compact" id="support" aria-labelledby="support-title">
+      <div class="container">
+        <div class="support-card">
+          <div>
+            <div class="eyebrow">Projet indépendant</div>
+            <h2 id="support-title">Support CitizenEye</h2>
+            <p>CitizenEye est un projet civique indépendant et open source qui aide les citoyens à comprendre et surveiller l’activité parlementaire à partir de données publiques officielles.</p>
+          </div>
+          <div class="support-actions">
+            <a class="btn support" href="https://buymeacoffee.com/pixxelboy">Buy Me a Coffee</a>
+            <a class="btn secondary" href="https://github.com/pixxelboy/citizenEye">GitHub / Open Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section compact" aria-labelledby="final-cta-title">
       <div class="container">
         <div class="final-cta">
@@ -445,5 +485,29 @@
     </div>
     <div class="container disclaimer">CitizenEye est indépendant et n’est affilié ni à l’Assemblée nationale, ni à une institution publique, un parti politique, une campagne ou un groupe parlementaire. Les sources officielles restent la référence.</div>
   </footer>
+  <script>
+    (() => {
+      const playedKey = 'citizeneye.logoAnimationPlayed';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const heroLogo = document.querySelector('.hero-logo');
+      if (!heroLogo) return;
+      const animation = heroLogo.querySelector('.animated-logo');
+      const staticLogo = heroLogo.querySelector('.static-logo');
+      const showStaticLogo = () => {
+        if (animation) animation.setAttribute('hidden', '');
+        if (staticLogo) staticLogo.removeAttribute('hidden');
+      };
+      if (reduceMotion || sessionStorage.getItem(playedKey) === 'true') {
+        showStaticLogo();
+        return;
+      }
+      const complete = () => {
+        sessionStorage.setItem(playedKey, 'true');
+        showStaticLogo();
+      };
+      animation?.addEventListener('complete', complete, { once: true });
+      window.setTimeout(complete, 3200);
+    })();
+  </script>
 </body>
 </html>
