@@ -88,6 +88,8 @@
     }
     .button.primary { color: white; background: var(--purple); box-shadow: var(--soft-shadow); }
     .button.primary:hover { background: var(--purple-hover); transform: translateY(-1px); }
+    .button.coffee { color: var(--heading); background: #ffdd00; border-color: rgba(155, 104, 41, .18); box-shadow: var(--soft-shadow); }
+    .button.coffee:hover { background: #f2c900; transform: translateY(-1px); }
     .button.ghost { color: var(--purple); border-color: var(--border-purple); background: rgba(255,255,255,.65); }
     .button.ghost:hover { background: rgba(83, 58, 253, 0.06); transform: translateY(-1px); }
 
@@ -266,6 +268,29 @@
     .step h3 { margin: 14px 0 8px; font-size: 21px; font-weight: 300; }
     .step p { margin: 0; }
 
+    .support-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 30px;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #fff8bf, #ffffff 56%, #f7f3ff);
+      border: 1px solid rgba(185,185,249,.72);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+    .support-card h2 {
+      margin: 0 0 8px;
+      color: var(--heading);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.86px;
+      font-weight: 300;
+    }
+    .support-card p { margin: 0; max-width: 690px; font-size: 18px; font-weight: 300; }
+    .coffee-note { color: #9b6829; font-size: 13px; margin-top: 12px; }
+
     .data-list {
       display: grid;
       grid-template-columns: 1fr;
@@ -307,6 +332,7 @@
 
     @media (max-width: 900px) {
       .hero-grid, .features, .pipeline, .stats { grid-template-columns: 1fr; }
+      .support-card { grid-template-columns: 1fr; }
       .hero { padding-top: 58px; }
       .nav-links a:not(.button) { display: none; }
       .file-row { grid-template-columns: 1fr; gap: 8px; }
@@ -324,6 +350,7 @@
         <a href="#pipeline">Pipeline</a>
         <a href="#data">Données</a>
         <a href="manifest.json">Manifest</a>
+        <a class="button coffee" href="https://buymeacoffee.com/pixxelboy">☕ Soutenir</a>
         <a class="button primary" href="https://github.com/pixxelboy/citizenEye">GitHub</a>
       </div>
     </div>
@@ -339,6 +366,7 @@
           <div class="hero-actions">
             <a class="button primary" href="manifest.json">Voir le manifest</a>
             <a class="button ghost" href="#data">Explorer les fichiers</a>
+            <a class="button coffee" href="https://buymeacoffee.com/pixxelboy">☕ Offrir un café</a>
           </div>
         </div>
 
@@ -411,6 +439,19 @@
       </div>
     </section>
 
+    <section class="section" id="support">
+      <div class="shell">
+        <div class="support-card">
+          <div>
+            <h2>Soutenir CitizenEye.</h2>
+            <p>CitizenEye est construit comme un outil civique indépendant : données ouvertes, sources vérifiables, pas de score partisan. Si ce travail vous est utile, vous pouvez aider à financer son développement.</p>
+            <div class="coffee-note">Le soutien passe par Buy Me a Coffee et n’affecte ni les données publiées, ni leur accès libre.</div>
+          </div>
+          <a class="button coffee" href="https://buymeacoffee.com/pixxelboy">☕ buymeacoffee.com/pixxelboy</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="data">
       <div class="shell">
         <div class="section-title">
@@ -426,7 +467,7 @@
 
   <footer>
     <div class="shell footer-inner">
-      <div>CitizenEye — données parlementaires publiques, sans backend applicatif.</div>
+      <div>CitizenEye — données parlementaires publiques, sans backend applicatif. <a href="https://buymeacoffee.com/pixxelboy">Soutenir</a></div>
       <div class="mono" id="version">manifest: chargement…</div>
     </div>
   </footer>

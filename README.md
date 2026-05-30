@@ -50,6 +50,10 @@ CitizenEye est déjà un MVP Android connecté à de vraies données publiques, 
 - Repli sur cache statique existant, puis sur les archives officielles de l’Assemblée nationale si GitHub Pages est temporairement indisponible.
 - Tests unitaires pour la recherche, le cache, les portraits, la pagination des votes, les statistiques et la géométrie des circonscriptions.
 
+## Soutenir le projet
+
+CitizenEye est développé comme un outil civique indépendant. Si le projet vous semble utile, vous pouvez soutenir son développement ici : https://buymeacoffee.com/pixxelboy
+
 ## Sources open data
 
 CitizenEye repose sur des données d’intérêt public. Les sources principales sont :
@@ -195,6 +199,10 @@ CitizenEye is already a real-data Android MVP, not a seeded demo.
 - Android manifest-based downloads: the app fetches versioned `.json.gz` files only when `manifest.json` changes.
 - Fallback to stale static cache, then to official Assemblée nationale archives if GitHub Pages is temporarily unavailable.
 - Unit tests for lookup, cache, deputy photos, vote pagination, stats, and constituency geometry.
+
+## Support the project
+
+CitizenEye is developed as an independent civic tool. If you find it useful, you can support ongoing development here: https://buymeacoffee.com/pixxelboy
 
 ## Open data sources
 
