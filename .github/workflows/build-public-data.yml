@@ -2,6 +2,11 @@ name: Build public data
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/build-public-data.yml"
+      - "tools/data/**"
   schedule:
     - cron: "17 */6 * * *"
   repository_dispatch:
