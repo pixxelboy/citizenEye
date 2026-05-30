@@ -75,7 +75,10 @@ def active(mandate: dict) -> bool:
 
 
 def photo_url(actor_id: str) -> Optional[str]:
-    return f"https://www.assemblee-nationale.fr/dyn/portraits/{actor_id}.jpg" if actor_id else None
+    numeric_id = actor_id.removeprefix("PA")
+    if not numeric_id or not numeric_id.isdigit():
+        return None
+    return f"https://www.assemblee-nationale.fr/dyn/static/tribun/17/photos/carre/{numeric_id}.jpg"
 
 
 def profession(actor: dict) -> Optional[str]:

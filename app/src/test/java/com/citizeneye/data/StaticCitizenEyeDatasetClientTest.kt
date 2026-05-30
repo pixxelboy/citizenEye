@@ -81,6 +81,28 @@ class StaticCitizenEyeDatasetClientTest {
         assertEquals("Cache", client.fetchActiveDeputies().single().name)
     }
 
+    @Test fun normalizesStaticDeputyPhotoUrlToOfficialRoundedPortrait() {
+        val root = Files.createTempDirectory("citizeneye-static-photo").toFile()
+        val deputies = gz("""
+            {"schemaVersion":1,"deputies":[{"id":"PA841605","name":"Député Test","group":"N/R","departmentName":"Paris","departmentCode":"75","constituencyNumber":"1","photoUrl":"https://www.assemblee-nationale.fr/dyn/portraits/PA841605.jpg"}]}
+        """.trimIndent())
+        val votes = gz("{\"schemaVersion\":1,\"votesByDeputy\":{}}")
+        val dossiers = gz("{\"schemaVersion\":1,\"dossiersByRef\":{}}")
+        val manifest = manifest(deputies, votes, dossiers, version = "v1")
+        val files = mapOf(
+            "https://pages.test/manifest.json" to manifest.toByteArray(),
+            "https://pages.test/deputies-${sha(deputies)}.json.gz" to deputies,
+            "https://pages.test/votes-${sha(votes)}.json.gz" to votes,
+            "https://pages.test/dossiers-${sha(dossiers)}.json.gz" to dossiers
+        )
+        val client = StaticCitizenEyeDatasetClient(root, "https://pages.test/") { files[it] ?: error("unexpected $it") }
+
+        assertEquals(
+            "https://www.assemblee-nationale.fr/dyn/static/tribun/17/photos/carre/841605.jpg",
+            client.fetchActiveDeputies().single().photoUrl
+        )
+    }
+
     private fun manifest(deputies: ByteArray, votes: ByteArray, dossiers: ByteArray, version: String): String = """
         {"schemaVersion":1,"dataset":"citizeneye-assemblee-v17","generatedAt":"2026-01-01T00:00:00Z","version":"$version","files":[{"name":"deputies","url":"deputies-${sha(deputies)}.json.gz","sha256":"${sha(deputies)}","bytes":${deputies.size}},{"name":"votes","url":"votes-${sha(votes)}.json.gz","sha256":"${sha(votes)}","bytes":${votes.size}},{"name":"dossiers","url":"dossiers-${sha(dossiers)}.json.gz","sha256":"${sha(dossiers)}","bytes":${dossiers.size}}]}
     """.trimIndent()
