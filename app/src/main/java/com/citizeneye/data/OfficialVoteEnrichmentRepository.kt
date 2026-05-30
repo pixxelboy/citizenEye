@@ -22,7 +22,8 @@ object EmptyOfficialVoteEnrichmentRepository : OfficialVoteEnrichmentRepository 
 }
 
 class AssembleeOfficialVoteEnrichmentRepository(
-    private val publicDataCache: PublicDataCache? = null
+    private val publicDataCache: PublicDataCache? = null,
+    private val staticDatasetClient: StaticCitizenEyeDatasetClient? = null
 ) : OfficialVoteEnrichmentRepository {
     private var dossierCache: MutableMap<String, ParentTextDetails?>? = null
 
@@ -39,6 +40,9 @@ class AssembleeOfficialVoteEnrichmentRepository(
                 depositNumber = null,
                 adoptionStatus = null
             )
+        }
+        staticDatasetClient?.let { client ->
+            runCatching { client.findParentText(dossierRef) }.getOrNull()?.let { return@withContext it }
         }
         dossierCache ?: loadDossierCache().also { dossierCache = it }
         dossierCache?.get(dossierRef) ?: vote.dossierTitle?.let {

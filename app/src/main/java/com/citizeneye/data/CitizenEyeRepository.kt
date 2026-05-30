@@ -21,9 +21,10 @@ class CitizenEyeRepository(
         fun create(context: Context): CitizenEyeRepository {
             val cacheRoot = File(context.filesDir, "public-data")
             val publicDataCache = PublicDataCache(cacheRoot)
+            val staticDatasetClient = StaticCitizenEyeDatasetClient(File(context.filesDir, "static-public-data"))
             return CitizenEyeRepository(
                 geoClient = GeoGouvClient(),
-                assembleeClient = AssembleeNationaleClient(publicDataCache = publicDataCache),
+                assembleeClient = AssembleeNationaleClient(publicDataCache = publicDataCache, staticDatasetClient = staticDatasetClient),
                 boundaryClient = ConstituencyBoundaryClient(publicDataCache = publicDataCache)
             )
         }
@@ -116,13 +117,22 @@ class GeoGouvClient {
 
 class AssembleeNationaleClient(
     private val publicDataCache: PublicDataCache? = null,
-    private val nowMillis: () -> Long = { System.currentTimeMillis() }
+    private val nowMillis: () -> Long = { System.currentTimeMillis() },
+    private val staticDatasetClient: StaticCitizenEyeDatasetClient? = null
 ) {
     private var activeDeputiesCache: List<Depute>? = null
     private var activeDeputiesCacheMillis: Long = 0L
 
     fun fetchActiveDeputies(): List<Depute> {
         activeDeputiesCache?.takeIf { nowMillis() - activeDeputiesCacheMillis < PublicDataCache.ONE_DAY_MILLIS }?.let { return it }
+        staticDatasetClient?.let { client ->
+            runCatching { client.fetchActiveDeputies() }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { staticDeputies ->
+                return staticDeputies.sortedWith(compareBy<Depute> { it.departmentCode }.thenBy { it.constituencyNumber.toIntOrNull() ?: 999 }).also {
+                    activeDeputiesCache = it
+                    activeDeputiesCacheMillis = nowMillis()
+                }
+            }
+        }
         val politicalGroups = mutableMapOf<String, PoliticalGroupMetadata>()
         val deputies = mutableListOf<Depute>()
 
@@ -173,6 +183,9 @@ class AssembleeNationaleClient(
     }
 
     fun fetchLegislatureVotesFor(actorId: String): List<Vote> {
+        staticDatasetClient?.let { client ->
+            runCatching { client.fetchLegislatureVotesFor(actorId) }.getOrNull()?.let { return it }
+        }
         val votes = mutableListOf<Vote>()
         readZipEntries(SCRUTINS_URL, SCRUTINS_CACHE_KEY) { name, bytes ->
             if (!name.endsWith(".json")) return@readZipEntries

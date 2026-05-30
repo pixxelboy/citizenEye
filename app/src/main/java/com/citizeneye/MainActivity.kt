@@ -78,6 +78,7 @@ import com.citizeneye.data.DeputyStats
 import com.citizeneye.data.LocationPreview
 import com.citizeneye.data.LookupState
 import com.citizeneye.data.PublicDataCache
+import com.citizeneye.data.StaticCitizenEyeDatasetClient
 import com.citizeneye.data.VoteConcern
 import com.citizeneye.data.VotePosition
 import com.citizeneye.data.Vote
@@ -102,21 +103,22 @@ class MainActivity : ComponentActivity() {
         )
         val repository = CitizenEyeRepository.create(applicationContext)
         val publicDataCache = PublicDataCache(java.io.File(applicationContext.filesDir, "public-data"))
-        setContent { CitizenEyeTheme { CitizenEyeApp(repository = repository, publicDataCache = publicDataCache) } }
+        val staticDatasetClient = StaticCitizenEyeDatasetClient(java.io.File(applicationContext.filesDir, "static-public-data"))
+        setContent { CitizenEyeTheme { CitizenEyeApp(repository = repository, publicDataCache = publicDataCache, staticDatasetClient = staticDatasetClient) } }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), publicDataCache: PublicDataCache? = null) {
+fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), publicDataCache: PublicDataCache? = null, staticDatasetClient: StaticCitizenEyeDatasetClient? = null) {
     var query by rememberSaveable { mutableStateOf("") }
     var state by remember { mutableStateOf<LookupState>(LookupState.Idle) }
     var showingStats by rememberSaveable { mutableStateOf(false) }
     var selectedVote by remember { mutableStateOf<Vote?>(null) }
     var voteDetailUiState by remember { mutableStateOf<VoteDetailUiState>(VoteDetailUiState.Loading) }
-    val voteDetailRepository = remember(publicDataCache) {
+    val voteDetailRepository = remember(publicDataCache, staticDatasetClient) {
         DefaultVoteDetailRepository(
-            officialEnrichmentRepository = AssembleeOfficialVoteEnrichmentRepository(publicDataCache)
+            officialEnrichmentRepository = AssembleeOfficialVoteEnrichmentRepository(publicDataCache, staticDatasetClient)
         )
     }
     var preview by remember { mutableStateOf<LocationPreview?>(null) }
