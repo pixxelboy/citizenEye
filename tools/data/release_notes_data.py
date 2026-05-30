@@ -25,6 +25,30 @@ class ReleaseNote:
 
 RELEASE_NOTES: List[ReleaseNote] = [
     ReleaseNote(
+        version="Release notes policy",
+        date="2026-05-30",
+        title="Release notes are now part of every repository update",
+        summary=(
+            "Every CitizenEye repository change must now include a public, plain-language release note "
+            "so readers can understand what changed without reading technical commits."
+        ),
+        sections={
+            "new": [
+                "Release notes are now a required part of updates to the Android app, public website, workflows, documentation, data tooling, and other repository areas.",
+                "Each note should explain what changed, where it changed, why it matters, and link to GitHub commits or files when useful.",
+            ],
+            "improved": [
+                "Future public updates will be easier to follow from the Release Notes page instead of being hidden in developer-oriented commit history.",
+            ],
+            "data_sources": [
+                "The release notes source remains a simple structured local file in tools/data/release_notes_data.py, so the public site stays static and does not depend on runtime GitHub API calls.",
+            ],
+            "coming_next": [
+                "Upcoming repository changes will add their own user-facing release note at the same time as the code, page, data, or documentation change.",
+            ],
+        },
+    ),
+    ReleaseNote(
         version="Public update",
         date="2026-05-30",
         title="A clearer public home for CitizenEye",
