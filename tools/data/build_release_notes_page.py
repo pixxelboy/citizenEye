@@ -8,7 +8,7 @@ from typing import Iterable
 
 from release_notes_data import RELEASE_NOTES, SECTION_LABELS, ReleaseNote
 
-DESCRIPTION = "Follow the latest CitizenEye improvements, data updates, and upcoming public-interest features."
+DESCRIPTION = "Suivez les dernières améliorations de CitizenEye, les mises à jour de données et les prochaines fonctionnalités d’intérêt public."
 
 
 def esc(value: str) -> str:
@@ -33,7 +33,7 @@ def render_section(key: str, items: Iterable[str]) -> str:
 def render_note(note: ReleaseNote) -> str:
     ordered_sections = ["new", "improved", "fixed", "data_sources", "coming_next"]
     sections = "\n".join(render_section(key, note.sections.get(key, [])) for key in ordered_sections).strip()
-    section_html = sections or '<p class="empty-inline">No detailed sections for this release.</p>'
+    section_html = sections or '<p class="empty-inline">Aucune section détaillée pour cette version.</p>'
     return f"""
         <article class=\"release-card\">
           <div class=\"release-meta\"><span>{esc(note.version)}</span><time datetime=\"{esc(note.date)}\">{esc(note.date)}</time></div>
@@ -47,14 +47,14 @@ def render_note(note: ReleaseNote) -> str:
 
 def render_page() -> str:
     notes = sorted(RELEASE_NOTES, key=lambda note: note.date, reverse=True)
-    cards = "\n".join(render_note(note) for note in notes) if notes else '<div class="empty-state">No release notes yet. CitizenEye updates will appear here soon.</div>'
+    cards = "\n".join(render_note(note) for note in notes) if notes else '<div class="empty-state">Aucune note de version pour le moment. Les mises à jour de CitizenEye apparaîtront ici.</div>'
     return f"""<!doctype html>
-<html lang=\"en\">
+<html lang=\"fr\">
 <head>
   <meta charset=\"utf-8\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
   <meta name=\"description\" content=\"{DESCRIPTION}\">
-  <title>Release Notes · CitizenEye</title>
+  <title>Notes de version · CitizenEye</title>
   <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
   <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
   <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap\" rel=\"stylesheet\">
@@ -111,14 +111,14 @@ def render_page() -> str:
   </style>
 </head>
 <body>
-  <nav class=\"nav\" aria-label=\"Main navigation\">
+  <nav class=\"nav\" aria-label=\"Navigation principale\">
     <div class=\"container nav-inner\">
-      <a class=\"brand\" href=\"../\" aria-label=\"CitizenEye home\"><span class=\"mark\" aria-hidden=\"true\"><img src=\"../assets/brand/citizeneye-eye.svg\" alt=\"\"></span><span>CitizenEye</span></a>
+      <a class=\"brand\" href=\"../\" aria-label=\"Accueil CitizenEye\"><span class=\"mark\" aria-hidden=\"true\"><img src=\"../assets/brand/citizeneye-eye.svg\" alt=\"\"></span><span>CitizenEye</span></a>
       <div class=\"nav-links\">
         <a href=\"../#comment-ca-marche\">Comment ça marche</a>
         <a href=\"../#decisions-a-venir\">Décisions à venir</a>
         <a href=\"../#votre-depute\">Votre député</a>
-        <a href=\"./\">Release Notes</a>
+        <a href=\"./\">Notes de version</a>
         <a class=\"btn launch small\" href=\"https://github.com/pixxelboy/citizenEye/releases/latest/download/citizeneye-preview.apk\">Lancer</a>
       </div>
     </div>
@@ -126,12 +126,12 @@ def render_page() -> str:
   <main>
     <header class=\"hero\">
       <div class=\"container\">
-        <div class=\"eyebrow\">Product updates</div>
-        <h1>Release Notes</h1>
-        <p class=\"lead\">What changed in CitizenEye, why it matters, and what is coming next.</p>
+        <div class=\"eyebrow\">Mises à jour produit</div>
+        <h1>Notes de version</h1>
+        <p class=\"lead\">Ce qui change dans CitizenEye, pourquoi cela compte, et ce qui arrive ensuite.</p>
       </div>
     </header>
-    <section class=\"container timeline\" aria-label=\"CitizenEye release notes\">
+    <section class=\"container timeline\" aria-label=\"Notes de version CitizenEye\">
       {cards}
     </section>
   </main>
@@ -139,7 +139,7 @@ def render_page() -> str:
     <div class=\"container footer-grid\">
       <div><div class=\"footer-brand\">CitizenEye</div><p class=\"footer-copy\">Un outil civique indépendant pour comprendre les décisions parlementaires, suivre votre député et agir de manière informée.</p></div>
       <div class=\"footer-col\"><h3>Parcours</h3><a href=\"../#comment-ca-marche\">Comment ça marche</a><a href=\"../#decisions-a-venir\">Décisions à venir</a><a href=\"../#votre-depute\">Votre député</a></div>
-      <div class=\"footer-col\"><h3>Projet</h3><a href=\"./\">Release Notes</a><a href=\"../#pourquoi\">Pourquoi CitizenEye</a><a href=\"../manifest.json\">Manifeste des données</a><a href=\"https://github.com/pixxelboy/citizenEye\">Code source</a></div>
+      <div class=\"footer-col\"><h3>Projet</h3><a href=\"./\">Notes de version</a><a href=\"../#pourquoi\">Pourquoi CitizenEye</a><a href=\"../manifest.json\">Manifeste des données</a><a href=\"https://github.com/pixxelboy/citizenEye\">Code source</a></div>
       <div class=\"footer-col\"><h3>Soutien</h3><a href=\"https://buymeacoffee.com/pixxelboy\">Soutenir CitizenEye</a><a href=\"https://github.com/pixxelboy/citizenEye/issues\">Signaler un problème</a></div>
     </div>
     <div class=\"container disclaimer\">CitizenEye est indépendant et n’est affilié ni à l’Assemblée nationale, ni à une institution publique, un parti politique, une campagne ou un groupe parlementaire. Les sources officielles restent la référence.</div>

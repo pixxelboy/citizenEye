@@ -19,14 +19,15 @@ class ReleaseNotesPageTest(unittest.TestCase):
         html = render_page()
         text = _text_without_tags(html)
 
-        self.assertIn("<title>Release Notes · CitizenEye</title>", html)
-        self.assertIn("Follow the latest CitizenEye improvements, data updates, and upcoming public-interest features.", html)
-        self.assertIn("What changed in CitizenEye, why it matters, and what is coming next.", text)
-        self.assertIn("clearer public homepage", text.lower())
+        self.assertIn("<title>Notes de version · CitizenEye</title>", html)
+        self.assertIn("Suivez les dernières améliorations de CitizenEye", html)
+        self.assertIn("Ce qui change dans CitizenEye", text)
+        self.assertIn("page d’accueil plus claire", text.lower())
         self.assertIn("Buy Me a Coffee", text)
         self.assertIn("député", text)
-        self.assertIn("political groups", text)
-        self.assertIn("dataviz", text)
+        self.assertIn("groupes politiques", text)
+        self.assertIn("visualisations", text)
+        self.assertIn('<html lang="fr">', html)
 
     def test_release_notes_use_expected_navigation_and_base_path_safe_links(self):
         html = render_page()
@@ -44,7 +45,7 @@ class ReleaseNotesPageTest(unittest.TestCase):
         with patch("build_release_notes_page.RELEASE_NOTES", []):
             html = render_page()
 
-        self.assertIn("No release notes yet. CitizenEye updates will appear here soon.", html)
+        self.assertIn("Aucune note de version pour le moment. Les mises à jour de CitizenEye apparaîtront ici.", html)
 
     def test_release_notes_are_reverse_chronological(self):
         notes = [
@@ -62,7 +63,7 @@ class ReleaseNotesPageTest(unittest.TestCase):
             with patch("sys.argv", ["build_release_notes_page.py", "--out", str(out)]):
                 self.assertEqual(main(), 0)
             self.assertTrue(out.exists())
-            self.assertIn("Release Notes · CitizenEye", out.read_text(encoding="utf-8"))
+            self.assertIn("Notes de version · CitizenEye", out.read_text(encoding="utf-8"))
 
     def test_release_notes_data_is_structured(self):
         self.assertGreaterEqual(len(RELEASE_NOTES), 1)

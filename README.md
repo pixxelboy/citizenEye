@@ -43,6 +43,9 @@ CitizenEye est déjà un MVP Android connecté à de vraies données publiques, 
 - Chargement des députés en exercice depuis l’Open Data de l’Assemblée nationale.
 - Portraits officiels arrondis des députés.
 - Scrutins publics de la législature en cours depuis les données de l’Assemblée nationale, avec puces neutres pour identifier rapidement Amendement / Article / Texte complet / Motion / Budget / Résolution.
+- Policy-topic classification from official legislative dossiers.
+- Topic-level view of voting activity.
+- Deterministic methodology with no AI classification.
 - Écran “Text and Vote Details” depuis chaque vote : explication contextualisée de la position du député, résultat détaillé, comparaison au groupe quand disponible, sources officielles séparées des ressources externes.
 - Fil de votes progressif, 20 scrutins à la fois.
 - Profil statistique du député :
@@ -109,13 +112,13 @@ L’application confirme donc les localisations déduites, montre l’ambiguït�
 
 Court terme :
 
+- Classement thématique des votes depuis les dossiers législatifs officiels. — Implémenté
 - Sauvegarder le député sélectionné après l’entrée utilisateur.
 - Ajouter une acquisition fraîche de localisation via le fused location provider.
 - Ajouter un repli adresse/rue pour les communes découpées entre plusieurs circonscriptions.
 
 Plus tard :
 
-- Classement thématique des votes.
 - Explications d’impact local.
 - Notifications lors de nouveaux scrutins publics.
 - Interventions, amendements, questions écrites et activité parlementaire au-delà des seuls votes publics.

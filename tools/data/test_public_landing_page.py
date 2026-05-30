@@ -28,6 +28,8 @@ class PublicLandingPageTest(unittest.TestCase):
         self.assertIn("CitizenEye rend l’activité parlementaire compréhensible.", text)
         self.assertIn("Savoir ce qui arrive ensuite.", text)
         self.assertIn("Tout savoir sur votre député au même endroit.", text)
+        self.assertIn("Understand what your deputy actually votes on", text)
+        self.assertIn("Topics are assigned from official legislative dossiers, not AI-generated political labels.", text)
         self.assertIn("Quand un sujet compte, contactez votre représentant.", text)
         self.assertIn("Pourquoi nous avons construit CitizenEye", text)
         self.assertIn("Restez informé avant les décisions importantes.", text)

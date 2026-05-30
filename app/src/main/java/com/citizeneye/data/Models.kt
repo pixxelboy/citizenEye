@@ -177,13 +177,14 @@ data class DeputeMatch(
     val commune: Commune,
     val depute: Depute,
     val allLegislatureVotes: List<Vote>,
-    val visibleVoteCount: Int = DEFAULT_VISIBLE_VOTE_COUNT
+    val visibleVoteCount: Int = DEFAULT_VISIBLE_VOTE_COUNT,
+    val legislatureStats: DeputyStats = DeputyStats.from(allLegislatureVotes),
+    val topicVotingSummaries: List<TopicVotingSummary> = allLegislatureVotes.topicVotingSummaries()
 ) {
     val recentVotes: List<Vote> get() = allLegislatureVotes.take(visibleVoteCount)
     val recentHistoricalVotes: List<HistoricalVote> get() = recentVotes.map { it.asHistoricalVote() }
     val totalLegislatureVotes: Int get() = allLegislatureVotes.size
     val hasMoreVotes: Boolean get() = visibleVoteCount < allLegislatureVotes.size
-    val legislatureStats: DeputyStats get() = DeputyStats.from(allLegislatureVotes)
 
     fun withMoreVisibleVotes(pageSize: Int = DEFAULT_VISIBLE_VOTE_COUNT): DeputeMatch = copy(
         visibleVoteCount = (visibleVoteCount + pageSize).coerceAtMost(allLegislatureVotes.size)
