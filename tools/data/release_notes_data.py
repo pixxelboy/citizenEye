@@ -25,6 +25,36 @@ class ReleaseNote:
 
 RELEASE_NOTES: List[ReleaseNote] = [
     ReleaseNote(
+        version="0.2.0",
+        date="2026-05-30",
+        title="Une découverte plus claire de votre député",
+        summary=(
+            "Le premier écran devient un parcours de découverte civique : localisation prioritaire, recherche manuelle simplifiée "
+            "et aperçu réel du député détecté lorsque les données publiques le permettent."
+        ),
+        sections={
+            "new": [
+                "Le bouton Utiliser ma localisation devient l’action principale pour identifier plus vite sa circonscription.",
+                "Quand la localisation correspond à un député unique, CitizenEye affiche son portrait officiel, son groupe politique, sa circonscription et le nombre de votes publics suivis.",
+                "Un accès Explorer les députés permet de parcourir la liste officielle sans partager sa position.",
+            ],
+            "improved": [
+                "Le premier écran explique plus clairement ce que l’utilisateur va obtenir : député, votes récents, votes à venir, groupe politique et coordonnées.",
+                "L’animation de localisation accompagne l’état de recherche sans réduire la taille du visuel et continue de bouger pendant la géolocalisation.",
+                "Le tiroir d’aide ne s’ouvre plus par glissement accidentel depuis le bord de l’écran ; il reste accessible par l’icône d’aide.",
+            ],
+            "fixed": [
+                "Suppression de l’ancien aperçu fictif de député afin de ne montrer que des données réelles ou des explications génériques.",
+            ],
+            "data_sources": [
+                "Les portraits et le nombre de votes suivis proviennent des sources publiques de l’Assemblée nationale déjà utilisées par CitizenEye.",
+            ],
+            "coming_next": [
+                "Les prochains ajustements continueront d’améliorer la compréhension rapide des profils de députés et des votes suivis.",
+            ],
+        },
+    ),
+    ReleaseNote(
         version="0.1.1",
         date="2026-05-30",
         title="Des sujets de vote plus lisibles pour chaque député",

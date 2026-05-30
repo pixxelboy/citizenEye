@@ -16,6 +16,11 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -30,6 +35,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -78,9 +84,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -168,6 +177,9 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var logoAnimationTrigger by rememberSaveable { mutableStateOf(0) }
     var helpAnimationTrigger by rememberSaveable { mutableStateOf(0) }
     var upcomingVotesUiState by remember { mutableStateOf<UpcomingVotesUiState>(UpcomingVotesUiState.Loading) }
+    var explorerOpen by rememberSaveable { mutableStateOf(false) }
+    var explorerLoading by rememberSaveable { mutableStateOf(false) }
+    var explorerDeputies by remember { mutableStateOf<List<Depute>>(emptyList()) }
     var voteDetailUiState by remember { mutableStateOf<VoteDetailUiState>(VoteDetailUiState.Loading) }
     val voteDetailRepository = remember(publicDataCache, staticDatasetClient) {
         DefaultVoteDetailRepository(
@@ -271,6 +283,21 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         }
     }
 
+    fun openDeputyExplorer() {
+        explorerOpen = true
+        if (explorerDeputies.isEmpty() && !explorerLoading) {
+            scope.launch {
+                explorerLoading = true
+                inlineError = null
+                explorerDeputies = runCatching { repository.fetchDeputiesForExploration() }.getOrElse {
+                    inlineError = "Impossible de charger la liste des députés depuis les sources officielles."
+                    emptyList()
+                }
+                explorerLoading = false
+            }
+        }
+    }
+
     val locationPermissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { grants ->
         if (grants.values.any { it }) {
             scope.launch {
@@ -361,6 +388,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
 
     ModalNavigationDrawer(
         drawerState = drawerState,
+        gesturesEnabled = false,
         drawerContent = {
             CitizenEyeSupportDrawer(
                 onSupport = {
@@ -422,7 +450,13 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         }
     ) { padding ->
         Surface(Modifier.padding(padding).fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            when (val current = state) {
+            if (explorerOpen) {
+                DeputyExplorerScreen(
+                    deputies = explorerDeputies,
+                    loading = explorerLoading,
+                    onClose = { explorerOpen = false }
+                )
+            } else when (val current = state) {
                 LookupState.Idle -> OnboardingScreen(
                     query = query,
                     error = inlineError,
@@ -430,9 +464,11 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     preview = preview,
                     previewLoading = previewLoading,
                     geoLoading = geoLoading,
+                    locationAcquired = preview != null && geolocationPreviewQuery == query.trim(),
                     onQueryChange = { geolocationPreviewQuery = null; query = it },
                     onGeolocate = ::startGeolocationAutocomplete,
-                    onSubmit = ::confirmLocation
+                    onSubmit = ::confirmLocation,
+                    onExplore = ::openDeputyExplorer
                 )
                 is LookupState.Error -> OnboardingScreen(
                     query = query,
@@ -441,9 +477,11 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     preview = preview,
                     previewLoading = previewLoading,
                     geoLoading = geoLoading,
+                    locationAcquired = preview != null && geolocationPreviewQuery == query.trim(),
                     onQueryChange = { geolocationPreviewQuery = null; query = it; state = LookupState.Idle },
                     onGeolocate = ::startGeolocationAutocomplete,
-                    onSubmit = ::confirmLocation
+                    onSubmit = ::confirmLocation,
+                    onExplore = ::openDeputyExplorer
                 )
                 is LookupState.Loading -> LoadingScreen(current.message)
                 is LookupState.NeedSelection -> DeputySelectionScreen(
@@ -583,71 +621,369 @@ private fun OnboardingScreen(
     preview: LocationPreview?,
     previewLoading: Boolean,
     geoLoading: Boolean,
+    locationAcquired: Boolean,
     onQueryChange: (String) -> Unit,
     onGeolocate: () -> Unit,
-    onSubmit: () -> Unit
+    onSubmit: () -> Unit,
+    onExplore: () -> Unit
 ) {
-    Column(
-        Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 24.dp),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        Column {
-            Spacer(Modifier.height(24.dp))
-            Text("Suivre votre député", fontSize = 34.sp, lineHeight = 38.sp, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.height(8.dp))
-            Text(
-                "Code postal ou ville. Résultat immédiat.",
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 17.sp,
-                lineHeight = 23.sp
+    val cleanQuery = query.trim()
+    val canSubmit = CitizenInputValidator.canSearch(cleanQuery) && !loading && !previewLoading && !geoLoading
+    val showBottomCta = canSubmit || locationAcquired
+
+    Box(Modifier.fillMaxSize()) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(horizontal = 20.dp)
+                .padding(top = 10.dp, bottom = if (showBottomCta) 94.dp else 18.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            CivicLocationHero(
+                geoLoading = geoLoading,
+                success = locationAcquired,
+                failure = error != null
             )
-            Spacer(Modifier.height(12.dp))
-            Text("Sources : Assemblée nationale · geo.api.gouv.fr", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
-        }
-        Column {
+            Spacer(Modifier.height(2.dp))
+            Text(
+                "Découvrez votre député",
+                fontSize = 31.sp,
+                lineHeight = 34.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.semantics { contentDescription = "Découvrez votre député" }
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "Votes, positions, actions à venir et moyens de contact.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 15.sp,
+                lineHeight = 20.sp
+            )
+            Spacer(Modifier.height(14.dp))
+            Button(
+                onClick = onGeolocate,
+                enabled = !geoLoading && !loading,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+                    .semantics { contentDescription = "Utiliser ma localisation pour trouver mon député" },
+                shape = RoundedCornerShape(18.dp)
+            ) {
+                Text(if (geoLoading) "📍 Localisation…" else if (locationAcquired) "✓ Localisation prête" else "📍 Utiliser ma localisation")
+            }
+            Text(
+                "Position utilisée seulement pour identifier la circonscription.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 11.sp,
+                lineHeight = 15.sp,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+            OrDivider()
             OutlinedTextField(
                 value = query,
                 onValueChange = onQueryChange,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(64.dp),
                 label = { Text("Code postal ou ville") },
                 placeholder = { Text("92000 ou Nanterre") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 singleLine = true,
-                supportingText = { Text(error ?: if (previewLoading) "Recherche…" else "Exemple : 92000 ou Nanterre") },
                 isError = error != null
             )
-            Spacer(Modifier.height(10.dp))
-            TextButton(onClick = onGeolocate, enabled = !geoLoading && !loading) {
-                Icon(Icons.Outlined.LocationOn, contentDescription = null)
-                Spacer(Modifier.width(8.dp))
-                Text(if (geoLoading) "Localisation…" else "Utiliser ma localisation")
+            val helper = error ?: when {
+                previewLoading -> "Recherche de la commune…"
+                preview != null -> preview.locationLabel
+                else -> "Alternative si vous préférez ne pas partager votre position."
             }
-            Text("Position utilisée seulement pour la circonscription.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
-            preview?.let { LocationPreviewCard(it) }
-            Spacer(Modifier.height(12.dp))
-            Button(onClick = onSubmit, enabled = query.trim().length >= 2 && !loading && !previewLoading && !geoLoading, modifier = Modifier.fillMaxWidth().height(54.dp)) {
-                Icon(Icons.Outlined.Search, contentDescription = null)
-                Spacer(Modifier.width(8.dp))
-                Text(if (preview != null) "Valider cette localisation" else "Trouver mon député")
+            Text(
+                helper,
+                color = if (error != null) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 11.sp,
+                lineHeight = 15.sp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 3.dp)
+            )
+            preview?.let {
+                Spacer(Modifier.height(6.dp))
+                LocationPreviewCard(it)
+            }
+            Spacer(Modifier.height(10.dp))
+            ValuePreviewSection()
+            Spacer(Modifier.weight(1f))
+            TrustSection()
+            TextButton(
+                onClick = onExplore,
+                modifier = Modifier.height(44.dp)
+            ) {
+                Text("Explorer les députés →")
+            }
+        }
+
+        AnimatedVisibility(
+            visible = showBottomCta,
+            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
+            modifier = Modifier.align(Alignment.BottomCenter)
+        ) {
+            Surface(
+                color = MaterialTheme.colorScheme.background,
+                shadowElevation = 10.dp
+            ) {
+                Button(
+                    onClick = onSubmit,
+                    enabled = showBottomCta,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp, vertical = 14.dp)
+                        .height(56.dp)
+                        .semantics { contentDescription = "Voir mon député" },
+                    shape = RoundedCornerShape(18.dp)
+                ) {
+                    Icon(Icons.Outlined.Search, contentDescription = null)
+                    Spacer(Modifier.width(8.dp))
+                    Text("Voir mon député")
+                }
             }
         }
     }
 }
 
 @Composable
+private fun CivicLocationHero(geoLoading: Boolean, success: Boolean, failure: Boolean) {
+    val context = LocalContext.current
+    val animationsEnabled = remember {
+        Settings.Global.getFloat(
+            context.contentResolver,
+            Settings.Global.ANIMATOR_DURATION_SCALE,
+            1f
+        ) > 0f
+    }
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.location))
+    val progress = remember { Animatable(0f) }
+    val scale = remember { Animatable(1f) }
+    val offsetX = remember { Animatable(0f) }
+    val offsetY = remember { Animatable(0f) }
+
+    LaunchedEffect(geoLoading, success, failure, animationsEnabled, composition) {
+        if (!animationsEnabled || composition == null) {
+            progress.snapTo(if (success) 1f else 0f)
+            scale.snapTo(1f)
+            offsetX.snapTo(0f)
+            offsetY.snapTo(0f)
+            return@LaunchedEffect
+        }
+        when {
+            geoLoading -> {
+                scale.snapTo(1f)
+                offsetX.snapTo(0f)
+                offsetY.snapTo(0f)
+                progress.snapTo(0.08f)
+                while (true) {
+                    offsetY.animateTo(-10f, tween(150, easing = LinearEasing))
+                    progress.animateTo(0.55f, tween(260, easing = LinearEasing))
+                    offsetY.animateTo(0f, tween(170, easing = LinearEasing))
+                    progress.animateTo(0.16f, tween(240, easing = LinearEasing))
+                    delay(80)
+                }
+            }
+            success -> {
+                progress.animateTo(1f, tween(620, easing = LinearEasing))
+                scale.animateTo(1.12f, tween(140, easing = LinearEasing))
+                scale.animateTo(1f, tween(220, easing = LinearEasing))
+            }
+            failure -> {
+                progress.snapTo(0.35f)
+                repeat(2) {
+                    offsetX.animateTo(-8f, tween(55, easing = LinearEasing))
+                    offsetX.animateTo(8f, tween(55, easing = LinearEasing))
+                }
+                offsetX.animateTo(0f, tween(70, easing = LinearEasing))
+            }
+            else -> {
+                progress.snapTo(0f)
+                offsetY.snapTo(0f)
+                scale.animateTo(1.025f, tween(900, easing = LinearEasing))
+                scale.animateTo(1f, tween(900, easing = LinearEasing))
+            }
+        }
+    }
+
+    Box(
+        Modifier
+            .size(132.dp)
+            .scale(scale.value)
+            .padding(2.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        LottieAnimation(
+            composition = composition,
+            progress = { progress.value },
+            modifier = Modifier
+                .size(126.dp)
+                .offset(x = offsetX.value.dp, y = offsetY.value.dp)
+                .semantics { contentDescription = "État de recherche de localisation" }
+        )
+    }
+}
+
+@Composable
+private fun OrDivider() {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(Modifier.weight(1f).height(1.dp).background(MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)))
+        Text("OU", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(horizontal = 12.dp))
+        Box(Modifier.weight(1f).height(1.dp).background(MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)))
+    }
+}
+
+@Composable
+private fun ValuePreviewSection() {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.42f))
+    ) {
+        Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+            Text("Ce que vous allez obtenir", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+            Spacer(Modifier.height(7.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                    ValueChecklistItem("Votre député")
+                    ValueChecklistItem("Votes récents")
+                    ValueChecklistItem("Votes à venir")
+                }
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                    ValueChecklistItem("Groupe politique")
+                    ValueChecklistItem("Coordonnées")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ValueChecklistItem(label: String) {
+    Text("✓ $label", color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp, lineHeight = 16.sp)
+}
+
+@Composable
+private fun TrustSection() {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Text("577 députés suivis", fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+        Text("Données ouvertes de l’Assemblée nationale", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp)
+        Text("Source : geo.api.gouv.fr", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp)
+    }
+}
+
+@Composable
+private fun DeputyExplorerScreen(deputies: List<Depute>, loading: Boolean, onClose: () -> Unit) {
+    var filter by rememberSaveable { mutableStateOf("") }
+    val cleanFilter = filter.trim()
+    val visibleDeputies = remember(deputies, cleanFilter) {
+        if (cleanFilter.length < 2) deputies.take(80) else deputies.filter { depute ->
+            depute.name.contains(cleanFilter, ignoreCase = true) ||
+                depute.departmentCode.contains(cleanFilter, ignoreCase = true) ||
+                depute.displayPoliticalGroupShort.contains(cleanFilter, ignoreCase = true)
+        }.take(80)
+    }
+
+    LazyColumn(
+        Modifier.fillMaxSize().padding(horizontal = 18.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        item {
+            TextButton(onClick = onClose, modifier = Modifier.height(44.dp)) { Text("Retour") }
+            Text("Explorer les députés", fontSize = 30.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold)
+            Text(
+                "Parcourez la liste officielle, puis revenez à la recherche locale pour trouver votre circonscription.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                lineHeight = 20.sp
+            )
+            Spacer(Modifier.height(10.dp))
+            OutlinedTextField(
+                value = filter,
+                onValueChange = { filter = it },
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text("Nom, groupe ou département") },
+                placeholder = { Text("Dupont, SOC, 92") },
+                singleLine = true
+            )
+            if (loading) {
+                Spacer(Modifier.height(10.dp))
+                LinearProgressIndicator(Modifier.fillMaxWidth())
+            }
+        }
+        items(visibleDeputies) { depute ->
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(18.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Column(Modifier.padding(14.dp)) {
+                    Text(depute.name, fontSize = 18.sp, lineHeight = 22.sp, fontWeight = FontWeight.Bold)
+                    Text(depute.displayPoliticalGroupShort, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+                    Text(depute.constituencyLabel, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+                }
+            }
+        }
+        item { Spacer(Modifier.height(24.dp)) }
+    }
+}
+
+@Composable
 private fun LocationPreviewCard(preview: LocationPreview) {
+    val detectedDeputy = preview.deputies.singleOrNull()
+    val trackedVoteCount = detectedDeputy?.let { preview.voteCountsByDeputyId[it.id] }
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(Modifier.padding(16.dp)) {
-            Text(if (preview.preciseBoundary != null) "Circonscription détectée par GPS" else "Localisation déduite", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
-            Spacer(Modifier.height(4.dp))
+            Text(
+                if (preview.preciseBoundary != null) "Député détecté par GPS" else "Localisation déduite",
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.SemiBold
+            )
+            Spacer(Modifier.height(8.dp))
             Text(preview.locationLabel, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Text(preview.representativeHint, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            Spacer(Modifier.height(10.dp))
+            if (detectedDeputy != null) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    DeputyPhoto(detectedDeputy, sizeDp = 58)
+                    Spacer(Modifier.width(12.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text(detectedDeputy.name, fontSize = 19.sp, lineHeight = 23.sp, fontWeight = FontWeight.Bold)
+                        Text(detectedDeputy.displayPoliticalGroupShort, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+                        Text(detectedDeputy.constituencyLabel, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp, lineHeight = 17.sp)
+                    }
+                }
+                if (trackedVoteCount != null) {
+                    Spacer(Modifier.height(10.dp))
+                    Surface(
+                        shape = RoundedCornerShape(14.dp),
+                        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f)
+                    ) {
+                        Text(
+                            "$trackedVoteCount votes publics suivis",
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
+                }
+            } else {
+                Text(preview.representativeHint, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 21.sp)
+            }
             if (preview.preciseBoundary != null) {
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(8.dp))
                 Text("Confirmez quand même : la position peut venir d’un lieu récent, pas forcément de votre domicile.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
             } else if (preview.requiresDeputyChoice) {
                 Spacer(Modifier.height(6.dp))

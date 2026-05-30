@@ -155,7 +155,8 @@ data class LocationPreview(
     val query: String,
     val commune: Commune,
     val deputies: List<Depute>,
-    val preciseBoundary: ConstituencyBoundary? = null
+    val preciseBoundary: ConstituencyBoundary? = null,
+    val voteCountsByDeputyId: Map<String, Int> = emptyMap()
 ) {
     val requiresDeputyChoice: Boolean get() = deputies.size != 1
     val locationLabel: String get() = "${commune.name} · département ${commune.departmentCode ?: "inconnu"}"

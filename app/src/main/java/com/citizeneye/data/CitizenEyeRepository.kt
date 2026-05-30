@@ -46,10 +46,18 @@ class CitizenEyeRepository(
             basePreview
         } else {
             val exactDeputies = basePreview.deputies.matching(boundary)
-            if (exactDeputies.isEmpty()) basePreview.copy(preciseBoundary = boundary) else basePreview.copy(
-                deputies = exactDeputies,
-                preciseBoundary = boundary
-            )
+            if (exactDeputies.isEmpty()) {
+                basePreview.copy(preciseBoundary = boundary)
+            } else {
+                val voteCounts = exactDeputies.mapNotNull { depute ->
+                    runCatching { depute.id to assembleeClient.fetchLegislatureVotesFor(depute.id).size }.getOrNull()
+                }.toMap()
+                basePreview.copy(
+                    deputies = exactDeputies,
+                    preciseBoundary = boundary,
+                    voteCountsByDeputyId = voteCounts
+                )
+            }
         }
     }
 
@@ -96,6 +104,10 @@ class CitizenEyeRepository(
 
     suspend fun fetchUpcomingVotes(): List<UpcomingVote> = withContext(Dispatchers.IO) {
         assembleeClient.fetchUpcomingVotes()
+    }
+
+    suspend fun fetchDeputiesForExploration(): List<Depute> = withContext(Dispatchers.IO) {
+        assembleeClient.fetchActiveDeputies()
     }
 }
 
