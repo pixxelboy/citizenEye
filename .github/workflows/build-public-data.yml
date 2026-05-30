@@ -9,8 +9,9 @@ on:
       - "tools/data/**"
       - "docs/brand/**"
       - "app/src/main/res/raw/eye.json"
+  # Refresh the published static dataset once per day, even when no code changes land.
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 3 * * *"
   repository_dispatch:
     types: [upstream_dataset_changed]
 
