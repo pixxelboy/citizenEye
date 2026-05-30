@@ -1,5 +1,9 @@
 # CitizenEye
 
+<p align="center">
+  <img src="docs/brand/citizeneye-eye.svg" width="104" alt="Logo animé CitizenEye — œil Lottie" />
+</p>
+
 CitizenEye est une application Android pensée pour les citoyennes et citoyens français qui veulent comprendre ce que fait leur député à l’Assemblée nationale.
 
 L’application assume une position politique simple : le pouvoir public doit être vérifiable par tout le monde. CitizenEye n’est lié à aucun parti, campagne ou groupe parlementaire. Son but est de rendre les votes, les représentants et les données publiques lisibles sans transformer la démocratie en fil d’indignation.

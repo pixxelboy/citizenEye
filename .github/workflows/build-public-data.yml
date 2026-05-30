@@ -7,6 +7,8 @@ on:
     paths:
       - ".github/workflows/build-public-data.yml"
       - "tools/data/**"
+      - "docs/brand/**"
+      - "app/src/main/res/raw/eye.json"
   schedule:
     - cron: "17 */6 * * *"
   repository_dispatch:
@@ -49,8 +51,10 @@ jobs:
       - name: Add marketing index and assets
         run: |
           cp tools/data/public-index.html public/index.html
-          mkdir -p public/assets/screenshots
+          mkdir -p public/assets/screenshots public/assets/brand
           cp docs/screenshots/*.svg public/assets/screenshots/
+          cp app/src/main/res/raw/eye.json public/assets/brand/eye.json
+          cp docs/brand/citizeneye-eye.svg public/assets/brand/citizeneye-eye.svg
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
