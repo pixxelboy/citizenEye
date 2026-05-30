@@ -16,6 +16,9 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -45,10 +48,14 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
@@ -58,6 +65,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -70,6 +78,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
@@ -80,7 +89,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.citizeneye.data.AssembleeOfficialVoteEnrichmentRepository
 import com.citizeneye.data.CitizenEyeRepository
@@ -123,6 +131,10 @@ private enum class MainTab(val label: String, val iconRawRes: Int) {
     DEPUTY("Député", R.raw.nav_user_profile)
 }
 
+private object CitizenEyeBrandAnimationSession {
+    var launchAnimationPlayed: Boolean = false
+}
+
 private sealed interface UpcomingVotesUiState {
     data object Loading : UpcomingVotesUiState
     data class Success(val votes: List<UpcomingVote>) : UpcomingVotesUiState
@@ -153,6 +165,8 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var selectedVote by remember { mutableStateOf<Vote?>(null) }
     var selectedUpcomingVote by remember { mutableStateOf<UpcomingVote?>(null) }
     var activeTab by rememberSaveable { mutableStateOf(MainTab.HOME) }
+    var logoAnimationTrigger by rememberSaveable { mutableStateOf(0) }
+    var helpAnimationTrigger by rememberSaveable { mutableStateOf(0) }
     var upcomingVotesUiState by remember { mutableStateOf<UpcomingVotesUiState>(UpcomingVotesUiState.Loading) }
     var voteDetailUiState by remember { mutableStateOf<VoteDetailUiState>(VoteDetailUiState.Loading) }
     val voteDetailRepository = remember(publicDataCache, staticDatasetClient) {
@@ -169,8 +183,16 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var updateDownloading by rememberSaveable { mutableStateOf(false) }
     var updateMessage by rememberSaveable { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
+    val drawerState = rememberDrawerState(DrawerValue.Closed)
     val context = LocalContext.current
     val updateManager = remember(context) { AppUpdateManager(context.applicationContext) }
+
+    fun selectMainTab(tab: MainTab) {
+        if (activeTab != tab) {
+            activeTab = tab
+            logoAnimationTrigger += 1
+        }
+    }
 
     fun runLookup() {
         val currentQuery = query.trim()
@@ -313,6 +335,13 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     }
 
     LaunchedEffect(Unit) {
+        if (!CitizenEyeBrandAnimationSession.launchAnimationPlayed) {
+            CitizenEyeBrandAnimationSession.launchAnimationPlayed = true
+            logoAnimationTrigger += 1
+        }
+    }
+
+    LaunchedEffect(Unit) {
         when (val result = updateManager.checkForUpdate()) {
             is UpdateCheckResult.UpdateAvailable -> updatePrompt = result.manifest
             else -> Unit
@@ -330,10 +359,22 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         }
     }
 
-    Scaffold(
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            CitizenEyeSupportDrawer(
+                onSupport = {
+                    scope.launch { drawerState.close() }
+                    openExternalUrl("https://buymeacoffee.com/pixxelboy")
+                }
+            )
+        }
+    ) {
+        Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
+                modifier = Modifier.shadow(elevation = 3.dp),
                 title = {
                     val title = when {
                         selectedVote != null -> "Comprendre ce vote"
@@ -352,6 +393,17 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                         selectedVote != null -> TextButton(onClick = { selectedVote = null }) { Text("Retour") }
                         selectedUpcomingVote != null -> TextButton(onClick = { selectedUpcomingVote = null }) { Text("Retour") }
                         showingGroupDetails -> TextButton(onClick = { showingGroupDetails = false }) { Text("Retour") }
+                        else -> CitizenEyeBrandLogo(animationTrigger = logoAnimationTrigger)
+                    }
+                },
+                actions = {
+                    IconButton(
+                        onClick = {
+                            helpAnimationTrigger += 1
+                            scope.launch { drawerState.open() }
+                        }
+                    ) {
+                        AnimatedHelpIcon(animationTrigger = helpAnimationTrigger)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)
@@ -360,7 +412,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         bottomBar = {
             if (state is LookupState.Loaded) {
                 CitizenEyeBottomNavigation(activeTab = activeTab, onTabSelected = { tab ->
-                    activeTab = tab
+                    selectMainTab(tab)
                     selectedVote = null
                     selectedUpcomingVote = null
                     showingGroupDetails = false
@@ -435,9 +487,9 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     when (activeTab) {
                         MainTab.HOME -> HomeScreen(
                             match = current.match,
-                            onOpenUpcoming = { activeTab = MainTab.UPCOMING },
-                            onOpenHistory = { activeTab = MainTab.HISTORY },
-                            onOpenDeputy = { activeTab = MainTab.DEPUTY },
+                            onOpenUpcoming = { selectMainTab(MainTab.UPCOMING) },
+                            onOpenHistory = { selectMainTab(MainTab.HISTORY) },
+                            onOpenDeputy = { selectMainTab(MainTab.DEPUTY) },
                             onReset = { state = LookupState.Idle; query = ""; showingStats = false; activeTab = MainTab.HOME }
                         )
                         MainTab.UPCOMING -> UpcomingVotesScreen(
@@ -459,6 +511,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                 }
             }
         }
+    }
     }
 
     updatePrompt?.let { manifest ->
@@ -610,7 +663,8 @@ private fun LoadingScreen(message: String) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             CitizenEyeLoader(
                 size = 88.dp,
-                label = message.ifBlank { "Recherche de votre circonscription…" }
+                label = message.ifBlank { "Recherche de votre circonscription…" },
+                useBrandLogo = true
             )
             Spacer(Modifier.height(8.dp))
             Text("CitizenEye vérifie les sources publiques disponibles.", color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -1167,6 +1221,104 @@ private fun UpcomingStatusChip(status: UpcomingVoteStatus) {
 }
 
 @Composable
+private fun CitizenEyeSupportDrawer(onSupport: () -> Unit) {
+    ModalDrawerSheet {
+        Column(
+            Modifier
+                .width(308.dp)
+                .padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            Text("CitizenEye", fontSize = 26.sp, fontWeight = FontWeight.Bold)
+            Text(
+                "Rendre le travail parlementaire plus lisible, sans score partisan ni interprétation automatique.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                lineHeight = 21.sp
+            )
+            Text("Pourquoi ce projet", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.primary)
+            Text(
+                "CitizenEye aide à retrouver son député, suivre les votes publics et préparer une prise de contact à partir de sources officielles.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                lineHeight = 21.sp
+            )
+            Text("Principe", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.primary)
+            Text(
+                "Des faits, des liens vers les sources, et des résumés courts. Pas de notation politique, pas de recommandation de vote.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                lineHeight = 21.sp
+            )
+            Button(onClick = onSupport, modifier = Modifier.fillMaxWidth().height(52.dp)) {
+                Text("Soutenir avec Buy Me a Coffee")
+            }
+        }
+    }
+}
+
+@Composable
+private fun AnimatedHelpIcon(animationTrigger: Int) {
+    val context = LocalContext.current
+    val animationsEnabled = remember {
+        Settings.Global.getFloat(
+            context.contentResolver,
+            Settings.Global.ANIMATOR_DURATION_SCALE,
+            1f
+        ) > 0f
+    }
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.help))
+    val progress = remember { Animatable(0f) }
+
+    LaunchedEffect(animationTrigger, animationsEnabled, composition) {
+        progress.snapTo(0f)
+        if (animationTrigger > 0 && animationsEnabled && composition != null) {
+            progress.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(durationMillis = 650, easing = LinearEasing)
+            )
+            progress.snapTo(0f)
+        }
+    }
+
+    LottieAnimation(
+        composition = composition,
+        progress = { progress.value },
+        modifier = Modifier.size(24.dp)
+    )
+}
+
+@Composable
+private fun CitizenEyeBrandLogo(animationTrigger: Int) {
+    val context = LocalContext.current
+    val animationsEnabled = remember {
+        Settings.Global.getFloat(
+            context.contentResolver,
+            Settings.Global.ANIMATOR_DURATION_SCALE,
+            1f
+        ) > 0f
+    }
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.eye))
+    val progress = remember { Animatable(0f) }
+
+    LaunchedEffect(animationTrigger, animationsEnabled, composition) {
+        progress.snapTo(0f)
+        if (animationTrigger > 0 && animationsEnabled && composition != null) {
+            progress.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(durationMillis = 520, easing = LinearEasing)
+            )
+            progress.snapTo(0f)
+        }
+    }
+
+    Box(Modifier.width(56.dp), contentAlignment = Alignment.Center) {
+        LottieAnimation(
+            composition = composition,
+            progress = { progress.value },
+            modifier = Modifier.size(34.dp)
+        )
+    }
+}
+
+@Composable
 private fun CitizenEyeBottomNavigation(activeTab: MainTab, onTabSelected: (MainTab) -> Unit) {
     var animationTriggerByTab by remember { mutableStateOf(MainTab.values().associateWith { 0 }) }
 
@@ -1201,28 +1353,22 @@ private fun AnimatedNavigationIcon(iconRawRes: Int, animationTrigger: Int) {
         ) > 0f
     }
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(iconRawRes))
-    var playOnTap by remember { mutableStateOf(false) }
+    val progress = remember { Animatable(0f) }
 
-    LaunchedEffect(animationTrigger, animationsEnabled) {
-        playOnTap = animationTrigger > 0 && animationsEnabled
-    }
-
-    val progress by animateLottieCompositionAsState(
-        composition = composition,
-        isPlaying = playOnTap,
-        iterations = 1,
-        restartOnPlay = true
-    )
-
-    LaunchedEffect(progress, playOnTap) {
-        if (playOnTap && progress >= 1f) {
-            playOnTap = false
+    LaunchedEffect(animationTrigger, animationsEnabled, composition) {
+        progress.snapTo(0f)
+        if (animationTrigger > 0 && animationsEnabled && composition != null) {
+            progress.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(durationMillis = 520, easing = LinearEasing)
+            )
+            progress.snapTo(0f)
         }
     }
 
     LottieAnimation(
         composition = composition,
-        progress = { if (playOnTap) progress else 0f },
+        progress = { progress.value },
         modifier = Modifier.size(26.dp)
     )
 }

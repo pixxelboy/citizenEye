@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,7 +26,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.citizeneye.R
@@ -35,7 +35,8 @@ fun CitizenEyeLoader(
     modifier: Modifier = Modifier,
     size: Dp = 72.dp,
     label: String? = "Chargement…",
-    fullScreen: Boolean = false
+    fullScreen: Boolean = false,
+    useBrandLogo: Boolean = false
 ) {
     val context = LocalContext.current
     val animationsEnabled = remember {
@@ -46,10 +47,11 @@ fun CitizenEyeLoader(
         ) > 0f
     }
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.eye))
-    val progress by animateLottieCompositionAsState(
+    val brandProgress by animateLottieCompositionAsState(
         composition = composition,
-        iterations = if (animationsEnabled) LottieConstants.IterateForever else 1,
-        isPlaying = animationsEnabled
+        iterations = 1,
+        isPlaying = useBrandLogo && animationsEnabled,
+        restartOnPlay = false
     )
     val content = @Composable {
         Column(
@@ -60,11 +62,20 @@ fun CitizenEyeLoader(
                 liveRegion = LiveRegionMode.Polite
             }
         ) {
-            LottieAnimation(
-                composition = composition,
-                progress = { if (animationsEnabled) progress else 0f },
-                modifier = Modifier.size(size)
-            )
+            if (useBrandLogo) {
+                LottieAnimation(
+                    composition = composition,
+                    progress = { if (animationsEnabled) brandProgress else 0f },
+                    modifier = Modifier.size(size)
+                )
+            } else {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(size),
+                    strokeWidth = 4.dp,
+                    color = MaterialTheme.colorScheme.primary,
+                    trackColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            }
             if (label != null) {
                 Spacer(Modifier.height(14.dp))
                 Text(
