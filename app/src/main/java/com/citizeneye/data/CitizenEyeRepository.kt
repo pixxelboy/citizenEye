@@ -265,6 +265,10 @@ class AssembleeNationaleClient(
         val now = nowMillis()
         upcomingVotesCache[limit]?.takeIf { now - it.storedAtMillis in 0 until PublicDataCache.ONE_DAY_MILLIS }?.let { return it.value }
         staticDatasetClient?.let { client ->
+            runCatching { client.fetchParliamentCalendar(limit) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { calendar ->
+                upcomingVotesCache[limit] = TimedCache(calendar, now)
+                return calendar
+            }
             runCatching { client.fetchUpcomingVotes(limit) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { upcoming ->
                 upcomingVotesCache[limit] = TimedCache(upcoming, now)
                 return upcoming

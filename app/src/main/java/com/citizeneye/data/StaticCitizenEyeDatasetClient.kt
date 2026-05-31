@@ -4,6 +4,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.security.MessageDigest
+import java.time.LocalDate
 import java.util.zip.GZIPInputStream
 
 open class StaticCitizenEyeDatasetClient(
@@ -54,6 +55,35 @@ open class StaticCitizenEyeDatasetClient(
             .sortedWith(compareBy<UpcomingVote> { it.status.ordinal }.thenBy { it.title })
             .take(limit)
             .toList()
+    }
+
+    open fun fetchParliamentCalendar(limit: Int = 50): List<UpcomingVote> = runCatching {
+        val root = loadCachedStaticJson(PARLIAMENT_CALENDAR_FILE)
+        val items = root.optJSONArray("items").orEmptyObjects()
+        val today = LocalDate.now().toString()
+        items.asSequence()
+            .mapNotNull { it.toCalendarUpcomingVote() }
+            .filter { it.eventDate != null && it.eventDate >= today && (it.sourceUrls.isNotEmpty() || it.sourceUrl.isNotBlank()) }
+            .sortedWith(compareBy<UpcomingVote> { it.eventDateTime ?: it.eventDate ?: "" }.thenBy { it.title })
+            .take(limit)
+            .toList()
+    }.getOrElse { emptyList() }
+
+    private fun loadCachedStaticJson(path: String): JSONObject {
+        cacheRoot.mkdirs()
+        val file = File(cacheRoot, path)
+        val now = nowMillis()
+        if (file.exists() && now - file.lastModified() in 0 until PublicDataCache.ONE_DAY_MILLIS) {
+            return JSONObject(file.readText())
+        }
+        return runCatching {
+            val bytes = downloader(resolveUrl(path))
+            atomicWrite(file, bytes)
+            file.setLastModified(now)
+            JSONObject(bytes.toString(Charsets.UTF_8))
+        }.getOrElse { error ->
+            if (file.exists()) JSONObject(file.readText()) else throw error
+        }
     }
 
     private fun ensureDataset(): Map<String, ByteArray> {
@@ -141,6 +171,7 @@ open class StaticCitizenEyeDatasetClient(
     companion object {
         const val DEFAULT_BASE_URL = "https://pixxelboy.github.io/citizenEye/"
         private const val MANIFEST_FILE = "manifest.json"
+        private const val PARLIAMENT_CALENDAR_FILE = "data/parliament/calendar.json"
     }
 }
 
@@ -208,6 +239,43 @@ private fun JSONObject.toParentTextDetails(ref: String): ParentTextDetails = Par
     depositNumber = optNullableString("depositNumber"),
     adoptionStatus = optNullableString("adoptionStatus")
 )
+
+private fun JSONObject.toCalendarUpcomingVote(): UpcomingVote? {
+    val id = optNullableString("id") ?: return null
+    val title = optNullableString("title") ?: optNullableString("shortTitle") ?: return null
+    val eventDate = optNullableString("eventDate") ?: return null
+    val sourceUrls = optJSONArray("sourceUrls").orEmptyStrings().filter { it.startsWith("https://") }
+    val officialUrl = optNullableString("officialUrl")?.takeIf { it.startsWith("https://") }
+    if (sourceUrls.isEmpty() && officialUrl == null) return null
+    val eventType = optNullableString("eventType")
+    val status = when (eventType) {
+        "vote" -> UpcomingVoteStatus.SCHEDULED_VOTE
+        "committee", "hearing" -> UpcomingVoteStatus.COMMITTEE_REVIEW
+        "debate", "public_session" -> UpcomingVoteStatus.UNDER_DISCUSSION
+        else -> UpcomingVoteStatus.AGENDA_ITEM
+    }
+    val sourceUrl = officialUrl ?: sourceUrls.first()
+    val stage = optNullableString("stage") ?: status.label
+    val dateLabel = optNullableString("dateLabel") ?: eventDate
+    return UpcomingVote(
+        id = id,
+        title = title,
+        shortSummary = optNullableString("shortTitle") ?: citizenSummaryFor(title),
+        citizenSummary = citizenSummaryFor(title),
+        currentStage = stage,
+        status = status,
+        expectedDateLabel = dateLabel,
+        sourceUrl = sourceUrl,
+        officialDocuments = (listOf(sourceUrl) + sourceUrls).distinct(),
+        timeline = listOf(UpcomingVoteTimelineEvent(stage, dateLabel)),
+        eventDate = eventDate,
+        eventDateTime = optNullableString("eventDateTime"),
+        chamber = optNullableString("chamber"),
+        eventType = eventType,
+        dateConfidence = optNullableString("confidence"),
+        sourceUrls = sourceUrls
+    )
+}
 
 private fun JSONObject.toUpcomingVote(ref: String): UpcomingVote? {
     val title = optNullableString("title") ?: return null

@@ -1098,7 +1098,7 @@ private fun HomeScreen(match: DeputeMatch, upcomingVotes: List<UpcomingVote>, on
             Text("Tableau civique", fontSize = 30.sp, lineHeight = 34.sp, fontWeight = FontWeight.Bold)
             Text("${match.commune.name} · ${match.depute.displayPoliticalGroupShort}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.SemiBold)
         }
-        item { HomeUpcomingActions(upcomingVotes.take(3), onOpenUpcoming) }
+        item { HomeUpcomingActions(upcomingVotes.datedFirst().take(3), onOpenUpcoming) }
         item { HomeImportantVotes(criticalVotes, onOpenHistory) }
         item { HomeRecentlyAdopted(recentlyAdopted) }
         item { CompactDeputyCard(match, onOpenDeputy) }
@@ -1131,7 +1131,8 @@ private fun UpcomingActionRow(vote: UpcomingVote) {
         Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(vote.expectedDateLabel, color = MaterialTheme.colorScheme.primary, fontSize = 12.sp, fontWeight = FontWeight.Bold)
             Text(vote.title, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis, lineHeight = 19.sp)
-            Text("${vote.currentStage} · ${vote.shortTopicLabel()}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, maxLines = 1)
+            Text(vote.calendarMetaLabel(), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text("${vote.currentStage} · ${vote.shortTopicLabel()}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
             if (vote.isContactMomentRelevant) Text("Écrire à mon député", color = MaterialTheme.colorScheme.primary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
     }
@@ -1219,6 +1220,23 @@ private fun UpcomingVote.shortTopicLabel(): String = PolicyTopicClassifier().cla
     legislativeReference = currentStage,
     objectTitle = shortSummary
 ).primaryTopic.label
+
+private fun List<UpcomingVote>.datedFirst(): List<UpcomingVote> = sortedWith(
+    compareByDescending<UpcomingVote> { it.eventDate != null }
+        .thenBy { it.eventDateTime ?: it.eventDate ?: "9999-12-31" }
+        .thenBy { it.title }
+)
+
+private fun UpcomingVote.eventTypeLabel(): String = when (eventType) {
+    "public_session" -> "Séance publique"
+    "committee" -> "Commission"
+    "vote" -> "Vote"
+    "debate" -> "Débat"
+    "hearing" -> "Audition"
+    else -> "Agenda"
+}
+
+private fun UpcomingVote.calendarMetaLabel(): String = listOfNotNull(chamber, eventTypeLabel()).joinToString(" · ")
 
 @Composable
 private fun TopicVotingSection(topics: List<TopicVotingSummary>) {
@@ -2024,7 +2042,7 @@ private fun UpcomingVotesScreen(uiState: UpcomingVotesUiState, onOpenDetail: (Up
                 if (uiState.votes.isEmpty()) {
                     item { InfoCard("Aucun texte", "Aucun texte à suivre disponible.") }
                 } else {
-                    items(uiState.votes) { vote -> UpcomingVoteCard(vote, onClick = { onOpenDetail(vote) }) }
+                    items(uiState.votes.datedFirst()) { vote -> UpcomingVoteCard(vote, onClick = { onOpenDetail(vote) }) }
                 }
             }
         }
@@ -2045,6 +2063,7 @@ private fun UpcomingVoteCard(vote: UpcomingVote, onClick: () -> Unit) {
                 UpcomingStatusChip(vote.status)
             }
             Text(vote.title, fontWeight = FontWeight.Bold, fontSize = 17.sp, lineHeight = 21.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(vote.calendarMetaLabel(), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Text("${vote.currentStage} · ${vote.shortTopicLabel()}", color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
             if (vote.isContactMomentRelevant) Text("Contact pertinent", color = MaterialTheme.colorScheme.primary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
@@ -2063,6 +2082,8 @@ private fun UpcomingVoteDetailScreen(vote: UpcomingVote, depute: Depute, onOpenS
             }
             Spacer(Modifier.height(8.dp))
             SimpleChip(vote.expectedDateLabel)
+            vote.chamber?.let { SimpleChip(it) }
+            SimpleChip(vote.eventTypeLabel())
         }
         item { UpcomingTimeline(vote) }
         item { BulletCard("Pourquoi ça compte", upcomingBullets(vote)) }

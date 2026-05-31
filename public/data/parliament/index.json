@@ -1,0 +1,26 @@
+{
+  "dataset": "citizeneye-parliament-calendar",
+  "files": [
+    {
+      "name": "calendar",
+      "url": "calendar.json"
+    },
+    {
+      "name": "ingestion-report",
+      "url": "ingestion-report.json"
+    }
+  ],
+  "generatedAt": "2026-05-31T20:10:17Z",
+  "itemCount": 226,
+  "nextEventDate": "2026-05-31",
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "critical": true,
+      "name": "Assemblée nationale agenda open data",
+      "source": "assemblee",
+      "url": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
+    }
+  ],
+  "warningsCount": 1
+}

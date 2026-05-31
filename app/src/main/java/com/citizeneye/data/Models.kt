@@ -122,7 +122,13 @@ data class UpcomingVote(
     val expectedDateLabel: String,
     val sourceUrl: String,
     val officialDocuments: List<String> = emptyList(),
-    val timeline: List<UpcomingVoteTimelineEvent> = emptyList()
+    val timeline: List<UpcomingVoteTimelineEvent> = emptyList(),
+    val eventDate: String? = null,
+    val eventDateTime: String? = null,
+    val chamber: String? = null,
+    val eventType: String? = null,
+    val dateConfidence: String? = null,
+    val sourceUrls: List<String> = emptyList()
 )
 
 enum class VoteConcern(val label: String, val explanation: String) {

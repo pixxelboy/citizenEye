@@ -10,8 +10,12 @@ on:
       - ".github/workflows/build-dataset.yml"
       - "tools/data/build_civix_dataset.py"
       - "tools/data/test_build_civix_dataset.py"
+      - "tools/data/build_parliament_calendar_dataset.py"
+      - "tools/data/test_build_parliament_calendar_dataset.py"
       - "docs/civix-data-ingestion.md"
+      - "docs/parliament-calendar-dataset.md"
       - "public/data/civix/**"
+      - "public/data/parliament/**"
 
 permissions:
   contents: write
@@ -37,10 +41,16 @@ jobs:
       - name: Run CIVIX ingestion tests
         run: python -m unittest tools.data.test_build_civix_dataset -v
 
+      - name: Run parliament calendar ingestion tests
+        run: python -m unittest tools.data.test_build_parliament_calendar_dataset -v
+
       - name: Build CIVIX static dataset
         env:
           CIVIX_MAX_SCRUTIN_VOTES: "250"
         run: python tools/data/build_civix_dataset.py --out public/data/civix
+
+      - name: Build parliament calendar static dataset
+        run: python tools/data/build_parliament_calendar_dataset.py --out public/data/parliament
 
       - name: Validate generated JSON
         run: |
@@ -61,10 +71,50 @@ jobs:
           print('Validated CIVIX JSON files')
           PY
 
+      - name: Validate generated parliament calendar JSON
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import date, datetime
+          from pathlib import Path
+          root = Path('public/data/parliament')
+          for name in ['calendar', 'index', 'ingestion-report']:
+              path = root / f'{name}.json'
+              if not path.exists():
+                  raise SystemExit(f'Missing {path}')
+              json.loads(path.read_text(encoding='utf-8'))
+
+          calendar = json.loads((root / 'calendar.json').read_text(encoding='utf-8'))
+          report = json.loads((root / 'ingestion-report.json').read_text(encoding='utf-8'))
+          today = date.today().isoformat()
+          for index, item in enumerate(calendar.get('items', [])):
+              if not item.get('id') or not isinstance(item.get('id'), str):
+                  raise SystemExit(f'Item {index} has invalid id')
+              event_date = item.get('eventDate')
+              if not isinstance(event_date, str):
+                  raise SystemExit(f'Item {index} missing eventDate')
+              date.fromisoformat(event_date)
+              if event_date < today:
+                  raise SystemExit(f'Item {index} is in the past: {event_date}')
+              event_dt = item.get('eventDateTime')
+              if event_dt is not None:
+                  datetime.fromisoformat(event_dt.replace('Z', '+00:00'))
+              if item.get('confidence') == 'unknown_date':
+                  raise SystemExit(f'Item {index} has unknown date confidence')
+              if not item.get('officialUrl') and not item.get('sourceUrls'):
+                  raise SystemExit(f'Item {index} has no source attribution')
+              if not isinstance(item.get('sourceUrls'), list) or not item.get('sourceUrls'):
+                  raise SystemExit(f'Item {index} missing sourceUrls')
+          failures = [ep for ep in report.get('endpoints', []) if ep.get('status') == 'failed' and ep.get('name') == 'assemblee_agenda']
+          if failures:
+              raise SystemExit(f'Critical parliament calendar failures: {failures}')
+          print('Validated parliament calendar JSON files')
+          PY
+
       - name: Commit generated dataset if changed
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update CIVIX static dataset"
-          file_pattern: public/data/civix/*.json
+          commit_message: "Update static parliamentary datasets"
+          file_pattern: public/data/civix/*.json public/data/parliament/*.json
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com

@@ -120,6 +120,68 @@ class StaticCitizenEyeDatasetClientTest {
         assertEquals("Cache", client.fetchActiveDeputies().single().name)
     }
 
+    @Test fun parsesParliamentCalendarAsDatedUpcomingVotes() {
+        val root = Files.createTempDirectory("citizeneye-parliament-calendar").toFile()
+        val calendar = """
+            {"schemaVersion":1,"items":[
+              {"id":"cal2","source":"assemblee","sourceUid":"RU2","title":"Deuxième texte","shortTitle":"Deuxième texte","eventDate":"2099-06-03","eventDateTime":null,"dateLabel":"3 juin 2026","eventType":"committee","stage":"Examen en commission","chamber":"Assemblée nationale","dossierRef":"DL2","legislature":"17","officialUrl":"https://www.assemblee-nationale.fr/dyn/17/dossiers/DL2","dossierUrl":"https://www.assemblee-nationale.fr/dyn/17/dossiers/DL2","sourceUrls":["https://source.test/calendar"],"retrievedAt":"2026-05-31T00:00:00Z","confidence":"explicit_date","raw":{}},
+              {"id":"cal1","source":"assemblee","sourceUid":"RU1","title":"Premier texte","shortTitle":"Premier texte","eventDate":"2099-06-02","eventDateTime":"2099-06-02T15:00:00+02:00","dateLabel":"2 juin 2026 à 15:00","eventType":"debate","stage":"Discussion","chamber":"Assemblée nationale","dossierRef":"DL1","legislature":"17","officialUrl":"https://www.assemblee-nationale.fr/dyn/17/dossiers/DL1","dossierUrl":"https://www.assemblee-nationale.fr/dyn/17/dossiers/DL1","sourceUrls":["https://source.test/calendar","https://www.assemblee-nationale.fr/dyn/17/dossiers/DL1"],"retrievedAt":"2026-05-31T00:00:00Z","confidence":"explicit_date","raw":{}},
+              {"id":"bad","source":"assemblee","sourceUid":"BAD","title":"Sans source","shortTitle":"Sans source","eventDate":"2099-06-01","eventDateTime":null,"dateLabel":"1 juin 2026","eventType":"other","stage":"Agenda","chamber":"Assemblée nationale","dossierRef":null,"legislature":"17","officialUrl":"","dossierUrl":null,"sourceUrls":[],"retrievedAt":"2026-05-31T00:00:00Z","confidence":"explicit_date","raw":{}}
+            ]}
+        """.trimIndent()
+        val files = mapOf("https://pages.test/data/parliament/calendar.json" to calendar.toByteArray())
+        val client = StaticCitizenEyeDatasetClient(root, "https://pages.test/") { files[it] ?: error("unexpected $it") }
+
+        val votes = client.fetchParliamentCalendar(limit = 10)
+
+        assertEquals(listOf("cal1", "cal2"), votes.map { it.id })
+        assertEquals("2 juin 2026 à 15:00", votes.first().expectedDateLabel)
+        assertEquals("Assemblée nationale", votes.first().chamber)
+        assertEquals("debate", votes.first().eventType)
+        assertEquals("explicit_date", votes.first().dateConfidence)
+        assertEquals(listOf("https://source.test/calendar", "https://www.assemblee-nationale.fr/dyn/17/dossiers/DL1"), votes.first().sourceUrls)
+    }
+
+    @Test fun returnsEmptyParliamentCalendarWhenStaticFileIsInvalidOrUnavailable() {
+        val root = Files.createTempDirectory("citizeneye-parliament-calendar-invalid").toFile()
+        val client = StaticCitizenEyeDatasetClient(root, "https://pages.test/") { error("offline") }
+
+        assertEquals(emptyList<UpcomingVote>(), client.fetchParliamentCalendar())
+    }
+
+    @Test fun assembleeClientPrioritizesDatedParliamentCalendarOverDossierFallback() {
+        val staticClient = object : StaticCitizenEyeDatasetClient(Files.createTempDirectory("citizeneye-priority").toFile(), "https://pages.test/") {
+            override fun fetchParliamentCalendar(limit: Int): List<UpcomingVote> = listOf(
+                UpcomingVote(
+                    id = "calendar",
+                    title = "Texte daté",
+                    shortSummary = "Texte daté",
+                    citizenSummary = "Texte daté",
+                    currentStage = "Discussion",
+                    status = UpcomingVoteStatus.UNDER_DISCUSSION,
+                    expectedDateLabel = "2 juin 2026",
+                    sourceUrl = "https://source.test",
+                    eventDate = "2099-06-02"
+                )
+            )
+            override fun fetchUpcomingVotes(limit: Int): List<UpcomingVote> = listOf(
+                UpcomingVote(
+                    id = "fallback",
+                    title = "Texte sans date",
+                    shortSummary = "Texte sans date",
+                    citizenSummary = "Texte sans date",
+                    currentStage = "Étape",
+                    status = UpcomingVoteStatus.AGENDA_ITEM,
+                    expectedDateLabel = "Date non annoncée",
+                    sourceUrl = "https://source.test/fallback"
+                )
+            )
+        }
+        val client = AssembleeNationaleClient(staticDatasetClient = staticClient)
+
+        assertEquals("calendar", client.fetchUpcomingVotes().single().id)
+    }
+
     @Test fun refreshesStaticManifestAfterOneDay() {
         val root = Files.createTempDirectory("citizeneye-static-refresh").toFile()
         var now = 1_000_000L
