@@ -104,6 +104,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.citizeneye.data.AssembleeOfficialVoteEnrichmentRepository
 import com.citizeneye.data.CitizenEyeRepository
 import com.citizeneye.data.CitizenInputValidator
+import com.citizeneye.data.CivicEmailContext
 import com.citizeneye.data.Depute
 import com.citizeneye.data.DeputeMatch
 import com.citizeneye.data.DefaultVoteDetailRepository
@@ -191,6 +192,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
     var selectedGroupCode by rememberSaveable { mutableStateOf<String?>(null) }
     var selectedVote by remember { mutableStateOf<Vote?>(null) }
     var selectedUpcomingVote by remember { mutableStateOf<UpcomingVote?>(null) }
+    var civicEmailContext by remember { mutableStateOf<CivicEmailContext?>(null) }
     var activeTab by rememberSaveable { mutableStateOf(MainTab.HOME) }
     var logoAnimationTrigger by rememberSaveable { mutableStateOf(0) }
     var helpAnimationTrigger by rememberSaveable { mutableStateOf(0) }
@@ -231,6 +233,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         showingStats = false
         selectedVote = null
         selectedUpcomingVote = null
+        civicEmailContext = null
         showingGroupDetails = false
         activeTab = MainTab.HOME
         scope.launch { state = repository.lookup(currentQuery) }
@@ -241,6 +244,7 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
         showingStats = false
         selectedVote = null
         selectedUpcomingVote = null
+        civicEmailContext = null
         showingGroupDetails = false
         activeTab = MainTab.HOME
         scope.launch { state = repository.loadDeputyVotes(query, commune, depute) }
@@ -508,22 +512,20 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                     onSelect = { loadVotes(current, it) },
                     onReset = { state = LookupState.Idle }
                 )
-                is LookupState.Loaded -> if (selectedUpcomingVote != null) {
+                is LookupState.Loaded -> if (civicEmailContext != null) {
+                    CivicEmailComposerScreen(
+                        context = civicEmailContext!!,
+                        deputyEmail = civicEmailContext!!.depute.email,
+                        onBack = { civicEmailContext = null },
+                        onOpenEmailDraft = ::openEmailDraft
+                    )
+                } else if (selectedUpcomingVote != null) {
                     UpcomingVoteDetailScreen(
                         vote = selectedUpcomingVote!!,
                         depute = current.match.depute,
                         onOpenSource = ::openExternalUrl,
-                        onOpenEmailDraft = { upcoming, depute ->
-                            val email = depute.email
-                            if (email == null) {
-                                inlineError = "Aucune adresse email officielle n’est disponible pour ce député."
-                            } else {
-                                openEmailDraft(
-                                    to = email,
-                                    subject = "À propos du texte parlementaire à venir : ${upcoming.title}",
-                                    body = "Bonjour,\n\nJe vous contacte au sujet du texte parlementaire suivant : ${upcoming.title}.\n\nSource officielle : ${upcoming.sourceUrl}\n\nJe souhaite vous faire part de mon attention sur ce sujet avant les prochaines étapes parlementaires.\n\nCordialement,"
-                                )
-                            }
+                        onOpenEmailComposer = { upcoming, depute ->
+                            civicEmailContext = CivicEmailContext.UpcomingVote(upcoming, depute)
                         }
                     )
                 } else if (selectedVote != null) {
@@ -532,7 +534,9 @@ fun CitizenEyeApp(repository: CitizenEyeRepository = CitizenEyeRepository(), pub
                         deputyEmail = current.match.depute.email,
                         onRetour = { selectedVote = null },
                         onOuvrirUrl = ::openExternalUrl,
-                        onOpenEmailDraft = ::openEmailDraft,
+                        onOpenCivicEmailComposer = {
+                            selectedVote?.let { vote -> civicEmailContext = CivicEmailContext.PastVote(vote, current.match.depute) }
+                        },
                         onRetry = ::retryVoteDetails
                     )
                 } else if (showingStats) {
@@ -1128,7 +1132,7 @@ private fun UpcomingActionRow(vote: UpcomingVote) {
             Text(vote.expectedDateLabel, color = MaterialTheme.colorScheme.primary, fontSize = 12.sp, fontWeight = FontWeight.Bold)
             Text(vote.title, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis, lineHeight = 19.sp)
             Text("${vote.currentStage} · ${vote.shortTopicLabel()}", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, maxLines = 1)
-            if (vote.isContactMomentRelevant) Text("Contacter mon député", color = MaterialTheme.colorScheme.primary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+            if (vote.isContactMomentRelevant) Text("Écrire à mon député", color = MaterialTheme.colorScheme.primary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }
@@ -2048,7 +2052,7 @@ private fun UpcomingVoteCard(vote: UpcomingVote, onClick: () -> Unit) {
 }
 
 @Composable
-private fun UpcomingVoteDetailScreen(vote: UpcomingVote, depute: Depute, onOpenSource: (String) -> Unit, onOpenEmailDraft: (UpcomingVote, Depute) -> Unit) {
+private fun UpcomingVoteDetailScreen(vote: UpcomingVote, depute: Depute, onOpenSource: (String) -> Unit, onOpenEmailComposer: (UpcomingVote, Depute) -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { Text(vote.title, fontSize = 24.sp, lineHeight = 28.sp, fontWeight = FontWeight.Bold, maxLines = 4, overflow = TextOverflow.Ellipsis) }
         item { Text(vote.citizenSummary, color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp) }
@@ -2064,10 +2068,16 @@ private fun UpcomingVoteDetailScreen(vote: UpcomingVote, depute: Depute, onOpenS
         item { BulletCard("Pourquoi ça compte", upcomingBullets(vote)) }
         item {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Button(onClick = { onOpenEmailDraft(vote, depute) }, enabled = depute.email != null && vote.isContactMomentRelevant, modifier = Modifier.fillMaxWidth().height(52.dp)) {
+                if (!vote.isContactMomentRelevant) {
+                    Text("Moment de contact moins prioritaire", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+                }
+                if (depute.email == null) {
+                    Text("Aucune adresse email officielle n’est disponible pour ce député.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+                }
+                Button(onClick = { onOpenEmailComposer(vote, depute) }, modifier = Modifier.fillMaxWidth().height(52.dp)) {
                     Icon(Icons.Outlined.Email, contentDescription = null)
                     Spacer(Modifier.width(8.dp))
-                    Text("Contacter mon député")
+                    Text("Écrire à mon député")
                 }
                 Button(onClick = { onOpenSource(vote.sourceUrl) }, modifier = Modifier.fillMaxWidth().height(52.dp)) {
                     Icon(Icons.Outlined.OpenInNew, contentDescription = null)

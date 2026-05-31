@@ -13,12 +13,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -30,8 +28,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -46,8 +42,7 @@ import com.citizeneye.data.VoteDetail
 import com.citizeneye.data.VotePosition
 import com.citizeneye.data.VoteSubjectType
 import com.citizeneye.data.badgeLabel
-import com.citizeneye.data.buildEmailBody
-import com.citizeneye.data.buildEmailSubject
+
 import com.citizeneye.data.buildPositionResultSentence
 import com.citizeneye.data.buildTakeaway
 import com.citizeneye.data.formatPositionInContext
@@ -67,13 +62,13 @@ fun VoteDetailScreen(
     deputyEmail: String?,
     onRetour: () -> Unit,
     onOuvrirUrl: (String) -> Unit,
-    onOpenEmailDraft: (String, String, String) -> Unit,
+    onOpenCivicEmailComposer: () -> Unit,
     onRetry: () -> Unit
 ) {
     when (voteDetailUiState) {
         VoteDetailUiState.Loading -> DetailLoadingState()
         is VoteDetailUiState.Error -> DetailErrorState(voteDetailUiState.message, onRetour, onRetry)
-        is VoteDetailUiState.Success -> VoteDetailContent(voteDetailUiState.detail, deputyEmail, onOuvrirUrl, onOpenEmailDraft)
+        is VoteDetailUiState.Success -> VoteDetailContent(voteDetailUiState.detail, deputyEmail, onOuvrirUrl, onOpenCivicEmailComposer)
     }
 }
 
@@ -102,24 +97,15 @@ private fun DetailErrorState(message: String, onRetour: () -> Unit, onRetry: () 
 }
 
 @Composable
-private fun VoteDetailContent(detail: VoteDetail, deputyEmail: String?, onOuvrirUrl: (String) -> Unit, onOpenEmailDraft: (String, String, String) -> Unit) {
-    var showEmailDialog by remember { mutableStateOf(false) }
+private fun VoteDetailContent(detail: VoteDetail, deputyEmail: String?, onOuvrirUrl: (String) -> Unit, onOpenCivicEmailComposer: () -> Unit) {
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { OutcomeSummaryCard(detail) }
         item { PoliticalAlignmentCard(detail.groupPosition, detail.deputyPosition) }
         item { CompactResultsCard(detail.voteBreakdown) }
         item { BulletCard("Pourquoi ce vote comptait", voteMatterBullets(detail)) }
-        item { Button(onClick = { showEmailDialog = true }, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Écrire à ma députée") } }
+        item { CivicPastVoteActionCard(deputyEmail = deputyEmail, onOpenComposer = onOpenCivicEmailComposer) }
         item { CollapsedSourcesCard(detail.officialSources, detail.sourceUrl, onOuvrirUrl) }
         item { Spacer(Modifier.height(12.dp)) }
-    }
-    if (showEmailDialog) {
-        PrepareEmailDialog(
-            detail = detail,
-            deputyEmail = deputyEmail,
-            onDismiss = { showEmailDialog = false },
-            onOpenEmailDraft = onOpenEmailDraft
-        )
     }
 }
 
@@ -333,11 +319,15 @@ private fun GroupPositionCard(group: GroupVotePosition?, deputyPosition: VotePos
 }
 
 @Composable
-private fun ContactDeputyCard(onPrepare: () -> Unit) {
-    DetailSectionCard(title = "Vous souhaitez réagir à ce vote ?") {
-        Text("CitizenEye peut préparer un email clair, respectueux et sourcé. Vous pourrez le relire et l’envoyer depuis votre propre application mail.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp)
+private fun CivicPastVoteActionCard(deputyEmail: String?, onOpenComposer: () -> Unit) {
+    DetailSectionCard(title = "Demander une explication") {
+        Text("Préparez un email sourcé à votre député à partir de ce vote.", color = MaterialTheme.colorScheme.onSurfaceVariant, lineHeight = 20.sp)
+        if (deputyEmail == null) {
+            Spacer(Modifier.height(8.dp))
+            Text("Aucune adresse email officielle n’est disponible pour ce député.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+        }
         Spacer(Modifier.height(12.dp))
-        Button(onClick = onPrepare, modifier = Modifier.fillMaxWidth()) { Text("Préparer un email") }
+        Button(onClick = onOpenComposer, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Écrire à mon député") }
     }
 }
 
@@ -391,31 +381,6 @@ private fun LearnMoreSection(resources: ExternalResourcesState, onOuvrirUrl: (St
     }
 }
 
-@Composable
-private fun PrepareEmailDialog(detail: VoteDetail, deputyEmail: String?, onDismiss: () -> Unit, onOpenEmailDraft: (String, String, String) -> Unit) {
-    val clipboard = LocalClipboardManager.current
-    var subject by remember { mutableStateOf(buildEmailSubject(detail.voteNumber)) }
-    var body by remember { mutableStateOf(buildEmailBody(detail.voteNumber, detail.date, detail.officialTitle, formatPositionInContext(detail.deputyPosition, detail.subjectType), detail.sourceUrl)) }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Préparer un email") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text(deputyEmail?.let { "À : $it" } ?: "Adresse email officielle non disponible pour ce député.", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                OutlinedTextField(subject, { subject = it }, label = { Text("Objet") }, modifier = Modifier.fillMaxWidth())
-                OutlinedTextField(body, { body = it }, label = { Text("Message") }, modifier = Modifier.fillMaxWidth(), minLines = 6)
-                Text("Brouillon éditable.", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
-            }
-        },
-        confirmButton = { Button(enabled = deputyEmail != null, onClick = { deputyEmail?.let { onOpenEmailDraft(it, subject, body) } }) { Text("Ouvrir dans mon application mail") } },
-        dismissButton = {
-            Column {
-                TextButton(onClick = { clipboard.setText(AnnotatedString(body)) }) { Text("Copier le message") }
-                deputyEmail?.let { TextButton(onClick = { clipboard.setText(AnnotatedString(it)) }) { Text("Copier l’adresse email") } }
-            }
-        }
-    )
-}
 
 @Composable
 private fun ExternalSubsection(title: String, content: @Composable () -> Unit) { Spacer(Modifier.height(8.dp)); Text(title, fontWeight = FontWeight.Bold); Spacer(Modifier.height(6.dp)); content() }
