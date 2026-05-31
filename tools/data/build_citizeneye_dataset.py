@@ -304,10 +304,9 @@ def infer_parent_type(title: Optional[str]) -> str:
 
 
 def dossier_url(uid: str, title: Optional[str]) -> Optional[str]:
-    if not uid and not title:
+    if not uid:
         return None
-    from urllib.parse import quote
-    return "https://www.assemblee-nationale.fr/dyn/recherche?search=" + quote(title or uid)
+    return f"https://www.assemblee-nationale.fr/dyn/17/dossiers/{uid}"
 
 
 def parse_dossiers(zip_bytes: bytes) -> dict:

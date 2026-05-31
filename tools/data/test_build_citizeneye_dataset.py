@@ -53,6 +53,11 @@ class BuildCitizenEyeDatasetTest(unittest.TestCase):
                         "https://www.assemblee-nationale.fr/dyn/static/tribun/17/photos/carre/1.jpg",
                         payload["deputies"][0]["photoUrl"],
                     )
+                if entry["name"] == "dossiers":
+                    self.assertEqual(
+                        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DL1",
+                        payload["dossiersByRef"]["DL1"]["dossierUrl"],
+                    )
 
     def _write_zip(self, path: Path, entries: dict):
         with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:

@@ -55,6 +55,32 @@ class StaticCitizenEyeDatasetClientTest {
         assertEquals("Dossier", parent?.title)
     }
 
+    @Test fun normalizesStaticDossierSourceUrlToOfficialDossierPage() {
+        val root = Files.createTempDirectory("citizeneye-static-dossier-url").toFile()
+        val deputies = gz("{\"schemaVersion\":1,\"deputies\":[]}")
+        val votes = gz("{\"schemaVersion\":1,\"votesByDeputy\":{}}")
+        val dossiers = gz("""
+            {"schemaVersion":1,"dossiersByRef":{"DLR5L17N52104":{"title":"Dossier","type":"Projet de loi","procedureStage":"Dépôt","legislature":"17","dossierUrl":"https://www.assemblee-nationale.fr/dyn/recherche?search=Dossier","depositNumber":"123"}}}
+        """.trimIndent())
+        val manifest = manifest(deputies, votes, dossiers, version = "v1")
+        val files = mapOf(
+            "https://pages.test/manifest.json" to manifest.toByteArray(),
+            "https://pages.test/deputies-${sha(deputies)}.json.gz" to deputies,
+            "https://pages.test/votes-${sha(votes)}.json.gz" to votes,
+            "https://pages.test/dossiers-${sha(dossiers)}.json.gz" to dossiers
+        )
+        val client = StaticCitizenEyeDatasetClient(root, "https://pages.test/") { files[it] ?: error("unexpected $it") }
+
+        assertEquals(
+            "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N52104",
+            client.findParentText("DLR5L17N52104")?.dossierUrl
+        )
+        assertEquals(
+            "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N52104",
+            client.fetchUpcomingVotes().single().sourceUrl
+        )
+    }
+
     @Test fun rejectsDownloadedFileWhoseShaDoesNotMatchManifest() {
         val root = Files.createTempDirectory("citizeneye-static-corrupt").toFile()
         val deputies = gz("{\"schemaVersion\":1,\"deputies\":[]}")

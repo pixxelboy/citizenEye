@@ -404,7 +404,7 @@ private fun JSONObject.toUpcomingVoteFromOfficialZip(): UpcomingVote? {
         stage.contains("séance", ignoreCase = true) || stage.contains("discussion", ignoreCase = true) || stage.contains("débat", ignoreCase = true) -> UpcomingVoteStatus.UNDER_DISCUSSION
         else -> UpcomingVoteStatus.AGENDA_ITEM
     }
-    val sourceUrl = "https://www.assemblee-nationale.fr/dyn/recherche?search=${URLEncoder.encode(title, "UTF-8")}"
+    val sourceUrl = "https://www.assemblee-nationale.fr/dyn/17/dossiers/$id"
     val timeline = acts.mapNotNull { act ->
         val label = act.optJSONObject("libelleActe")?.optCleanString("libelleCourt") ?: return@mapNotNull null
         UpcomingVoteTimelineEvent(label = label, date = act.optCleanString("dateActe"))

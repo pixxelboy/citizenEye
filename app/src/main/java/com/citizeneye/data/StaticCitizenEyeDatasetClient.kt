@@ -41,7 +41,7 @@ open class StaticCitizenEyeDatasetClient(
         val files = ensureDataset()
         val root = JSONObject(gunzip(files.getValue("dossiers")).toString(Charsets.UTF_8))
         val dossier = root.optJSONObject("dossiersByRef")?.optJSONObject(dossierRef) ?: return null
-        return dossier.toParentTextDetails()
+        return dossier.toParentTextDetails(dossierRef)
     }
 
     open fun fetchUpcomingVotes(limit: Int = 30): List<UpcomingVote> {
@@ -197,12 +197,12 @@ private fun JSONObject.toGroupVotePosition(): GroupVotePosition = GroupVotePosit
     nonVotingCount = optNullableIntLocal("nonVotingCount")
 )
 
-private fun JSONObject.toParentTextDetails(): ParentTextDetails = ParentTextDetails(
+private fun JSONObject.toParentTextDetails(ref: String): ParentTextDetails = ParentTextDetails(
     title = optNullableString("title"),
     type = optNullableString("type"),
     procedureStage = optNullableString("procedureStage"),
     legislature = optNullableString("legislature"),
-    dossierUrl = optNullableString("dossierUrl"),
+    dossierUrl = officialDossierUrl(ref) ?: optNullableString("dossierUrl"),
     commissionName = optNullableString("commissionName"),
     rapporteurs = optJSONArray("rapporteurs").orEmptyStrings(),
     depositNumber = optNullableString("depositNumber"),
@@ -221,7 +221,7 @@ private fun JSONObject.toUpcomingVote(ref: String): UpcomingVote? {
         stage.contains("séance", ignoreCase = true) || stage.contains("discussion", ignoreCase = true) || stage.contains("debat", ignoreCase = true) || stage.contains("débat", ignoreCase = true) -> UpcomingVoteStatus.UNDER_DISCUSSION
         else -> UpcomingVoteStatus.AGENDA_ITEM
     }
-    val sourceUrl = optNullableString("dossierUrl") ?: "https://www.assemblee-nationale.fr/dyn/recherche?search=$ref"
+    val sourceUrl = officialDossierUrl(ref) ?: optNullableString("dossierUrl") ?: "https://www.assemblee-nationale.fr/dyn/17/dossiers/$ref"
     return UpcomingVote(
         id = ref,
         title = title,
@@ -258,6 +258,10 @@ private fun JSONArray?.orEmptyStrings(): List<String> {
 }
 
 private fun JSONObject.optNullableString(key: String): String? = if (isNull(key)) null else optString(key).takeIf { it.isNotBlank() }
+
+private fun officialDossierUrl(ref: String): String? = ref
+    .takeIf { it.isNotBlank() }
+    ?.let { "https://www.assemblee-nationale.fr/dyn/17/dossiers/$it" }
 
 private fun JSONObject.optNullableIntLocal(key: String): Int? {
     val raw = opt(key)
