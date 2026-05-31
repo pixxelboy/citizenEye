@@ -13,6 +13,8 @@ data class DeputyStats(
 ) {
     val participationPercent: Int get() = percent(participatedVotes, totalVotes)
     val groupAlignmentPercent: Int get() = percent(groupAlignedVotes, groupAlignmentComparableVotes)
+    val alignmentRate: Int get() = groupAlignmentPercent
+    val dissidentRate: Int get() = percent(groupAlignmentComparableVotes - groupAlignedVotes, groupAlignmentComparableVotes)
 
     fun countFor(position: VotePosition): Int = counts[position] ?: 0
 

@@ -17,6 +17,7 @@ class CitizenEyeRepository(
     private val assembleeClient: AssembleeNationaleClient = AssembleeNationaleClient(),
     private val boundaryClient: ConstituencyBoundaryClient = ConstituencyBoundaryClient()
 ) {
+    private val groupDashboardCache = mutableMapOf<String, GroupCivicDashboard>()
     companion object {
         fun create(context: Context): CitizenEyeRepository {
             val cacheRoot = File(context.filesDir, "public-data")
@@ -109,6 +110,14 @@ class CitizenEyeRepository(
     suspend fun fetchDeputiesForExploration(): List<Depute> = withContext(Dispatchers.IO) {
         assembleeClient.fetchActiveDeputies()
     }
+
+    suspend fun fetchGroupCivicDashboard(groupAbbreviation: String): GroupCivicDashboard = withContext(Dispatchers.IO) {
+        val targetGroup = groupAbbreviation.trim()
+        groupDashboardCache[targetGroup]?.let { return@withContext it }
+        val deputies = assembleeClient.fetchActiveDeputies()
+        val votesByDeputy = assembleeClient.fetchAllLegislatureVotesByDeputy()
+        buildGroupCivicDashboard(targetGroup, deputies, votesByDeputy).also { groupDashboardCache[targetGroup] = it }
+    }
 }
 
 class GeoGouvClient {
@@ -139,6 +148,7 @@ class AssembleeNationaleClient(
     private var activeDeputiesCache: List<Depute>? = null
     private var activeDeputiesCacheMillis: Long = 0L
     private val votesByActorCache = mutableMapOf<String, TimedCache<List<Vote>>>()
+    private var allVotesByActorCache: TimedCache<Map<String, List<Vote>>>? = null
     private val upcomingVotesCache = mutableMapOf<Int, TimedCache<List<UpcomingVote>>>()
 
     fun fetchActiveDeputies(): List<Depute> {
@@ -235,6 +245,20 @@ class AssembleeNationaleClient(
         val sortedVotes = votes.sortedByDescending { it.date }
         votesByActorCache[actorId] = TimedCache(sortedVotes, now)
         return sortedVotes
+    }
+
+    fun fetchAllLegislatureVotesByDeputy(): Map<String, List<Vote>> {
+        val now = nowMillis()
+        allVotesByActorCache?.takeIf { now - it.storedAtMillis in 0 until PublicDataCache.ONE_DAY_MILLIS }?.let { return it.value }
+        staticDatasetClient?.let { client ->
+            runCatching { client.fetchAllLegislatureVotesByDeputy() }.getOrNull()?.let { byDeputy ->
+                byDeputy.forEach { (actorId, votes) -> votesByActorCache[actorId] = TimedCache(votes, now) }
+                allVotesByActorCache = TimedCache(byDeputy, now)
+                return byDeputy
+            }
+        }
+        val deputies = fetchActiveDeputies()
+        return deputies.associate { depute -> depute.id to fetchLegislatureVotesFor(depute.id) }.also { allVotesByActorCache = TimedCache(it, now) }
     }
 
     fun fetchUpcomingVotes(limit: Int = 30): List<UpcomingVote> {

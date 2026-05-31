@@ -14,18 +14,26 @@ open class StaticCitizenEyeDatasetClient(
 ) {
     private var datasetCache: Map<String, ByteArray>? = null
     private var datasetCacheMillis: Long = 0L
+    private var parsedDeputiesCache: List<Depute>? = null
+    private var parsedVotesByDeputyCache: Map<String, List<Vote>>? = null
 
     open fun fetchActiveDeputies(): List<Depute> {
         val files = ensureDataset()
+        parsedDeputiesCache?.let { return it }
         val json = JSONObject(gunzip(files.getValue("deputies")).toString(Charsets.UTF_8))
-        return json.optJSONArray("deputies").orEmptyObjects().map { it.toDepute() }
+        return json.optJSONArray("deputies").orEmptyObjects().map { it.toDepute() }.also { parsedDeputiesCache = it }
     }
 
-    open fun fetchLegislatureVotesFor(actorId: String): List<Vote> {
+    open fun fetchLegislatureVotesFor(actorId: String): List<Vote> = fetchAllLegislatureVotesByDeputy()[actorId].orEmpty()
+
+    open fun fetchAllLegislatureVotesByDeputy(): Map<String, List<Vote>> {
         val files = ensureDataset()
+        parsedVotesByDeputyCache?.let { return it }
         val root = JSONObject(gunzip(files.getValue("votes")).toString(Charsets.UTF_8))
-        val votes = root.optJSONObject("votesByDeputy")?.optJSONArray(actorId).orEmptyObjects()
-        return votes.map { it.toVote() }.sortedByDescending { it.date }
+        val votesByDeputy = root.optJSONObject("votesByDeputy") ?: return emptyMap<String, List<Vote>>().also { parsedVotesByDeputyCache = it }
+        return votesByDeputy.keys().asSequence().associateWith { actorId ->
+            votesByDeputy.optJSONArray(actorId).orEmptyObjects().map { it.toVote() }.sortedByDescending { it.date }
+        }.also { parsedVotesByDeputyCache = it }
     }
 
     open fun findParentText(dossierRef: String): ParentTextDetails? {
@@ -89,6 +97,10 @@ open class StaticCitizenEyeDatasetClient(
     }
 
     private fun cacheDataset(files: Map<String, ByteArray>, now: Long): Map<String, ByteArray> {
+        if (datasetCache !== files) {
+            parsedDeputiesCache = null
+            parsedVotesByDeputyCache = null
+        }
         datasetCache = files
         datasetCacheMillis = now
         return files

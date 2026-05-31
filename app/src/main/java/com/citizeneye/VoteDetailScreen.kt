@@ -29,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -136,20 +137,39 @@ private fun OutcomeSummaryCard(detail: VoteDetail) {
 
 @Composable
 private fun PoliticalAlignmentCard(group: GroupVotePosition?, deputyPosition: VotePosition) {
-    DetailSectionCard(title = "Alignement avec le groupe") {
-        val groupLabel = group?.groupMajorityPosition?.label ?: "Non disponible"
-        LabeledText("Groupe", groupLabel)
-        LabeledText("Députée", deputyPosition.label)
+    DetailSectionCard(title = "Position du groupe") {
+        val groupLabel = group?.groupMajorityPosition?.label?.uppercase() ?: "N/D"
+        val deputyLabel = deputyPosition.label.uppercase()
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            VotePositionPill("Groupe", groupLabel, Modifier.weight(1f))
+            VotePositionPill("Député", deputyLabel, Modifier.weight(1f))
+        }
+        Spacer(Modifier.height(10.dp))
         val aligned = group?.deputyVotedLikeGroup
-        Text(
-            when (aligned) {
-                true -> "Même position que la majorité du groupe"
-                false -> "Position différente de la majorité du groupe"
-                null -> "Alignement non disponible"
-            },
-            color = MaterialTheme.colorScheme.primary,
-            fontWeight = FontWeight.Bold
-        )
+        Surface(
+            shape = RoundedCornerShape(999.dp),
+            color = if (aligned == false) Color(0xFFFFF1D6) else MaterialTheme.colorScheme.primaryContainer
+        ) {
+            Text(
+                when (aligned) {
+                    true -> "✓ Vote aligné"
+                    false -> "⚠ Vote dissident"
+                    null -> "— Alignement N/D"
+                },
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+@Composable
+private fun VotePositionPill(label: String, value: String, modifier: Modifier = Modifier) {
+    Surface(modifier = modifier, shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surfaceVariant) {
+        Column(Modifier.padding(horizontal = 12.dp, vertical = 10.dp)) {
+            Text(label, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+            Text(value, fontSize = 18.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+        }
     }
 }
 

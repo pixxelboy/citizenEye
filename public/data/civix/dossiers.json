@@ -1,0 +1,740 @@
+{
+  "civixApiVersion": "v1",
+  "civixFetchedAt": "2026-05-31T09:54:37Z",
+  "dataset": "citizeneye-civix-dossiers",
+  "dossiers": [
+    {
+      "civixId": "DLR5L17N50686",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N50686",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6503"
+      },
+      "ref": "DLR5L17N50686",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer le parcours inclusif des élèves en situation de handicap"
+    },
+    {
+      "civixId": "DLR5L17N51175",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51175",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5844"
+      },
+      "ref": "DLR5L17N51175",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi visant à soutenir les collectivités territoriales dans la prévention et la gestion des inondations"
+    },
+    {
+      "civixId": "DLR5L17N51329",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51329",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5832"
+      },
+      "ref": "DLR5L17N51329",
+      "stages": [],
+      "textReferences": [],
+      "title": "Simplifier la sortie de l’indivision successorale"
+    },
+    {
+      "civixId": "DLR5L17N51330",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51330",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5831"
+      },
+      "ref": "DLR5L17N51330",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer l’effectivité des droits voisins de la presse"
+    },
+    {
+      "civixId": "DLR5L17N51346",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51346",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5829"
+      },
+      "ref": "DLR5L17N51346",
+      "stages": [],
+      "textReferences": [],
+      "title": "Création du cadre d'emploi des personnels de santé des services d’incendie et de secours"
+    },
+    {
+      "civixId": "DLR5L17N51655",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51655",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5280"
+      },
+      "ref": "DLR5L17N51655",
+      "stages": [],
+      "textReferences": [],
+      "title": "L’intérêt des enfants"
+    },
+    {
+      "civixId": "DLR5L17N51711",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51711",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6124"
+      },
+      "ref": "DLR5L17N51711",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer la pénalisation de l’organisation de rave-parties"
+    },
+    {
+      "civixId": "DLR5L17N51791",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51791",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7031"
+      },
+      "ref": "DLR5L17N51791",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi portant pérennisation du contrat de professionnalisation expérimental"
+    },
+    {
+      "civixId": "DLR5L17N51987",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51987",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6133"
+      },
+      "ref": "DLR5L17N51987",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi visant à permettre aux salariés de certains établissements et services de travailler le 1er mai"
+    },
+    {
+      "civixId": "DLR5L17N52104",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52104",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6752"
+      },
+      "ref": "DLR5L17N52104",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi organique portant actualisation du corps électoral pour les élections au congrès et aux assemblées de province de la Nouvelle-Calédonie"
+    },
+    {
+      "civixId": "DLR5L17N52208",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52208",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6541"
+      },
+      "ref": "DLR5L17N52208",
+      "stages": [],
+      "textReferences": [],
+      "title": "Accélérer le développement du transport maritime à propulsion vélique"
+    },
+    {
+      "civixId": "DLR5L17N52230",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52230",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5856"
+      },
+      "ref": "DLR5L17N52230",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi visant à garantir le droit de visite des parlementaires et des bâtonniers dans les lieux de privation de liberté"
+    },
+    {
+      "civixId": "DLR5L17N52635",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52635",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6346"
+      },
+      "ref": "DLR5L17N52635",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi relatif à la restitution de biens culturels provenant d’États qui, du fait d’une appropriation illicite, en ont été privés"
+    },
+    {
+      "civixId": "DLR5L17N52743",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52743",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6562"
+      },
+      "ref": "DLR5L17N52743",
+      "stages": [],
+      "textReferences": [],
+      "title": "Garantir l’information et la protection effective des victimes de violences sexuelles lors de la libération de leur agresseur"
+    },
+    {
+      "civixId": "DLR5L17N52750",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52750",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6045"
+      },
+      "ref": "DLR5L17N52750",
+      "stages": [],
+      "textReferences": [],
+      "title": "Simplifier le millefeuille territorial par la collectivité unique"
+    },
+    {
+      "civixId": "DLR5L17N52767",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52767",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7001"
+      },
+      "ref": "DLR5L17N52767",
+      "stages": [],
+      "textReferences": [],
+      "title": "Abrogation du Code noir"
+    },
+    {
+      "civixId": "DLR5L17N52820",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52820",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6524"
+      },
+      "ref": "DLR5L17N52820",
+      "stages": [],
+      "textReferences": [],
+      "title": "Condamner la dérive illibérale et autoritaire du gouvernement géorgien et réaffirmer notre soutien au destin européen de la Géorgie"
+    },
+    {
+      "civixId": "DLR5L17N52924",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52924",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6572"
+      },
+      "ref": "DLR5L17N52924",
+      "stages": [],
+      "textReferences": [],
+      "title": "Mettre en place un programme de soutien à l’innovation thérapeutique contre les cancers, les maladies rares et les maladies orphelines de l’enfant"
+    },
+    {
+      "civixId": "DLR5L17N52984",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52984",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6022"
+      },
+      "ref": "DLR5L17N52984",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi constitutionnelle relatif à la Nouvelle-Calédonie"
+    },
+    {
+      "civixId": "DLR5L17N52985",
+      "currentStage": "scrutin public solennel",
+      "dossierProgress": {
+        "currentStage": "scrutin public solennel",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52985",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6023"
+      },
+      "ref": "DLR5L17N52985",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi relatif à la lutte contre les fraudes sociales et fiscales"
+    },
+    {
+      "civixId": "DLR5L17N53067",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53067",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6069"
+      },
+      "ref": "DLR5L17N53067",
+      "stages": [],
+      "textReferences": [],
+      "title": "Reconnaître une politique nationale d’adaptation au changement climatique et à adapter les mécanismes d’assurance"
+    },
+    {
+      "civixId": "DLR5L17N53235",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53235",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6284"
+      },
+      "ref": "DLR5L17N53235",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi autorisant l’approbation de l’accord entre le Gouvernement de la République française et la Communauté des Caraïbes relatif à l’adhésion au protocole sur les privilèges et immunités de la Communauté des Caraïbes du 14 janvier 1985"
+    },
+    {
+      "civixId": "DLR5L17N53284",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53284",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6317"
+      },
+      "ref": "DLR5L17N53284",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer la sécurité, la rétention administrative et la prévention des risques d’attentat"
+    },
+    {
+      "civixId": "DLR5L17N53315",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53315",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6135"
+      },
+      "ref": "DLR5L17N53315",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi visant à instaurer une procédure simplifiée de recouvrement des créances commerciales incontestées"
+    },
+    {
+      "civixId": "DLR5L17N53426",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53426",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6061"
+      },
+      "ref": "DLR5L17N53426",
+      "stages": [],
+      "textReferences": [],
+      "title": "Accélérer la prévention cardio-neuro-vasculaire et anticiper un risque sanitaire et social majeur"
+    },
+    {
+      "civixId": "DLR5L17N53672",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53672",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5845"
+      },
+      "ref": "DLR5L17N53672",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer l’enseignement à la défense nationale dans le cadre du parcours de citoyenneté"
+    },
+    {
+      "civixId": "DLR5L17N53690",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53690",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5849"
+      },
+      "ref": "DLR5L17N53690",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi visant à permettre le remboursement des honoraires d'expert-comptable aux candidats"
+    },
+    {
+      "civixId": "DLR5L17N53715",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53715",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5839"
+      },
+      "ref": "DLR5L17N53715",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer la place des agriculteurs dans l’aménagement du territoire et à sécuriser l’exercice des activités agricoles face au changement climatique"
+    },
+    {
+      "civixId": "DLR5L17N53717",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53717",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5847"
+      },
+      "ref": "DLR5L17N53717",
+      "stages": [],
+      "textReferences": [],
+      "title": "Interdire les sucres ajoutés dans les aliments destinés aux nourrissons et aux enfants en bas âge"
+    },
+    {
+      "civixId": "DLR5L17N53720",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53720",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V5846"
+      },
+      "ref": "DLR5L17N53720",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer le contrôle, la gouvernance et la responsabilité financière des agences et opérateurs de l’État"
+    },
+    {
+      "civixId": "DLR5L17N53770",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53770",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6131"
+      },
+      "ref": "DLR5L17N53770",
+      "stages": [],
+      "textReferences": [],
+      "title": "Simplifier la gestion de la commande publique par les acheteurs publics et les opérateurs économiques"
+    },
+    {
+      "civixId": "DLR5L17N53772",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53772",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6092"
+      },
+      "ref": "DLR5L17N53772",
+      "stages": [],
+      "textReferences": [],
+      "title": "Garantir le bénéfice des prestations familiales aux enfants placés"
+    },
+    {
+      "civixId": "DLR5L17N53775",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53775",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6076"
+      },
+      "ref": "DLR5L17N53775",
+      "stages": [],
+      "textReferences": [],
+      "title": "Encadrer les regroupements pédagogiques intercommunaux afin de garantir l’égalité d’accès à l’école en milieu rural"
+    },
+    {
+      "civixId": "DLR5L17N53981",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53981",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6901"
+      },
+      "ref": "DLR5L17N53981",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi portant transposition de l’avenant n°3 du 25 février 2026 au protocole d’accord du 10 novembre 2023 relatif à l’assurance chômage"
+    },
+    {
+      "civixId": "DLR5L17N54006",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54006",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6645"
+      },
+      "ref": "DLR5L17N54006",
+      "stages": [],
+      "textReferences": [],
+      "title": "Pour une montagne vivante et souveraine"
+    },
+    {
+      "civixId": "DLR5L17N54083",
+      "currentStage": "scrutin public solennel",
+      "dossierProgress": {
+        "currentStage": "scrutin public solennel",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54083",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6736"
+      },
+      "ref": "DLR5L17N54083",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi actualisant la programmation militaire pour les années 2024 à 2030 et portant diverses dispositions intéressant la défense"
+    },
+    {
+      "civixId": "DLR5L17N54085",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54085",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7205"
+      },
+      "ref": "DLR5L17N54085",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi d’urgence pour la protection et la souveraineté agricoles"
+    },
+    {
+      "civixId": "DLR5L17N54144",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54144",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7022"
+      },
+      "ref": "DLR5L17N54144",
+      "stages": [],
+      "textReferences": [],
+      "title": "Pour la mobilisation de l’habitat existant en réponse à la crise du logement"
+    }
+  ],
+  "generatedAt": "2026-05-31T09:54:37Z",
+  "schemaVersion": 1,
+  "source": {
+    "apiVersion": "v1",
+    "civixUrls": {
+      "api": "https://www.civix.fr/api/v1/index",
+      "metadata": "https://www.civix.fr/.well-known/civix.json",
+      "site": "https://www.civix.fr"
+    },
+    "endpoints": [
+      {
+        "error": null,
+        "fetchedCount": 0,
+        "finishedAt": "2026-05-31T09:54:37Z",
+        "name": "metadata",
+        "notes": [],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:37Z",
+        "status": "success",
+        "url": "https://www.civix.fr/.well-known/civix.json"
+      },
+      {
+        "error": null,
+        "fetchedCount": 0,
+        "finishedAt": "2026-05-31T09:54:38Z",
+        "name": "index",
+        "notes": [],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:37Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/index"
+      },
+      {
+        "error": null,
+        "fetchedCount": 602,
+        "finishedAt": "2026-05-31T09:54:43Z",
+        "name": "deputies",
+        "notes": [],
+        "pageCount": 13,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:38Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/deputes"
+      },
+      {
+        "error": null,
+        "fetchedCount": 12,
+        "finishedAt": "2026-05-31T09:54:47Z",
+        "name": "groups",
+        "notes": [],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:43Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/groupes"
+      },
+      {
+        "error": null,
+        "fetchedCount": 6456,
+        "finishedAt": "2026-05-31T09:55:24Z",
+        "name": "scrutins",
+        "notes": [],
+        "pageCount": 130,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:47Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/scrutins"
+      },
+      {
+        "error": null,
+        "fetchedCount": 2915,
+        "finishedAt": "2026-05-31T09:58:04Z",
+        "name": "individual_votes",
+        "notes": [
+          "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
+        ],
+        "pageCount": 0,
+        "skippedCount": 6206,
+        "startedAt": "2026-05-31T09:55:24Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
+      },
+      {
+        "error": null,
+        "fetchedCount": 38,
+        "finishedAt": "2026-05-31T09:58:04Z",
+        "name": "dossiers",
+        "notes": [
+          "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
+        ],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:58:04Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/scrutins"
+      },
+      {
+        "error": null,
+        "fetchedCount": 1,
+        "finishedAt": "2026-05-31T09:58:04Z",
+        "name": "stats",
+        "notes": [
+          "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
+        ],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:58:04Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/index"
+      }
+    ],
+    "lastUpdated": "2026-04-29",
+    "provider": "Assemblée nationale",
+    "publisher": "CIVIX.fr",
+    "retrievedAt": "2026-05-31T09:54:37Z",
+    "schemaVersion": "2026-04-29",
+    "sourceUrls": [
+      "https://www.civix.fr/api",
+      "https://www.data.gouv.fr/dataservices/api-publique-civix",
+      "https://www.civix.fr"
+    ],
+    "via": "CIVIX.fr"
+  }
+}

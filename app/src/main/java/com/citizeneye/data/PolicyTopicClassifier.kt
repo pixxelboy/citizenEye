@@ -7,7 +7,8 @@ enum class PolicyTopic(val label: String) {
     HEALTH("Santé"),
     EDUCATION("Éducation"),
     HOUSING("Logement"),
-    EMPLOYMENT("Emploi"),
+    EMPLOYMENT("Travail"),
+    SOCIAL_AFFAIRS("Affaires sociales"),
     ECONOMY("Économie"),
     ENVIRONMENT("Environnement"),
     ENERGY("Énergie"),
@@ -111,6 +112,9 @@ class PolicyTopicClassifier {
             ),
             PolicyTopic.EMPLOYMENT to listOf(
                 "emploi", "travail", "chômage", "chomage", "salarié", "salarie", "contrat de travail", "retraite", "pension", "formation professionnelle", "apprentissage", "conditions de travail", "dialogue social"
+            ),
+            PolicyTopic.SOCIAL_AFFAIRS to listOf(
+                "sécurité sociale", "securite sociale", "solidarité", "solidarite", "protection sociale", "famille", "handicap", "pauvreté", "pauvrete", "aide sociale", "allocation", "prestations sociales", "vieillesse"
             ),
             PolicyTopic.ECONOMY to listOf(
                 "économie", "economie", "entreprise", "industrie", "commerce", "pouvoir d'achat", "pouvoir d’achat", "consommation", "concurrence", "artisanat", "pme", "tpe", "marché", "marche", "croissance"

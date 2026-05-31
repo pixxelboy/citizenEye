@@ -14,7 +14,10 @@ local.properties
 *.log
 
 # Generated static public-data output
-public/
+public/*
+!public/data/
+!public/data/civix/
+!public/data/civix/*.json
 
 # Signing / secrets
 *.jks

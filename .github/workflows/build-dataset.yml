@@ -1,0 +1,70 @@
+name: Build static dataset
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 2 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/build-dataset.yml"
+      - "tools/data/build_civix_dataset.py"
+      - "tools/data/test_build_civix_dataset.py"
+      - "docs/civix-data-ingestion.md"
+      - "public/data/civix/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: citizeneye-static-dataset
+  cancel-in-progress: false
+
+jobs:
+  civix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run CIVIX ingestion tests
+        run: python -m unittest tools.data.test_build_civix_dataset -v
+
+      - name: Build CIVIX static dataset
+        env:
+          CIVIX_MAX_SCRUTIN_VOTES: "250"
+        run: python tools/data/build_civix_dataset.py --out public/data/civix
+
+      - name: Validate generated JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('public/data/civix')
+          expected = ['deputies','groups','scrutins','votes','dossiers','stats','index','ingestion-report']
+          for name in expected:
+              path = root / f'{name}.json'
+              if not path.exists():
+                  raise SystemExit(f'Missing {path}')
+              json.loads(path.read_text(encoding='utf-8'))
+          report = json.loads((root / 'ingestion-report.json').read_text(encoding='utf-8'))
+          failures = [ep for ep in report.get('endpoints', []) if ep.get('status') == 'failed' and ep.get('name') in {'metadata','index','deputies','groups','scrutins'}]
+          if failures:
+              raise SystemExit(f'Critical CIVIX endpoint failures: {failures}')
+          print('Validated CIVIX JSON files')
+          PY
+
+      - name: Commit generated dataset if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update CIVIX static dataset"
+          file_pattern: public/data/civix/*.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com

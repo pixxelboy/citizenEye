@@ -1,0 +1,186 @@
+{
+  "civixApiVersion": "v1",
+  "civixFetchedAt": "2026-05-31T09:54:37Z",
+  "dataset": "citizeneye-civix-stats",
+  "generatedAt": "2026-05-31T09:54:37Z",
+  "schemaVersion": 1,
+  "source": {
+    "apiVersion": "v1",
+    "civixUrls": {
+      "api": "https://www.civix.fr/api/v1/index",
+      "metadata": "https://www.civix.fr/.well-known/civix.json",
+      "site": "https://www.civix.fr"
+    },
+    "endpoints": [
+      {
+        "error": null,
+        "fetchedCount": 0,
+        "finishedAt": "2026-05-31T09:54:37Z",
+        "name": "metadata",
+        "notes": [],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:37Z",
+        "status": "success",
+        "url": "https://www.civix.fr/.well-known/civix.json"
+      },
+      {
+        "error": null,
+        "fetchedCount": 0,
+        "finishedAt": "2026-05-31T09:54:38Z",
+        "name": "index",
+        "notes": [],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:37Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/index"
+      },
+      {
+        "error": null,
+        "fetchedCount": 602,
+        "finishedAt": "2026-05-31T09:54:43Z",
+        "name": "deputies",
+        "notes": [],
+        "pageCount": 13,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:38Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/deputes"
+      },
+      {
+        "error": null,
+        "fetchedCount": 12,
+        "finishedAt": "2026-05-31T09:54:47Z",
+        "name": "groups",
+        "notes": [],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:43Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/groupes"
+      },
+      {
+        "error": null,
+        "fetchedCount": 6456,
+        "finishedAt": "2026-05-31T09:55:24Z",
+        "name": "scrutins",
+        "notes": [],
+        "pageCount": 130,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:54:47Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/scrutins"
+      },
+      {
+        "error": null,
+        "fetchedCount": 2915,
+        "finishedAt": "2026-05-31T09:58:04Z",
+        "name": "individual_votes",
+        "notes": [
+          "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
+        ],
+        "pageCount": 0,
+        "skippedCount": 6206,
+        "startedAt": "2026-05-31T09:55:24Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
+      },
+      {
+        "error": null,
+        "fetchedCount": 38,
+        "finishedAt": "2026-05-31T09:58:04Z",
+        "name": "dossiers",
+        "notes": [
+          "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
+        ],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:58:04Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/scrutins"
+      },
+      {
+        "error": null,
+        "fetchedCount": 1,
+        "finishedAt": "2026-05-31T09:58:04Z",
+        "name": "stats",
+        "notes": [
+          "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
+        ],
+        "pageCount": 0,
+        "skippedCount": 0,
+        "startedAt": "2026-05-31T09:58:04Z",
+        "status": "success",
+        "url": "https://www.civix.fr/api/v1/index"
+      }
+    ],
+    "lastUpdated": "2026-04-29",
+    "provider": "Assemblée nationale",
+    "publisher": "CIVIX.fr",
+    "retrievedAt": "2026-05-31T09:54:37Z",
+    "schemaVersion": "2026-04-29",
+    "sourceUrls": [
+      "https://www.civix.fr/api",
+      "https://www.data.gouv.fr/dataservices/api-publique-civix",
+      "https://www.civix.fr"
+    ],
+    "via": "CIVIX.fr"
+  },
+  "stats": {
+    "counts": {
+      "deputies": 602,
+      "groups": 12,
+      "scrutins": 6456,
+      "votes": 2915
+    },
+    "deputyVoteDistribution": {
+      "absentCount": 0,
+      "abstentionCount": 0,
+      "contreCount": 0,
+      "pourCount": 0
+    },
+    "groupVoteDistribution": {
+      "DEM": {
+        "deputyCount": 36
+      },
+      "DR": {
+        "deputyCount": 49
+      },
+      "ECOS": {
+        "deputyCount": 38
+      },
+      "EPR": {
+        "deputyCount": 92
+      },
+      "GDR": {
+        "deputyCount": 17
+      },
+      "HOR": {
+        "deputyCount": 34
+      },
+      "LFI-NFP": {
+        "deputyCount": 71
+      },
+      "LIOT": {
+        "deputyCount": 22
+      },
+      "NI": {
+        "deputyCount": 12
+      },
+      "RN": {
+        "deputyCount": 122
+      },
+      "SOC": {
+        "deputyCount": 69
+      },
+      "UDDPLR": {
+        "deputyCount": 17
+      },
+      "unknown": {
+        "deputyCount": 23
+      }
+    },
+    "raw": null
+  }
+}

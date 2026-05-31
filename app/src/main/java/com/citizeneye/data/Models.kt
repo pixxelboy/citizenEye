@@ -76,6 +76,11 @@ data class Vote(
     val seanceRef: String? = null
 ) {
     val concern: VoteConcern get() = classifyVoteConcern(title, summary)
+    val groupAlignment: VoteGroupAlignment get() = when (groupPosition?.deputyVotedLikeGroup) {
+        true -> VoteGroupAlignment.ALIGNED
+        false -> VoteGroupAlignment.DISSIDENT
+        null -> VoteGroupAlignment.UNKNOWN
+    }
     fun asHistoricalVote(): HistoricalVote = HistoricalVote(
         id = id,
         number = number,
@@ -180,7 +185,11 @@ data class DeputeMatch(
     val allLegislatureVotes: List<Vote>,
     val visibleVoteCount: Int = DEFAULT_VISIBLE_VOTE_COUNT,
     val legislatureStats: DeputyStats = DeputyStats.from(allLegislatureVotes),
-    val topicVotingSummaries: List<TopicVotingSummary> = allLegislatureVotes.topicVotingSummaries()
+    val topicVotingSummaries: List<TopicVotingSummary> = allLegislatureVotes.topicVotingSummaries(),
+    val topicDistribution: List<PolicyTopicDistribution> = allLegislatureVotes.policyTopicDistribution(),
+    val independenceSummary: IndependenceSummary = allLegislatureVotes.independenceSummary(),
+    val importantVotes: List<Vote> = allLegislatureVotes.sortedWith(compareByDescending<Vote> { it.importance.score }.thenByDescending { it.date }),
+    val recentlyAdoptedVotes: List<Vote> = allLegislatureVotes.filter { it.result.contains("adopt", ignoreCase = true) }
 ) {
     val recentVotes: List<Vote> get() = allLegislatureVotes.take(visibleVoteCount)
     val recentHistoricalVotes: List<HistoricalVote> get() = recentVotes.map { it.asHistoricalVote() }
@@ -200,7 +209,13 @@ enum class VotePosition(val label: String) {
     POUR("Pour"),
     CONTRE("Contre"),
     ABSTENTION("Abstention"),
-    NON_VOTANT("Non-votant")
+    NON_VOTANT("Absent")
+}
+
+enum class VoteGroupAlignment(val label: String, val icon: String) {
+    ALIGNED("Aligné", "✓"),
+    DISSIDENT("Dissident", "⚠"),
+    UNKNOWN("N/D", "—")
 }
 
 sealed interface LookupState {
