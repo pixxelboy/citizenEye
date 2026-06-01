@@ -1,8 +1,8 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-05-31T20:21:01Z",
+  "civixFetchedAt": "2026-06-01T07:30:58Z",
   "dataset": "citizeneye-civix-votes",
-  "generatedAt": "2026-05-31T20:21:01Z",
+  "generatedAt": "2026-06-01T07:30:58Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
@@ -15,102 +15,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-05-31T20:21:02Z",
+        "finishedAt": "2026-06-01T07:30:59Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:21:01Z",
+        "startedAt": "2026-06-01T07:30:58Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-05-31T20:21:03Z",
+        "finishedAt": "2026-06-01T07:31:00Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:21:02Z",
+        "startedAt": "2026-06-01T07:30:59Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-05-31T20:21:07Z",
+        "finishedAt": "2026-06-01T07:31:05Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:21:03Z",
+        "startedAt": "2026-06-01T07:31:00Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-05-31T20:21:11Z",
+        "finishedAt": "2026-06-01T07:31:09Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:21:07Z",
+        "startedAt": "2026-06-01T07:31:05Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
         "fetchedCount": 6456,
-        "finishedAt": "2026-05-31T20:21:35Z",
+        "finishedAt": "2026-06-01T07:31:47Z",
         "name": "scrutins",
         "notes": [],
         "pageCount": 130,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:21:11Z",
+        "startedAt": "2026-06-01T07:31:09Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 2915,
-        "finishedAt": "2026-05-31T20:23:37Z",
+        "finishedAt": "2026-06-01T07:34:07Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
         "skippedCount": 6206,
-        "startedAt": "2026-05-31T20:21:35Z",
+        "startedAt": "2026-06-01T07:31:47Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
         "fetchedCount": 38,
-        "finishedAt": "2026-05-31T20:23:37Z",
+        "finishedAt": "2026-06-01T07:34:07Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:23:37Z",
+        "startedAt": "2026-06-01T07:34:07Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-05-31T20:23:37Z",
+        "finishedAt": "2026-06-01T07:34:07Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T20:23:37Z",
+        "startedAt": "2026-06-01T07:34:07Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -118,7 +118,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-05-31T20:21:01Z",
+    "retrievedAt": "2026-06-01T07:30:58Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
@@ -1209,47 +1209,6 @@
       "voteResultSummary": null
     },
     {
-      "civixId": "VTANR5L17V7186:PO845454",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845454",
-      "groupUid": "PO845454",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 5,
-        "pourCount": 0,
-        "totalCount": 5,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7186:PO845454",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 5,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 5,
-          "pourCount": 0,
-          "totalCount": 5,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845454",
-        "id": "VTANR5L17V7186:PO845454",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 5,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7186",
-      "voteResultSummary": null
-    },
-    {
       "civixId": "VTANR5L17V7186:PO845470",
       "deputyCivixId": null,
       "deputyGroupAlignment": "unknown",
@@ -1280,6 +1239,47 @@
         },
         "groupe_uid": "PO845470",
         "id": "VTANR5L17V7186:PO845470",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 5,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7186",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7186:PO845454",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845454",
+      "groupUid": "PO845454",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 5,
+        "pourCount": 0,
+        "totalCount": 5,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7186:PO845454",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 5,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 5,
+          "pourCount": 0,
+          "totalCount": 5,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845454",
+        "id": "VTANR5L17V7186:PO845454",
         "non_votant": 0,
         "position": "group_distribution",
         "pour": 0,
@@ -16966,47 +16966,6 @@
       "voteResultSummary": null
     },
     {
-      "civixId": "VTANR5L17V7005:PO872880",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO872880",
-      "groupUid": "PO872880",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 2,
-        "pourCount": 0,
-        "totalCount": 2,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7005:PO872880",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 2,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 2,
-          "pourCount": 0,
-          "totalCount": 2,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO872880",
-        "id": "VTANR5L17V7005:PO872880",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 2,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7005",
-      "voteResultSummary": null
-    },
-    {
       "civixId": "VTANR5L17V7005:PO845514",
       "deputyCivixId": null,
       "deputyGroupAlignment": "unknown",
@@ -17040,6 +16999,47 @@
         "non_votant": 0,
         "position": "group_distribution",
         "pour": 2,
+        "raw_kind": "group_distribution",
+        "total": 2,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7005",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7005:PO872880",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO872880",
+      "groupUid": "PO872880",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 2,
+        "pourCount": 0,
+        "totalCount": 2,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7005:PO872880",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 2,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 2,
+          "pourCount": 0,
+          "totalCount": 2,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO872880",
+        "id": "VTANR5L17V7005:PO872880",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
         "raw_kind": "group_distribution",
         "total": 2,
         "unknown": 0

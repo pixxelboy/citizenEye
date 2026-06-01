@@ -1,8 +1,8 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-05-31T09:54:47.752Z",
+  "civixFetchedAt": "2026-06-01T07:31:09.896Z",
   "dataset": "citizeneye-civix-scrutins",
-  "generatedAt": "2026-05-31T09:54:37Z",
+  "generatedAt": "2026-06-01T07:30:58Z",
   "schemaVersion": 1,
   "scrutins": [
     {
@@ -369888,7 +369888,7 @@
   "source": {
     "apiVersion": "v1",
     "citation": {
-      "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 1.",
+      "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 1.",
       "url": "https://www.civix.fr/api/v1/scrutins?page=1&page_size=50&legislature=17"
     },
     "civixUrls": {
@@ -369899,121 +369899,121 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-05-31T09:54:37Z",
+        "finishedAt": "2026-06-01T07:30:59Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:37Z",
+        "startedAt": "2026-06-01T07:30:58Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-05-31T09:54:38Z",
+        "finishedAt": "2026-06-01T07:31:00Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:37Z",
+        "startedAt": "2026-06-01T07:30:59Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-05-31T09:54:43Z",
+        "finishedAt": "2026-06-01T07:31:05Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:38Z",
+        "startedAt": "2026-06-01T07:31:00Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-05-31T09:54:47Z",
+        "finishedAt": "2026-06-01T07:31:09Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:43Z",
+        "startedAt": "2026-06-01T07:31:05Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
         "fetchedCount": 6456,
-        "finishedAt": "2026-05-31T09:55:24Z",
+        "finishedAt": "2026-06-01T07:31:47Z",
         "name": "scrutins",
         "notes": [],
         "pageCount": 130,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:47Z",
+        "startedAt": "2026-06-01T07:31:09Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 2915,
-        "finishedAt": "2026-05-31T09:58:04Z",
+        "finishedAt": "2026-06-01T07:34:07Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
         "skippedCount": 6206,
-        "startedAt": "2026-05-31T09:55:24Z",
+        "startedAt": "2026-06-01T07:31:47Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
         "fetchedCount": 38,
-        "finishedAt": "2026-05-31T09:58:04Z",
+        "finishedAt": "2026-06-01T07:34:07Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:58:04Z",
+        "startedAt": "2026-06-01T07:34:07Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-05-31T09:58:04Z",
+        "finishedAt": "2026-06-01T07:34:07Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:58:04Z",
+        "startedAt": "2026-06-01T07:34:07Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
     ],
-    "lastUpdated": "2026-05-31T09:54:47.752Z",
+    "lastUpdated": "2026-06-01T07:31:09.896Z",
     "pages": [
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 1.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 1.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=1&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=1&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:47.752Z",
+        "lastUpdated": "2026-06-01T07:31:09.896Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:47.752Z",
+        "retrievedAt": "2026-06-01T07:31:09.896Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370021,17 +370021,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 2.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 2.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=2&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=2&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:48.028Z",
+        "lastUpdated": "2026-06-01T07:31:10.471Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:48.028Z",
+        "retrievedAt": "2026-06-01T07:31:10.471Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370039,17 +370039,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 3.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 3.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=3&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=3&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:48.313Z",
+        "lastUpdated": "2026-06-01T07:31:10.763Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:48.313Z",
+        "retrievedAt": "2026-06-01T07:31:10.763Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370057,17 +370057,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 4.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 4.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=4&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=4&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:48.588Z",
+        "lastUpdated": "2026-06-01T07:31:11.086Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:48.588Z",
+        "retrievedAt": "2026-06-01T07:31:11.086Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370075,17 +370075,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 5.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 5.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=5&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=5&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:48.884Z",
+        "lastUpdated": "2026-06-01T07:31:11.575Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:48.884Z",
+        "retrievedAt": "2026-06-01T07:31:11.575Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370093,17 +370093,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 6.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 6.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=6&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=6&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:49.173Z",
+        "lastUpdated": "2026-06-01T07:31:11.903Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:49.173Z",
+        "retrievedAt": "2026-06-01T07:31:11.903Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370111,17 +370111,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 7.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 7.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=7&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=7&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:49.469Z",
+        "lastUpdated": "2026-06-01T07:31:12.187Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:49.469Z",
+        "retrievedAt": "2026-06-01T07:31:12.187Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370129,17 +370129,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 8.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 8.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=8&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=8&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:49.759Z",
+        "lastUpdated": "2026-06-01T07:31:12.511Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:49.759Z",
+        "retrievedAt": "2026-06-01T07:31:12.511Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370147,17 +370147,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 9.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 9.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=9&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=9&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:50.077Z",
+        "lastUpdated": "2026-06-01T07:31:12.806Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:50.077Z",
+        "retrievedAt": "2026-06-01T07:31:12.806Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370165,17 +370165,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 10.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 10.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=10&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=10&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:50.362Z",
+        "lastUpdated": "2026-06-01T07:31:13.146Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:50.362Z",
+        "retrievedAt": "2026-06-01T07:31:13.146Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370183,17 +370183,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 11.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 11.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=11&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=11&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:50.641Z",
+        "lastUpdated": "2026-06-01T07:31:13.473Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:50.641Z",
+        "retrievedAt": "2026-06-01T07:31:13.473Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370201,17 +370201,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 12.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 12.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=12&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=12&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:50.927Z",
+        "lastUpdated": "2026-06-01T07:31:13.755Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:50.927Z",
+        "retrievedAt": "2026-06-01T07:31:13.755Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370219,17 +370219,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 13.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 13.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=13&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=13&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:51.207Z",
+        "lastUpdated": "2026-06-01T07:31:14.040Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:51.207Z",
+        "retrievedAt": "2026-06-01T07:31:14.040Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370237,17 +370237,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 14.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 14.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=14&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=14&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:51.492Z",
+        "lastUpdated": "2026-06-01T07:31:14.366Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:51.492Z",
+        "retrievedAt": "2026-06-01T07:31:14.366Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370255,17 +370255,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 15.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 15.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=15&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=15&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:51.765Z",
+        "lastUpdated": "2026-06-01T07:31:14.633Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:51.765Z",
+        "retrievedAt": "2026-06-01T07:31:14.633Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370273,17 +370273,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 16.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 16.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=16&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=16&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:52.037Z",
+        "lastUpdated": "2026-06-01T07:31:14.966Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:52.037Z",
+        "retrievedAt": "2026-06-01T07:31:14.966Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370291,17 +370291,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 17.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 17.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=17&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=17&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:52.333Z",
+        "lastUpdated": "2026-06-01T07:31:15.251Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:52.333Z",
+        "retrievedAt": "2026-06-01T07:31:15.251Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370309,17 +370309,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 18.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 18.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=18&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=18&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:52.636Z",
+        "lastUpdated": "2026-06-01T07:31:15.504Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:52.636Z",
+        "retrievedAt": "2026-06-01T07:31:15.504Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370327,17 +370327,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 19.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 19.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=19&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=19&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:52.937Z",
+        "lastUpdated": "2026-06-01T07:31:15.793Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:52.937Z",
+        "retrievedAt": "2026-06-01T07:31:15.793Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370345,17 +370345,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 20.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 20.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=20&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=20&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:53.273Z",
+        "lastUpdated": "2026-06-01T07:31:16.090Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:53.273Z",
+        "retrievedAt": "2026-06-01T07:31:16.090Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370363,17 +370363,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 21.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 21.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=21&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=21&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:53.544Z",
+        "lastUpdated": "2026-06-01T07:31:16.379Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:53.544Z",
+        "retrievedAt": "2026-06-01T07:31:16.379Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370381,17 +370381,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 22.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 22.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=22&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=22&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:53.825Z",
+        "lastUpdated": "2026-06-01T07:31:16.674Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:53.825Z",
+        "retrievedAt": "2026-06-01T07:31:16.674Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370399,17 +370399,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 23.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 23.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=23&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=23&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:54.101Z",
+        "lastUpdated": "2026-06-01T07:31:16.968Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:54.101Z",
+        "retrievedAt": "2026-06-01T07:31:16.968Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370417,17 +370417,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 24.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 24.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=24&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=24&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:54.389Z",
+        "lastUpdated": "2026-06-01T07:31:17.254Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:54.389Z",
+        "retrievedAt": "2026-06-01T07:31:17.254Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370435,17 +370435,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 25.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 25.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=25&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=25&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:54.659Z",
+        "lastUpdated": "2026-06-01T07:31:17.530Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:54.659Z",
+        "retrievedAt": "2026-06-01T07:31:17.530Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370453,17 +370453,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 26.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 26.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=26&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=26&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:54.936Z",
+        "lastUpdated": "2026-06-01T07:31:17.814Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:54.936Z",
+        "retrievedAt": "2026-06-01T07:31:17.814Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370471,17 +370471,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 27.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 27.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=27&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=27&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:55.218Z",
+        "lastUpdated": "2026-06-01T07:31:18.101Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:55.218Z",
+        "retrievedAt": "2026-06-01T07:31:18.101Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370489,17 +370489,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 28.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 28.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=28&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=28&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:55.501Z",
+        "lastUpdated": "2026-06-01T07:31:18.397Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:55.501Z",
+        "retrievedAt": "2026-06-01T07:31:18.397Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370507,17 +370507,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 29.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 29.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=29&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=29&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:55.778Z",
+        "lastUpdated": "2026-06-01T07:31:18.659Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:55.778Z",
+        "retrievedAt": "2026-06-01T07:31:18.659Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370525,17 +370525,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 30.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 30.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=30&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=30&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:56.064Z",
+        "lastUpdated": "2026-06-01T07:31:18.931Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:56.064Z",
+        "retrievedAt": "2026-06-01T07:31:18.931Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370543,17 +370543,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 31.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 31.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=31&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=31&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:56.415Z",
+        "lastUpdated": "2026-06-01T07:31:19.193Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:56.415Z",
+        "retrievedAt": "2026-06-01T07:31:19.193Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370561,17 +370561,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 32.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 32.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=32&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=32&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:56.710Z",
+        "lastUpdated": "2026-06-01T07:31:19.488Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:56.710Z",
+        "retrievedAt": "2026-06-01T07:31:19.488Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370579,17 +370579,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 33.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 33.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=33&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=33&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:56.983Z",
+        "lastUpdated": "2026-06-01T07:31:19.771Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:56.983Z",
+        "retrievedAt": "2026-06-01T07:31:19.771Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370597,17 +370597,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 34.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 34.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=34&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=34&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:57.259Z",
+        "lastUpdated": "2026-06-01T07:31:20.044Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:57.259Z",
+        "retrievedAt": "2026-06-01T07:31:20.044Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370615,17 +370615,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 35.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 35.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=35&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=35&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:57.539Z",
+        "lastUpdated": "2026-06-01T07:31:20.338Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:57.539Z",
+        "retrievedAt": "2026-06-01T07:31:20.338Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370633,17 +370633,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 36.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 36.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=36&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=36&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:57.812Z",
+        "lastUpdated": "2026-06-01T07:31:20.628Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:57.812Z",
+        "retrievedAt": "2026-06-01T07:31:20.628Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370651,17 +370651,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 37.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 37.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=37&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=37&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:58.081Z",
+        "lastUpdated": "2026-06-01T07:31:20.890Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:58.081Z",
+        "retrievedAt": "2026-06-01T07:31:20.890Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370669,17 +370669,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 38.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 38.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=38&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=38&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:58.361Z",
+        "lastUpdated": "2026-06-01T07:31:21.177Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:58.361Z",
+        "retrievedAt": "2026-06-01T07:31:21.177Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370687,17 +370687,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 39.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 39.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=39&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=39&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:58.630Z",
+        "lastUpdated": "2026-06-01T07:31:21.460Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:58.630Z",
+        "retrievedAt": "2026-06-01T07:31:21.460Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370705,17 +370705,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 40.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 40.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=40&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=40&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:58.928Z",
+        "lastUpdated": "2026-06-01T07:31:21.747Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:58.928Z",
+        "retrievedAt": "2026-06-01T07:31:21.747Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370723,17 +370723,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 41.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 41.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=41&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=41&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:59.281Z",
+        "lastUpdated": "2026-06-01T07:31:22.048Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:59.281Z",
+        "retrievedAt": "2026-06-01T07:31:22.048Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370741,17 +370741,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 42.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 42.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=42&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=42&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:59.555Z",
+        "lastUpdated": "2026-06-01T07:31:22.344Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:59.555Z",
+        "retrievedAt": "2026-06-01T07:31:22.344Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370759,17 +370759,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 43.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 43.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=43&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=43&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:54:59.837Z",
+        "lastUpdated": "2026-06-01T07:31:22.665Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:54:59.837Z",
+        "retrievedAt": "2026-06-01T07:31:22.665Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370777,17 +370777,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 44.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 44.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=44&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=44&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:00.118Z",
+        "lastUpdated": "2026-06-01T07:31:22.949Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:00.118Z",
+        "retrievedAt": "2026-06-01T07:31:22.949Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370795,17 +370795,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 45.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 45.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=45&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=45&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:00.435Z",
+        "lastUpdated": "2026-06-01T07:31:23.225Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:00.435Z",
+        "retrievedAt": "2026-06-01T07:31:23.225Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370813,17 +370813,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 46.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 46.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=46&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=46&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:00.760Z",
+        "lastUpdated": "2026-06-01T07:31:23.503Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:00.760Z",
+        "retrievedAt": "2026-06-01T07:31:23.503Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370831,17 +370831,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 47.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 47.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=47&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=47&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:01.071Z",
+        "lastUpdated": "2026-06-01T07:31:23.814Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:01.071Z",
+        "retrievedAt": "2026-06-01T07:31:23.814Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370849,17 +370849,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 48.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 48.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=48&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=48&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:01.485Z",
+        "lastUpdated": "2026-06-01T07:31:24.081Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:01.485Z",
+        "retrievedAt": "2026-06-01T07:31:24.081Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370867,17 +370867,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 49.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 49.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=49&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=49&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:01.756Z",
+        "lastUpdated": "2026-06-01T07:31:24.356Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:01.756Z",
+        "retrievedAt": "2026-06-01T07:31:24.356Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370885,17 +370885,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 50.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 50.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=50&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=50&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:02.036Z",
+        "lastUpdated": "2026-06-01T07:31:24.641Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:02.036Z",
+        "retrievedAt": "2026-06-01T07:31:24.641Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370903,17 +370903,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 51.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 51.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=51&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=51&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:02.314Z",
+        "lastUpdated": "2026-06-01T07:31:24.901Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:02.314Z",
+        "retrievedAt": "2026-06-01T07:31:24.901Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370921,17 +370921,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 52.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 52.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=52&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=52&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:02.603Z",
+        "lastUpdated": "2026-06-01T07:31:25.206Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:02.603Z",
+        "retrievedAt": "2026-06-01T07:31:25.206Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370939,17 +370939,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 53.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 53.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=53&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=53&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:02.907Z",
+        "lastUpdated": "2026-06-01T07:31:25.472Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:02.907Z",
+        "retrievedAt": "2026-06-01T07:31:25.472Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370957,17 +370957,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 54.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 54.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=54&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=54&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:03.197Z",
+        "lastUpdated": "2026-06-01T07:31:25.724Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:03.197Z",
+        "retrievedAt": "2026-06-01T07:31:25.724Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370975,17 +370975,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 55.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 55.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=55&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=55&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:03.479Z",
+        "lastUpdated": "2026-06-01T07:31:25.977Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:03.479Z",
+        "retrievedAt": "2026-06-01T07:31:25.977Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -370993,17 +370993,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 56.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 56.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=56&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=56&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:03.754Z",
+        "lastUpdated": "2026-06-01T07:31:26.244Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:03.754Z",
+        "retrievedAt": "2026-06-01T07:31:26.244Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371011,17 +371011,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 57.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 57.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=57&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=57&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:04.040Z",
+        "lastUpdated": "2026-06-01T07:31:26.508Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:04.040Z",
+        "retrievedAt": "2026-06-01T07:31:26.508Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371029,17 +371029,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 58.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 58.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=58&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=58&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:04.314Z",
+        "lastUpdated": "2026-06-01T07:31:26.807Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:04.314Z",
+        "retrievedAt": "2026-06-01T07:31:26.807Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371047,17 +371047,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 59.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 59.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=59&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=59&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:04.578Z",
+        "lastUpdated": "2026-06-01T07:31:27.104Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:04.578Z",
+        "retrievedAt": "2026-06-01T07:31:27.104Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371065,17 +371065,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 60.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 60.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=60&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=60&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:04.855Z",
+        "lastUpdated": "2026-06-01T07:31:27.394Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:04.855Z",
+        "retrievedAt": "2026-06-01T07:31:27.394Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371083,17 +371083,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 61.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 61.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=61&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=61&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:05.128Z",
+        "lastUpdated": "2026-06-01T07:31:27.647Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:05.128Z",
+        "retrievedAt": "2026-06-01T07:31:27.647Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371101,17 +371101,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 62.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 62.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=62&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=62&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:05.404Z",
+        "lastUpdated": "2026-06-01T07:31:27.981Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:05.404Z",
+        "retrievedAt": "2026-06-01T07:31:27.981Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371119,17 +371119,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 63.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 63.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=63&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=63&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:05.698Z",
+        "lastUpdated": "2026-06-01T07:31:28.267Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:05.698Z",
+        "retrievedAt": "2026-06-01T07:31:28.267Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371137,17 +371137,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 64.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 64.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=64&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=64&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:05.976Z",
+        "lastUpdated": "2026-06-01T07:31:28.530Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:05.976Z",
+        "retrievedAt": "2026-06-01T07:31:28.530Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371155,17 +371155,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 65.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 65.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=65&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=65&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:06.244Z",
+        "lastUpdated": "2026-06-01T07:31:28.800Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:06.244Z",
+        "retrievedAt": "2026-06-01T07:31:28.800Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371173,17 +371173,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 66.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 66.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=66&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=66&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:06.522Z",
+        "lastUpdated": "2026-06-01T07:31:29.102Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:06.522Z",
+        "retrievedAt": "2026-06-01T07:31:29.102Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371191,17 +371191,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 67.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 67.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=67&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=67&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:06.812Z",
+        "lastUpdated": "2026-06-01T07:31:29.377Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:06.812Z",
+        "retrievedAt": "2026-06-01T07:31:29.377Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371209,17 +371209,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 68.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 68.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=68&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=68&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:07.096Z",
+        "lastUpdated": "2026-06-01T07:31:29.664Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:07.096Z",
+        "retrievedAt": "2026-06-01T07:31:29.664Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371227,17 +371227,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 69.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 69.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=69&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=69&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:07.386Z",
+        "lastUpdated": "2026-06-01T07:31:29.938Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:07.386Z",
+        "retrievedAt": "2026-06-01T07:31:29.938Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371245,17 +371245,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 70.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 70.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=70&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=70&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:07.698Z",
+        "lastUpdated": "2026-06-01T07:31:30.231Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:07.698Z",
+        "retrievedAt": "2026-06-01T07:31:30.231Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371263,17 +371263,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 71.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 71.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=71&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=71&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:07.982Z",
+        "lastUpdated": "2026-06-01T07:31:30.548Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:07.982Z",
+        "retrievedAt": "2026-06-01T07:31:30.548Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371281,17 +371281,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 72.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 72.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=72&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=72&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:08.260Z",
+        "lastUpdated": "2026-06-01T07:31:30.832Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:08.260Z",
+        "retrievedAt": "2026-06-01T07:31:30.832Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371299,17 +371299,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 73.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 73.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=73&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=73&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:08.550Z",
+        "lastUpdated": "2026-06-01T07:31:31.120Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:08.550Z",
+        "retrievedAt": "2026-06-01T07:31:31.120Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371317,17 +371317,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 74.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 74.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=74&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=74&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:08.826Z",
+        "lastUpdated": "2026-06-01T07:31:31.409Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:08.826Z",
+        "retrievedAt": "2026-06-01T07:31:31.409Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371335,17 +371335,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 75.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 75.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=75&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=75&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:09.108Z",
+        "lastUpdated": "2026-06-01T07:31:31.689Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:09.108Z",
+        "retrievedAt": "2026-06-01T07:31:31.689Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371353,17 +371353,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 76.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 76.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=76&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=76&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:09.402Z",
+        "lastUpdated": "2026-06-01T07:31:31.987Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:09.402Z",
+        "retrievedAt": "2026-06-01T07:31:31.987Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371371,17 +371371,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 77.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 77.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=77&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=77&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:09.673Z",
+        "lastUpdated": "2026-06-01T07:31:32.270Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:09.673Z",
+        "retrievedAt": "2026-06-01T07:31:32.270Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371389,17 +371389,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 78.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 78.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=78&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=78&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:09.950Z",
+        "lastUpdated": "2026-06-01T07:31:32.571Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:09.950Z",
+        "retrievedAt": "2026-06-01T07:31:32.571Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371407,17 +371407,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 79.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 79.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=79&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=79&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:10.225Z",
+        "lastUpdated": "2026-06-01T07:31:32.909Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:10.225Z",
+        "retrievedAt": "2026-06-01T07:31:32.909Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371425,17 +371425,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 80.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 80.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=80&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=80&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:10.508Z",
+        "lastUpdated": "2026-06-01T07:31:33.200Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:10.508Z",
+        "retrievedAt": "2026-06-01T07:31:33.200Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371443,17 +371443,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 81.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 81.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=81&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=81&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:10.801Z",
+        "lastUpdated": "2026-06-01T07:31:33.499Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:10.801Z",
+        "retrievedAt": "2026-06-01T07:31:33.499Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371461,17 +371461,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 82.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 82.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=82&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=82&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:11.086Z",
+        "lastUpdated": "2026-06-01T07:31:33.810Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:11.086Z",
+        "retrievedAt": "2026-06-01T07:31:33.810Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371479,17 +371479,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 83.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 83.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=83&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=83&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:11.364Z",
+        "lastUpdated": "2026-06-01T07:31:34.117Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:11.364Z",
+        "retrievedAt": "2026-06-01T07:31:34.117Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371497,17 +371497,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 84.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 84.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=84&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=84&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:11.645Z",
+        "lastUpdated": "2026-06-01T07:31:34.418Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:11.645Z",
+        "retrievedAt": "2026-06-01T07:31:34.418Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371515,17 +371515,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 85.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 85.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=85&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=85&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:11.928Z",
+        "lastUpdated": "2026-06-01T07:31:34.709Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:11.928Z",
+        "retrievedAt": "2026-06-01T07:31:34.709Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371533,17 +371533,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 86.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 86.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=86&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=86&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:12.201Z",
+        "lastUpdated": "2026-06-01T07:31:35.001Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:12.201Z",
+        "retrievedAt": "2026-06-01T07:31:35.001Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371551,17 +371551,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 87.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 87.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=87&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=87&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:12.483Z",
+        "lastUpdated": "2026-06-01T07:31:35.298Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:12.483Z",
+        "retrievedAt": "2026-06-01T07:31:35.298Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371569,17 +371569,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 88.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 88.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=88&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=88&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:12.774Z",
+        "lastUpdated": "2026-06-01T07:31:35.594Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:12.774Z",
+        "retrievedAt": "2026-06-01T07:31:35.594Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371587,17 +371587,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 89.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 89.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=89&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=89&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:13.046Z",
+        "lastUpdated": "2026-06-01T07:31:35.880Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:13.046Z",
+        "retrievedAt": "2026-06-01T07:31:35.880Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371605,17 +371605,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 90.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 90.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=90&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=90&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:13.327Z",
+        "lastUpdated": "2026-06-01T07:31:36.181Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:13.327Z",
+        "retrievedAt": "2026-06-01T07:31:36.181Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371623,17 +371623,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 91.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 91.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=91&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=91&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:13.604Z",
+        "lastUpdated": "2026-06-01T07:31:36.445Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:13.604Z",
+        "retrievedAt": "2026-06-01T07:31:36.445Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371641,17 +371641,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 92.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 92.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=92&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=92&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:13.880Z",
+        "lastUpdated": "2026-06-01T07:31:36.703Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:13.880Z",
+        "retrievedAt": "2026-06-01T07:31:36.703Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371659,17 +371659,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 93.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 93.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=93&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=93&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:14.153Z",
+        "lastUpdated": "2026-06-01T07:31:36.976Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:14.153Z",
+        "retrievedAt": "2026-06-01T07:31:36.976Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371677,17 +371677,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 94.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 94.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=94&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=94&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:14.430Z",
+        "lastUpdated": "2026-06-01T07:31:37.265Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:14.430Z",
+        "retrievedAt": "2026-06-01T07:31:37.265Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371695,17 +371695,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 95.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 95.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=95&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=95&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:14.729Z",
+        "lastUpdated": "2026-06-01T07:31:37.542Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:14.729Z",
+        "retrievedAt": "2026-06-01T07:31:37.542Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371713,17 +371713,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 96.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 96.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=96&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=96&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:15.005Z",
+        "lastUpdated": "2026-06-01T07:31:37.844Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:15.005Z",
+        "retrievedAt": "2026-06-01T07:31:37.844Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371731,17 +371731,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 97.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 97.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=97&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=97&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:15.284Z",
+        "lastUpdated": "2026-06-01T07:31:38.132Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:15.284Z",
+        "retrievedAt": "2026-06-01T07:31:38.132Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371749,17 +371749,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 98.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 98.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=98&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=98&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:15.569Z",
+        "lastUpdated": "2026-06-01T07:31:38.422Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:15.569Z",
+        "retrievedAt": "2026-06-01T07:31:38.422Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371767,17 +371767,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 99.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 99.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=99&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=99&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:15.860Z",
+        "lastUpdated": "2026-06-01T07:31:38.726Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:15.860Z",
+        "retrievedAt": "2026-06-01T07:31:38.726Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371785,17 +371785,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 100.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 100.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=100&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=100&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:16.138Z",
+        "lastUpdated": "2026-06-01T07:31:39.020Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:16.138Z",
+        "retrievedAt": "2026-06-01T07:31:39.020Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371803,17 +371803,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 101.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 101.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=101&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=101&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:16.419Z",
+        "lastUpdated": "2026-06-01T07:31:39.310Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:16.419Z",
+        "retrievedAt": "2026-06-01T07:31:39.310Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371821,17 +371821,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 102.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 102.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=102&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=102&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:16.706Z",
+        "lastUpdated": "2026-06-01T07:31:39.615Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:16.706Z",
+        "retrievedAt": "2026-06-01T07:31:39.615Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371839,17 +371839,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 103.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 103.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=103&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=103&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:16.984Z",
+        "lastUpdated": "2026-06-01T07:31:39.883Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:16.984Z",
+        "retrievedAt": "2026-06-01T07:31:39.883Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371857,17 +371857,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 104.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 104.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=104&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=104&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:17.274Z",
+        "lastUpdated": "2026-06-01T07:31:40.178Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:17.274Z",
+        "retrievedAt": "2026-06-01T07:31:40.178Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371875,17 +371875,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 105.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 105.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=105&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=105&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:17.712Z",
+        "lastUpdated": "2026-06-01T07:31:40.481Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:17.712Z",
+        "retrievedAt": "2026-06-01T07:31:40.481Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371893,17 +371893,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 106.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 106.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=106&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=106&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:17.995Z",
+        "lastUpdated": "2026-06-01T07:31:40.784Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:17.995Z",
+        "retrievedAt": "2026-06-01T07:31:40.784Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371911,17 +371911,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 107.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 107.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=107&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=107&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:18.267Z",
+        "lastUpdated": "2026-06-01T07:31:41.148Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:18.267Z",
+        "retrievedAt": "2026-06-01T07:31:41.148Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371929,17 +371929,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 108.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 108.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=108&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=108&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:18.545Z",
+        "lastUpdated": "2026-06-01T07:31:41.426Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:18.545Z",
+        "retrievedAt": "2026-06-01T07:31:41.426Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371947,17 +371947,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 109.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 109.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=109&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=109&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:18.830Z",
+        "lastUpdated": "2026-06-01T07:31:41.720Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:18.830Z",
+        "retrievedAt": "2026-06-01T07:31:41.720Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371965,17 +371965,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 110.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 110.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=110&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=110&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:19.109Z",
+        "lastUpdated": "2026-06-01T07:31:42.017Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:19.109Z",
+        "retrievedAt": "2026-06-01T07:31:42.017Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -371983,17 +371983,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 111.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 111.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=111&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=111&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:19.394Z",
+        "lastUpdated": "2026-06-01T07:31:42.288Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:19.394Z",
+        "retrievedAt": "2026-06-01T07:31:42.288Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372001,17 +372001,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 112.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 112.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=112&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=112&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:19.675Z",
+        "lastUpdated": "2026-06-01T07:31:42.570Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:19.675Z",
+        "retrievedAt": "2026-06-01T07:31:42.570Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372019,17 +372019,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 113.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 113.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=113&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=113&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:19.962Z",
+        "lastUpdated": "2026-06-01T07:31:42.859Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:19.962Z",
+        "retrievedAt": "2026-06-01T07:31:42.859Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372037,17 +372037,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 114.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 114.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=114&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=114&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:20.247Z",
+        "lastUpdated": "2026-06-01T07:31:43.146Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:20.247Z",
+        "retrievedAt": "2026-06-01T07:31:43.146Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372055,17 +372055,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 115.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 115.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=115&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=115&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:20.530Z",
+        "lastUpdated": "2026-06-01T07:31:43.445Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:20.530Z",
+        "retrievedAt": "2026-06-01T07:31:43.445Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372073,17 +372073,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 116.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 116.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=116&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=116&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:20.807Z",
+        "lastUpdated": "2026-06-01T07:31:43.748Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:20.807Z",
+        "retrievedAt": "2026-06-01T07:31:43.748Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372091,17 +372091,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 117.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 117.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=117&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=117&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:21.105Z",
+        "lastUpdated": "2026-06-01T07:31:44.045Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:21.105Z",
+        "retrievedAt": "2026-06-01T07:31:44.045Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372109,17 +372109,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 118.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 118.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=118&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=118&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:21.406Z",
+        "lastUpdated": "2026-06-01T07:31:44.337Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:21.406Z",
+        "retrievedAt": "2026-06-01T07:31:44.337Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372127,17 +372127,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 119.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 119.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=119&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=119&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:21.682Z",
+        "lastUpdated": "2026-06-01T07:31:44.598Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:21.682Z",
+        "retrievedAt": "2026-06-01T07:31:44.598Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372145,17 +372145,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 120.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 120.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=120&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=120&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:21.965Z",
+        "lastUpdated": "2026-06-01T07:31:44.869Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:21.965Z",
+        "retrievedAt": "2026-06-01T07:31:44.869Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372163,17 +372163,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 121.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 121.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=121&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=121&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:22.244Z",
+        "lastUpdated": "2026-06-01T07:31:45.169Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:22.244Z",
+        "retrievedAt": "2026-06-01T07:31:45.169Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372181,17 +372181,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 122.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 122.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=122&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=122&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:22.530Z",
+        "lastUpdated": "2026-06-01T07:31:45.432Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:22.530Z",
+        "retrievedAt": "2026-06-01T07:31:45.432Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372199,17 +372199,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 123.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 123.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=123&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=123&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:22.803Z",
+        "lastUpdated": "2026-06-01T07:31:45.698Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:22.803Z",
+        "retrievedAt": "2026-06-01T07:31:45.698Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372217,17 +372217,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 124.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 124.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=124&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=124&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:23.086Z",
+        "lastUpdated": "2026-06-01T07:31:45.986Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:23.086Z",
+        "retrievedAt": "2026-06-01T07:31:45.986Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372235,17 +372235,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 125.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 125.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=125&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=125&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:23.368Z",
+        "lastUpdated": "2026-06-01T07:31:46.284Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:23.368Z",
+        "retrievedAt": "2026-06-01T07:31:46.284Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372253,17 +372253,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 126.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 126.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=126&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=126&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:23.649Z",
+        "lastUpdated": "2026-06-01T07:31:46.581Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:23.649Z",
+        "retrievedAt": "2026-06-01T07:31:46.581Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372271,17 +372271,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 127.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 127.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=127&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=127&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:23.931Z",
+        "lastUpdated": "2026-06-01T07:31:46.873Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:23.931Z",
+        "retrievedAt": "2026-06-01T07:31:46.873Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372289,17 +372289,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 128.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 128.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=128&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=128&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:24.210Z",
+        "lastUpdated": "2026-06-01T07:31:47.145Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:24.210Z",
+        "retrievedAt": "2026-06-01T07:31:47.145Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372307,17 +372307,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 129.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 50 résultat(s) sur la page 129.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=129&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=129&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:24.487Z",
+        "lastUpdated": "2026-06-01T07:31:47.421Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:24.487Z",
+        "retrievedAt": "2026-06-01T07:31:47.421Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372325,17 +372325,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 31 mai 2026), la liste des scrutins renvoie 6 résultat(s) sur la page 130.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 01 juin 2026), la liste des scrutins renvoie 6 résultat(s) sur la page 130.",
           "url": "https://www.civix.fr/api/v1/scrutins?page=130&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/scrutins?page=130&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-05-31T09:55:24.768Z",
+        "lastUpdated": "2026-06-01T07:31:47.684Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-05-31T09:55:24.768Z",
+        "retrievedAt": "2026-06-01T07:31:47.684Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -372344,7 +372344,7 @@
     ],
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-05-31T09:54:47.752Z",
+    "retrievedAt": "2026-06-01T07:31:09.896Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.assemblee-nationale.fr"
