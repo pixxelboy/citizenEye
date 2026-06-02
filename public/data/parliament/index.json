@@ -10,9 +10,9 @@
       "url": "ingestion-report.json"
     }
   ],
-  "generatedAt": "2026-06-01T07:34:08Z",
-  "itemCount": 225,
-  "nextEventDate": "2026-06-01",
+  "generatedAt": "2026-06-02T07:12:28Z",
+  "itemCount": 219,
+  "nextEventDate": "2026-06-02",
   "schemaVersion": 1,
   "sources": [
     {

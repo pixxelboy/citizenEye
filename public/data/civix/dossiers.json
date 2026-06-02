@@ -1,8 +1,24 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-05-31T09:54:37Z",
+  "civixFetchedAt": "2026-06-02T07:09:50Z",
   "dataset": "citizeneye-civix-dossiers",
   "dossiers": [
+    {
+      "civixId": "DLR5L16N49868",
+      "currentStage": "scrutin public solennel",
+      "dossierProgress": {
+        "currentStage": "scrutin public solennel",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L16N49868",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6184"
+      },
+      "ref": "DLR5L16N49868",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi de simplification de la vie économique"
+    },
     {
       "civixId": "DLR5L17N50686",
       "currentStage": "scrutin public ordinaire",
@@ -12,7 +28,7 @@
       },
       "id": "civix:dossier:DLR5L17N50686",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V6503"
+        "firstSeenScrutinId": "VTANR5L17V6512"
       },
       "ref": "DLR5L17N50686",
       "stages": [],
@@ -124,7 +140,7 @@
       },
       "id": "civix:dossier:DLR5L17N51791",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7031"
+        "firstSeenScrutinId": "VTANR5L17V7039"
       },
       "ref": "DLR5L17N51791",
       "stages": [],
@@ -149,14 +165,14 @@
     },
     {
       "civixId": "DLR5L17N52104",
-      "currentStage": "scrutin public ordinaire",
+      "currentStage": "scrutin public solennel",
       "dossierProgress": {
-        "currentStage": "scrutin public ordinaire",
+        "currentStage": "scrutin public solennel",
         "stages": []
       },
       "id": "civix:dossier:DLR5L17N52104",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V6752"
+        "firstSeenScrutinId": "VTANR5L17V6753"
       },
       "ref": "DLR5L17N52104",
       "stages": [],
@@ -188,7 +204,7 @@
       },
       "id": "civix:dossier:DLR5L17N52230",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V5856"
+        "firstSeenScrutinId": "VTANR5L17V6285"
       },
       "ref": "DLR5L17N52230",
       "stages": [],
@@ -220,7 +236,7 @@
       },
       "id": "civix:dossier:DLR5L17N52743",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V6562"
+        "firstSeenScrutinId": "VTANR5L17V6563"
       },
       "ref": "DLR5L17N52743",
       "stages": [],
@@ -252,7 +268,7 @@
       },
       "id": "civix:dossier:DLR5L17N52767",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7001"
+        "firstSeenScrutinId": "VTANR5L17V7002"
       },
       "ref": "DLR5L17N52767",
       "stages": [],
@@ -268,7 +284,7 @@
       },
       "id": "civix:dossier:DLR5L17N52820",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V6524"
+        "firstSeenScrutinId": "VTANR5L17V6525"
       },
       "ref": "DLR5L17N52820",
       "stages": [],
@@ -340,6 +356,22 @@
       "title": "Reconnaître une politique nationale d’adaptation au changement climatique et à adapter les mécanismes d’assurance"
     },
     {
+      "civixId": "DLR5L17N53192",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53192",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V6286"
+      },
+      "ref": "DLR5L17N53192",
+      "stages": [],
+      "textReferences": [],
+      "title": "Faciliter l’exercice en France des médecins diplômés au Royaume-Uni avant le Brexit"
+    },
+    {
       "civixId": "DLR5L17N53235",
       "currentStage": "scrutin public ordinaire",
       "dossierProgress": {
@@ -357,14 +389,14 @@
     },
     {
       "civixId": "DLR5L17N53284",
-      "currentStage": "scrutin public ordinaire",
+      "currentStage": "scrutin public solennel",
       "dossierProgress": {
-        "currentStage": "scrutin public ordinaire",
+        "currentStage": "scrutin public solennel",
         "stages": []
       },
       "id": "civix:dossier:DLR5L17N53284",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V6317"
+        "firstSeenScrutinId": "VTANR5L17V6318"
       },
       "ref": "DLR5L17N53284",
       "stages": [],
@@ -386,6 +418,22 @@
       "stages": [],
       "textReferences": [],
       "title": "Proposition de loi visant à instaurer une procédure simplifiée de recouvrement des créances commerciales incontestées"
+    },
+    {
+      "civixId": "DLR5L17N53357",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N53357",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7004"
+      },
+      "ref": "DLR5L17N53357",
+      "stages": [],
+      "textReferences": [],
+      "title": "Proposition de loi visant à étendre à toutes les communes la compensation financière prévue pour les communes de plus de 3 500 habitants pour l’exercice de l’ensemble des compétences du service public de la petite enfance"
     },
     {
       "civixId": "DLR5L17N53426",
@@ -588,7 +636,7 @@
       },
       "id": "civix:dossier:DLR5L17N54085",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7205"
+        "firstSeenScrutinId": "VTANR5L17V7208"
       },
       "ref": "DLR5L17N54085",
       "stages": [],
@@ -604,7 +652,7 @@
       },
       "id": "civix:dossier:DLR5L17N54144",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7022"
+        "firstSeenScrutinId": "VTANR5L17V7027"
       },
       "ref": "DLR5L17N54144",
       "stages": [],
@@ -612,7 +660,7 @@
       "title": "Pour la mobilisation de l’habitat existant en réponse à la crise du logement"
     }
   ],
-  "generatedAt": "2026-05-31T09:54:37Z",
+  "generatedAt": "2026-06-02T07:09:50Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
@@ -625,102 +673,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-05-31T09:54:37Z",
+        "finishedAt": "2026-06-02T07:09:50Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:37Z",
+        "startedAt": "2026-06-02T07:09:50Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-05-31T09:54:38Z",
+        "finishedAt": "2026-06-02T07:09:51Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:37Z",
+        "startedAt": "2026-06-02T07:09:50Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-05-31T09:54:43Z",
+        "finishedAt": "2026-06-02T07:09:55Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:38Z",
+        "startedAt": "2026-06-02T07:09:51Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-05-31T09:54:47Z",
+        "finishedAt": "2026-06-02T07:09:59Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:43Z",
+        "startedAt": "2026-06-02T07:09:55Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 6456,
-        "finishedAt": "2026-05-31T09:55:24Z",
+        "fetchedCount": 7095,
+        "finishedAt": "2026-06-02T07:10:26Z",
         "name": "scrutins",
         "notes": [],
-        "pageCount": 130,
+        "pageCount": 142,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:54:47Z",
+        "startedAt": "2026-06-02T07:09:59Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
-        "fetchedCount": 2915,
-        "finishedAt": "2026-05-31T09:58:04Z",
+        "fetchedCount": 2873,
+        "finishedAt": "2026-06-02T07:12:26Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 6206,
-        "startedAt": "2026-05-31T09:55:24Z",
+        "skippedCount": 6845,
+        "startedAt": "2026-06-02T07:10:26Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
-        "fetchedCount": 38,
-        "finishedAt": "2026-05-31T09:58:04Z",
+        "fetchedCount": 41,
+        "finishedAt": "2026-06-02T07:12:26Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:58:04Z",
+        "startedAt": "2026-06-02T07:12:26Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-05-31T09:58:04Z",
+        "finishedAt": "2026-06-02T07:12:26Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-05-31T09:58:04Z",
+        "startedAt": "2026-06-02T07:12:26Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -728,7 +776,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-05-31T09:54:37Z",
+    "retrievedAt": "2026-06-02T07:09:50Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
