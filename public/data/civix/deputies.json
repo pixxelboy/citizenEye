@@ -1,6 +1,6 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-09T06:33:46.531Z",
+  "civixFetchedAt": "2026-06-10T06:50:39.327Z",
   "dataset": "citizeneye-civix-deputies",
   "deputies": [
     {
@@ -21074,12 +21074,12 @@
       }
     }
   ],
-  "generatedAt": "2026-06-09T06:33:44Z",
+  "generatedAt": "2026-06-10T06:50:37Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
     "citation": {
-      "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 1.",
+      "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 1.",
       "url": "https://www.civix.fr/api/v1/deputes?page=1&page_size=50&legislature=17"
     },
     "civixUrls": {
@@ -21090,121 +21090,121 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-09T06:33:44Z",
+        "finishedAt": "2026-06-10T06:50:37Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:33:44Z",
+        "startedAt": "2026-06-10T06:50:37Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-09T06:33:45Z",
+        "finishedAt": "2026-06-10T06:50:38Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:33:44Z",
+        "startedAt": "2026-06-10T06:50:37Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-09T06:33:49Z",
+        "finishedAt": "2026-06-10T06:50:43Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:33:45Z",
+        "startedAt": "2026-06-10T06:50:38Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-09T06:33:53Z",
+        "finishedAt": "2026-06-10T06:50:47Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:33:49Z",
+        "startedAt": "2026-06-10T06:50:43Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7228,
-        "finishedAt": "2026-06-09T06:34:26Z",
+        "fetchedCount": 7251,
+        "finishedAt": "2026-06-10T06:51:21Z",
         "name": "scrutins",
         "notes": [],
-        "pageCount": 145,
+        "pageCount": 146,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:33:53Z",
+        "startedAt": "2026-06-10T06:50:47Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
-        "fetchedCount": 2821,
-        "finishedAt": "2026-06-09T06:36:43Z",
+        "fetchedCount": 2794,
+        "finishedAt": "2026-06-10T06:53:41Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 6978,
-        "startedAt": "2026-06-09T06:34:26Z",
+        "skippedCount": 7001,
+        "startedAt": "2026-06-10T06:51:21Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
-        "fetchedCount": 47,
-        "finishedAt": "2026-06-09T06:36:43Z",
+        "fetchedCount": 49,
+        "finishedAt": "2026-06-10T06:53:41Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:36:43Z",
+        "startedAt": "2026-06-10T06:53:41Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-09T06:36:43Z",
+        "finishedAt": "2026-06-10T06:53:41Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-09T06:36:43Z",
+        "startedAt": "2026-06-10T06:53:41Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
     ],
-    "lastUpdated": "2026-06-09T06:33:46.531Z",
+    "lastUpdated": "2026-06-10T06:50:39.327Z",
     "pages": [
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 1.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 1.",
           "url": "https://www.civix.fr/api/v1/deputes?page=1&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=1&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:46.531Z",
+        "lastUpdated": "2026-06-10T06:50:39.327Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:46.531Z",
+        "retrievedAt": "2026-06-10T06:50:39.327Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21212,17 +21212,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 2.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 2.",
           "url": "https://www.civix.fr/api/v1/deputes?page=2&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=2&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:46.834Z",
+        "lastUpdated": "2026-06-10T06:50:39.820Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:46.834Z",
+        "retrievedAt": "2026-06-10T06:50:39.820Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21230,17 +21230,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 3.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 3.",
           "url": "https://www.civix.fr/api/v1/deputes?page=3&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=3&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:47.072Z",
+        "lastUpdated": "2026-06-10T06:50:40.031Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:47.072Z",
+        "retrievedAt": "2026-06-10T06:50:40.031Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21248,17 +21248,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 4.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 4.",
           "url": "https://www.civix.fr/api/v1/deputes?page=4&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=4&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:47.317Z",
+        "lastUpdated": "2026-06-10T06:50:40.279Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:47.317Z",
+        "retrievedAt": "2026-06-10T06:50:40.279Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21266,17 +21266,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 5.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 5.",
           "url": "https://www.civix.fr/api/v1/deputes?page=5&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=5&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:47.541Z",
+        "lastUpdated": "2026-06-10T06:50:40.504Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:47.541Z",
+        "retrievedAt": "2026-06-10T06:50:40.504Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21284,17 +21284,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 6.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 6.",
           "url": "https://www.civix.fr/api/v1/deputes?page=6&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=6&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:47.753Z",
+        "lastUpdated": "2026-06-10T06:50:40.904Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:47.753Z",
+        "retrievedAt": "2026-06-10T06:50:40.904Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21302,17 +21302,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 7.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 7.",
           "url": "https://www.civix.fr/api/v1/deputes?page=7&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=7&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:47.982Z",
+        "lastUpdated": "2026-06-10T06:50:41.129Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:47.982Z",
+        "retrievedAt": "2026-06-10T06:50:41.129Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21320,17 +21320,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 8.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 8.",
           "url": "https://www.civix.fr/api/v1/deputes?page=8&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=8&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:48.221Z",
+        "lastUpdated": "2026-06-10T06:50:41.360Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:48.221Z",
+        "retrievedAt": "2026-06-10T06:50:41.360Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21338,17 +21338,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 9.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 9.",
           "url": "https://www.civix.fr/api/v1/deputes?page=9&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=9&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:48.438Z",
+        "lastUpdated": "2026-06-10T06:50:41.576Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:48.438Z",
+        "retrievedAt": "2026-06-10T06:50:41.576Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21356,17 +21356,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 10.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 10.",
           "url": "https://www.civix.fr/api/v1/deputes?page=10&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=10&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:48.667Z",
+        "lastUpdated": "2026-06-10T06:50:41.801Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:48.667Z",
+        "retrievedAt": "2026-06-10T06:50:41.801Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21374,17 +21374,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 11.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 11.",
           "url": "https://www.civix.fr/api/v1/deputes?page=11&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=11&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:48.893Z",
+        "lastUpdated": "2026-06-10T06:50:42.204Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:48.893Z",
+        "retrievedAt": "2026-06-10T06:50:42.204Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21392,17 +21392,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 12.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 50 résultat(s) sur la page 12.",
           "url": "https://www.civix.fr/api/v1/deputes?page=12&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=12&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:49.110Z",
+        "lastUpdated": "2026-06-10T06:50:42.593Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:49.110Z",
+        "retrievedAt": "2026-06-10T06:50:42.593Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21410,17 +21410,17 @@
       },
       {
         "citation": {
-          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 09 juin 2026), la liste des députés (L17) renvoie 2 résultat(s) sur la page 13.",
+          "text": "Selon CIVIX.fr (données publiques de l'Assemblée nationale, consultées le 10 juin 2026), la liste des députés (L17) renvoie 2 résultat(s) sur la page 13.",
           "url": "https://www.civix.fr/api/v1/deputes?page=13&page_size=50&legislature=17"
         },
         "civixUrls": {
           "api": "https://www.civix.fr/api/v1/deputes?page=13&page_size=50&legislature=17",
           "page": "https://www.civix.fr/api"
         },
-        "lastUpdated": "2026-06-09T06:33:49.331Z",
+        "lastUpdated": "2026-06-10T06:50:43.107Z",
         "provider": "Assemblée nationale",
         "publisher": "CIVIX.fr",
-        "retrievedAt": "2026-06-09T06:33:49.331Z",
+        "retrievedAt": "2026-06-10T06:50:43.107Z",
         "sourceUrls": [
           "https://www.assemblee-nationale.fr"
         ],
@@ -21429,7 +21429,7 @@
     ],
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-09T06:33:46.531Z",
+    "retrievedAt": "2026-06-10T06:50:39.327Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.assemblee-nationale.fr"
