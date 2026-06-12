@@ -1,6 +1,6 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-11T07:16:38Z",
+  "civixFetchedAt": "2026-06-12T07:07:03Z",
   "dataset": "citizeneye-civix-dossiers",
   "dossiers": [
     {
@@ -172,7 +172,7 @@
       },
       "id": "civix:dossier:DLR5L17N51775",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7312"
+        "firstSeenScrutinId": "VTANR5L17V7313"
       },
       "ref": "DLR5L17N51775",
       "stages": [],
@@ -370,6 +370,22 @@
       "stages": [],
       "textReferences": [],
       "title": "Mettre en place un programme de soutien à l’innovation thérapeutique contre les cancers, les maladies rares et les maladies orphelines de l’enfant"
+    },
+    {
+      "civixId": "DLR5L17N52977",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52977",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7380"
+      },
+      "ref": "DLR5L17N52977",
+      "stages": [],
+      "textReferences": [],
+      "title": "Nationalisation d'ArcelorMittal France"
     },
     {
       "civixId": "DLR5L17N52984",
@@ -786,9 +802,25 @@
       "stages": [],
       "textReferences": [],
       "title": "Protéger les enfants et lutter contre les violences en milieu scolaire"
+    },
+    {
+      "civixId": "DLR5L17N54229",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54229",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7393"
+      },
+      "ref": "DLR5L17N54229",
+      "stages": [],
+      "textReferences": [],
+      "title": "Réformer les bourses sur critères sociaux et lutter contre la précarité étudiante"
     }
   ],
-  "generatedAt": "2026-06-11T07:16:38Z",
+  "generatedAt": "2026-06-12T07:07:03Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
@@ -801,102 +833,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-11T07:16:39Z",
+        "finishedAt": "2026-06-12T07:07:03Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:16:38Z",
+        "startedAt": "2026-06-12T07:07:03Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-11T07:16:40Z",
+        "finishedAt": "2026-06-12T07:07:04Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:16:39Z",
+        "startedAt": "2026-06-12T07:07:03Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-11T07:16:45Z",
+        "finishedAt": "2026-06-12T07:07:10Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:16:40Z",
+        "startedAt": "2026-06-12T07:07:04Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-11T07:16:49Z",
+        "finishedAt": "2026-06-12T07:07:15Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:16:45Z",
+        "startedAt": "2026-06-12T07:07:10Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7268,
-        "finishedAt": "2026-06-11T07:17:30Z",
+        "fetchedCount": 7291,
+        "finishedAt": "2026-06-12T07:08:06Z",
         "name": "scrutins",
         "notes": [],
         "pageCount": 146,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:16:49Z",
+        "startedAt": "2026-06-12T07:07:15Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
-        "fetchedCount": 2784,
-        "finishedAt": "2026-06-11T07:19:55Z",
+        "fetchedCount": 2779,
+        "finishedAt": "2026-06-12T07:10:46Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 7018,
-        "startedAt": "2026-06-11T07:17:30Z",
+        "skippedCount": 7041,
+        "startedAt": "2026-06-12T07:08:06Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
-        "fetchedCount": 49,
-        "finishedAt": "2026-06-11T07:19:55Z",
+        "fetchedCount": 51,
+        "finishedAt": "2026-06-12T07:10:46Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:19:55Z",
+        "startedAt": "2026-06-12T07:10:46Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-11T07:19:55Z",
+        "finishedAt": "2026-06-12T07:10:46Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-11T07:19:55Z",
+        "startedAt": "2026-06-12T07:10:46Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -904,7 +936,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-11T07:16:38Z",
+    "retrievedAt": "2026-06-12T07:07:03Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
