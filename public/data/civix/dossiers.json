@@ -1,6 +1,6 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-14T07:07:58Z",
+  "civixFetchedAt": "2026-06-15T08:39:16Z",
   "dataset": "citizeneye-civix-dossiers",
   "dossiers": [
     {
@@ -428,7 +428,7 @@
       },
       "id": "civix:dossier:DLR5L17N53053",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7347"
+        "firstSeenScrutinId": "VTANR5L17V7348"
       },
       "ref": "DLR5L17N53053",
       "stages": [],
@@ -828,15 +828,31 @@
       },
       "id": "civix:dossier:DLR5L17N54229",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7393"
+        "firstSeenScrutinId": "VTANR5L17V7395"
       },
       "ref": "DLR5L17N54229",
       "stages": [],
       "textReferences": [],
       "title": "Réformer les bourses sur critères sociaux et lutter contre la précarité étudiante"
+    },
+    {
+      "civixId": "DLR5L17N54373",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54373",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7351"
+      },
+      "ref": "DLR5L17N54373",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi portant approbation des comptes de la sécurité sociale de l’année 2025"
     }
   ],
-  "generatedAt": "2026-06-14T07:07:58Z",
+  "generatedAt": "2026-06-15T08:39:16Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
@@ -849,102 +865,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-14T07:07:59Z",
+        "finishedAt": "2026-06-15T08:39:16Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:07:58Z",
+        "startedAt": "2026-06-15T08:39:16Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-14T07:07:59Z",
+        "finishedAt": "2026-06-15T08:39:17Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:07:59Z",
+        "startedAt": "2026-06-15T08:39:16Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-14T07:08:04Z",
+        "finishedAt": "2026-06-15T08:39:22Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:07:59Z",
+        "startedAt": "2026-06-15T08:39:17Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-14T07:08:08Z",
+        "finishedAt": "2026-06-15T08:39:26Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:08:04Z",
+        "startedAt": "2026-06-15T08:39:22Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7325,
-        "finishedAt": "2026-06-14T07:08:40Z",
+        "fetchedCount": 7335,
+        "finishedAt": "2026-06-15T08:40:10Z",
         "name": "scrutins",
         "notes": [],
         "pageCount": 147,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:08:08Z",
+        "startedAt": "2026-06-15T08:39:26Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
-        "fetchedCount": 2793,
-        "finishedAt": "2026-06-14T07:10:52Z",
+        "fetchedCount": 2798,
+        "finishedAt": "2026-06-15T08:42:39Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 7075,
-        "startedAt": "2026-06-14T07:08:40Z",
+        "skippedCount": 7085,
+        "startedAt": "2026-06-15T08:40:10Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
-        "fetchedCount": 52,
-        "finishedAt": "2026-06-14T07:10:52Z",
+        "fetchedCount": 53,
+        "finishedAt": "2026-06-15T08:42:39Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:10:52Z",
+        "startedAt": "2026-06-15T08:42:39Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-14T07:10:52Z",
+        "finishedAt": "2026-06-15T08:42:39Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-14T07:10:52Z",
+        "startedAt": "2026-06-15T08:42:39Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -952,7 +968,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-14T07:07:58Z",
+    "retrievedAt": "2026-06-15T08:39:16Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
