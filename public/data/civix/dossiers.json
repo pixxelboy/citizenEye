@@ -1,6 +1,6 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-15T08:39:16Z",
+  "civixFetchedAt": "2026-06-16T08:32:57Z",
   "dataset": "citizeneye-civix-dossiers",
   "dossiers": [
     {
@@ -44,7 +44,7 @@
       },
       "id": "civix:dossier:DLR5L17N50444",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7269"
+        "firstSeenScrutinId": "VTANR5L17V7270"
       },
       "ref": "DLR5L17N50444",
       "stages": [],
@@ -212,6 +212,22 @@
       "title": "Mesures de justice en faveur de la revalorisation des pensions de retraites agricoles"
     },
     {
+      "civixId": "DLR5L17N51981",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N51981",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7354"
+      },
+      "ref": "DLR5L17N51981",
+      "stages": [],
+      "textReferences": [],
+      "title": "Renforcer la solidarité envers les retraités pauvres"
+    },
+    {
       "civixId": "DLR5L17N51987",
       "currentStage": "scrutin public ordinaire",
       "dossierProgress": {
@@ -290,6 +306,22 @@
       "stages": [],
       "textReferences": [],
       "title": "Projet de loi relatif à la restitution de biens culturels provenant d’États qui, du fait d’une appropriation illicite, en ont été privés"
+    },
+    {
+      "civixId": "DLR5L17N52700",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N52700",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7349"
+      },
+      "ref": "DLR5L17N52700",
+      "stages": [],
+      "textReferences": [],
+      "title": "Évaluer précisément le coût réel et sociétal de l’insécurité routière et son impact sur les finances publiques"
     },
     {
       "civixId": "DLR5L17N52743",
@@ -796,12 +828,28 @@
       },
       "id": "civix:dossier:DLR5L17N54148",
       "rawSource": {
-        "firstSeenScrutinId": "VTANR5L17V7302"
+        "firstSeenScrutinId": "VTANR5L17V7303"
       },
       "ref": "DLR5L17N54148",
       "stages": [],
       "textReferences": [],
       "title": "Réduire les risques sanitaires liés aux contaminations au cadmium dans l’alimentation"
+    },
+    {
+      "civixId": "DLR5L17N54196",
+      "currentStage": "scrutin public ordinaire",
+      "dossierProgress": {
+        "currentStage": "scrutin public ordinaire",
+        "stages": []
+      },
+      "id": "civix:dossier:DLR5L17N54196",
+      "rawSource": {
+        "firstSeenScrutinId": "VTANR5L17V7350"
+      },
+      "ref": "DLR5L17N54196",
+      "stages": [],
+      "textReferences": [],
+      "title": "Projet de loi relative aux résultats de la gestion et portant approbation des comptes de l'année 2025"
     },
     {
       "civixId": "DLR5L17N54227",
@@ -852,7 +900,7 @@
       "title": "Projet de loi portant approbation des comptes de la sécurité sociale de l’année 2025"
     }
   ],
-  "generatedAt": "2026-06-15T08:39:16Z",
+  "generatedAt": "2026-06-16T08:32:57Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
@@ -865,102 +913,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-15T08:39:16Z",
+        "finishedAt": "2026-06-16T08:32:57Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:39:16Z",
+        "startedAt": "2026-06-16T08:32:57Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-15T08:39:17Z",
+        "finishedAt": "2026-06-16T08:32:58Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:39:16Z",
+        "startedAt": "2026-06-16T08:32:57Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-15T08:39:22Z",
+        "finishedAt": "2026-06-16T08:33:03Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:39:17Z",
+        "startedAt": "2026-06-16T08:32:58Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-15T08:39:26Z",
+        "finishedAt": "2026-06-16T08:33:07Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:39:22Z",
+        "startedAt": "2026-06-16T08:33:03Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7335,
-        "finishedAt": "2026-06-15T08:40:10Z",
+        "fetchedCount": 7365,
+        "finishedAt": "2026-06-16T08:33:44Z",
         "name": "scrutins",
         "notes": [],
-        "pageCount": 147,
+        "pageCount": 148,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:39:26Z",
+        "startedAt": "2026-06-16T08:33:07Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
-        "fetchedCount": 2798,
-        "finishedAt": "2026-06-15T08:42:39Z",
+        "fetchedCount": 2785,
+        "finishedAt": "2026-06-16T08:36:06Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 7085,
-        "startedAt": "2026-06-15T08:40:10Z",
+        "skippedCount": 7115,
+        "startedAt": "2026-06-16T08:33:44Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
-        "fetchedCount": 53,
-        "finishedAt": "2026-06-15T08:42:39Z",
+        "fetchedCount": 56,
+        "finishedAt": "2026-06-16T08:36:06Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:42:39Z",
+        "startedAt": "2026-06-16T08:36:06Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-15T08:42:39Z",
+        "finishedAt": "2026-06-16T08:36:06Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-15T08:42:39Z",
+        "startedAt": "2026-06-16T08:36:06Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -968,7 +1016,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-15T08:39:16Z",
+    "retrievedAt": "2026-06-16T08:32:57Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
