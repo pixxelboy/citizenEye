@@ -4,13 +4,13 @@
     {
       "error": null,
       "errorsCount": 0,
-      "fetchedCount": 204,
+      "fetchedCount": 233,
       "name": "assemblee_agenda",
       "notes": [
         "Source officielle critique: agenda open data de l’Assemblée nationale."
       ],
-      "retrievedAt": "2026-06-16T08:36:07Z",
-      "skippedCount": 6995,
+      "retrievedAt": "2026-06-17T07:39:54Z",
+      "skippedCount": 7020,
       "status": "success",
       "url": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
       "warningsCount": 0
@@ -18,11 +18,11 @@
   ],
   "errors": [],
   "errorsCount": 0,
-  "generatedAt": "2026-06-16T08:36:07Z",
+  "generatedAt": "2026-06-17T07:39:54Z",
   "schemaVersion": 1,
   "status": "warning",
   "warnings": [
-    "25 doublon(s) de calendrier supprimé(s)."
+    "42 doublon(s) de calendrier supprimé(s)."
   ],
   "warningsCount": 1
 }
