@@ -1,1168 +1,8 @@
 {
   "dataset": "citizeneye-parliament-calendar",
-  "generatedAt": "2026-06-17T07:39:54Z",
-  "itemCount": 191,
+  "generatedAt": "2026-06-18T07:21:05Z",
+  "itemCount": 155,
   "items": [
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:00",
-      "dossierRef": "DLR5L17N54312",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54312",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:e3e5344ede0ed05894ce",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54312",
-      "raw": {
-        "dossierRef": "DLR5L17N54312",
-        "etat": "Confirmé",
-        "lieu": "Salle 6238 – Palais Bourbon, 2ème sous-sol",
-        "pointUid": "RUANR5L17S2026IDC460397PT37502",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460397",
-        "timeStampDebut": "2026-06-17T09:00:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460397:RUANR5L17S2026IDC460397PT37502",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54312"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:00",
-      "dossierRef": "DLR5L17N54309",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54309",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:97c4c031744ff97881b7",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54309",
-      "raw": {
-        "dossierRef": "DLR5L17N54309",
-        "etat": "Confirmé",
-        "lieu": "6ème Bureau – Palais Bourbon, 1er étage",
-        "pointUid": "RUANR5L17S2026IDC460440PT37506",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460440",
-        "timeStampDebut": "2026-06-17T09:00:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460440:RUANR5L17S2026IDC460440PT37506",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54309"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:30bdf13dfb1e1f9b857f",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Déplacement",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460372",
-        "timeStampDebut": "2026-06-17T09:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "déplacement d’une délégation de la commission au Salon Eurosatory 2026.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460372",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "déplacement d’une délégation de la commission au Salon Eurosatory 2026.",
-      "title": "déplacement d’une délégation de la commission au Salon Eurosatory 2026."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:30",
-      "dossierRef": "DLR5L17N54308",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54308",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:6792091c755d2a14ddb5",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54308",
-      "raw": {
-        "dossierRef": "DLR5L17N54308",
-        "etat": "Confirmé",
-        "lieu": "Salle 6241 – Palais Bourbon, 2ème sous-sol",
-        "pointUid": "RUANR5L17S2026IDC460388PT37474",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460388",
-        "timeStampDebut": "2026-06-17T09:30:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460388:RUANR5L17S2026IDC460388PT37474",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54308"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:53f7574753df9d9ad0c2",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 4223 – Commission des affaires étrangères, 9 rue de Bourgogne, 2ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460366",
-        "timeStampDebut": "2026-06-17T09:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "communication ouverte à la presse sur le déplacement effectué par une délégation de la commission à Nairobi, au Kenya,…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460366",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "communication ouverte à la presse sur le déplacement effectué par une délégation de la commission à Nairobi, au Kenya, du 9 au 12 mai 2026, à l’occasion du sommet Africa Forward entre l’Afrique et la France (Mme Dieynaba Diop, M. Vincent Ledoux et Mme Sabrina Sebaihi, rapporteurs).",
-      "title": "communication ouverte à la presse sur le déplacement effectué par une délégation de la commission à Nairobi, au Kenya, du 9 au 12 mai 2026, à l’occasion du sommet Africa Forward entre l’Afrique et la France (Mme Dieynaba Diop, M. Vincent Ledoux et Mme Sabrina Sebaihi, rapporteurs)."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:6ca8d6a7400bac26650f",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6351 – Palais Bourbon, 1ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460502",
-        "timeStampDebut": "2026-06-17T09:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "examen, en application de l’article 145-8 du Règlement, du rapport sur la mise en œuvre des conclusions de la commissio…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460502",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "examen, en application de l’article 145-8 du Règlement, du rapport sur la mise en œuvre des conclusions de la commission d’enquête sur le modèle économique des crèches et sur la qualité de l’accueil des jeunes enfants au sein de leurs établissements (M. Thibault Bazin, rapporteur).",
-      "title": "examen, en application de l’article 145-8 du Règlement, du rapport sur la mise en œuvre des conclusions de la commission d’enquête sur le modèle économique des crèches et sur la qualité de l’accueil des jeunes enfants au sein de leurs établissements (M. Thibault Bazin, rapporteur)."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 09:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T09:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:549db69c0c6251d2e5ea",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6242 – Palais Bourbon, 2ème sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460475",
-        "timeStampDebut": "2026-06-17T09:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "présentation des conclusions de la mission flash sur les leviers de l’enseignement agricole pour enseigner à produire a…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460475",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "présentation des conclusions de la mission flash sur les leviers de l’enseignement agricole pour enseigner à produire autrement (M. Rodrigo Arenas et Mme Géraldine Bannier, rapporteurs).",
-      "title": "présentation des conclusions de la mission flash sur les leviers de l’enseignement agricole pour enseigner à produire autrement (M. Rodrigo Arenas et Mme Géraldine Bannier, rapporteurs)."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 10:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T10:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:673c98ee35091eae259a",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6350 – Palais Bourbon, 1er étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460532",
-        "timeStampDebut": "2026-06-17T10:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "proposition de nomination au comité national d’orientation de la société anonyme Bpifrance ; ; audition de M. Patrick P…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460532",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "proposition de nomination au comité national d’orientation de la société anonyme Bpifrance ; ; audition de M. Patrick Pouyanné, président-directeur général de TotalEnergies ; ; examen de la proposition de loi visant à rétablir l’exemption d’impôt pour les primes accordées par l’obtention de la médaille honorifique du travail (n° 2790) (M. Alexandre Allegret-Pilot, rapporteur).",
-      "title": "proposition de nomination au comité national d’orientation de la société anonyme Bpifrance ; ; audition de M. Patrick Pouyanné, président-directeur général de TotalEnergies ; ; examen de la proposition de loi visant à rétablir l’exemption d’impôt pour les primes accordées par l’obtention de la médaille honorifique du travail (n° 2790) (M. Alexandre Allegret-Pilot, rapporteur)."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 10:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T10:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:05d42016aa4f79df6ab1",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 4325 – Commission des affaires européennes, 9 rue de Bourgogne, 3ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460391",
-        "timeStampDebut": "2026-06-17T10:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "évaluation du chèque énergie : examen du rapport.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460391",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "évaluation du chèque énergie : examen du rapport.",
-      "title": "évaluation du chèque énergie : examen du rapport."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 11:00",
-      "dossierRef": "DLR5L17N52000",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N52000",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T11:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:c4506860dd0e75c75011",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N52000",
-      "raw": {
-        "dossierRef": "DLR5L17N52000",
-        "etat": "Confirmé",
-        "lieu": "Salle 4223 – Commission des affaires étrangères, 9 rue de Bourgogne, 2ème étage",
-        "pointUid": "RUANR5L17S2026IDC460482PT37515",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460482",
-        "timeStampDebut": "2026-06-17T11:00:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460482:RUANR5L17S2026IDC460482PT37515",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N52000"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 12:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T12:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:473c1ee1b1b3803b2eaa",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Petit Hôtel et 1er Bureau",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460546",
-        "timeStampDebut": "2026-06-17T12:30:00.000+02:00",
-        "timeStampFin": "2026-06-17T15:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "PO851904",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460546",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Agenda parlementaire",
-      "title": "PO851904"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 13:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T13:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:33e71f8e53e8d565b79a",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "8ème Bureau – Palais Bourbon, 1er étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460604",
-        "timeStampDebut": "2026-06-17T13:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "PO877125",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460604",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Agenda parlementaire",
-      "title": "PO877125"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:7dadfaaeaaf3e22db93e",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6566 – Palais Bourbon, 2ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460597",
-        "timeStampDebut": "2026-06-17T14:00:00.000+02:00",
-        "timeStampFin": "2026-06-17T15:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Audition de Mme Véronique Neil, présidente du Réseau réduire +, accompagnée de M. Thomas Colin, délégué général, Mme Em…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460597",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Audition de Mme Véronique Neil, présidente du Réseau réduire +, accompagnée de M. Thomas Colin, délégué général, Mme Emmanuelle Camelot, vice-présidente à l’agglomération Pau Béarn Pyrénées, M. Gilles Julien, vice-président au pays voironnais, et Mme Manon Huard, directrice du service de gestion des déchets au pays voironnais.",
-      "title": "Audition de Mme Véronique Neil, présidente du Réseau réduire +, accompagnée de M. Thomas Colin, délégué général, Mme Emmanuelle Camelot, vice-présidente à l’agglomération Pau Béarn Pyrénées, M. Gilles Julien, vice-président au pays voironnais, et Mme Manon Huard, directrice du service de gestion des déchets au pays voironnais."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:00",
-      "dossierRef": "DLR5L17N51968",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N51968",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:94c9fdb4e1aca97e2ca6",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N51968",
-      "raw": {
-        "dossierRef": "DLR5L17N51968",
-        "etat": "Confirmé",
-        "lieu": "Assemblée nationale",
-        "natureTravauxODJ": "ODJPR",
-        "pointUid": "RUANR5L17S2026IDS30722PT52828",
-        "reunionType": "seance_type",
-        "reunionUid": "RUANR5L17S2026IDS30722",
-        "timeStampDebut": "2026-06-17T14:00:00.000+02:00",
-        "typePointODJ": "Discussion"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Discussion, sur le rapport de la commission mixte paritaire, de la proposition de loi visant à améliorer l’accès au log…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDS30722:RUANR5L17S2026IDS30722PT52828",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N51968"
-      ],
-      "stage": "Discussion",
-      "title": "Discussion, sur le rapport de la commission mixte paritaire, de la proposition de loi visant à améliorer l’accès au logement des travailleurs des services publics"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:00",
-      "dossierRef": "DLR5L17N53530",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N53530",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:e08a2f61010a1e1f59cf",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N53530",
-      "raw": {
-        "dossierRef": "DLR5L17N53530",
-        "etat": "Confirmé",
-        "lieu": "Assemblée nationale",
-        "natureTravauxODJ": "ODJPR",
-        "pointUid": "RUANR5L17S2026IDS30722PT52811",
-        "reunionType": "seance_type",
-        "reunionUid": "RUANR5L17S2026IDS30722",
-        "timeStampDebut": "2026-06-17T14:00:00.000+02:00",
-        "typePointODJ": "Discussion"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Discussion, sur le rapport de la commission mixte paritaire, de la proposition de loi visant à relancer les investissem…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDS30722:RUANR5L17S2026IDS30722PT52811",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N53530"
-      ],
-      "stage": "Discussion",
-      "title": "Discussion, sur le rapport de la commission mixte paritaire, de la proposition de loi visant à relancer les investissements dans le secteur de l’hydroélectricité pour contribuer à la transition énergétique"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:fef66d07e0c0397e0feb",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 4306 - Bâtiment Las Cases - Assemblée nationale",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460594",
-        "timeStampDebut": "2026-06-17T14:00:00.000+02:00",
-        "timeStampFin": "2026-06-17T15:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "PO851965",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460594",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Agenda parlementaire",
-      "title": "PO851965"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:00:00+02:00",
-      "eventType": "public_session",
-      "id": "parliament:calendar:da8d8446db955da6b341",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Assemblée nationale",
-        "natureTravauxODJ": "ODJPR",
-        "pointUid": "RUANR5L17S2026IDS30722PT52810",
-        "reunionType": "seance_type",
-        "reunionUid": "RUANR5L17S2026IDS30722",
-        "timeStampDebut": "2026-06-17T14:00:00.000+02:00",
-        "typePointODJ": "Questions au Gouvernement"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Questions au Gouvernement",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDS30722:RUANR5L17S2026IDS30722PT52810",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Questions au Gouvernement",
-      "title": "Questions au Gouvernement"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:00",
-      "dossierRef": "DLR5L17N54218",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54218",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:00:00+02:00",
-      "eventType": "debate",
-      "id": "parliament:calendar:6201765741c42a25343f",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54218",
-      "raw": {
-        "dossierRef": "DLR5L17N54218",
-        "etat": "Confirmé",
-        "lieu": "Assemblée nationale",
-        "natureTravauxODJ": "ODJPR",
-        "pointUid": "RUANR5L17S2026IDS30722PT52812",
-        "reunionType": "seance_type",
-        "reunionUid": "RUANR5L17S2026IDS30722",
-        "timeStampDebut": "2026-06-17T14:00:00.000+02:00",
-        "typePointODJ": "Suite de la discussion"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Suite de la discussion du projet de loi constitutionnelle pour une Corse autonome au sein de la République",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDS30722:RUANR5L17S2026IDS30722PT52812",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54218"
-      ],
-      "stage": "Suite de la discussion",
-      "title": "Suite de la discussion du projet de loi constitutionnelle pour une Corse autonome au sein de la République"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:30",
-      "dossierRef": "DLR5L17N54313",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54313",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:839cf6eafeb92ae7d2b7",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54313",
-      "raw": {
-        "dossierRef": "DLR5L17N54313",
-        "etat": "Confirmé",
-        "lieu": "Salle 6350 – Palais Bourbon, 1er étage",
-        "pointUid": "RUANR5L17S2026IDC460533PT37530",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460533",
-        "timeStampDebut": "2026-06-17T14:30:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460533:RUANR5L17S2026IDC460533PT37530",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54313"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:30",
-      "dossierRef": "DLR5L17N54314",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54314",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:5acb583353f460a7544a",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54314",
-      "raw": {
-        "dossierRef": "DLR5L17N54314",
-        "etat": "Confirmé",
-        "lieu": "Salle 6350 – Palais Bourbon, 1er étage",
-        "pointUid": "RUANR5L17S2026IDC460533PT37531",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460533",
-        "timeStampDebut": "2026-06-17T14:30:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460533:RUANR5L17S2026IDC460533PT37531",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54314"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:02b52edba9ae6f109ad8",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 3 – 95, rue de l’Université",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460567",
-        "timeStampDebut": "2026-06-17T14:30:00.000+02:00",
-        "timeStampFin": "2026-06-17T15:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition conjointe : ; - centre national du livre : ; -- mme Régine Hatchondo, présidente. ; -- m. Olivier Lombardie, d…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460567",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition conjointe : ; - centre national du livre : ; -- mme Régine Hatchondo, présidente. ; -- m. Olivier Lombardie, directeur général. ; -- m. Thierry Auger, adjoint pôle librairie. ; - syndicat de la librairie française : ; -- m. Guillaume Husson, délégué général.",
-      "title": "audition conjointe : ; - centre national du livre : ; -- mme Régine Hatchondo, présidente. ; -- m. Olivier Lombardie, directeur général. ; -- m. Thierry Auger, adjoint pôle librairie. ; - syndicat de la librairie française : ; -- m. Guillaume Husson, délégué général."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 14:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T14:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:852bf3831acd87649360",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 1 – 95, rue de l’Université",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460600",
-        "timeStampDebut": "2026-06-17T14:30:00.000+02:00",
-        "timeStampFin": "2026-06-17T15:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition conjointe : ; - union des Aéroport français - UAF : ; -- m. Nicolas Paulissen, délégué général. ; - groupe ADP…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460600",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition conjointe : ; - union des Aéroport français - UAF : ; -- m. Nicolas Paulissen, délégué général. ; - groupe ADP (sous réserve de confirmation). ; - m. Mathieu Cuip, directeur des affaires publiques. ; - m. Remi Mancheron, responsable des relations avec les acteurs du tourisme.",
-      "title": "audition conjointe : ; - union des Aéroport français - UAF : ; -- m. Nicolas Paulissen, délégué général. ; - groupe ADP (sous réserve de confirmation). ; - m. Mathieu Cuip, directeur des affaires publiques. ; - m. Remi Mancheron, responsable des relations avec les acteurs du tourisme."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:00",
-      "dossierRef": "DLR5L17N54277",
-      "dossierUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54277",
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:731269313d4bc36706a1",
-      "legislature": "17",
-      "officialUrl": "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54277",
-      "raw": {
-        "dossierRef": "DLR5L17N54277",
-        "etat": "Confirmé",
-        "lieu": "Salle 4325 – Commission des affaires européennes, 9 rue de Bourgogne, 3ème étage",
-        "pointUid": "RUANR5L17S2026IDC460189PT37387",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460189",
-        "timeStampDebut": "2026-06-17T15:00:00.000+02:00",
-        "typePointODJ": "Examen"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Examen du texte",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460189:RUANR5L17S2026IDC460189PT37387",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-        "https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N54277"
-      ],
-      "stage": "Examen",
-      "title": "Examen du texte"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:34ab07f9c011e8c8594c",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6566 – Palais Bourbon, 2ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460638",
-        "timeStampDebut": "2026-06-17T15:00:00.000+02:00",
-        "timeStampFin": "2026-06-17T16:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Table ronde « Filière REP des véhicules », avec la participation de : – Mobilians : Mme Catherine Wagner, présidente du…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460638",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Table ronde « Filière REP des véhicules », avec la participation de : – Mobilians : Mme Catherine Wagner, présidente du métier VHU, présidente de WDA Groupe M. Laurent Herail, vice-président du métier VHU, président du groupe Surplus recyclage Mme Dorothée Dayraut, directrice des affaires publiques – Recycler mon véhicule : Mme Vanessa Montagne, directrice générale M. Damien Pichereau, senior advisor chez Kairos affaires publiques",
-      "title": "Table ronde « Filière REP des véhicules », avec la participation de : – Mobilians : Mme Catherine Wagner, présidente du métier VHU, présidente de WDA Groupe M. Laurent Herail, vice-président du métier VHU, président du groupe Surplus recyclage Mme Dorothée Dayraut, directrice des affaires publiques – Recycler mon véhicule : Mme Vanessa Montagne, directrice générale M. Damien Pichereau, senior advisor chez Kairos affaires publiques"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:2fd69eadc55efcfee0cb",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle N° 2 – 3 Aristide Briand, 1er sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460633",
-        "timeStampDebut": "2026-06-17T15:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition de MM. Jean-Pierre Viola, conseiller maître, président de section, Arthipan Arulandarajah et Alexandre Bullier…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460633",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition de MM. Jean-Pierre Viola, conseiller maître, président de section, Arthipan Arulandarajah et Alexandre Bullier, experts rapporteurs de la Cour des comptes, auteurs du rapport de certification des comptes de l’Assemblée nationale pour 2025.",
-      "title": "audition de MM. Jean-Pierre Viola, conseiller maître, président de section, Arthipan Arulandarajah et Alexandre Bullier, experts rapporteurs de la Cour des comptes, auteurs du rapport de certification des comptes de l’Assemblée nationale pour 2025."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:e3c7dcee0b587065547e",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Visioconférence sans salle",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460557",
-        "timeStampDebut": "2026-06-17T15:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition de Mme Gaëlle Payet, directrice du Mouvement associatif Centre-Val de Loire.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460557",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition de Mme Gaëlle Payet, directrice du Mouvement associatif Centre-Val de Loire.",
-      "title": "audition de Mme Gaëlle Payet, directrice du Mouvement associatif Centre-Val de Loire."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:fd808482ca2ce655a46b",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 7040 – 103 rue de l'Université, 2ème sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460605",
-        "timeStampDebut": "2026-06-17T15:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition, ouverte à la presse, du Collectif enfantiste et du Comité de vigilance des enfants placés.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460605",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition, ouverte à la presse, du Collectif enfantiste et du Comité de vigilance des enfants placés.",
-      "title": "audition, ouverte à la presse, du Collectif enfantiste et du Comité de vigilance des enfants placés."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:6a7d9abf9041c4b199c8",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6549 – Palais Bourbon, 2ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460447",
-        "timeStampDebut": "2026-06-17T15:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "nomination du Bureau ; ; désignation du rapporteur ; ; échange de vues sur l’organisation des travaux de la commission…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460447",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "nomination du Bureau ; ; désignation du rapporteur ; ; échange de vues sur l’organisation des travaux de la commission d’enquête.",
-      "title": "nomination du Bureau ; ; désignation du rapporteur ; ; échange de vues sur l’organisation des travaux de la commission d’enquête."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:9194b2e13bf249b38eb1",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 3 – 95, rue de l’Université",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460568",
-        "timeStampDebut": "2026-06-17T15:30:00.000+02:00",
-        "timeStampFin": "2026-06-17T16:15:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "agence nationale pour la rénovation urbaine (ANRU) : ; - mme Anne-Claire Mialot, directrice générale.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460568",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "agence nationale pour la rénovation urbaine (ANRU) : ; - mme Anne-Claire Mialot, directrice générale.",
-      "title": "agence nationale pour la rénovation urbaine (ANRU) : ; - mme Anne-Claire Mialot, directrice générale."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 15:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T15:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:79b3682b86aea5f1baf6",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 1 – 95, rue de l’Université",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460601",
-        "timeStampDebut": "2026-06-17T15:30:00.000+02:00",
-        "timeStampFin": "2026-06-17T16:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "air France : ; - m. Aurélien Gomez, directeur « Affaires parlementaires & territoriales ». ; - m. Rémy Haddad, chargé d…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460601",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "air France : ; - m. Aurélien Gomez, directeur « Affaires parlementaires & territoriales ». ; - m. Rémy Haddad, chargé des affaires parlementaires et territoriales.",
-      "title": "air France : ; - m. Aurélien Gomez, directeur « Affaires parlementaires & territoriales ». ; - m. Rémy Haddad, chargé des affaires parlementaires et territoriales."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 16:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T16:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:3c1236834664f75fe40c",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6566 – Palais Bourbon, 2ème étage",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460639",
-        "timeStampDebut": "2026-06-17T16:00:00.000+02:00",
-        "timeStampFin": "2026-06-17T17:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Audition commune : – Confédération des grossistes de France (CGF) : M. Olivier Chetanneau, directeur Conduite du Change…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460639",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Audition commune : – Confédération des grossistes de France (CGF) : M. Olivier Chetanneau, directeur Conduite du Changement et Engagement sociétal/RSE de Phoenix OCP M. Matthieu Chaumont, directeur Produits&Impact de Café Anne Caron Mme Nathalie Fussler, directrice Environnement de la CGF Mme Kristelle Hourques, directrice des Affaires publiques – Confédération nationale de l’équipement du foyer (CNEF) : M. Jean-Charles Vogley, directeur général de la Confédération Nationale de l’Équipement du Foyer M. Pierre Deyries, directeur de la communication et de la RSE de la Confédération Nationale de l’Equipement du Foyer Mme Priscillia Niay, Public Affairs & Communications Manager de Recommerce (groupe United B) M. Etienne Bodin, directeur des affaires publiques But Conforama",
-      "title": "Audition commune : – Confédération des grossistes de France (CGF) : M. Olivier Chetanneau, directeur Conduite du Changement et Engagement sociétal/RSE de Phoenix OCP M. Matthieu Chaumont, directeur Produits&Impact de Café Anne Caron Mme Nathalie Fussler, directrice Environnement de la CGF Mme Kristelle Hourques, directrice des Affaires publiques – Confédération nationale de l’équipement du foyer (CNEF) : M. Jean-Charles Vogley, directeur général de la Confédération Nationale de l’Équipement du Foyer M. Pierre Deyries, directeur de la communication et de la RSE de la Confédération Nationale de l’Equipement du Foyer Mme Priscillia Niay, Public Affairs & Communications Manager de Recommerce (groupe United B) M. Etienne Bodin, directeur des affaires publiques But Conforama"
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 16:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T16:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:c286927dfb8c63ee791e",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Visioconférence sans salle",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460558",
-        "timeStampDebut": "2026-06-17T16:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition de représentants des associations membres du Collectif Bénévolat : Mme Laurence Armand, présidente de Passerel…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460558",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition de représentants des associations membres du Collectif Bénévolat : Mme Laurence Armand, présidente de Passerelles et Compétences ; Mme Aude Bourden, administratrice de France Bénévolat ; Mme Isabelle Persoz, déléguée générale et fondatrice de Tous Bénévoles ; et M. Jérémy Torel, ancien co-président du Réseau Benenova.",
-      "title": "audition de représentants des associations membres du Collectif Bénévolat : Mme Laurence Armand, présidente de Passerelles et Compétences ; Mme Aude Bourden, administratrice de France Bénévolat ; Mme Isabelle Persoz, déléguée générale et fondatrice de Tous Bénévoles ; et M. Jérémy Torel, ancien co-président du Réseau Benenova."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 16:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T16:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:62f432cc845312cfd570",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 7040 – 103 rue de l'Université, 2ème sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460477",
-        "timeStampDebut": "2026-06-17T16:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "auditions, ouvertes à la presse, dans le cadre du projet de loi relatif à la protection des enfants, du Conseil Nationa…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460477",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "auditions, ouvertes à la presse, dans le cadre du projet de loi relatif à la protection des enfants, du Conseil National de l’Adoption (CNA) et de l'Assemblée des Départements de France (ADF).",
-      "title": "auditions, ouvertes à la presse, dans le cadre du projet de loi relatif à la protection des enfants, du Conseil National de l’Adoption (CNA) et de l'Assemblée des Départements de France (ADF)."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 16:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T16:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:be1d59b8315b4b35f094",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6242 – Palais Bourbon, 2ème sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460327",
-        "timeStampDebut": "2026-06-17T16:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition de l’Institut La Boétie : M. Eric Berr, co-responsable du département d’économie.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460327",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition de l’Institut La Boétie : M. Eric Berr, co-responsable du département d’économie.",
-      "title": "audition de l’Institut La Boétie : M. Eric Berr, co-responsable du département d’économie."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 17:00",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T17:00:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:614b99f2417900a8aa28",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6238 – Palais Bourbon, 2ème sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460635",
-        "timeStampDebut": "2026-06-17T17:00:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "nomination du bureau ; ; nomination des rapporteurs ; ; examen des dispositions restant en discussion de la proposition…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460635",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "nomination du bureau ; ; nomination des rapporteurs ; ; examen des dispositions restant en discussion de la proposition de loi.",
-      "title": "nomination du bureau ; ; nomination des rapporteurs ; ; examen des dispositions restant en discussion de la proposition de loi."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 17:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T17:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:44246ba0b91a2b6e640c",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Visioconférence sans salle",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460559",
-        "timeStampDebut": "2026-06-17T17:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition de MM. Emmanuel Bentejac et Julian Guerin, co-fondateurs et co-dirigeants de Komeet.",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460559",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition de MM. Emmanuel Bentejac et Julian Guerin, co-fondateurs et co-dirigeants de Komeet.",
-      "title": "audition de MM. Emmanuel Bentejac et Julian Guerin, co-fondateurs et co-dirigeants de Komeet."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 18:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T18:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:4eee47c931c35b554414",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Salle 6242 – Palais Bourbon, 2ème sous-sol",
-        "reunionType": "reunionCommission_type",
-        "reunionUid": "RUANR5L17S2026IDC460329",
-        "timeStampDebut": "2026-06-17T18:30:00.000+02:00"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "audition de M. Emmanuel Gauzy, président du syndicat des experts-comptables et commissaires au comptes de France (ECF).",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDC460329",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "audition de M. Emmanuel Gauzy, président du syndicat des experts-comptables et commissaires au comptes de France (ECF).",
-      "title": "audition de M. Emmanuel Gauzy, président du syndicat des experts-comptables et commissaires au comptes de France (ECF)."
-    },
-    {
-      "chamber": "Assemblée nationale",
-      "confidence": "explicit_date",
-      "dateLabel": "17 juin 2026 à 21:30",
-      "dossierRef": null,
-      "dossierUrl": null,
-      "eventDate": "2026-06-17",
-      "eventDateTime": "2026-06-17T21:30:00+02:00",
-      "eventType": "committee",
-      "id": "parliament:calendar:f05fc80a4a700835eef6",
-      "legislature": "17",
-      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
-      "raw": {
-        "etat": "Confirmé",
-        "lieu": "Assemblée nationale",
-        "natureTravauxODJ": "ODJPR",
-        "pointUid": "RUANR5L17S2026IDS30723PT52813",
-        "reunionType": "seance_type",
-        "reunionUid": "RUANR5L17S2026IDS30723",
-        "timeStampDebut": "2026-06-17T21:30:00.000+02:00",
-        "typePointODJ": "Suite de la discussion"
-      },
-      "retrievedAt": "2026-06-17T07:39:54Z",
-      "shortTitle": "Suite de la discussion sur le rapport de la commission mixte paritaire, de la proposition de loi visant à relancer les…",
-      "source": "assemblee",
-      "sourceUid": "RUANR5L17S2026IDS30723:RUANR5L17S2026IDS30723PT52813",
-      "sourceUrls": [
-        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
-      ],
-      "stage": "Suite de la discussion",
-      "title": "Suite de la discussion sur le rapport de la commission mixte paritaire, de la proposition de loi visant à relancer les investissements dans le secteur de l’hydroélectricité pour contribuer à la transition énergétique"
-    },
     {
       "chamber": "Assemblée nationale",
       "confidence": "explicit_date",
@@ -1185,7 +25,7 @@
         "timeStampDebut": "2026-06-18T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au financement du…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30724:RUANR5L17S2026IDS30724PT52816",
@@ -1218,7 +58,7 @@
         "timeStampDebut": "2026-06-18T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi constitutionnelle pour une Corse autonome au sein de la République",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30724:RUANR5L17S2026IDS30724PT52815",
@@ -1249,7 +89,7 @@
         "timeStampDebut": "2026-06-18T09:00:00.000+02:00",
         "timeStampFin": "2026-06-18T10:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de M. Édouard Wong Fat, directeur général d’Air Tahiti.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460596",
@@ -1278,7 +118,7 @@
         "reunionUid": "RUANR5L17S2026IDC459570",
         "timeStampDebut": "2026-06-18T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "examen du rapport d’évaluation de la demande d’autorisation de création (DAC) de Cigéo, en application de l’article L.…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC459570",
@@ -1307,7 +147,7 @@
         "reunionUid": "RUANR5L17S2026IDC460418",
         "timeStampDebut": "2026-06-18T10:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition publique sur « Hantavirus, zoonoses, science et société : quelles leçons pour l’avenir ? » (Pierre Henriet, dé…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460418",
@@ -1316,6 +156,35 @@
       ],
       "stage": "audition publique sur « Hantavirus, zoonoses, science et société : quelles leçons pour l’avenir ? » (Pierre Henriet, député, et Stéphane Piednoir, sénateur, rapporteurs).",
       "title": "audition publique sur « Hantavirus, zoonoses, science et société : quelles leçons pour l’avenir ? » (Pierre Henriet, député, et Stéphane Piednoir, sénateur, rapporteurs)."
+    },
+    {
+      "chamber": "Assemblée nationale",
+      "confidence": "explicit_date",
+      "dateLabel": "18 juin 2026 à 11:00",
+      "dossierRef": null,
+      "dossierUrl": null,
+      "eventDate": "2026-06-18",
+      "eventDateTime": "2026-06-18T11:00:00+02:00",
+      "eventType": "committee",
+      "id": "parliament:calendar:a3cc320303e3ff580d25",
+      "legislature": "17",
+      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
+      "raw": {
+        "etat": "Confirmé",
+        "lieu": "Salle 6351 – Palais Bourbon, 1ème étage",
+        "reunionType": "reunionCommission_type",
+        "reunionUid": "RUANR5L17S2026IDC460640",
+        "timeStampDebut": "2026-06-18T11:00:00.000+02:00"
+      },
+      "retrievedAt": "2026-06-18T07:21:05Z",
+      "shortTitle": "audition commune : ; - M. Gilles Babinet, entrepreneur, ancien président du Conseil national du numérique, ancien membr…",
+      "source": "assemblee",
+      "sourceUid": "RUANR5L17S2026IDC460640",
+      "sourceUrls": [
+        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
+      ],
+      "stage": "audition commune : ; - M. Gilles Babinet, entrepreneur, ancien président du Conseil national du numérique, ancien membre du comité IA; ; - M. Jean-Gabriel Ganascia, informaticien et philosophe, professeur émérite à la faculté des sciences de Sorbonne Université, chercheur au LIP6.",
+      "title": "audition commune : ; - M. Gilles Babinet, entrepreneur, ancien président du Conseil national du numérique, ancien membre du comité IA; ; - M. Jean-Gabriel Ganascia, informaticien et philosophe, professeur émérite à la faculté des sciences de Sorbonne Université, chercheur au LIP6."
     },
     {
       "chamber": "Assemblée nationale",
@@ -1339,7 +208,7 @@
         "timeStampDebut": "2026-06-18T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30725:RUANR5L17S2026IDS30725PT52818",
@@ -1371,7 +240,7 @@
         "timeStampDebut": "2026-06-18T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30726:RUANR5L17S2026IDS30726PT52820",
@@ -1403,7 +272,7 @@
         "timeStampDebut": "2026-06-19T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30727:RUANR5L17S2026IDS30727PT52822",
@@ -1436,7 +305,7 @@
         "timeStampDebut": "2026-06-19T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi constitutionnelle pour une Corse autonome au sein de la République",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30727:RUANR5L17S2026IDS30727PT52821",
@@ -1469,7 +338,7 @@
         "timeStampDebut": "2026-06-19T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30728:RUANR5L17S2026IDS30728PT52824",
@@ -1501,7 +370,7 @@
         "timeStampDebut": "2026-06-19T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30729:RUANR5L17S2026IDS30729PT52826",
@@ -1530,7 +399,7 @@
         "reunionUid": "RUANR5L17S2026IDC460581",
         "timeStampDebut": "2026-06-22T15:45:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, en application des dispositions de l’article L. 1451 1 du code de la santé publique, de Mme Suzette Delaloge,…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460581",
@@ -1562,7 +431,7 @@
         "timeStampDebut": "2026-06-22T16:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460487:RUANR5L17S2026IDC460487PT37518",
@@ -1596,7 +465,7 @@
         "timeStampDebut": "2026-06-22T16:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Nouvelle lecture de la proposition de loi relative à la fin de vie",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30758:RUANR5L17S2026IDS30758PT52855",
@@ -1626,7 +495,7 @@
         "reunionUid": "RUANR5L17S2026IDC460488",
         "timeStampDebut": "2026-06-22T21:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l'ordre du jour de l'après-midi.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460488",
@@ -1659,7 +528,7 @@
         "timeStampDebut": "2026-06-22T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion en nouvelle lecture de la proposition de loi relative à la fin de vie",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30759:RUANR5L17S2026IDS30759PT52856",
@@ -1689,7 +558,7 @@
         "reunionUid": "RUANR5L17S2026IDC460480",
         "timeStampDebut": "2026-06-23T15:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "-- Auditions, ouvertes à la presse, dans le cadre du projet de loi relatif à la protection des enfants : • 15 heures :…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460480",
@@ -1721,7 +590,7 @@
         "timeStampDebut": "2026-06-23T15:00:00.000+02:00",
         "typePointODJ": "Questions au Gouvernement"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Questions au Gouvernement",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30760:RUANR5L17S2026IDS30760PT52857",
@@ -1754,7 +623,7 @@
         "timeStampDebut": "2026-06-23T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion en nouvelle lecture de la proposition de loi relative à la fin de vie",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30760:RUANR5L17S2026IDS30760PT52858",
@@ -1787,7 +656,7 @@
         "timeStampDebut": "2026-06-23T15:00:00.000+02:00",
         "typePointODJ": "Vote solennel"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Vote solennel sur le projet de loi constitutionnelle pour une Corse autonome au sein de la République",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30760:RUANR5L17S2026IDS30760PT52901",
@@ -1819,7 +688,7 @@
         "timeStampDebut": "2026-06-23T16:30:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460565:RUANR5L17S2026IDC460565PT37538",
@@ -1852,7 +721,7 @@
         "timeStampDebut": "2026-06-23T16:30:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460565:RUANR5L17S2026IDC460565PT37539",
@@ -1882,7 +751,7 @@
         "reunionUid": "RUANR5L17S2026IDC460367",
         "timeStampDebut": "2026-06-23T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, ouverte à la presse, de M. Benjamin Haddad, ministre délégué chargé de l’Europe, sur le Sommet de la Communau…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460367",
@@ -1911,7 +780,7 @@
         "reunionUid": "RUANR5L17S2026IDC460626",
         "timeStampDebut": "2026-06-23T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation, par M. Emmanuel Mandon, rapporteur spécial de la mission Relations avec les collectivités territoriales,…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460626",
@@ -1943,7 +812,7 @@
         "timeStampDebut": "2026-06-23T17:30:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460489:RUANR5L17S2026IDC460489PT37520",
@@ -1973,7 +842,7 @@
         "reunionUid": "RUANR5L17S2026IDC460634",
         "timeStampDebut": "2026-06-23T17:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition du Collège des Questeures : Mmes Christine Pirès Beaune, Brigitte Klinkert et Michèle Tabarot.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460634",
@@ -2002,7 +871,7 @@
         "reunionUid": "RUANR5L17S2026IDC460490",
         "timeStampDebut": "2026-06-23T21:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l'ordre du jour de l'après-midi",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460490",
@@ -2034,7 +903,7 @@
         "timeStampDebut": "2026-06-24T09:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460491:RUANR5L17S2026IDC460491PT37521",
@@ -2067,7 +936,7 @@
         "timeStampDebut": "2026-06-24T09:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460566:RUANR5L17S2026IDC460566PT37540",
@@ -2097,7 +966,7 @@
         "reunionUid": "RUANR5L17S2026IDC460571",
         "timeStampDebut": "2026-06-24T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation des conclusions de la mission d’information commune avec la commission de la défense, sur les changements…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460571",
@@ -2126,7 +995,7 @@
         "reunionUid": "RUANR5L17S2026IDC460627",
         "timeStampDebut": "2026-06-24T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation du rapport d’information de la mission d’information relative aux indus et erreurs de la caisse nationale…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460627",
@@ -2155,7 +1024,7 @@
         "reunionUid": "RUANR5L17S2026IDC460583",
         "timeStampDebut": "2026-06-24T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation, ouverte à la presse, du rapport de la mission d’information commune avec la commission du développement d…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460583",
@@ -2184,7 +1053,7 @@
         "reunionUid": "RUANR5L17S2026IDC460504",
         "timeStampDebut": "2026-06-24T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, en application des dispositions de l’article L. 1451 1 du code de la santé publique, de Mme Suzette Delaloge,…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460504",
@@ -2213,7 +1082,7 @@
         "reunionUid": "RUANR5L17S2026IDC460368",
         "timeStampDebut": "2026-06-24T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "examen, ouvert à la presse, du rapport d’information « flash » sur le bilan du plan Osez l’export (Mme Pascale Got et M…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460368",
@@ -2242,7 +1111,7 @@
         "reunionUid": "RUANR5L17S2026IDC460294",
         "timeStampDebut": "2026-06-24T10:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "- nomination de rapporteurs pour avis sur le projet de loi de finances pour 2027 ; ; - audition de Mme Laure de La Raud…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460294",
@@ -2271,7 +1140,7 @@
         "reunionUid": "RUANR5L17S2026IDC460628",
         "timeStampDebut": "2026-06-24T10:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation, par Mme Perrine Goulet, rapporteure spéciale de la mission Solidarités, insertion et égalité des chances,…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460628",
@@ -2300,7 +1169,7 @@
         "reunionUid": "RUANR5L17S2026IDC460584",
         "timeStampDebut": "2026-06-24T11:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, ouverte à la presse, du général de corps d’armée Patrick Steiger, officier général de la zone de défense et d…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460584",
@@ -2329,7 +1198,7 @@
         "reunionUid": "RUANR5L17S2026IDC460398",
         "timeStampDebut": "2026-06-24T11:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "désignation des rapporteurs de la mission flash sur l’impact environnemental des aliments ultra-transformés ; ; auditio…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460398",
@@ -2358,7 +1227,7 @@
         "reunionUid": "RUANR5L17S2026IDC460389",
         "timeStampDebut": "2026-06-24T11:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "table ronde sur la situation économique et les perspectives de développement de la filière ameublement, réunissant M. A…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460389",
@@ -2391,7 +1260,7 @@
         "timeStampDebut": "2026-06-24T14:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion du projet de loi, adopté par le Sénat, autorisant l’approbation de la convention d’entraide judiciaire en ma…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30762:RUANR5L17S2026IDS30762PT52954",
@@ -2425,7 +1294,7 @@
         "timeStampDebut": "2026-06-24T14:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion du projet de loi, adopté par le Sénat, autorisant l’approbation de l’accord de partenariat et de coopération…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30762:RUANR5L17S2026IDS30762PT53002",
@@ -2458,7 +1327,7 @@
         "timeStampDebut": "2026-06-24T14:00:00.000+02:00",
         "typePointODJ": "Questions au Gouvernement"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Questions au Gouvernement",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30762:RUANR5L17S2026IDS30762PT52860",
@@ -2490,7 +1359,7 @@
         "timeStampDebut": "2026-06-24T14:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Sous réserve de leur dépôt, lecture des conclusions de la CMP sur la proposition de loi visant à réduire l’impact envir…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30762:RUANR5L17S2026IDS30762PT53006",
@@ -2523,7 +1392,7 @@
         "timeStampDebut": "2026-06-24T14:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion en nouvelle lecture de la proposition de loi relative à la fin de vie",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30762:RUANR5L17S2026IDS30762PT52861",
@@ -2553,7 +1422,7 @@
         "reunionUid": "RUANR5L17S2026IDC460492",
         "timeStampDebut": "2026-06-24T14:45:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l’ordre du jour du matin.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460492",
@@ -2585,7 +1454,7 @@
         "timeStampDebut": "2026-06-24T15:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460360:RUANR5L17S2026IDC460360PT37458",
@@ -2615,7 +1484,7 @@
         "reunionUid": "RUANR5L17S2026IDC460606",
         "timeStampDebut": "2026-06-24T15:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, non ouverte à la presse, de classes des départements d’Ille-et-Vilaine et de Seine-Saint-Denis.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460606",
@@ -2647,7 +1516,7 @@
         "timeStampDebut": "2026-06-24T15:45:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460500:RUANR5L17S2026IDC460500PT37524",
@@ -2680,7 +1549,7 @@
         "timeStampDebut": "2026-06-24T15:45:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460500:RUANR5L17S2026IDC460500PT37525",
@@ -2710,7 +1579,7 @@
         "reunionUid": "RUANR5L17S2026IDC460493",
         "timeStampDebut": "2026-06-24T21:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l’ordre du jour de l'après-midi.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460493",
@@ -2742,7 +1611,7 @@
         "timeStampDebut": "2026-06-24T21:30:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion du projet de loi, adopté par le Sénat, autorisant l’approbation de la convention d’entraide judiciaire en ma…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30763:RUANR5L17S2026IDS30763PT52935",
@@ -2775,7 +1644,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi permettant d’assurer l’autonomie stratégique de la France pour la production décarb…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52870",
@@ -2809,7 +1678,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi pour prévenir les occupations sans droit ni titre en encadrant la souscription des…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52866",
@@ -2843,7 +1712,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi visant à garantir la transparence du calcul des contributions des collectivités ter…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52865",
@@ -2877,7 +1746,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi visant à protéger les petits porteurs et les entreprises des fonds vautours",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52868",
@@ -2911,7 +1780,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi visant à prévenir les conflits d’intérêts dans les sociétés nationales de programme",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52872",
@@ -2945,7 +1814,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi visant à renforcer la souveraineté alimentaire par le développement des circuits de…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52867",
@@ -2979,7 +1848,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi visant à rétablir l’exemption d’impôt pour les primes accordées par l’obtention de…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52873",
@@ -3013,7 +1882,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi visant à suspendre le regroupement familial et la réunification familiale des étran…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52871",
@@ -3047,7 +1916,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de résolution, déposée en application de l’article 34-1 de la Constitution, sur la nécessi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52863",
@@ -3081,7 +1950,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de résolution, déposée en application de l’article 34-1 de la Constitution, visant à refon…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52864",
@@ -3114,7 +1983,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460494:RUANR5L17S2026IDC460494PT37522",
@@ -3148,7 +2017,7 @@
         "timeStampDebut": "2026-06-25T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, visant à renforcer les prérogatives des officier…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30764:RUANR5L17S2026IDS30764PT52869",
@@ -3178,7 +2047,7 @@
         "reunionUid": "RUANR5L17S2026IDC459571",
         "timeStampDebut": "2026-06-25T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du rapport d’évaluation de la loi de bioéthique de 2021 (Gérard Leseul et Dominique Voynet, députés, Martine Ber…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC459571",
@@ -3207,7 +2076,7 @@
         "reunionUid": "RUANR5L17S2026IDC460518",
         "timeStampDebut": "2026-06-25T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du rapport d’évaluation de la loi de bioéthique de 2021 (Gérard Leseul et Dominique Voynet, députés, Martine Ber…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460518",
@@ -3236,7 +2105,7 @@
         "reunionUid": "RUANR5L17S2026IDC460629",
         "timeStampDebut": "2026-06-25T11:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de Mme Carine Camby, présidente de la 1ère chambre de la Cour des comptes, sur le rapport de la Cour sur la si…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460629",
@@ -3265,7 +2134,7 @@
         "reunionUid": "RUANR5L17S2026IDFL460550",
         "timeStampDebut": "2026-06-25T13:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "PO854578",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDFL460550",
@@ -3294,7 +2163,7 @@
         "reunionUid": "RUANR5L17S2026IDC460495",
         "timeStampDebut": "2026-06-25T14:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l'ordre du jour du matin.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460495",
@@ -3327,7 +2196,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi permettant d’assurer l’autonomie stratégique de la France pour la produ…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52881",
@@ -3361,7 +2230,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi pour prévenir les occupations sans droit ni titre en encadrant la sousc…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52877",
@@ -3395,7 +2264,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à garantir la transparence du calcul des contributions des colle…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52876",
@@ -3429,7 +2298,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à protéger les petits porteurs et les entreprises des fonds vaut…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52879",
@@ -3463,7 +2332,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à prévenir les conflits d’intérêts dans les sociétés nationales…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52883",
@@ -3497,7 +2366,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à renforcer la souveraineté alimentaire par le développement des…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52878",
@@ -3531,7 +2400,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à rétablir l’exemption d’impôt pour les primes accordées par l’o…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52884",
@@ -3565,7 +2434,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à suspendre le regroupement familial et la réunification familia…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52882",
@@ -3599,7 +2468,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de résolution, déposée en application de l’article 34-1 de la Constitution, su…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52874",
@@ -3633,7 +2502,7 @@
         "timeStampDebut": "2026-06-25T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de résolution, déposée en application de l’article 34-1 de la Constitution, vi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30765:RUANR5L17S2026IDS30765PT52875",
@@ -3663,7 +2532,7 @@
         "reunionUid": "RUANR5L17S2026IDC460496",
         "timeStampDebut": "2026-06-25T21:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l'ordre du jour de l'après-midi.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460496",
@@ -3695,7 +2564,7 @@
         "timeStampDebut": "2026-06-26T09:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460497:RUANR5L17S2026IDC460497PT37523",
@@ -3729,7 +2598,7 @@
         "timeStampDebut": "2026-06-26T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de la discussion, en nouvelle lecture, de la proposition de loi relative à la fin de vie",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30767:RUANR5L17S2026IDS30767PT52896",
@@ -3759,7 +2628,7 @@
         "reunionUid": "RUANR5L17S2026IDC460498",
         "timeStampDebut": "2026-06-26T14:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l'ordre du jour du matin.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460498",
@@ -3792,7 +2661,7 @@
         "timeStampDebut": "2026-06-26T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion, en nouvelle lecture, de la proposition de loi relative au droit à l'aide à mourir",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30768:RUANR5L17S2026IDS30768PT52897",
@@ -3822,7 +2691,7 @@
         "reunionUid": "RUANR5L17S2026IDC460499",
         "timeStampDebut": "2026-06-26T21:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l'ordre du jour de l'après-midi.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460499",
@@ -3831,6 +2700,37 @@
       ],
       "stage": "suite de l'ordre du jour de l'après-midi.",
       "title": "suite de l'ordre du jour de l'après-midi."
+    },
+    {
+      "chamber": "Assemblée nationale",
+      "confidence": "explicit_date",
+      "dateLabel": "29 juin 2026 à 09:15",
+      "dossierRef": null,
+      "dossierUrl": null,
+      "eventDate": "2026-06-29",
+      "eventDateTime": "2026-06-29T09:15:00+02:00",
+      "eventType": "committee",
+      "id": "parliament:calendar:41f9222f8612f52a5315",
+      "legislature": "17",
+      "officialUrl": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
+      "raw": {
+        "etat": "Annulé",
+        "lieu": "Salle 6242 – Palais Bourbon, 2ème sous-sol",
+        "pointUid": "RUANR5L17S2026IDC460641PT37555",
+        "reunionType": "reunionCommission_type",
+        "reunionUid": "RUANR5L17S2026IDC460641",
+        "timeStampDebut": "2026-06-29T09:15:00.000+02:00",
+        "typePointODJ": "Examen"
+      },
+      "retrievedAt": "2026-06-18T07:21:05Z",
+      "shortTitle": "Examen du texte",
+      "source": "assemblee",
+      "sourceUid": "RUANR5L17S2026IDC460641:RUANR5L17S2026IDC460641PT37555",
+      "sourceUrls": [
+        "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip"
+      ],
+      "stage": "Examen",
+      "title": "Examen du texte"
     },
     {
       "chamber": "Assemblée nationale",
@@ -3855,7 +2755,7 @@
         "timeStampDebut": "2026-06-29T09:30:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au financement du…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30839:RUANR5L17S2026IDS30839PT53017",
@@ -3888,7 +2788,7 @@
         "timeStampDebut": "2026-06-29T15:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au financement du…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30778:RUANR5L17S2026IDS30778PT52914",
@@ -3921,7 +2821,7 @@
         "timeStampDebut": "2026-06-29T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30778:RUANR5L17S2026IDS30778PT53018",
@@ -3954,7 +2854,7 @@
         "timeStampDebut": "2026-06-29T16:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460572:RUANR5L17S2026IDC460572PT37541",
@@ -3987,7 +2887,7 @@
         "timeStampDebut": "2026-06-29T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi, adoptée par le Sénat, relative à l’organisation, à la gestion et au fi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30779:RUANR5L17S2026IDS30779PT52915",
@@ -4019,7 +2919,7 @@
         "timeStampDebut": "2026-06-30T09:00:00.000+02:00",
         "typePointODJ": "Questions orales sans débat"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Questions orales sans débat (salle Lamartine)",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30780:RUANR5L17S2026IDS30780PT52916",
@@ -4048,7 +2948,7 @@
         "reunionUid": "RUANR5L17S2026IDC460519",
         "timeStampDebut": "2026-06-30T13:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Audition de la CNE2 sur son rapport annuel",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460519",
@@ -4077,7 +2977,7 @@
         "reunionUid": "RUANR5L17S2026IDFL459333",
         "timeStampDebut": "2026-06-30T14:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "PO854354",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDFL459333",
@@ -4110,7 +3010,7 @@
         "timeStampDebut": "2026-06-30T15:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions criminelles",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30781:RUANR5L17S2026IDS30781PT52921",
@@ -4144,7 +3044,7 @@
         "timeStampDebut": "2026-06-30T15:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion du projet de loi, adopté par le Sénat, sur la justice criminelle et le respect des victimes",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30781:RUANR5L17S2026IDS30781PT52920",
@@ -4178,7 +3078,7 @@
         "timeStampDebut": "2026-06-30T15:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion, en 2e lecture de la proposition de loi, modifiée par le Sénat, visant à assurer le droit de chaque enfant à…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30781:RUANR5L17S2026IDS30781PT52919",
@@ -4211,7 +3111,7 @@
         "timeStampDebut": "2026-06-30T15:00:00.000+02:00",
         "typePointODJ": "Questions au Gouvernement"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Questions au Gouvernement",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30781:RUANR5L17S2026IDS30781PT52917",
@@ -4243,7 +3143,7 @@
         "timeStampDebut": "2026-06-30T15:00:00.000+02:00",
         "typePointODJ": "Vote solennel"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Vote solennel sur la proposition de loi relative à la fin de vie en nouvelle lecture",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30781:RUANR5L17S2026IDS30781PT52918",
@@ -4272,7 +3172,7 @@
         "reunionUid": "RUANR5L17S2026IDFL460429",
         "timeStampDebut": "2026-06-30T16:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "PO854454",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDFL460429",
@@ -4301,7 +3201,7 @@
         "reunionUid": "RUANR5L17S2026IDC460630",
         "timeStampDebut": "2026-06-30T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation, par M. Emmanuel Maurel et Mme Estelle Mercier, rapporteurs spéciaux de la mission Travail, emploi et admi…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460630",
@@ -4330,7 +3230,7 @@
         "reunionUid": "RUANR5L17S2026IDC460587",
         "timeStampDebut": "2026-06-30T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "– Audition de M. Éric Lelong, président de l’interprofession des produits de la ruche InterApi.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460587",
@@ -4359,7 +3259,7 @@
         "reunionUid": "RUANR5L17S2026IDC460481",
         "timeStampDebut": "2026-06-30T16:45:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, ouverte à la presse, de la ministre de la Santé, des Familles, de l’Autonomie et des Personnes handicapées, M…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460481",
@@ -4391,7 +3291,7 @@
         "timeStampDebut": "2026-06-30T17:45:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460574:RUANR5L17S2026IDC460574PT37543",
@@ -4425,7 +3325,7 @@
         "timeStampDebut": "2026-06-30T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30782:RUANR5L17S2026IDS30782PT52924",
@@ -4459,7 +3359,7 @@
         "timeStampDebut": "2026-06-30T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, sur la justice criminelle et le respect des victimes",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30782:RUANR5L17S2026IDS30782PT52923",
@@ -4493,7 +3393,7 @@
         "timeStampDebut": "2026-06-30T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion, en 2e lecture de la proposition de loi, modifiée par le Sénat, visant à assurer le droit de cha…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30782:RUANR5L17S2026IDS30782PT52922",
@@ -4523,7 +3423,7 @@
         "reunionUid": "RUANR5L17S2026IDC460575",
         "timeStampDebut": "2026-06-30T21:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "suite de l’ordre du jour de l’après-midi.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460575",
@@ -4552,7 +3452,7 @@
         "reunionUid": "RUANR5L17S2026IDC460516",
         "timeStampDebut": "2026-07-01T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de représentants de l’Union internationale pour la conservation de la nature (UICN).",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460516",
@@ -4581,7 +3481,7 @@
         "reunionUid": "RUANR5L17S2026IDC460585",
         "timeStampDebut": "2026-07-01T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "examen pour avis, ouvert à la presse, et vote sur le projet de loi autorisant l’approbation du memorandum d’entente ent…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460585",
@@ -4613,7 +3513,7 @@
         "timeStampDebut": "2026-07-01T09:30:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460483:RUANR5L17S2026IDC460483PT37516",
@@ -4643,7 +3543,7 @@
         "reunionUid": "RUANR5L17S2026IDC460588",
         "timeStampDebut": "2026-07-01T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "– présentation, en application de l’article 148, alinéa 3 du Règlement, de pétitions renvoyées à la commission et décis…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460588",
@@ -4672,7 +3572,7 @@
         "reunionUid": "RUANR5L17S2026IDC460517",
         "timeStampDebut": "2026-07-01T10:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition conjointe de M. Mathieu Lefèvre, ministre délégué chargé de la transition écologique, M. Paul Delduc, chef du…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460517",
@@ -4701,7 +3601,7 @@
         "reunionUid": "RUANR5L17S2026IDC460631",
         "timeStampDebut": "2026-07-01T11:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation du rapport d’information de la mission d’information relative aux services publics de la Poste en vue d'un…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460631",
@@ -4731,7 +3631,7 @@
         "timeStampDebut": "2026-07-01T13:45:00.000+02:00",
         "timeStampFin": "2026-07-01T15:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "PO851849",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460595",
@@ -4763,7 +3663,7 @@
         "timeStampDebut": "2026-07-01T14:00:00.000+02:00",
         "typePointODJ": "Questions au Gouvernement"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Questions au Gouvernement",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30783:RUANR5L17S2026IDS30783PT52927",
@@ -4795,7 +3695,7 @@
         "timeStampDebut": "2026-07-01T14:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30783:RUANR5L17S2026IDS30783PT52926",
@@ -4827,7 +3727,7 @@
         "timeStampDebut": "2026-07-01T14:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Éventuellement, discussion, sur le projet de loi actualisant la programmation militaire pour les années 2024 à 2030 et…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30783:RUANR5L17S2026IDS30783PT52925",
@@ -4859,7 +3759,7 @@
         "timeStampDebut": "2026-07-01T15:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460361:RUANR5L17S2026IDC460361PT37459",
@@ -4892,7 +3792,7 @@
         "timeStampDebut": "2026-07-01T15:00:00.000+02:00",
         "typePointODJ": "Ouverture et clôture de session"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Ouverture de la session extraordinaire",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30819:RUANR5L17S2026IDS30819PT53020",
@@ -4924,7 +3824,7 @@
         "timeStampDebut": "2026-07-01T15:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Sous réserve de leur dépôt, lecture des conclusions de la CMP sur le projet de loi actualisant la programmation militai…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30819:RUANR5L17S2026IDS30819PT52976",
@@ -4957,7 +3857,7 @@
         "timeStampDebut": "2026-07-01T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30819:RUANR5L17S2026IDS30819PT52978",
@@ -4991,7 +3891,7 @@
         "timeStampDebut": "2026-07-01T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, sur la justice criminelle et le respect des victimes",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30819:RUANR5L17S2026IDS30819PT52977",
@@ -5021,7 +3921,7 @@
         "reunionUid": "RUANR5L17S2026IDC460632",
         "timeStampDebut": "2026-07-01T15:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de M. Philippe Michaud, président exécutif du mouvement E. Leclerc, sur les prix et la fiscalité des carburants",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460632",
@@ -5053,7 +3953,7 @@
         "timeStampDebut": "2026-07-01T16:30:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460576:RUANR5L17S2026IDC460576PT37544",
@@ -5083,7 +3983,7 @@
         "reunionUid": "RUANR5L17S2026IDC460484",
         "timeStampDebut": "2026-07-01T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, ouverte à la presse, de M. Nicolas Forissier, ministre délégué au commerce extérieur et à l'attractivité, sur…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460484",
@@ -5115,7 +4015,7 @@
         "timeStampDebut": "2026-07-01T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30784:RUANR5L17S2026IDS30784PT52928",
@@ -5144,7 +4044,7 @@
         "reunionUid": "RUANR5L17S2026IDC460520",
         "timeStampDebut": "2026-07-02T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du rapport d’évaluation de la décarbonation du secteur des transports terrestres, en application de l’article 73…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460520",
@@ -5176,7 +4076,7 @@
         "timeStampDebut": "2026-07-02T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30785:RUANR5L17S2026IDS30785PT52929",
@@ -5209,7 +4109,7 @@
         "timeStampDebut": "2026-07-02T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30821:RUANR5L17S2026IDS30821PT52982",
@@ -5243,7 +4143,7 @@
         "timeStampDebut": "2026-07-02T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, sur la justice criminelle et le respect des victimes",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30821:RUANR5L17S2026IDS30821PT52981",
@@ -5273,7 +4173,7 @@
         "reunionUid": "RUANR5L17S2026IDC459572",
         "timeStampDebut": "2026-07-02T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du rapport d’évaluation de la décarbonation du secteur des transports terrestres, en application de l’article 73…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC459572",
@@ -5305,7 +4205,7 @@
         "timeStampDebut": "2026-07-02T09:30:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460578:RUANR5L17S2026IDC460578PT37546",
@@ -5338,7 +4238,7 @@
         "timeStampDebut": "2026-07-02T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30786:RUANR5L17S2026IDS30786PT52930",
@@ -5370,7 +4270,7 @@
         "timeStampDebut": "2026-07-02T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30787:RUANR5L17S2026IDS30787PT52931",
@@ -5402,7 +4302,7 @@
         "timeStampDebut": "2026-07-03T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30788:RUANR5L17S2026IDS30788PT52932",
@@ -5435,7 +4335,7 @@
         "timeStampDebut": "2026-07-03T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi organique, adopté par le Sénat, relatif au renforcement des juridictions crimin…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30824:RUANR5L17S2026IDS30824PT52988",
@@ -5469,7 +4369,7 @@
         "timeStampDebut": "2026-07-03T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, sur la justice criminelle et le respect des victimes",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30824:RUANR5L17S2026IDS30824PT52987",
@@ -5503,7 +4403,7 @@
         "timeStampDebut": "2026-07-06T16:00:00.000+02:00",
         "typePointODJ": "Discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Discussion du projet de loi, adopté par le Sénat, visant à offrir des réponses immédiates aux phénomènes troublant l’or…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30825:RUANR5L17S2026IDS30825PT52991",
@@ -5537,7 +4437,7 @@
         "timeStampDebut": "2026-07-06T21:30:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, visant à offrir des réponses immédiates aux phénomènes tr…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30826:RUANR5L17S2026IDS30826PT52992",
@@ -5570,7 +4470,7 @@
         "timeStampDebut": "2026-07-07T15:00:00.000+02:00",
         "typePointODJ": "Questions au Gouvernement"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Questions au Gouvernement",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30827:RUANR5L17S2026IDS30827PT52993",
@@ -5603,7 +4503,7 @@
         "timeStampDebut": "2026-07-07T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion de la proposition de loi visant à reconnaître une présomption de légitime défense pour les force…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30827:RUANR5L17S2026IDS30827PT52994",
@@ -5637,7 +4537,7 @@
         "timeStampDebut": "2026-07-07T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, visant à offrir des réponses immédiates aux phénomènes tr…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30827:RUANR5L17S2026IDS30827PT52995",
@@ -5667,7 +4567,7 @@
         "reunionUid": "RUANR5L17S2026IDC460582",
         "timeStampDebut": "2026-07-07T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de M. Gilbert Cette, président du Conseil d’orientation des retraites.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460582",
@@ -5697,7 +4597,7 @@
         "timeStampDebut": "2026-07-07T18:00:00.000+02:00",
         "timeStampFin": "2026-07-07T19:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "PO851971",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460075",
@@ -5726,7 +4626,7 @@
         "reunionUid": "RUANR5L17S2026IDC460586",
         "timeStampDebut": "2026-07-08T09:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition, à huis clos, sur l’actualité géopolitique et géostratégique.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460586",
@@ -5755,7 +4655,7 @@
         "reunionUid": "RUANR5L17S2026IDC460589",
         "timeStampDebut": "2026-07-08T09:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "présentation des conclusions de la mission d’information sur l’avenir des commerces de proximité (M. Laurent Lhardit et…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460589",
@@ -5787,7 +4687,7 @@
         "timeStampDebut": "2026-07-08T15:00:00.000+02:00",
         "typePointODJ": "Examen"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Examen du texte",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460466:RUANR5L17S2026IDC460466PT37507",
@@ -5821,7 +4721,7 @@
         "timeStampDebut": "2026-07-08T15:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, visant à offrir des réponses immédiates aux phénomènes tr…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30829:RUANR5L17S2026IDS30829PT52997",
@@ -5855,7 +4755,7 @@
         "timeStampDebut": "2026-07-09T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, visant à offrir des réponses immédiates aux phénomènes tr…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30831:RUANR5L17S2026IDS30831PT52999",
@@ -5885,7 +4785,7 @@
         "reunionUid": "RUANR5L17S2026IDS30832",
         "timeStampDebut": "2026-07-09T21:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "PO838901",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30832",
@@ -5918,7 +4818,7 @@
         "timeStampDebut": "2026-07-10T09:00:00.000+02:00",
         "typePointODJ": "Suite de la discussion"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "Suite de la discussion du projet de loi, adopté par le Sénat, visant à offrir des réponses immédiates aux phénomènes tr…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDS30833:RUANR5L17S2026IDS30833PT53003",
@@ -5948,7 +4848,7 @@
         "reunionUid": "RUANR5L17S2026IDC460503",
         "timeStampDebut": "2026-07-15T11:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de M. Thomas Fatôme, directeur général de la Caisse nationale de l’assurance maladie (Cnam), sur le rapport «…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460503",
@@ -5977,7 +4877,7 @@
         "reunionUid": "RUANR5L17S2026IDC460569",
         "timeStampDebut": "2026-07-15T15:00:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "universalité des droits conférés aux élus des zones transfrontalières : examen de la proposition de résolution européen…",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460569",
@@ -6006,7 +4906,7 @@
         "reunionUid": "RUANR5L17S2026IDC460570",
         "timeStampDebut": "2026-07-15T16:30:00.000+02:00"
       },
-      "retrievedAt": "2026-06-17T07:39:54Z",
+      "retrievedAt": "2026-06-18T07:21:05Z",
       "shortTitle": "audition de M. Benjamin Haddad, ministre délégué, chargé de l’Europe sur l’actualité de Union européenne.",
       "source": "assemblee",
       "sourceUid": "RUANR5L17S2026IDC460570",
