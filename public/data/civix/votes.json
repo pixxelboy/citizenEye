@@ -1,8 +1,8 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-19T08:16:33Z",
+  "civixFetchedAt": "2026-06-20T06:47:21Z",
   "dataset": "citizeneye-civix-votes",
-  "generatedAt": "2026-06-19T08:16:33Z",
+  "generatedAt": "2026-06-20T06:47:21Z",
   "schemaVersion": 1,
   "source": {
     "apiVersion": "v1",
@@ -15,102 +15,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-19T08:16:33Z",
+        "finishedAt": "2026-06-20T06:47:21Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:33Z",
+        "startedAt": "2026-06-20T06:47:21Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-19T08:16:34Z",
+        "finishedAt": "2026-06-20T06:47:22Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:33Z",
+        "startedAt": "2026-06-20T06:47:21Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-19T08:16:38Z",
+        "finishedAt": "2026-06-20T06:47:27Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:34Z",
+        "startedAt": "2026-06-20T06:47:22Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-19T08:16:43Z",
+        "finishedAt": "2026-06-20T06:47:31Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:38Z",
+        "startedAt": "2026-06-20T06:47:27Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7395,
-        "finishedAt": "2026-06-19T08:17:16Z",
+        "fetchedCount": 7396,
+        "finishedAt": "2026-06-20T06:48:16Z",
         "name": "scrutins",
         "notes": [],
         "pageCount": 148,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:43Z",
+        "startedAt": "2026-06-20T06:47:31Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 2828,
-        "finishedAt": "2026-06-19T08:19:26Z",
+        "finishedAt": "2026-06-20T06:50:46Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 7145,
-        "startedAt": "2026-06-19T08:17:16Z",
+        "skippedCount": 7146,
+        "startedAt": "2026-06-20T06:48:16Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
         "fetchedCount": 59,
-        "finishedAt": "2026-06-19T08:19:26Z",
+        "finishedAt": "2026-06-20T06:50:46Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:19:26Z",
+        "startedAt": "2026-06-20T06:50:46Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-19T08:19:26Z",
+        "finishedAt": "2026-06-20T06:50:46Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:19:26Z",
+        "startedAt": "2026-06-20T06:50:46Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -118,7 +118,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-19T08:16:33Z",
+    "retrievedAt": "2026-06-20T06:47:21Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
@@ -568,6 +568,448 @@
         "unknown": 0
       },
       "scrutinId": "VTANR5L17V7426",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:global",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": null,
+      "groupUid": null,
+      "groupVoteDistribution": null,
+      "id": "civix:vote:VTANR5L17V7423:VTANR5L17V7423:global",
+      "position": "summary",
+      "raw": {
+        "id": "VTANR5L17V7423:global",
+        "position": "summary",
+        "raw_kind": "global_summary",
+        "voteResultSummary": {
+          "absents": null,
+          "abstention": 0,
+          "contre": 49,
+          "nonVotants": 2,
+          "pour": 52
+        }
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": {
+        "absents": null,
+        "abstention": 0,
+        "contre": 49,
+        "nonVotants": 2,
+        "pour": 52
+      }
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845413",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845413",
+      "groupUid": "PO845413",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 24,
+        "pourCount": 0,
+        "totalCount": 24,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845413",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 24,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 24,
+          "pourCount": 0,
+          "totalCount": 24,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845413",
+        "id": "VTANR5L17V7423:PO845413",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 24,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845401",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845401",
+      "groupUid": "PO845401",
+      "groupVoteDistribution": {
+        "absentCount": 1,
+        "abstentionCount": 0,
+        "contreCount": 13,
+        "pourCount": 0,
+        "totalCount": 14,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845401",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 13,
+        "groupVoteDistribution": {
+          "absentCount": 1,
+          "abstentionCount": 0,
+          "contreCount": 13,
+          "pourCount": 0,
+          "totalCount": 14,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845401",
+        "id": "VTANR5L17V7423:PO845401",
+        "non_votant": 1,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 14,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845470",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845470",
+      "groupUid": "PO845470",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 0,
+        "pourCount": 12,
+        "totalCount": 12,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845470",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 0,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 0,
+          "pourCount": 12,
+          "totalCount": 12,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845470",
+        "id": "VTANR5L17V7423:PO845470",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 12,
+        "raw_kind": "group_distribution",
+        "total": 12,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845407",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845407",
+      "groupUid": "PO845407",
+      "groupVoteDistribution": {
+        "absentCount": 1,
+        "abstentionCount": 0,
+        "contreCount": 0,
+        "pourCount": 9,
+        "totalCount": 10,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845407",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 0,
+        "groupVoteDistribution": {
+          "absentCount": 1,
+          "abstentionCount": 0,
+          "contreCount": 0,
+          "pourCount": 9,
+          "totalCount": 10,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845407",
+        "id": "VTANR5L17V7423:PO845407",
+        "non_votant": 1,
+        "position": "group_distribution",
+        "pour": 9,
+        "raw_kind": "group_distribution",
+        "total": 10,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845439",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845439",
+      "groupUid": "PO845439",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 1,
+        "pourCount": 9,
+        "totalCount": 10,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845439",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 1,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 1,
+          "pourCount": 9,
+          "totalCount": 10,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845439",
+        "id": "VTANR5L17V7423:PO845439",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 9,
+        "raw_kind": "group_distribution",
+        "total": 10,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845454",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845454",
+      "groupUid": "PO845454",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 0,
+        "pourCount": 10,
+        "totalCount": 10,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845454",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 0,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 0,
+          "pourCount": 10,
+          "totalCount": 10,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845454",
+        "id": "VTANR5L17V7423:PO845454",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 10,
+        "raw_kind": "group_distribution",
+        "total": 10,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845419",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845419",
+      "groupUid": "PO845419",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 1,
+        "pourCount": 7,
+        "totalCount": 8,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845419",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 1,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 1,
+          "pourCount": 7,
+          "totalCount": 8,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845419",
+        "id": "VTANR5L17V7423:PO845419",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 7,
+        "raw_kind": "group_distribution",
+        "total": 8,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO872880",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO872880",
+      "groupUid": "PO872880",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 7,
+        "pourCount": 0,
+        "totalCount": 7,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO872880",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 7,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 7,
+          "pourCount": 0,
+          "totalCount": 7,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO872880",
+        "id": "VTANR5L17V7423:PO872880",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 7,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845425",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845425",
+      "groupUid": "PO845425",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 3,
+        "pourCount": 1,
+        "totalCount": 4,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845425",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 3,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 3,
+          "pourCount": 1,
+          "totalCount": 4,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845425",
+        "id": "VTANR5L17V7423:PO845425",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 1,
+        "raw_kind": "group_distribution",
+        "total": 4,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7423:PO845485",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845485",
+      "groupUid": "PO845485",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 0,
+        "pourCount": 4,
+        "totalCount": 4,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7423:PO845485",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 0,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 0,
+          "pourCount": 4,
+          "totalCount": 4,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845485",
+        "id": "VTANR5L17V7423:PO845485",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 4,
+        "raw_kind": "group_distribution",
+        "total": 4,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7423",
       "voteResultSummary": null
     },
     {
@@ -60719,47 +61161,6 @@
       "voteResultSummary": null
     },
     {
-      "civixId": "VTANR5L17V7263:PO872880",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO872880",
-      "groupUid": "PO872880",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 1,
-        "contreCount": 0,
-        "pourCount": 0,
-        "totalCount": 1,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7263:PO872880",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 1,
-        "contre": 0,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 1,
-          "contreCount": 0,
-          "pourCount": 0,
-          "totalCount": 1,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO872880",
-        "id": "VTANR5L17V7263:PO872880",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 1,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7263",
-      "voteResultSummary": null
-    },
-    {
       "civixId": "VTANR5L17V7263:PO840056",
       "deputyCivixId": null,
       "deputyGroupAlignment": "unknown",
@@ -60790,6 +61191,47 @@
         },
         "groupe_uid": "PO840056",
         "id": "VTANR5L17V7263:PO840056",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 1,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7263",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7263:PO872880",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO872880",
+      "groupUid": "PO872880",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 1,
+        "contreCount": 0,
+        "pourCount": 0,
+        "totalCount": 1,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7263:PO872880",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 1,
+        "contre": 0,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 1,
+          "contreCount": 0,
+          "pourCount": 0,
+          "totalCount": 1,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO872880",
+        "id": "VTANR5L17V7263:PO872880",
         "non_votant": 0,
         "position": "group_distribution",
         "pour": 0,
@@ -82012,47 +82454,6 @@
       "voteResultSummary": null
     },
     {
-      "civixId": "VTANR5L17V7219:PO845485",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845485",
-      "groupUid": "PO845485",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 1,
-        "pourCount": 0,
-        "totalCount": 1,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7219:PO845485",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 1,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 1,
-          "pourCount": 0,
-          "totalCount": 1,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845485",
-        "id": "VTANR5L17V7219:PO845485",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 1,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7219",
-      "voteResultSummary": null
-    },
-    {
       "civixId": "VTANR5L17V7219:PO845514",
       "deputyCivixId": null,
       "deputyGroupAlignment": "unknown",
@@ -82083,6 +82484,47 @@
         },
         "groupe_uid": "PO845514",
         "id": "VTANR5L17V7219:PO845514",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 1,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7219",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7219:PO845485",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845485",
+      "groupUid": "PO845485",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 0,
+        "contreCount": 1,
+        "pourCount": 0,
+        "totalCount": 1,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7219:PO845485",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 0,
+        "contre": 1,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 0,
+          "contreCount": 1,
+          "pourCount": 0,
+          "totalCount": 1,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845485",
+        "id": "VTANR5L17V7219:PO845485",
         "non_votant": 0,
         "position": "group_distribution",
         "pour": 0,
@@ -113139,47 +113581,6 @@
       "voteResultSummary": null
     },
     {
-      "civixId": "VTANR5L17V7147:PO845454",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845454",
-      "groupUid": "PO845454",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 1,
-        "contreCount": 6,
-        "pourCount": 0,
-        "totalCount": 7,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7147:PO845454",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 1,
-        "contre": 6,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 1,
-          "contreCount": 6,
-          "pourCount": 0,
-          "totalCount": 7,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845454",
-        "id": "VTANR5L17V7147:PO845454",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 7,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7147",
-      "voteResultSummary": null
-    },
-    {
       "civixId": "VTANR5L17V7147:PO845470",
       "deputyCivixId": null,
       "deputyGroupAlignment": "unknown",
@@ -113210,6 +113611,47 @@
         },
         "groupe_uid": "PO845470",
         "id": "VTANR5L17V7147:PO845470",
+        "non_votant": 0,
+        "position": "group_distribution",
+        "pour": 0,
+        "raw_kind": "group_distribution",
+        "total": 7,
+        "unknown": 0
+      },
+      "scrutinId": "VTANR5L17V7147",
+      "voteResultSummary": null
+    },
+    {
+      "civixId": "VTANR5L17V7147:PO845454",
+      "deputyCivixId": null,
+      "deputyGroupAlignment": "unknown",
+      "deputyId": null,
+      "groupAbbreviation": null,
+      "groupId": "civix:group:PO845454",
+      "groupUid": "PO845454",
+      "groupVoteDistribution": {
+        "absentCount": 0,
+        "abstentionCount": 1,
+        "contreCount": 6,
+        "pourCount": 0,
+        "totalCount": 7,
+        "unknownCount": 0
+      },
+      "id": "civix:vote:VTANR5L17V7147:PO845454",
+      "position": "group_distribution",
+      "raw": {
+        "abstention": 1,
+        "contre": 6,
+        "groupVoteDistribution": {
+          "absentCount": 0,
+          "abstentionCount": 1,
+          "contreCount": 6,
+          "pourCount": 0,
+          "totalCount": 7,
+          "unknownCount": 0
+        },
+        "groupe_uid": "PO845454",
+        "id": "VTANR5L17V7147:PO845454",
         "non_votant": 0,
         "position": "group_distribution",
         "pour": 0,
@@ -113382,448 +113824,6 @@
         "unknown": 0
       },
       "scrutinId": "VTANR5L17V7147",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:global",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": null,
-      "groupUid": null,
-      "groupVoteDistribution": null,
-      "id": "civix:vote:VTANR5L17V7146:VTANR5L17V7146:global",
-      "position": "summary",
-      "raw": {
-        "id": "VTANR5L17V7146:global",
-        "position": "summary",
-        "raw_kind": "global_summary",
-        "voteResultSummary": {
-          "absents": null,
-          "abstention": 2,
-          "contre": 58,
-          "nonVotants": 1,
-          "pour": 42
-        }
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": {
-        "absents": null,
-        "abstention": 2,
-        "contre": 58,
-        "nonVotants": 1,
-        "pour": 42
-      }
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845401",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845401",
-      "groupUid": "PO845401",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 1,
-        "pourCount": 34,
-        "totalCount": 35,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845401",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 1,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 1,
-          "pourCount": 34,
-          "totalCount": 35,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845401",
-        "id": "VTANR5L17V7146:PO845401",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 34,
-        "raw_kind": "group_distribution",
-        "total": 35,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845407",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845407",
-      "groupUid": "PO845407",
-      "groupVoteDistribution": {
-        "absentCount": 1,
-        "abstentionCount": 0,
-        "contreCount": 18,
-        "pourCount": 0,
-        "totalCount": 19,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845407",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 18,
-        "groupVoteDistribution": {
-          "absentCount": 1,
-          "abstentionCount": 0,
-          "contreCount": 18,
-          "pourCount": 0,
-          "totalCount": 19,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845407",
-        "id": "VTANR5L17V7146:PO845407",
-        "non_votant": 1,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 19,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845413",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845413",
-      "groupUid": "PO845413",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 18,
-        "pourCount": 0,
-        "totalCount": 18,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845413",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 18,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 18,
-          "pourCount": 0,
-          "totalCount": 18,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845413",
-        "id": "VTANR5L17V7146:PO845413",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 18,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845425",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845425",
-      "groupUid": "PO845425",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 2,
-        "contreCount": 0,
-        "pourCount": 8,
-        "totalCount": 10,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845425",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 2,
-        "contre": 0,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 2,
-          "contreCount": 0,
-          "pourCount": 8,
-          "totalCount": 10,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845425",
-        "id": "VTANR5L17V7146:PO845425",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 8,
-        "raw_kind": "group_distribution",
-        "total": 10,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845454",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845454",
-      "groupUid": "PO845454",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 7,
-        "pourCount": 0,
-        "totalCount": 7,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845454",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 7,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 7,
-          "pourCount": 0,
-          "totalCount": 7,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845454",
-        "id": "VTANR5L17V7146:PO845454",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 7,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845470",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845470",
-      "groupUid": "PO845470",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 5,
-        "pourCount": 0,
-        "totalCount": 5,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845470",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 5,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 5,
-          "pourCount": 0,
-          "totalCount": 5,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845470",
-        "id": "VTANR5L17V7146:PO845470",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 5,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845419",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845419",
-      "groupUid": "PO845419",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 4,
-        "pourCount": 0,
-        "totalCount": 4,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845419",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 4,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 4,
-          "pourCount": 0,
-          "totalCount": 4,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845419",
-        "id": "VTANR5L17V7146:PO845419",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 4,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845439",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845439",
-      "groupUid": "PO845439",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 3,
-        "pourCount": 0,
-        "totalCount": 3,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845439",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 3,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 3,
-          "pourCount": 0,
-          "totalCount": 3,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845439",
-        "id": "VTANR5L17V7146:PO845439",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 3,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845485",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845485",
-      "groupUid": "PO845485",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 1,
-        "pourCount": 0,
-        "totalCount": 1,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845485",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 1,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 1,
-          "pourCount": 0,
-          "totalCount": 1,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845485",
-        "id": "VTANR5L17V7146:PO845485",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 1,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
-      "voteResultSummary": null
-    },
-    {
-      "civixId": "VTANR5L17V7146:PO845514",
-      "deputyCivixId": null,
-      "deputyGroupAlignment": "unknown",
-      "deputyId": null,
-      "groupAbbreviation": null,
-      "groupId": "civix:group:PO845514",
-      "groupUid": "PO845514",
-      "groupVoteDistribution": {
-        "absentCount": 0,
-        "abstentionCount": 0,
-        "contreCount": 1,
-        "pourCount": 0,
-        "totalCount": 1,
-        "unknownCount": 0
-      },
-      "id": "civix:vote:VTANR5L17V7146:PO845514",
-      "position": "group_distribution",
-      "raw": {
-        "abstention": 0,
-        "contre": 1,
-        "groupVoteDistribution": {
-          "absentCount": 0,
-          "abstentionCount": 0,
-          "contreCount": 1,
-          "pourCount": 0,
-          "totalCount": 1,
-          "unknownCount": 0
-        },
-        "groupe_uid": "PO845514",
-        "id": "VTANR5L17V7146:PO845514",
-        "non_votant": 0,
-        "position": "group_distribution",
-        "pour": 0,
-        "raw_kind": "group_distribution",
-        "total": 1,
-        "unknown": 0
-      },
-      "scrutinId": "VTANR5L17V7146",
       "voteResultSummary": null
     }
   ]

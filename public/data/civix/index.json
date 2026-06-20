@@ -1,6 +1,6 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-19T08:16:33Z",
+  "civixFetchedAt": "2026-06-20T06:47:21Z",
   "dataset": "citizeneye-civix-index",
   "files": [
     {
@@ -14,7 +14,7 @@
       "url": "data/civix/groups.json"
     },
     {
-      "count": 7395,
+      "count": 7396,
       "name": "scrutins",
       "url": "data/civix/scrutins.json"
     },
@@ -34,7 +34,7 @@
       "url": "data/civix/stats.json"
     }
   ],
-  "generatedAt": "2026-06-19T08:16:33Z",
+  "generatedAt": "2026-06-20T06:47:21Z",
   "metadata": {
     "apiIndexSummary": "Index des endpoints publics de CIVIX.",
     "civix": {
@@ -81,102 +81,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-19T08:16:33Z",
+        "finishedAt": "2026-06-20T06:47:21Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:33Z",
+        "startedAt": "2026-06-20T06:47:21Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-19T08:16:34Z",
+        "finishedAt": "2026-06-20T06:47:22Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:33Z",
+        "startedAt": "2026-06-20T06:47:21Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-19T08:16:38Z",
+        "finishedAt": "2026-06-20T06:47:27Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:34Z",
+        "startedAt": "2026-06-20T06:47:22Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-19T08:16:43Z",
+        "finishedAt": "2026-06-20T06:47:31Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:38Z",
+        "startedAt": "2026-06-20T06:47:27Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7395,
-        "finishedAt": "2026-06-19T08:17:16Z",
+        "fetchedCount": 7396,
+        "finishedAt": "2026-06-20T06:48:16Z",
         "name": "scrutins",
         "notes": [],
         "pageCount": 148,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:16:43Z",
+        "startedAt": "2026-06-20T06:47:31Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 2828,
-        "finishedAt": "2026-06-19T08:19:26Z",
+        "finishedAt": "2026-06-20T06:50:46Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 7145,
-        "startedAt": "2026-06-19T08:17:16Z",
+        "skippedCount": 7146,
+        "startedAt": "2026-06-20T06:48:16Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
         "fetchedCount": 59,
-        "finishedAt": "2026-06-19T08:19:26Z",
+        "finishedAt": "2026-06-20T06:50:46Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:19:26Z",
+        "startedAt": "2026-06-20T06:50:46Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-19T08:19:26Z",
+        "finishedAt": "2026-06-20T06:50:46Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-19T08:19:26Z",
+        "startedAt": "2026-06-20T06:50:46Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -184,7 +184,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-19T08:16:33Z",
+    "retrievedAt": "2026-06-20T06:47:21Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
