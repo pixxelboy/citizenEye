@@ -9,7 +9,7 @@
       "notes": [
         "Source officielle critique: agenda open data de l’Assemblée nationale."
       ],
-      "retrievedAt": "2026-06-21T07:20:56Z",
+      "retrievedAt": "2026-06-22T08:44:57Z",
       "skippedCount": 7069,
       "status": "success",
       "url": "https://data.assemblee-nationale.fr/static/openData/repository/17/vp/reunions/Agenda.json.zip",
@@ -18,7 +18,7 @@
   ],
   "errors": [],
   "errorsCount": 0,
-  "generatedAt": "2026-06-21T07:20:56Z",
+  "generatedAt": "2026-06-22T08:44:57Z",
   "schemaVersion": 1,
   "status": "warning",
   "warnings": [
