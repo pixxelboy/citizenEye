@@ -1,8 +1,8 @@
 {
   "civixApiVersion": "v1",
-  "civixFetchedAt": "2026-06-22T08:41:41Z",
+  "civixFetchedAt": "2026-06-23T06:32:43Z",
   "dataset": "citizeneye-civix-groups",
-  "generatedAt": "2026-06-22T08:41:41Z",
+  "generatedAt": "2026-06-23T06:32:43Z",
   "groups": [
     {
       "abbreviation": "DR",
@@ -149,30 +149,6 @@
       }
     },
     {
-      "abbreviation": "GDR",
-      "civixId": "PO845514",
-      "id": "civix:group:PO845514",
-      "label": "Gauche Démocrate et Républicaine",
-      "legislature": 17,
-      "memberCount": 17,
-      "raw": {
-        "abbr": "GDR",
-        "effectif": 17,
-        "legislature": 17,
-        "libelle": "Gauche Démocrate et Républicaine",
-        "uid": "PO845514",
-        "urls": {
-          "api": "https://www.civix.fr/api/v1/groupes/GDR",
-          "page": "https://www.civix.fr/groupes/GDR"
-        }
-      },
-      "uid": "PO845514",
-      "urls": {
-        "api": "https://www.civix.fr/api/v1/groupes/GDR",
-        "page": "https://www.civix.fr/groupes/GDR"
-      }
-    },
-    {
       "abbreviation": "LFI-NFP",
       "civixId": "PO845413",
       "id": "civix:group:PO845413",
@@ -194,6 +170,30 @@
       "urls": {
         "api": "https://www.civix.fr/api/v1/groupes/LFI-NFP",
         "page": "https://www.civix.fr/groupes/LFI-NFP"
+      }
+    },
+    {
+      "abbreviation": "ECOS",
+      "civixId": "PO845439",
+      "id": "civix:group:PO845439",
+      "label": "Écologiste et Social",
+      "legislature": 17,
+      "memberCount": 38,
+      "raw": {
+        "abbr": "ECOS",
+        "effectif": 38,
+        "legislature": 17,
+        "libelle": "Écologiste et Social",
+        "uid": "PO845439",
+        "urls": {
+          "api": "https://www.civix.fr/api/v1/groupes/ECOS",
+          "page": "https://www.civix.fr/groupes/ECOS"
+        }
+      },
+      "uid": "PO845439",
+      "urls": {
+        "api": "https://www.civix.fr/api/v1/groupes/ECOS",
+        "page": "https://www.civix.fr/groupes/ECOS"
       }
     },
     {
@@ -221,27 +221,27 @@
       }
     },
     {
-      "abbreviation": "ECOS",
-      "civixId": "PO845439",
-      "id": "civix:group:PO845439",
-      "label": "Écologiste et Social",
+      "abbreviation": "GDR",
+      "civixId": "PO845514",
+      "id": "civix:group:PO845514",
+      "label": "Gauche Démocrate et Républicaine",
       "legislature": 17,
-      "memberCount": 38,
+      "memberCount": 17,
       "raw": {
-        "abbr": "ECOS",
-        "effectif": 38,
+        "abbr": "GDR",
+        "effectif": 17,
         "legislature": 17,
-        "libelle": "Écologiste et Social",
-        "uid": "PO845439",
+        "libelle": "Gauche Démocrate et Républicaine",
+        "uid": "PO845514",
         "urls": {
-          "api": "https://www.civix.fr/api/v1/groupes/ECOS",
-          "page": "https://www.civix.fr/groupes/ECOS"
+          "api": "https://www.civix.fr/api/v1/groupes/GDR",
+          "page": "https://www.civix.fr/groupes/GDR"
         }
       },
-      "uid": "PO845439",
+      "uid": "PO845514",
       "urls": {
-        "api": "https://www.civix.fr/api/v1/groupes/ECOS",
-        "page": "https://www.civix.fr/groupes/ECOS"
+        "api": "https://www.civix.fr/api/v1/groupes/GDR",
+        "page": "https://www.civix.fr/groupes/GDR"
       }
     },
     {
@@ -305,102 +305,102 @@
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-22T08:41:41Z",
+        "finishedAt": "2026-06-23T06:32:44Z",
         "name": "metadata",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:41:41Z",
+        "startedAt": "2026-06-23T06:32:43Z",
         "status": "success",
         "url": "https://www.civix.fr/.well-known/civix.json"
       },
       {
         "error": null,
         "fetchedCount": 0,
-        "finishedAt": "2026-06-22T08:41:42Z",
+        "finishedAt": "2026-06-23T06:32:45Z",
         "name": "index",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:41:41Z",
+        "startedAt": "2026-06-23T06:32:44Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       },
       {
         "error": null,
         "fetchedCount": 602,
-        "finishedAt": "2026-06-22T08:41:48Z",
+        "finishedAt": "2026-06-23T06:32:50Z",
         "name": "deputies",
         "notes": [],
         "pageCount": 13,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:41:42Z",
+        "startedAt": "2026-06-23T06:32:45Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/deputes"
       },
       {
         "error": null,
         "fetchedCount": 12,
-        "finishedAt": "2026-06-22T08:41:52Z",
+        "finishedAt": "2026-06-23T06:32:55Z",
         "name": "groups",
         "notes": [],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:41:48Z",
+        "startedAt": "2026-06-23T06:32:50Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/groupes"
       },
       {
         "error": null,
-        "fetchedCount": 7398,
-        "finishedAt": "2026-06-22T08:42:33Z",
+        "fetchedCount": 7403,
+        "finishedAt": "2026-06-23T06:33:30Z",
         "name": "scrutins",
         "notes": [],
-        "pageCount": 148,
+        "pageCount": 149,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:41:52Z",
+        "startedAt": "2026-06-23T06:32:55Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
-        "fetchedCount": 2829,
-        "finishedAt": "2026-06-22T08:44:56Z",
+        "fetchedCount": 2833,
+        "finishedAt": "2026-06-23T06:35:54Z",
         "name": "individual_votes",
         "notes": [
           "Votes nominaux récupérés pour 250 scrutin(s). Limite configurable avec --max-scrutin-votes/CIVIX_MAX_SCRUTIN_VOTES pour usage raisonnable."
         ],
         "pageCount": 0,
-        "skippedCount": 7148,
-        "startedAt": "2026-06-22T08:42:33Z",
+        "skippedCount": 7153,
+        "startedAt": "2026-06-23T06:33:30Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins/{uid}/votes"
       },
       {
         "error": null,
-        "fetchedCount": 59,
-        "finishedAt": "2026-06-22T08:44:56Z",
+        "fetchedCount": 60,
+        "finishedAt": "2026-06-23T06:35:54Z",
         "name": "dossiers",
         "notes": [
           "CIVIX n'expose pas d'endpoint dossier dédié dans l'OpenAPI actuelle; dossiers normalisés depuis les références des scrutins quand disponibles."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:44:56Z",
+        "startedAt": "2026-06-23T06:35:54Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/scrutins"
       },
       {
         "error": null,
         "fetchedCount": 1,
-        "finishedAt": "2026-06-22T08:44:56Z",
+        "finishedAt": "2026-06-23T06:35:54Z",
         "name": "stats",
         "notes": [
           "Statistiques déterministes dérivées du jeu CIVIX généré; aucun score politique inféré."
         ],
         "pageCount": 0,
         "skippedCount": 0,
-        "startedAt": "2026-06-22T08:44:56Z",
+        "startedAt": "2026-06-23T06:35:54Z",
         "status": "success",
         "url": "https://www.civix.fr/api/v1/index"
       }
@@ -408,7 +408,7 @@
     "lastUpdated": "2026-04-29",
     "provider": "Assemblée nationale",
     "publisher": "CIVIX.fr",
-    "retrievedAt": "2026-06-22T08:41:41Z",
+    "retrievedAt": "2026-06-23T06:32:43Z",
     "schemaVersion": "2026-04-29",
     "sourceUrls": [
       "https://www.civix.fr/api",
